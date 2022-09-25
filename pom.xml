@@ -31,6 +31,7 @@
         <spring-format.version>0.0.19</spring-format.version>
 
     </properties>
+
 	<developers>
  		<developer>
  			<id>paomarsan</id>
@@ -61,6 +62,18 @@
  			<name>Mercedes</name>
  			<email>meriglmar@alum.us.e</email>
  			<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+    <developer>
+ 			<id>pabquide</id>
+ 			<name>Pablo</name>
+ 			<email>pabquide@alum.us.es</email>
+      <url></url>
  			<roles>
  			<role>developer</role>
  			</roles>
