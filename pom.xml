@@ -69,10 +69,22 @@
  			<picUrl></picUrl>
  			</properties>
  		</developer>
-    <developer>
+        <developer>
  			<id>pabquide</id>
  			<name>Pablo</name>
  			<email>pabquide@alum.us.es</email>
+      		<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+            <developer>
+ 			<id>sanzultor</id>
+ 			<name>Santi</name>
+ 			<email>santizuleta11@gmail.com</email>
       		<url></url>
  			<roles>
  			<role>developer</role>
