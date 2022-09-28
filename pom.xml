@@ -32,23 +32,6 @@
 
     </properties>
 
-    <developers>
-        <developer>
-            <id>andgarriv</id>
-            <name>Andres</name>
-            <email>andres7212@gmail.com</email>
-            <url></url>
-            <roles>
-                <role>developer</role>
-            </roles>
-            <properties>
-                <picUrl>
-                https://yt3.ggpht.com/ytc/AMLnZu_wwGxpxu1XK7Nsk7boui9hkEiR7NXm3BYUIlxT=s900-c-k-c0x00ffffff-no-rj
-                </picUrl>
-            </properties>
-        </developer>
-    </developers>
-
 	<developers>
  		<developer>
  			<id>paomarsan</id>
@@ -110,6 +93,20 @@
  			<picUrl></picUrl>
  			</properties>
  		</developer>
+        <developer>
+            <id>andgarriv</id>
+            <name>Andres</name>
+            <email>andres7212@gmail.com</email>
+            <url></url>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <properties>
+                <picUrl>
+                https://yt3.ggpht.com/ytc/AMLnZu_wwGxpxu1XK7Nsk7boui9hkEiR7NXm3BYUIlxT=s900-c-k-c0x00ffffff-no-rj
+                </picUrl>
+            </properties>
+        </developer>
 	</developers>
 	
     <dependencies>
