@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.springframework.samples</groupId>
-    <artifactId>spring-petclinic</artifactId>
+    <artifactId>G5-05</artifactId>
     <version>2.2.0.BUILD-SNAPSHOT</version>
 
     <parent>
@@ -12,7 +12,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.4.RELEASE</version>
     </parent>
-    <name>petclinic</name>
+    <name>G5-05</name>
 
     <properties>
 
@@ -49,6 +49,69 @@
         </developer>
     </developers>
 
+	<developers>
+ 		<developer>
+ 			<id>paomarsan</id>
+ 			<name>Paola</name>
+ 			<email>paomarsan2001@gmail.com</email>
+ 			<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+ 		<developer>
+ 			<id>angbermar1</id>
+ 			<name>Ángela</name>
+ 			<email>abernalmar@gmail.com</email>
+ 			<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+ 		<developer>
+ 			<id>meriglmar</id>
+ 			<name>Mercedes</name>
+ 			<email>meriglmar@alum.us.es</email>
+ 			<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+    <developer>
+ 			<id>pabquide</id>
+ 			<name>Pablo</name>
+ 			<email>pabquide@alum.us.es</email>
+      		<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+            <developer>
+ 			<id>sanzultor</id>
+ 			<name>Santi</name>
+ 			<email>santizuleta11@gmail.com</email>
+      		<url></url>
+ 			<roles>
+ 			<role>developer</role>
+ 			</roles>
+ 			<properties>
+ 			<picUrl></picUrl>
+ 			</properties>
+ 		</developer>
+	</developers>
+	
     <dependencies>
         <!-- Spring and Spring Boot dependencies -->
         <dependency>
