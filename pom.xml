@@ -60,7 +60,7 @@
  		<developer>
  			<id>meriglmar</id>
  			<name>Mercedes</name>
- 			<email>meriglmar@alum.us.e</email>
+ 			<email>meriglmar@alum.us.es</email>
  			<url></url>
  			<roles>
  			<role>developer</role>
@@ -73,7 +73,7 @@
  			<id>pabquide</id>
  			<name>Pablo</name>
  			<email>pabquide@alum.us.es</email>
-      <url></url>
+      		<url></url>
  			<roles>
  			<role>developer</role>
  			</roles>
