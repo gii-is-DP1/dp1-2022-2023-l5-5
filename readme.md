@@ -1,7 +1,7 @@
 # Spring PetClinic Sample Application 
 
 # Video explicativo del juego: 
-[![Watch the video](https://i3.ytimg.com/vi/3cf_5OPJA_o/maxresdefault.jpg)](https://youtu.be/3cf_5OPJA_o)
+[![Watch the video](https://img.blogs.es/anexom/wp-content/uploads/2022/01/buscaminas.jpg)](https://youtu.be/3cf_5OPJA_o)
 
 This is a fork of https://github.com/spring-projects/spring-petclinic to be used for the DP1 course. The main changes that have been performed were:
 - Trimming several parts of the application to keep the example low
