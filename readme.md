@@ -1,5 +1,8 @@
 # Spring PetClinic Sample Application 
 
+# Video explicativo del juego: 
+[![Watch the video](https://i3.ytimg.com/vi/3cf_5OPJA_o/maxresdefault.jpg)](https://youtu.be/3cf_5OPJA_o)
+
 This is a fork of https://github.com/spring-projects/spring-petclinic to be used for the DP1 course. The main changes that have been performed were:
 - Trimming several parts of the application to keep the example low
 - Reorganize some parts of the code according to best practices introduced in the course
@@ -11,7 +14,7 @@ This is a fork of https://github.com/spring-projects/spring-petclinic to be used
 Petclinic is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built using [Maven](https://spring.io/guides/gs/maven/). You can build a jar file and run it from the command line:
 
 
-[![Watch the video]](https://youtu.be/3cf_5OPJA_o)
+
 
 ```
 git clone https://github.com/gii-is-DP1/spring-petclinic.git
