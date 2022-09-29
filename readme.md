@@ -1,6 +1,6 @@
 # Spring PetClinic Sample Application 
 
-# Enlace del video explicativo del juego
+Enlace del video explicativo del juego
 (https://youtu.be/3cf_5OPJA_o)
 
 
