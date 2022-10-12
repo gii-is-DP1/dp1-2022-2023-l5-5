@@ -26,6 +26,8 @@ INSERT INTO authorities(id,username,authority) VALUES (8,'sanzultor','owner');
 INSERT INTO users(username,password,enabled) VALUES ('andgarriv','4ndg4rr1v',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (9,'andgarriv','owner');
 
+
+
 INSERT INTO vets(id, first_name,last_name) VALUES (1, 'James', 'Carter');
 INSERT INTO vets(id, first_name,last_name) VALUES (2, 'Helen', 'Leary');
 INSERT INTO vets(id, first_name,last_name) VALUES (3, 'Linda', 'Douglas');
@@ -68,6 +70,10 @@ INSERT INTO owners VALUES (14, 'Paola', 'Martín', 'Estrella Mira 10', 'Sevilla'
 INSERT INTO owners VALUES (15, 'Santi', 'Zuleta', 'Fidelio 7', 'Sevilla', '673629262', 'sanzultor');
 INSERT INTO owners VALUES (16, 'Andres', 'Garcia', '1 Manuel Suirot', 'Sevilla', '699749122', 'andgarriv');
 
+INSERT INTO jugadores VALUES (1,'abretesesamo','pabloquindos','pabquide@alum.us.es','pabquide');
+INSERT INTO jugadores VALUES (2,'1234567890','lolito','lolitofdez@hotmail.es','owner1');
+INSERT INTO jugadores VALUES (3,'sisisi','santiagu','santi@gmail.com','sanzultor');
+INSERT INTO jugadores VALUES (4,'nonono','pccsd','pccsd@yahoo.es','vet1');
 
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
