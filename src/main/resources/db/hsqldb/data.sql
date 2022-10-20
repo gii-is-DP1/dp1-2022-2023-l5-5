@@ -75,6 +75,11 @@ INSERT INTO jugadores VALUES (2,'1234567890','lolito','lolitofdez@hotmail.es','o
 INSERT INTO jugadores VALUES (3,'sisisi','santiagu','santi@gmail.com','sanzultor');
 INSERT INTO jugadores VALUES (4,'nonono','pccsd','pccsd@yahoo.es','vet1');
 
+INSERT INTO tableros VALUES (1,9,14,15);
+INSERT INTO tableros VALUES (2,3,12,10);
+INSERT INTO tableros VALUES (3,5,4,4);
+INSERT INTO tableros VALUES (4,4,2,11);
+
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (3, 'Rosy', '2011-04-17', 2, 3);
