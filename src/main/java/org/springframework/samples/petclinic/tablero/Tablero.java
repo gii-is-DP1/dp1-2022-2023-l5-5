@@ -2,11 +2,11 @@ package org.springframework.samples.petclinic.tablero;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
+import org.springframework.samples.petclinic.casilla.Casilla;
 import org.springframework.samples.petclinic.model.BaseEntity;
 
 
@@ -45,11 +45,8 @@ public class Tablero extends BaseEntity{
     @Positive
     private Integer numeroMinas; 
 
-	// //
-	// @OneToOne(cascade = CascadeType.ALL)
-    // @JoinColumn(name = "username", referencedColumnName = "username")
-	// private User user;
-	// //
+	//@OneToMany
+    //Casilla casilla;
 	
 
 
