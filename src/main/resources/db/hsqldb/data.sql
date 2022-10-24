@@ -75,6 +75,22 @@ INSERT INTO jugadores VALUES (2,'1234567890','lolito','lolitofdez@hotmail.es','o
 INSERT INTO jugadores VALUES (3,'sisisi','santiagu','santi@gmail.com','sanzultor');
 INSERT INTO jugadores VALUES (4,'nonono','pccsd','pccsd@yahoo.es','vet1');
 
+INSERT INTO tableros VALUES (1,9,14,15);
+INSERT INTO tableros VALUES (2,3,12,10);
+INSERT INTO tableros VALUES (3,5,4,4);
+INSERT INTO tableros VALUES (4,4,2,11);
+
+
+
+
+INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (1,4,10,4,TRUE,'BOMBA'); 
+INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (2,14,8,4,FALSE,'BANDERA'); 
+INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (3,4,4,4,TRUE,'BOMBA'); 
+INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (4,11,14,7,TRUE,'VACIA'); 
+
+
+
+
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (3, 'Rosy', '2011-04-17', 2, 3);
