@@ -75,10 +75,10 @@ INSERT INTO jugadores VALUES (2,'1234567890','lolito','lolitofdez@hotmail.es','o
 INSERT INTO jugadores VALUES (3,'sisisi','santiagu','santi@gmail.com','sanzultor');
 INSERT INTO jugadores VALUES (4,'nonono','pccsd','pccsd@yahoo.es','vet1');
 
-INSERT INTO tableros VALUES (1,9,14,15);
-INSERT INTO tableros VALUES (2,3,12,10);
-INSERT INTO tableros VALUES (3,5,4,4);
-INSERT INTO tableros VALUES (4,4,2,11);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,3,12,10);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (3,5,4,4);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (4,4,2,11);
 
 
 
