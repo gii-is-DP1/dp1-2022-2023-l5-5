@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.tablero;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,13 +25,6 @@ public class Tablero extends BaseEntity{
     
 
     
-
-    //ARREGLAR FALLO ENUM DEL SQL
-    // @NotEmpty
-    // @Enumerated(EnumType.STRING)
-    // @Column(columnDefinition = "dificultad")
-    // private Dificultad dificultad;
-
     @Column(name = "filas")
     @NotEmpty
     @Positive
@@ -45,8 +40,8 @@ public class Tablero extends BaseEntity{
     @Positive
     private Integer numeroMinas; 
 
-	//@OneToMany
-    //Casilla casilla;
+	@OneToMany
+    List<Casilla> casilla;
 	
 
 

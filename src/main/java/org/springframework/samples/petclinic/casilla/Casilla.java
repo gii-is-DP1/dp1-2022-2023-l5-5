@@ -2,6 +2,8 @@ package org.springframework.samples.petclinic.casilla;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -40,11 +42,11 @@ public class Casilla extends BaseEntity{
     @NotEmpty
     private Boolean estaCubierta;
 
-    @Column(name = "contenido")
     @NotEmpty
-    private String contenido;
+    @Enumerated(EnumType.STRING)
+    private Contenido contenido;
 
-   // @ManyToOne
-    //Tablero tablero;
+    @ManyToOne
+    Tablero tablero;
 
 }
