@@ -3,8 +3,11 @@ package org.springframework.samples.petclinic.tablero;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 
 import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.user.AuthoritiesService;
 import org.springframework.stereotype.Controller;
@@ -57,8 +60,17 @@ public class TableroController {
 	@GetMapping("/tableros/{tableroId}")
 	public ModelAndView showTablero(@PathVariable("tableroId") int tableroId) {
 		ModelAndView mav = new ModelAndView("tableros/tablerosDetails");
-		mav.addObject(this.tableroService.findJugadorById(tableroId));
+		mav.addObject(this.tableroService.findTableroById(tableroId));
 		return mav;
+	}
+
+
+	@GetMapping("/tableros/prueba")
+	public String welcome(Map<String,Object> model, HttpServletResponse response){
+		response.addHeader("Refresh", "1");
+		model.put("now", new Date());
+		model.put("tablero", tableroService.findTableroById(1).get());
+		return "tableros/tablerosPrueba";
 	}
 
 	

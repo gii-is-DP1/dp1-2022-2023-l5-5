@@ -21,7 +21,8 @@ import lombok.Setter;
 @Table(name = "casillas")
 public class Casilla extends BaseEntity{
     
-
+    String type;
+    String color;
     @Column(name = "coordenada_x")
     @NotEmpty
     @Range(min=0,max=15)
@@ -41,6 +42,14 @@ public class Casilla extends BaseEntity{
     @Column(name = "esta_cubierta")
     @NotEmpty
     private Boolean estaCubierta;
+
+
+    public Integer getPositionXInPixels(Integer size){
+        return coordenadaX*size;
+    }
+    public Integer getPositionYInPixels(Integer size){
+        return coordenadaY*size;
+    }
 
     @NotEmpty
     @Enumerated(EnumType.STRING)

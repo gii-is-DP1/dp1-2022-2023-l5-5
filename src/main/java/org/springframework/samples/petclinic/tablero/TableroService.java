@@ -4,6 +4,7 @@ package org.springframework.samples.petclinic.tablero;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +29,7 @@ public class TableroService {
 	}	
 
     @Transactional(readOnly = true)
-	public Tablero findJugadorById(int id) throws DataAccessException {
+	public Optional<Tablero> findTableroById(int id) throws DataAccessException {
 		return tableroRepository.findById(id);
 	}
 
