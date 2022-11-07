@@ -5,7 +5,7 @@
 <%@ taglib prefix="game" tagdir="/WEB-INF/tags" %>
 
 <!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->
-<petclinic:layout pageName="tableroPrueba">
+<game:layout pageName="tableroPrueba">
 
     <h2>Tablero Prueba</h2>
 
@@ -28,4 +28,4 @@
     <br/>
     
 
-</petclinic:layout>
+ </game:layout>

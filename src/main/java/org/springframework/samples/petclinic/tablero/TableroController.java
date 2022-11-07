@@ -65,13 +65,13 @@ public class TableroController {
 	}
 
 
-	@GetMapping("/tableros/prueba")
-	public String welcome(Map<String,Object> model, HttpServletResponse response){
+	@GetMapping("/tableros/prueba/{tableroId}")
+	public String prueba(Map<String,Object> model, HttpServletResponse response, @PathVariable("tableroId") int tableroId){
 		response.addHeader("Refresh", "1");
 		model.put("now", new Date());
-		model.put("tablero", tableroService.findTableroById(1).get());
+		model.put("tablero", this.tableroService.findTableroById(tableroId));
 		return "tableros/tablerosPrueba";
-	}
+	}	
 
 	
 	
