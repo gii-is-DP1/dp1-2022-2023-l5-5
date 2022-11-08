@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.tablero;
 
+import java.beans.Transient;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Positive;
 
 import org.springframework.samples.petclinic.casilla.Casilla;
 import org.springframework.samples.petclinic.model.BaseEntity;
-
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import javax.persistence.Table;
 
@@ -52,6 +53,14 @@ public class Tablero extends BaseEntity{
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "tablero",fetch = FetchType.EAGER)
     List<Casilla> casilla;
 	
+     @Transient
+     public int getAnchuraTotal() {
+        return this.filas*100;        
+     }
 
+     @Transient
+     public int getAlturaTotal() {
+        return this.filas*100;        
+     }
 
 }

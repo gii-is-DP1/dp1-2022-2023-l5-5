@@ -15,7 +15,7 @@
     
         <div class="row">
             <div class="col-md-12">
-                <game:tablero tablero="${tablero}">
+                <game:tablero tablero="${tablero}" tableroImage="${tableroImagen}">
                 <c:forEach items="${tablero.casilla}" var="casilla">
                     <game:casilla size="100" casilla="${casilla}"/>            	
                 </c:forEach> 
