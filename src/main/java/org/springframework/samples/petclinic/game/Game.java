@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.juego;
+package org.springframework.samples.petclinic.game;
 
 import java.util.Timer;
 
@@ -20,34 +20,34 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "juegos")
-public class Juego extends BaseEntity{
+@Table(name = "games")
+public class Game extends BaseEntity{
 	
 	//dificultad
-	@Column(name = "dificultad")
+	@Column(name = "difficulty")
 	@NotEmpty
-	private Dificultad dificultad;
+	private Difficulty difficulty;
 	
 	//tiempo
-	@Column(name = "tiempo")
-    private Integer tiempo;
+	@Column(name = "time")
+    private Integer time;
     
 	//numeroDePulsaciones
-	@Column(name = "numero_pulsaciones")
-    private Integer numeroDePulsaciones;
+	@Column(name = "numClicks")
+    private Integer numClicks;
 	
 	//enProgreso
     @NotEmpty
-    private Boolean enProgreso;
+    private Boolean inProgress;
     
     //partidaPerdida
-    @Column(name = "partida_perdida")
-    private Boolean partidaPerdida;
+    @Column(name = "lostGame")
+    private Boolean lostGame;
     
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username", referencedColumnName = "username")
-    private Jugador jugador;
+    private Game game;
     
 	
 
