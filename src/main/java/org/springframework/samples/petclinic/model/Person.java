@@ -15,9 +15,14 @@
  */
 package org.springframework.samples.petclinic.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+
+import org.springframework.samples.petclinic.user.User;
 
 /**
  * Simple JavaBean domain object representing an person.
@@ -34,6 +39,10 @@ public class Person extends BaseEntity {
 	@Column(name = "last_name")
 	@NotEmpty
 	protected String lastName;
+
+	@OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "username", referencedColumnName = "username")
+	private User user;
 
 	public String getFirstName() {
 		return this.firstName;

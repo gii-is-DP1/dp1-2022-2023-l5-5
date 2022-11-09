@@ -70,7 +70,10 @@ INSERT INTO owners VALUES (14, 'Paola', 'Martín', 'Estrella Mira 10', 'Sevilla'
 INSERT INTO owners VALUES (15, 'Santi', 'Zuleta', 'Fidelio 7', 'Sevilla', '673629262', 'sanzultor');
 INSERT INTO owners VALUES (16, 'Andres', 'Garcia', '1 Manuel Suirot', 'Sevilla', '699749122', 'andgarriv');
 
-INSERT INTO jugadores(id,first_name,last_name,username) VALUES (1,'Pablo','Quindos','pabquide');
+
+INSERT INTO jugadores(id,first_name,last_name,username,correo) VALUES (1,'Pablo','Quindos','pabquide','pabquide@gmail.com');
+INSERT INTO jugadores(id,first_name,last_name,username,correo) VALUES (2,'Mercedes','Iglesias','meriglmar','meriglmar@gmail.com');
+
 
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,3,12,10);

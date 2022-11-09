@@ -40,10 +40,16 @@ public class JugadorService {
 //		return allJugadores;
 //	}
 	
-	@Transactional(readOnly = true)
+/* 	@Transactional(readOnly = true)
 	public Jugador findJugador() {
 		return this.jugadorRepository.findJugador();
+	} */
+
+	@Transactional(readOnly = true)
+	public List<Jugador> findAllJugador() {
+		return this.jugadorRepository.findAllJugador();
 	}
+	
 	
 	@Transactional
 	public void saveJugador(Jugador jugador) throws DataAccessException {

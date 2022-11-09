@@ -23,10 +23,10 @@
                     <spring:url value="/jugadores/{jugadorId}" var="jugadorUrl">
                         <spring:param name="jugadorId" value="${jugador.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(jugadorUrl)}"><c:out value="${jugador.nombreUsuario}"/></a>
+                    <a href="${fn:escapeXml(jugadorUrl)}"><c:out value="${jugador.user.username}"/></a>
                 </td>
                 <td>
-                    <c:out value="${jugador.contrasena}"/>
+                    <c:out value="${jugador.user.password}"/>
                 </td>
                 <td>
                     <c:out value="${jugador.correoElectronico}"/>
