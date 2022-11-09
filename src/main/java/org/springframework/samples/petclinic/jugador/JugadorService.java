@@ -23,33 +23,28 @@ public class JugadorService {
 	@Autowired
 	private AuthoritiesService authoritiesService;
 
-
-	
-
 	@Autowired
 	public JugadorService(JugadorRepository jugadorRepository) {
 		this.jugadorRepository = jugadorRepository;
 	}	
 
-    @Transactional(readOnly = true)
-	public Jugador findJugadorById(int id) throws DataAccessException {
-		return jugadorRepository.findById(id);
+//    @Transactional(readOnly = true)
+//	public Jugador findJugadorById(int id) throws DataAccessException {
+//		return this.jugadorRepository.findById(id);
+//	}
+
+//	@Transactional
+//	public List<Jugador> findAll(){
+//		List<Jugador> allJugadores= new ArrayList<Jugador>();
+//		jugadorRepository.findAll().forEach(allJugadores::add);
+//		return allJugadores;
+//	}
+	
+	@Transactional(readOnly = true)
+	public Jugador findJugador() {
+		return this.jugadorRepository.findJugador();
 	}
-
-	@Transactional
-	public List<Jugador> findAll(){
-		List<Jugador> allJugadores= new ArrayList<Jugador>();
-		jugadorRepository.findAll().forEach(allJugadores::add);
-		return allJugadores;
-	}
-
-	// @Transactional(readOnly = true)
-	// public Collection<Jugador> findJugadorByNombreUsuario(String nombreUsuario) throws DataAccessException {
-	// 	return jugadorRepository.findByNombreUsuario(nombreUsuario);
-	// }
-
-
-
+	
 	@Transactional
 	public void saveJugador(Jugador jugador) throws DataAccessException {
 		//creating jugador
@@ -59,5 +54,22 @@ public class JugadorService {
 		//creating authorities
 		authoritiesService.saveAuthorities(jugador.getUser().getUsername(), "jugador");
 	}	
+	
+	@Transactional
+	public Boolean validator(Jugador jugador) throws DataAccessException {
+		Boolean res = null;
+		Iterable<Jugador> lista = this.jugadorRepository.findAll(); //El findAll devuelve un Iterable
+		List<String> lis = new ArrayList<>();
+		for (Jugador a : lista) {
+			lis.add(a.getUser().getUsername());
+		}
+		if (lis.contains(jugador.getUser().getUsername())) {
+			res = true;
+		} else {
+			res = false;
+		}
+		
+		return res;
+	}
 
 }
