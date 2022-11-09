@@ -11,6 +11,7 @@
     <table id="tablerosTable" class="table table-striped">
         <thead>
         <tr>
+            <th style="width: 150px;">Id</th>
             <th style="width: 150px;">Numero de minas</th>
             <th style="width: 200px;">Filas</th>
             <th style="width: 120px">Columnas</th>
@@ -23,7 +24,10 @@
                     <spring:url value="/tableros/{tableroId}" var="tableroUrl">
                         <spring:param name="tableroId" value="${tablero.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(tableroUrl)}"><c:out value="${tablero.numeroMinas}"/></a>
+                    <a href="${fn:escapeXml(tableroUrl)}"><c:out value="${tablero.id}"/></a>
+                </td>
+                <td>
+                    <c:out value="${tablero.numeroMinas}"/>
                 </td>
                 <td>
                     <c:out value="${tablero.filas}"/>

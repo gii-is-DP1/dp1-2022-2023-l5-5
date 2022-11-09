@@ -11,6 +11,10 @@
 
     <table class="table table-striped">
         <tr>
+            <th>Id</th>
+            <td><b><c:out value="${tablero.id}"/></b></td>
+        </tr>
+        <tr>
             <th>Numero de minas</th>
             <td><b><c:out value="${tablero.numeroMinas}"/></b></td>
         </tr>
