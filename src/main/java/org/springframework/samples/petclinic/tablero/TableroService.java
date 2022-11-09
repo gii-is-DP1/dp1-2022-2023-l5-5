@@ -28,7 +28,7 @@ public class TableroService {
 	}	
 
     @Transactional(readOnly = true)
-	public Tablero findJugadorById(int id) throws DataAccessException {
+	public Tablero findTableroById(int id) throws DataAccessException {
 		return tableroRepository.findById(id);
 	}
 
