@@ -60,7 +60,7 @@ public class Tablero extends BaseEntity{
 
      @Transient
      public int getAlturaTotal() {
-        return this.filas*100;        
+        return this.columnas*60;        
      }
 
 }
