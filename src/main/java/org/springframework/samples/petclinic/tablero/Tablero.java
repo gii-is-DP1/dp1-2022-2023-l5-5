@@ -45,7 +45,7 @@ public class Tablero extends BaseEntity{
     private Integer numeroMinas; 
 
     public Tablero(){
-        this.background="resources/images/tablero-ajedrez.jpg";
+        this.background="resources/images/tablero-buscaminas.jpg";
         this.filas=800;
         this.columnas=800;
     }

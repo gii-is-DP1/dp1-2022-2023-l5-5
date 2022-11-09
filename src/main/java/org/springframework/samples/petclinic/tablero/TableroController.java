@@ -70,7 +70,7 @@ public class TableroController {
 		//response.addHeader("Refresh", "1");
 		model.put("now", new Date());
 		model.put("tablero", this.tableroService.findTableroById(tableroId));
-		model.put("tableroImagen","resources/images/tablero-ajedrez.jpg");
+		model.put("tableroImagen","resources/images/tablero-buscaminas.jpg");
 		return "tableros/tablerosPrueba";
 	}	
 
