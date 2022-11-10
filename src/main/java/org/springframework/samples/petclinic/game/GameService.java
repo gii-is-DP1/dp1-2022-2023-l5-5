@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.game;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,8 +13,8 @@ public class GameService {
 	private GameRepository gameRepository;
 	
 	@Transactional(readOnly = true)
-	public Game findGame() {
-		return this.gameRepository.findGame();
+	public List<Game> findGames() {
+		return this.gameRepository.findGames();
 	}
 
 	@Transactional

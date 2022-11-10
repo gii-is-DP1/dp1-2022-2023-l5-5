@@ -35,9 +35,8 @@ public class GameController {
 	public String processCreationForm(@Valid Game game, BindingResult result, ModelMap model) {
 		String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		if(result.hasErrors()) {
-			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
+			return view;
 		}else {
-			//creating card
 			gameService.save(game);
 			model.addAttribute("message", "Game sucessfully saved!");
 		}

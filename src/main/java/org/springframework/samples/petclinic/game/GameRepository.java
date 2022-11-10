@@ -15,7 +15,7 @@ import org.springframework.dao.DataAccessException;
 public interface GameRepository extends CrudRepository<Game, Integer>{
 	
 	@Query("SELECT game FROM Game game")
-	Game findGame();
+	List<Game> findGames();
 	
 
     

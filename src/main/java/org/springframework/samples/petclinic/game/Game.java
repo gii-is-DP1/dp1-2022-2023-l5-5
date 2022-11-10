@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic.game;
 
-import java.util.Timer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,7 +11,6 @@ import javax.persistence.Table;
 import org.springframework.core.style.ToStringCreator;
 import org.springframework.samples.petclinic.jugador.Jugador;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.model.Persona;
 import org.springframework.samples.petclinic.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +27,7 @@ public class Game extends BaseEntity{
 	private Difficulty difficulty;
 	
 	//tiempo
+	//Hay que cambiar el tipo
 	@Column(name = "time")
     private Integer time;
     
@@ -46,8 +45,9 @@ public class Game extends BaseEntity{
     
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "username", referencedColumnName = "username")
-    private Game game;
+    @JoinColumn(name = "username")
+    private Jugador jugador;
+    
     
 	
 
