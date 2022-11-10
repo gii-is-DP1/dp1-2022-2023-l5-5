@@ -55,12 +55,25 @@ public class Tablero extends BaseEntity{
 
      @Transient
      public int getAnchuraTotal() {
-        return this.filas*100;        
+        return 900;        
      }
 
      @Transient
      public int getAlturaTotal() {
-        return this.columnas*60;        
+        return 840;        
      }
+
+     @Transient
+     public int getHeightTotal() {
+        return this.filas*(100/2)-((28*this.filas)/9);        
+     }
+
+     @Transient
+     public int getWidthTotal() {
+        return this.columnas*(100/2);        
+     }
+
+
+     
 
 }

@@ -82,8 +82,8 @@ INSERT INTO players(id,first_name,last_name,username,mail) VALUES (2,'Mercedes',
 
 
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,3,12,10);
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (3,5,4,4);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,13,17,30);
+INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (3,18,18,65);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (4,4,2,11);
 
 
