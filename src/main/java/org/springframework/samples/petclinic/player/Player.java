@@ -1,7 +1,9 @@
 package org.springframework.samples.petclinic.player;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -24,7 +26,9 @@ public class Player extends Person{
     @JoinColumn(name = "username", referencedColumnName = "username")
 	private User user;
 	
+
 	@Column(name = "mail")
 	private String mail;
+
 	
 }
