@@ -1,16 +1,19 @@
 package org.springframework.samples.petclinic.tablero;
 
+import java.beans.Transient;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
 import org.springframework.samples.petclinic.casilla.Casilla;
 import org.springframework.samples.petclinic.model.BaseEntity;
-
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import javax.persistence.Table;
 
@@ -24,6 +27,7 @@ import lombok.Setter;
 public class Tablero extends BaseEntity{
     
 
+    String background;
     
     @Column(name = "filas")
     @NotEmpty
@@ -40,9 +44,23 @@ public class Tablero extends BaseEntity{
     @Positive
     private Integer numeroMinas; 
 
-	@OneToMany
+    public Tablero(){
+        this.background="resources/images/tablero-buscaminas.jpg";
+        this.filas=800;
+        this.columnas=800;
+    }
+
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "tablero",fetch = FetchType.EAGER)
     List<Casilla> casilla;
 	
+     @Transient
+     public int getAnchuraTotal() {
+        return this.filas*100;        
+     }
 
+     @Transient
+     public int getAlturaTotal() {
+        return this.columnas*60;        
+     }
 
 }
