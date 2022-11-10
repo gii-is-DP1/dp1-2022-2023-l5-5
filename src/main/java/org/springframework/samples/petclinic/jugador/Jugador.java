@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.jugador;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -24,7 +25,8 @@ public class Jugador extends Person{
 	private User user;
 	
 	
-
+	@Column(name = "correo")
+	private String correoElectronico;
 
 
 

@@ -13,13 +13,13 @@
     <h2>Find Jugadores</h2>
 
     
-    <form:form modelAttribute="jugador" action="/jugadores" method="get" class="form-horizontal"
+    <form:form modelAttribute="jugador" action="/jugadores/all" method="get" class="form-horizontal"
                id="search-jugador-form">
         <div class="form-group">
             <div class="control-group" id="nombreUsuario">
                 <label class="col-sm-2 control-label">Nombre de Usuario </label>
                 <div class="col-sm-10">
-                    <form:input class="form-control" path="nombreUsuario" size="30" maxlength="80"/>
+                    <form:input class="form-control" path="user.username" size="30" maxlength="80"/>
                     <span class="help-inline"><form:errors path="*"/></span>
                 </div>
             </div>

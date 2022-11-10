@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.player;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -78,5 +79,14 @@ public class PlayerController {
 		}
 	}
 	
+	@GetMapping(value = "/list")
+	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
 
+		List<Player> results = this.playerService.findAllPlayers();
+		
+			// multiple owners found
+			model.put("selections", results);
+			return "players/playersList";
+		
+	}
 }
