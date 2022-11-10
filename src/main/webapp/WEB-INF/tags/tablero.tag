@@ -2,7 +2,7 @@
  description="Tablero to be rendered" %>
  <%@ attribute name="tableroImage" required="false" rtexprvalue="true" 
  description="Background image to be rendered" %>
-<canvas id="canvas" filas="${tablero.anchuraTotal}" columnas="${tablero.alturaTotal}"></canvas>
+<canvas id="canvas" filas="${tablero.anchuraTotal}" columnas="${tablero.alturaTotal}" width="${tablero.widthTotal}" height="${tablero.heightTotal}"></canvas>
 <img id="source" src="/${tableroImage}" style="display:none">
 <img id="bandera" src="/resources/images/banderaBuscaminas.png" style="display:none">
 <img id="bomba" src="/resources/images/bombaBuscaminas.jpg" style="display:none">
