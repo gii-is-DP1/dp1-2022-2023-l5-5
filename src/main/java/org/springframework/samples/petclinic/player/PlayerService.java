@@ -34,6 +34,13 @@ public class PlayerService {
 //		return this.playerRepository.findPlayer();
 //	}
 //	
+
+@Transactional(readOnly = true)
+public List<Player> findAllPlayers() {
+	return this.playerRepository.findAllPlayers();
+}
+
+
 	@Transactional
 	public void savePlayer(Player player) throws DataAccessException {
 		//creating player

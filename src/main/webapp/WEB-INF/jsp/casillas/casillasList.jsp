@@ -11,6 +11,7 @@
     <table id="casillasTable" class="table table-striped">
         <thead>
         <tr>
+            <th style="width: 150px;">Id</th>
             <th style="width: 150px;">Numero de minas adyacentes</th>
             <th style="width: 200px;">Coordenada X</th>
             <th style="width: 120px">Coordenada Y</th>
@@ -25,7 +26,10 @@
                     <spring:url value="/casillas/{casillaId}" var="casillaUrl">
                         <spring:param name="casillaId" value="${casilla.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(casillaUrl)}"><c:out value="${casilla.numMinasAdyacentes}"/></a>
+                    <a href="${fn:escapeXml(casillaUrl)}"><c:out value="${casilla.id}"/></a>
+                </td>
+                <td>
+                    <c:out value="${casilla.numMinasAdyacentes}"/>
                 </td>
                 <td>
                     <c:out value="${casilla.coordenadaX}"/>

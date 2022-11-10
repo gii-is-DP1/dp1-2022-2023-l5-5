@@ -1,5 +1,7 @@
 package org.springframework.samples.petclinic.jugador;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,9 +15,9 @@ public interface JugadorRepository extends CrudRepository<Jugador, Integer> {
 //
 //	@Query("SELECT jugador FROM Jugador jugador")
 //	public List<Jugador> findAll();
-	
+
 	@Query("SELECT jugador FROM Jugador jugador")
-	Jugador findJugador();
+	List<Jugador> findAllJugador();
 }
 
 
