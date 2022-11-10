@@ -39,6 +39,7 @@ public class Game extends BaseEntity{
     @NotEmpty
     private Boolean inProgress;
     
+    
     //partidaPerdida
     @Column(name = "lostGame")
     private Boolean lostGame;
