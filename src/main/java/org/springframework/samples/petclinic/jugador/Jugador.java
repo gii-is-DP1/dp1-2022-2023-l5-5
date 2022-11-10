@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.jugador;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,6 +31,11 @@ public class Jugador extends Person{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "jugador")
     private List<Game> game;
+
+
+	
+	@Column(name = "mail")
+	private String mail;
 
 
 

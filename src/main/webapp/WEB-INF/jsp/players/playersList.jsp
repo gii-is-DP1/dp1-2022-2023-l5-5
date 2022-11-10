@@ -5,10 +5,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="jugadores">
+<petclinic:layout pageName="players">
     <h2>Jugadores</h2>
 
-    <table id="jugadoresTable" class="table table-striped">
+    <table id="playersTable" class="table table-striped">
         <thead>
         <tr>
             <th style="width: 150px;">Nombre Usuario</th>
@@ -17,19 +17,19 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${selections}" var="jugador">
+        <c:forEach items="${selections}" var="player">
             <tr>
                 <td>
-                    <spring:url value="/jugadores/{jugadorId}" var="jugadorUrl">
-                        <spring:param name="jugadorId" value="${jugador.id}"/>
+                    <spring:url value="/players/{playerId}" var="playerUrl">
+                        <spring:param name="playerId" value="${player.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(jugadorUrl)}"><c:out value="${jugador.user.username}"/></a>
+                    <a href="${fn:escapeXml(playerUrl)}"><c:out value="${player.user.username}"/></a>
                 </td>
                 <td>
-                    <c:out value="${jugador.user.password}"/>
+                    <c:out value="${player.user.password}"/>
                 </td>
                 <td>
-                    <c:out value="${jugador.correoElectronico}"/>
+                    <c:out value="${player.mail}"/>
                 </td>
                 
       
