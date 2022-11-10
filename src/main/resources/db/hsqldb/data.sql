@@ -26,7 +26,12 @@ INSERT INTO authorities(id,username,authority) VALUES (8,'sanzultor','owner');
 INSERT INTO users(username,password,enabled) VALUES ('andgarriv','4ndg4rr1v',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (9,'andgarriv','owner');
 
-
+/* INSERT INTO players VALUES (1, 'Usuario1', 'user1', 'pabquide');
+INSERT INTO players VALUES (2, 'Usuario2', 'user2', 'meriglmar');
+INSERT INTO players VALUES (3, 'Usuario3', 'user3', 'angbermar1');
+INSERT INTO players VALUES (4, 'Usuario4', 'user4', 'paomarsan');
+INSERT INTO players VALUES (5, 'Usuario5', 'user5', 'sanzultor');
+INSERT INTO players VALUES (6, 'Usuario6', 'user6', 'andgarriv'); */
 
 INSERT INTO vets(id, first_name,last_name) VALUES (1, 'James', 'Carter');
 INSERT INTO vets(id, first_name,last_name) VALUES (2, 'Helen', 'Leary');
@@ -70,7 +75,11 @@ INSERT INTO owners VALUES (14, 'Paola', 'Martín', 'Estrella Mira 10', 'Sevilla'
 INSERT INTO owners VALUES (15, 'Santi', 'Zuleta', 'Fidelio 7', 'Sevilla', '673629262', 'sanzultor');
 INSERT INTO owners VALUES (16, 'Andres', 'Garcia', '1 Manuel Suirot', 'Sevilla', '699749122', 'andgarriv');
 
-INSERT INTO jugadores(id,first_name,last_name,username) VALUES (1,'Pablo','Quindos','pabquide');
+
+
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (1,'Pablo','Quindos','pabquide','pabquide@gmail.com');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (2,'Mercedes','Iglesias','meriglmar','meriglmar@gmail.com');
+
 
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,3,12,10);

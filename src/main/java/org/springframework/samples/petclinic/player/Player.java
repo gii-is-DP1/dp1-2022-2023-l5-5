@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.jugador;
+package org.springframework.samples.petclinic.player;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -16,26 +16,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "jugadores")
-public class Jugador extends Person{
+@Table(name = "players")
+public class Player extends Person{
     
 
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username", referencedColumnName = "username")
 	private User user;
 	
+	@Column(name = "mail")
+	private String mail;
 	
-	@Column(name = "correo")
-	private String correoElectronico;
-
-
-
-
-//    @Override
-//	public String toString() {
-//		return new ToStringCreator(this)
-//
-//				.append("id", this.getId()).append("new", this.isNew()).append("nombreUsuario", this.getNombreUsuario())
-//				.append("correoElectronico", this.getCorreoElectronico()).toString();
-//	}
 }

@@ -19,6 +19,8 @@
 					class="icon-bar"></span>
 			</button>
 		</div>
+		
+		
 		<div class="navbar-collapse collapse" id="main-navbar">
 			<ul class="nav navbar-nav">
 
@@ -45,6 +47,18 @@
 					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
 					<span>Error</span>
 				</petclinic:menuItem>
+				
+				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
+					title="audits">
+					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+					<span>Audits</span>
+				</petclinic:menuItem> --> 
+				
+				<petclinic:menuItem active="${name eq 'profile'}" url="players/list/{playerId}/edit"
+					title="profile">
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					<span>Profile</span>
+				</petclinic:menuItem> 
 
 			</ul>
 
@@ -54,7 +68,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">
 					<li><a href="<c:url value="/login" />">Login</a></li>
-					<li><a href="<c:url value="/jugador/new" />">Register</a></li>
+					<li><a href="<c:url value="/players/new" />">Register</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
