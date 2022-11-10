@@ -9,8 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.samples.petclinic.jugador.Jugador;
 import org.springframework.samples.petclinic.model.BaseEntity;
+import org.springframework.samples.petclinic.player.Player;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -47,7 +47,7 @@ public class Game extends BaseEntity{
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username")
-    private Jugador jugador;
+    private Player player;
     
     
 	
