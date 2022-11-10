@@ -7,11 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
 import org.springframework.samples.petclinic.casilla.Casilla;
+import org.springframework.samples.petclinic.game.Game;
 import org.springframework.samples.petclinic.model.BaseEntity;
 
 import javax.persistence.Table;
@@ -51,7 +54,13 @@ public class Tablero extends BaseEntity{
     }
 
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "tablero",fetch = FetchType.EAGER)
-    List<Casilla> casilla;
+    private List<Casilla> casilla;
+	
+	//Relación Juego:Tablero
+    @OneToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="id")
+    private Game game;
+
 
      @Transient
      public int getAnchuraTotal() {
