@@ -30,24 +30,25 @@ public class GameController {
 		this.gameService = gameService;
 	}
 	
-	@GetMapping(path = "/new")
-	public String initCreationForm(ModelMap model) {
+	@GetMapping(value = "/new")
+	public String initCreationForm(Map<String, Object> model) {
 		model.put("game", new Game()); 
 		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 	}
 	
-	@PostMapping(path="/new")
+	@PostMapping(value="/new")
 	public String processCreationForm(@Valid Game game, BindingResult result, ModelMap model) {
-		String view ="welcome";
+		//String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;;
 		if(result.hasErrors()) {
 			//model.put("game", game);
 			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		}else {
 			gameService.save(game);
 			//model.put("message", "Game sucessfully saved!");
-			model.addAttribute("message", "Game sucessfully saved!");
+			//model.addAttribute("message", "Game sucessfully saved!");
+			return "redirect:/";
 		}
-		return view;
+		//return view;
 	}
 	
 	//No sé si se puede editar una partida ya creada
@@ -61,16 +62,22 @@ public class GameController {
 	@PostMapping(value = "/edit/{id}")
 	public String processUpdateGameForm(@Valid Game game, 
 			BindingResult result, @PathVariable("id") int id, ModelMap model) {
-		String view ="welcome";
+		//String view ="welcome";
 		if (result.hasErrors()) {
 			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		}else {
-			//game.setId(id)
 			gameService.save(game);
 			//model.put("message", "Game sucessfully saved!");
-			model.addAttribute("message", "Game sucessfully saved!");
+			//model.addAttribute("message", "Game sucessfully saved!");
+			return "redirect:/";
 		}
-		return view;
+//		}else {
+//			//game.setId(id)
+//			gameService.save(game);
+//			//model.put("message", "Game sucessfully saved!");
+//			model.addAttribute("message", "Game sucessfully saved!");
+//		}
+//		return view;
 	}
 	
 	@GetMapping(value= {"/list"})
