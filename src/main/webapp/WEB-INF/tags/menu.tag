@@ -36,7 +36,7 @@
 					<span>Find players</span>
 				</petclinic:menuItem>
 
-				<petclinic:menuItem active="${name eq 'games'}" url="/games/new"
+				<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
 					title="new Game">
 					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 					<span>New game</span>
