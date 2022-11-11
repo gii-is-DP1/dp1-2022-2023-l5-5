@@ -1,8 +1,10 @@
 package org.springframework.samples.petclinic.game;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,4 +23,14 @@ public class GameService {
     public Game save(Game game){
         return gameRepository.save(game);       
     }
+	
+	@Transactional(readOnly = true)
+	public Optional<Game> getGameById(int id) throws DataAccessException {
+		return gameRepository.findById(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Game> findAllGames() {
+		return this.gameRepository.findAllGames();
+	}
 }
