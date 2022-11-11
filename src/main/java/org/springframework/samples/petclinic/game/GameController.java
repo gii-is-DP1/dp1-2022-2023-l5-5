@@ -43,7 +43,7 @@ public class GameController {
 			//model.put("game", game);
 			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		}else {
-			gameService.save(game);
+			this.gameService.save(game);
 			//model.put("message", "Game sucessfully saved!");
 			//model.addAttribute("message", "Game sucessfully saved!");
 			return "redirect:/";
@@ -80,8 +80,8 @@ public class GameController {
 //		return view;
 	}
 	
-	@GetMapping(value= {"/list"})
-	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
+	@GetMapping(value= "/list")
+	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
 
 		List<Game> results = this.gameService.findAllGames();
 		
