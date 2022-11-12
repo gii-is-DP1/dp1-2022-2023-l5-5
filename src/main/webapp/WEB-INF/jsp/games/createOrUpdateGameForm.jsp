@@ -11,12 +11,32 @@
         <c:if test="${game['new']}">New </c:if> Game
     </h2>
     <form:form modelAttribute="game" class="form-horizontal" id="add-game-form">
-        <!--  <div class="form-group has-feedback">
-            <petclinic:inputField label="First Name" name="firstName"/>
-            <petclinic:inputField label="Last Name" name="lastName"/>
-            <petclinic:inputField label="Mail" name="mail"/>
+         <br class="form-group has-feedback">
+            <label for="difficulty">difficulty: </label>
+            <input type="text" label="Difficulty" name="difficulty"/>
+            <br></br>
+            <label for="startTime">startTime: </label>
+            <input type="datetime-local" label="Start time" name="startTime"/>
+            <br></br>
+            <label for="finishTime">finishTime: </label>
+            <input type="datetime-local" label="Finish time" name="finishTime"/>
+            <br></br>
+            <label for="numClicks">numClicks: </label>
+            <input type="number" label="Number of clicks" name="numClicks"/>
+            <br></br>
+            <label for="inProgress">inProgress: </label>
+            <input type="checkbox" label="Is the game in progress?" name="inProgress"/>
+            <br></br>
+            <label for="lostGame">lostGame: </label>
+            <input type="checkbox" label="Is the game lost?" name="lostGame"/>
+            <br></br>
+            <label for="player.user.username">username: </label>
+            <input type="text" label="Username" name="player.user.username"/>
+            <br></br>
+            <label for="tablero.id">id tablero: </label>
+            <input type="number" label="Id tablero" name="tablero.id"/>
         </div>
-        <div class="form-group"> -->
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
                     <c:when test="${game['new']}">
