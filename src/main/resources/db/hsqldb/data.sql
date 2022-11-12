@@ -87,11 +87,6 @@ INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_
 INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (4,11,14,7,TRUE,'VACIA'); 
 
 
-
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_tablero) VALUES (1,'FACIL','1990-06-20 08:03:00.0', '1990-06-20 08:20:00.0',10,FALSE, TRUE,'pabquide',1);
-
-
-
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (3, 'Rosy', '2011-04-17', 2, 3);
