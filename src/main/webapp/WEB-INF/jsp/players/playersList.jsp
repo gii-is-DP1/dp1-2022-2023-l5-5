@@ -11,36 +11,35 @@
     <table id="playersTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Nombre Usuario</th>
-            <th style="width: 200px;">Contrasena</th>
-            <th style="width: 120px">Correo Electronico</th>
+            <th style="width: 150px;">Username</th>
+            <th style="width: 150px;">Name</th>
+            <th style="width: 150px;">Lastname</th>
+            <th style="width: 120px">Mail</th>
+            <th style="width: 200px;">Password</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${selections}" var="player">
             <tr>
                 <td>
-                    <spring:url value="/players/{playerId}" var="playerUrl">
+                    <spring:url value="/players/profile/{id}" var="playerUrl">
                         <spring:param name="playerId" value="${player.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(playerUrl)}"><c:out value="${player.user.username}"/></a>
                 </td>
                 <td>
-                    <c:out value="${player.user.password}"/>
+                    <c:out value="${person.name}"/>
+                </td>
+                <td>
+                    <c:out value="${person.lastname}"/>
                 </td>
                 <td>
                     <c:out value="${player.mail}"/>
                 </td>
-                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
+                <td>
+                    <c:out value="${player.user.password}"/>
                 </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
+
                 
             </tr>
         </c:forEach>
