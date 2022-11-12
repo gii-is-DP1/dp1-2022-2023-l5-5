@@ -73,18 +73,18 @@ INSERT INTO owners VALUES (16, 'Andres', 'Garcia', '1 Manuel Suirot', 'Sevilla',
 
 
 
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,13,17,30);
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (3,18,18,65);
-INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (4,4,2,11);
+INSERT INTO boards(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
+INSERT INTO boards(id,filas,columnas,numero_minas) VALUES (2,13,17,30);
+INSERT INTO boards(id,filas,columnas,numero_minas) VALUES (3,18,18,65);
+INSERT INTO boards(id,filas,columnas,numero_minas) VALUES (4,4,2,11);
 
 
 
 
-INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (1,4,10,4,TRUE,'BOMBA'); 
-INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (2,14,8,4,FALSE,'BANDERA'); 
-INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (3,4,4,4,TRUE,'BOMBA'); 
-INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (4,11,14,7,TRUE,'VACIA'); 
+INSERT INTO squares(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (1,4,10,4,TRUE,'BOMBA'); 
+INSERT INTO squares(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (2,14,8,4,FALSE,'BANDERA'); 
+INSERT INTO squares(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (3,4,4,4,TRUE,'BOMBA'); 
+INSERT INTO squares(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (4,11,14,7,TRUE,'VACIA'); 
 
 
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);

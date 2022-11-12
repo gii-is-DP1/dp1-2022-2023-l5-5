@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.tablero;
+package org.springframework.samples.petclinic.board;
 
 import java.beans.Transient;
 import java.util.List;
@@ -13,9 +13,9 @@ import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
 
-import org.springframework.samples.petclinic.casilla.Casilla;
 import org.springframework.samples.petclinic.game.Game;
 import org.springframework.samples.petclinic.model.BaseEntity;
+import org.springframework.samples.petclinic.square.Square;
 
 import javax.persistence.Table;
 
@@ -26,8 +26,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "tableros")
-public class Tablero extends BaseEntity{
+@Table(name = "boards")
+public class Board extends BaseEntity{
     
 
     String background;
@@ -47,14 +47,14 @@ public class Tablero extends BaseEntity{
     @Positive
     private Integer numeroMinas; 
 
-    public Tablero(){
+    public Board(){
         this.background="resources/images/tablero-buscaminas.jpg";
         this.filas=800;
         this.columnas=800;
     }
 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "tablero",fetch = FetchType.EAGER)
-    private List<Casilla> casilla;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "board",fetch = FetchType.EAGER)
+    private List<Square> casilla;
 	
 	//Relación Juego:Tablero
     @OneToOne(cascade=CascadeType.ALL)

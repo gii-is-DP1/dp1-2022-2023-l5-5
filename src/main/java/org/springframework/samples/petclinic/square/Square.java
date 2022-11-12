@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.casilla;
+package org.springframework.samples.petclinic.square;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Range;
+import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.tablero.Tablero;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,8 +18,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "casillas")
-public class Casilla extends BaseEntity{
+@Table(name = "squares")
+public class Square extends BaseEntity{
     
     String type;
     String color;
@@ -53,9 +53,9 @@ public class Casilla extends BaseEntity{
 
     @NotEmpty
     @Enumerated(EnumType.STRING)
-    private Contenido contenido;
+    private Content contenido;
 
     @ManyToOne
-    Tablero tablero;
+    Board board;
 
 }

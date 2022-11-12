@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic.tablero;
+package org.springframework.samples.petclinic.board;
 
 
 
@@ -12,10 +12,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TableroService {
+public class BoardService {
     
 	@Autowired
-    private TableroRepository tableroRepository;	
+    private BoardRepository boardRepository;	
 
 
 
@@ -23,20 +23,20 @@ public class TableroService {
 	
 
 	@Autowired
-	public TableroService(TableroRepository tableroRepository) {
-		this.tableroRepository = tableroRepository;
+	public BoardService(BoardRepository boardRepository) {
+		this.boardRepository = boardRepository;
 	}	
 
     @Transactional(readOnly = true)
-	public Tablero findTableroById(int id) throws DataAccessException {
-		return tableroRepository.findById(id);
+	public Board findboardById(int id) throws DataAccessException {
+		return boardRepository.findById(id);
 	}
 
 	@Transactional
-	public List<Tablero> findAll(){
-		List<Tablero> allTableros= new ArrayList<Tablero>();
-		tableroRepository.findAll().forEach(allTableros::add);
-		return allTableros;
+	public List<Board> findAll(){
+		List<Board> allBoards= new ArrayList<Board>();
+		boardRepository.findAll().forEach(allBoards::add);
+		return allBoards;
 	}
 
 	// @Transactional(readOnly = true)

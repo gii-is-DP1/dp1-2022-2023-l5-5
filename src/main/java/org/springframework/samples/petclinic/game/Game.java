@@ -16,11 +16,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.samples.petclinic.casilla.Contenido;
+import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.tablero.Tablero;
 import org.springframework.samples.petclinic.player.Player;
-
+import org.springframework.samples.petclinic.square.Content;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -82,7 +81,7 @@ public class Game extends BaseEntity{
     //Relación Juego:Tablero
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="id")
-    private Tablero tablero;
+    private Board board;
     
 	
 
