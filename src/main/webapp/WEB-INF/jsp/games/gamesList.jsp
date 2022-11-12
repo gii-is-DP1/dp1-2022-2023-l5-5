@@ -11,9 +11,15 @@
     <table id="gamesTable" class="table table-striped">
         <thead>
         <tr>
+            <th style="width: 120px">Id de partida</th>
             <th style="width: 150px;">Nombre Usuario</th>
             <th style="width: 200px;">Dificultad</th>
-            <th style="width: 120px">Id de partida</th>
+            <th style="width: 120px">Id de tablero</th>
+            <th style="width: 120px">¿Ha perdido?</th>
+            <th style="width: 120px">Fecha de inicio</th>
+            <th style="width: 120px">Fecha de fin</th>
+            <th style="width: 120px">Numero de clicks</th>
+
         </tr>
         </thead>
         <tbody>
@@ -21,16 +27,32 @@
             <tr>
                 <td>
                     <spring:url value="/games/{gameId}" var="gameUrl">
-                        <spring:param name="gameId" value="${player.id}"/>
+                        <spring:param name="gameId" value="${game.id}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.user.username}"/></a>
+                    <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.id}"/></a>
+                </td>
+                <td>
+                    <c:out value="${game.player.user.username} "/>
                 </td>
                 <td>
                     <c:out value="${game.difficulty}"/>
                 </td>
                 <td>
-                    <c:out value="${game.id}"/>
+                    <c:out value="${game.tablero.id} "/>
                 </td>
+                <td>
+                    <c:out value="${game.lostGame}"/>
+                </td>
+                <td>
+                    <c:out value="${game.startTime}"/>
+                </td>
+                <td>
+                    <c:out value="${game.finishTime}"/>
+                </td>
+                <td>
+                    <c:out value="${game.numClicks}"/>
+                </td>
+                
                 
       
 <!--
