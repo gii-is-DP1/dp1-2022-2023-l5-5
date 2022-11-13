@@ -26,6 +26,12 @@ public class GameService {
         return gameRepository.save(game);       
     }
 	
+
+	@Transactional
+	public void deleteGame(int id) {
+		gameRepository.deleteById(id); 
+	}
+
 	@Transactional(readOnly = true)
 	public Optional<Game> getGameById(int id) throws DataAccessException {
 		return gameRepository.findById(id);
@@ -45,5 +51,6 @@ public class GameService {
 	public List<Game> findAllGamesPlayer(String username){
 		return this.gameRepository.findAllGamesPlayer(username);
 	}
+
 
 }

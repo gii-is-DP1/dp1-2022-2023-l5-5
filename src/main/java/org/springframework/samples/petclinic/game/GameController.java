@@ -28,6 +28,7 @@ public class GameController {
 	private GameService gameService;
 	
 	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
+	private static final String VIEWS_DELETE_GAME = "games/gameDelete";
 
 	@Autowired 
 	public GameController(GameService gameService) {
@@ -115,6 +116,13 @@ public class GameController {
 			model.put("selections", results);
 			return "games/gamesListPlayer";
 		
+	}
+	
+	@GetMapping(value = "/{id}/delete")
+	public String deleteGame(@PathVariable("id") int id) {
+		gameService.deleteGame(id);
+		
+		return VIEWS_DELETE_GAME;
 	}
 
 }
