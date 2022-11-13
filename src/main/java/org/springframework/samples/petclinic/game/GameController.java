@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +19,7 @@ public class GameController {
 	private GameService gameService;
 	
 	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
+	private static final String VIEWS_DELETE_GAME = "games/gameDelete";
 
 	@Autowired 
 	public GameController(GameService gameService) {
@@ -40,6 +42,13 @@ public class GameController {
 			model.addAttribute("message", "Game sucessfully saved!");
 		}
 		return view;
+	}
+	
+	@GetMapping(value = "/{id}/delete")
+	public String deleteGame(@PathVariable("id") int id) {
+		gameService.deleteGame(id);
+		
+		return VIEWS_DELETE_GAME;
 	}
 
 }

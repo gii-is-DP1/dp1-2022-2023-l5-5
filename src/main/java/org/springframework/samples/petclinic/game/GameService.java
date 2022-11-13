@@ -21,4 +21,9 @@ public class GameService {
     public Game save(Game game){
         return gameRepository.save(game);       
     }
+	
+	@Transactional
+	public void deleteGame(int id) {
+		gameRepository.deleteById(id); 
+	}
 }
