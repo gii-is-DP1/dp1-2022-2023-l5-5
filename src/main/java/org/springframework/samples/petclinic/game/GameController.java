@@ -118,7 +118,7 @@ public class GameController {
 		
 	}
 	
-	@GetMapping(value = "/{id}/delete")
+	@GetMapping(value = "/delete/{id}")
 	public String deleteGame(@PathVariable("id") int id) {
 		gameService.deleteGame(id);
 		
