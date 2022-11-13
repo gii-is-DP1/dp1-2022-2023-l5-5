@@ -5,12 +5,8 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
-import org.springframework.samples.petclinic.user.User;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequestMapping("/games")
@@ -106,15 +107,14 @@ public class GameController {
 	}
 
 	@GetMapping(value= "/listplayer")
-	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model,@AuthenticationPrincipal User user) {
+	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model) {
 
-		// Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-		// User currentUser=(User) authentication.getPrincipal();
-		List<Game> results = this.gameService.findAllGamesPlayer(user.getUsername());
-		System.out.println(user.getUsername());
-		System.out.println("========================================================================================");
-			model.put("selections", results);
-			return "games/gamesListPlayer";
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
+		
+	    List<Game> results = this.gameService.findAllGamesPlayer(currentUser.getUsername());
+		model.put("selections", results);
+		return "games/gamesListPlayer";
 		
 	}
 	
