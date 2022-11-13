@@ -31,19 +31,12 @@ import lombok.Setter;
 @Table(name = "games")
 public class Game extends BaseEntity{
 	
-	//dificultad
-//	@Column(name = "difficulty")
-//	@NotEmpty
-//	private Difficulty difficulty;
     @NotEmpty
     @Enumerated(EnumType.STRING)
 	@Column(name = "difficulty")
 	private Difficulty difficulty;
 	
-	//tiempo
-	//Hay que cambiar el tipo
-//	@Column(name = "time")
-//    private Integer time;
+    
 	
 	@NotNull
 	@Column(name="start_time")
