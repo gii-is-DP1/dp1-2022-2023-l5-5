@@ -34,7 +34,7 @@ public class Casilla extends BaseEntity{
     private Integer coordenadaY;
 
 
-    @Column(name= " num_minas_adyacentes")
+    @Column(name= "num_minas_adyacentes")
     @Range(min=0,max=8)
     @NotEmpty
     private Integer numMinasAdyacentes;

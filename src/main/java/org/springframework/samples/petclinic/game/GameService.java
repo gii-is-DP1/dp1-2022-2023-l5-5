@@ -27,11 +27,6 @@ public class GameService {
     }
 	
 
-	@Transactional
-	public void deleteGame(int id) {
-		gameRepository.deleteById(id); 
-	}
-
 	@Transactional(readOnly = true)
 	public Optional<Game> getGameById(int id) throws DataAccessException {
 		return gameRepository.findById(id);

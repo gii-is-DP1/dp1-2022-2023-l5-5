@@ -72,6 +72,17 @@ public List<Player> findAllPlayers() {
 	public Optional<Player> getPlayerById(int id) throws DataAccessException {
 		return playerRepository.findById(id);
 	}
+	
+	@Transactional(readOnly = true)
+	public Player findPlayerByUsername(String username) throws DataAccessException {
+		return playerRepository.findPlayerByUsername(username);
+	}
+
+	@Transactional
+	public void deletePlayer(String username) {
+		Integer id = playerRepository.findPlayerByUsername(username).getId();
+		playerRepository.deleteById(id); // it deletes a player and the correspondent user
+	}
 
 
 
