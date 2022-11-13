@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.game;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +32,8 @@ public class GameService {
 	
 	@Transactional(readOnly = true)
 	public List<Game> findAllGames() {
-		return this.gameRepository.findAllGames();
+		List<Game> allGames= new ArrayList<Game>();
+		gameRepository.findAll().forEach(allGames::add);
+		return allGames;
 	}
 }

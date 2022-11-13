@@ -67,7 +67,7 @@ public class TableroController {
 
 	@GetMapping("/tableros/prueba/{tableroId}")
 	public String prueba(Map<String,Object> model, HttpServletResponse response, @PathVariable("tableroId") int tableroId){
-		//response.addHeader("Refresh", "1");
+		response.addHeader("Refresh", "1");
 		model.put("now", new Date());
 		model.put("tablero", this.tableroService.findTableroById(tableroId));
 		model.put("tableroImagen","resources/images/tablero-buscaminas.jpg");

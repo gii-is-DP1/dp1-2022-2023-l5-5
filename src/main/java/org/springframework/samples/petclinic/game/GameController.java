@@ -80,7 +80,7 @@ public class GameController {
 //		return view;
 	}
 	
-	@GetMapping(value= {"/list"})
+	@GetMapping(value= "/list")
 	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
 
 		List<Game> results = this.gameService.findAllGames();
