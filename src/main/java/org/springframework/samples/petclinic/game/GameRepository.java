@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.game;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +20,7 @@ public interface GameRepository extends CrudRepository<Game, Integer>{
 	List<Game> findGames();
 	
 	@Query("SELECT game FROM Game game WHERE game.id =:id")
-	public Game findById(@Param("id") int id);
+	public Optional<Game> findById(@Param("id") int id);
 
 	@Query("SELECT game FROM Game game WHERE game.inProgress=false")
 	public List<Game> findAllGamesNotInProgress();
