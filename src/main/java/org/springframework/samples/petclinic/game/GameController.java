@@ -118,11 +118,5 @@ public class GameController {
 		
 	}
 	
-	@GetMapping(value = "/delete/{id}")
-	public String deleteGame(@PathVariable("id") int id) {
-		gameService.deleteGame(id);
-		
-		return VIEWS_DELETE_GAME;
-	}
 
 }
