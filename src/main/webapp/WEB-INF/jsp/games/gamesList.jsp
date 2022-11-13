@@ -15,7 +15,8 @@
             <th style="width: 150px;">Nombre Usuario</th>
             <th style="width: 200px;">Dificultad</th>
             <th style="width: 120px">Id de tablero</th>
-            <th style="width: 120px">¿Ha perdido?</th>
+¡
+            <th style="width: 120px">Ha perdido?</th>
             <th style="width: 120px">Fecha de inicio</th>
             <th style="width: 120px">Fecha de fin</th>
             <th style="width: 120px">Numero de clicks</th>
