@@ -28,7 +28,6 @@ import lombok.Setter;
 @Setter
 @Table(name = "boards")
 public class Board extends BaseEntity{
-    
 
     String background;
     
