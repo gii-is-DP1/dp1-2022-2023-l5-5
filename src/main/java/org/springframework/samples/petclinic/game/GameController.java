@@ -5,8 +5,12 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
+import org.springframework.samples.petclinic.user.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -83,10 +87,33 @@ public class GameController {
 	@GetMapping(value= "/list")
 	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
 
-		List<Game> results = this.gameService.findAllGames();
+		List<Game> results = this.gameService.findAllGamesNotInProgress();
 		
 			model.put("selections", results);
 			return "games/gamesList";
+		
+	}
+
+	@GetMapping(value= "/listinprogress")
+	public String processFindFormProgress(Game game, BindingResult result, Map<String, Object> model) {
+
+		List<Game> results = this.gameService.findAllGamesInProgress();
+		
+			model.put("selections", results);
+			return "games/gamesListInProgress";
+		
+	}
+
+	@GetMapping(value= "/listplayer")
+	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model,@AuthenticationPrincipal User user) {
+
+		// Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		// User currentUser=(User) authentication.getPrincipal();
+		List<Game> results = this.gameService.findAllGamesPlayer(user.getUsername());
+		System.out.println(user.getUsername());
+		System.out.println("========================================================================================");
+			model.put("selections", results);
+			return "games/gamesListPlayer";
 		
 	}
 
