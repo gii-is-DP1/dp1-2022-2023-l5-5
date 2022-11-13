@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.casilla.Casilla;
+import org.springframework.samples.petclinic.player.Player;
+import org.springframework.samples.petclinic.user.User;
 
 
 
@@ -18,7 +20,16 @@ public interface GameRepository extends CrudRepository<Game, Integer>{
 	
 	@Query("SELECT game FROM Game game WHERE game.id =:id")
 	public Game findById(@Param("id") int id);
-	
+
+	@Query("SELECT game FROM Game game WHERE game.inProgress=false")
+	public List<Game> findAllGamesNotInProgress();
+
+	@Query("SELECT game FROM Game game WHERE game.inProgress=true")
+	public List<Game> findAllGamesInProgress();
+
+	@Query("SELECT game FROM Game game WHERE game.player.user.username =:username")
+	public List<Game> findAllGamesPlayer(@Param("username") String username);
+
 
     
 
