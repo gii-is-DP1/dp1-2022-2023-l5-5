@@ -28,9 +28,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PlayerController {
     
     private static final String VIEWS_PLAYER_CREATE_OR_UPDATE_FORM = "players/createOrUpdatePlayerForm";
-    private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
+    //private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
     private static final String VIEWS_PLAYERS_LIST = "players/playersList";
     private static final String VIEWS_PLAYERS_PROFILE = "players/playersProfile";
+    private static final String VIEWS_PLAYERS_DELETE = "players/playersDelete";
     
 	private final PlayerService playerService;
 
@@ -87,6 +88,13 @@ public class PlayerController {
 		}
 	}
 	
+	@GetMapping(value = "/myprofile/{id}/delete")
+	public String deletePlayer(@PathVariable("username") String username) {
+		playerService.deletePlayer(username);
+		
+		return VIEWS_PLAYERS_DELETE;
+	}
+	
 
 	@GetMapping(value = "/list")
 	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
@@ -122,12 +130,6 @@ public class PlayerController {
 
 	
 
-	@GetMapping(value = "/{username}/delete")
-	public String deletePlayer(@PathVariable("username") String username) {
-		playerService.deletePlayer(username);
-		
-		return "players/playerDelete";
-	}
 
 
 }
