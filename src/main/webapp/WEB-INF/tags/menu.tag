@@ -42,19 +42,13 @@
 					<span>New game</span>
 				</petclinic:menuItem>
 
-				<petclinic:menuItem active="${name eq 'error'}" url="/oups"
-					title="trigger a RuntimeException to see how it is handled">
-					<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-					<span>Error</span>
-				</petclinic:menuItem>
-				
 				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
 					title="audits">
 					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 					<span>Audits</span>
 				</petclinic:menuItem> --> 
 				
-				<petclinic:menuItem active="${name eq 'profile'}" url="players/list/{playerId}/edit"
+				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
 					title="profile">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
@@ -72,7 +66,7 @@
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> 
 							<strong><sec:authentication property="name" /></strong> <span
 							class="glyphicon glyphicon-chevron-down"></span>
 					</a>
