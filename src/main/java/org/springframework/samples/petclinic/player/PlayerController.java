@@ -40,13 +40,13 @@ public class PlayerController {
 		this.playerService = playerService;
 	}
 
+  //Un usuario cualquiera puede crear un nuevo jugador
 	@GetMapping(value = "/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Player player = new Player(); //Objeto juagador
 		model.put("player", player); //Meter en la vista el objeto jugador, y en la vista busco por el nombre entre ""
 		return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
 	}
-	
 	@PostMapping(value = "/new")
 	public String processCreationForm(@Valid Player player, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
@@ -64,13 +64,13 @@ public class PlayerController {
 		}
 	}
 	
+	//Un jugador edita su propio jugador
 	@GetMapping(value = "/myprofile/{id}/edit")
 	public String initUpdatePlayerForm(@PathVariable("id") int id, Model model) {
 		Player player = this.playerService.getPlayerById(id).get();
 		model.addAttribute(player);
 		return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
 	}
-
 	@PostMapping(value = "/myprofile/{id}/edit")
 	public String processUpdatePlayerForm(@Valid Player player, 
 			BindingResult result, @PathVariable("id") int id, ModelMap model) {
@@ -88,6 +88,7 @@ public class PlayerController {
 		}
 	}
 	
+	//Un jugador elimina su propio jugador
 	@GetMapping(value = "/myprofile/{id}/delete")
 	public String deletePlayer(@PathVariable("username") String username) {
 		playerService.deletePlayer(username);
@@ -96,6 +97,7 @@ public class PlayerController {
 	}
 	
 
+	//El admin ve el listado de jugadores
 	@GetMapping(value = "/list")
 	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
 		List<Player> results = this.playerService.findAllPlayers();
@@ -104,7 +106,8 @@ public class PlayerController {
 			return VIEWS_PLAYERS_LIST;
 		
 	}
-		
+	
+	//El admin ve el perfil de un jugador
 	@GetMapping(value = "/list/{username}")
 	public String showPlayerProfile(Player player, @PathVariable("username") String username, BindingResult result, Model model) {
 		
@@ -116,7 +119,7 @@ public class PlayerController {
 		return VIEWS_PLAYERS_PROFILE;
 	}
 	
-
+	//Un jugador ve su propio perfil
 	@GetMapping(value = "/myprofile")
 	public String showPlayerProfile(Player player, BindingResult result, Model model) {
 		
