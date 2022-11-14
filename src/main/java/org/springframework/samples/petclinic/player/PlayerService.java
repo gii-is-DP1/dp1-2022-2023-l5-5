@@ -28,17 +28,10 @@ public class PlayerService {
 		this.playerRepository = playerRepository;
 	}	
 
-//	
-//	@Transactional(readOnly = true)
-//	public Player findPlayer() {
-//		return this.playerRepository.findPlayer();
-//	}
-//	
-
-@Transactional(readOnly = true)
-public List<Player> findAllPlayers() {
-	return this.playerRepository.findAllPlayers();
-}
+	@Transactional(readOnly = true)
+	public List<Player> findAllPlayers() {
+		return this.playerRepository.findAllPlayers();
+	}
 
 
 	@Transactional
@@ -74,7 +67,7 @@ public List<Player> findAllPlayers() {
 	}
 	
 	@Transactional(readOnly = true)
-	public Player findPlayerByUsername(String username) throws DataAccessException {
+	public Player getPlayerByUsername(String username) throws DataAccessException {
 		return playerRepository.findPlayerByUsername(username);
 	}
 
@@ -82,6 +75,7 @@ public List<Player> findAllPlayers() {
 	public void deletePlayer(String username) {
 		Integer id = playerRepository.findPlayerByUsername(username).getId();
 		playerRepository.deleteById(id); // it deletes a player and the correspondent user
+
 	}
 
 
