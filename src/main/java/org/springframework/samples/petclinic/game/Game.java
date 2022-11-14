@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.game;
 
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -79,16 +80,19 @@ public class Game extends BaseEntity{
         }
     }
     
-    public Game() {
-        startTime = LocalDateTime.now();
-        numClicks = 0;
-        inProgress = true;
-        lostGame = false;
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		User currentUser = (User) authentication.getPrincipal();
-//        player = setPlayer(player);
-//        tablero = setTablero(tablero);
-    }
+//    public Game() {
+//    	
+//        startTime = LocalDateTime.now();
+//        numClicks = 0;
+//        inProgress = true;
+//        lostGame = false;
+//		//Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		//Player currentUser = (Player) authentication.getPrincipal();
+//        
+//        this.player.setUser(null);       
+//        this.tablero.setId(1);
+//
+//    }
     
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)

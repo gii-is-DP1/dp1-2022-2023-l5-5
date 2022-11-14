@@ -1,11 +1,15 @@
 package org.springframework.samples.petclinic.game;
 
+import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.player.Player;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +20,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/games")
@@ -33,8 +38,18 @@ public class GameController {
 	}
 	
 	@GetMapping(value = "/new")
-	public String initCreationForm(Map<String, Object> model) {
-		model.put("game", new Game()); 
+	public String initCreationForm(Map<String, Object> model){
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User currentUser = (User) authentication.getPrincipal();
+		
+		Game game = new Game();
+        game.setStartTime(LocalDateTime.now());
+        game.setNumClicks(0);
+        game.setInProgress(true);
+        game.setLostGame(false);
+        //game.setPlayer(currentUser.getUsername());
+        //game.setTablero();
+		model.put("game", game); 
 		model.put("difficulties", gameService.findAllDifficulties());
 		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 	}
