@@ -33,16 +33,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/resources/**","/webjars/**","/h2-console/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/","/oups").permitAll()
 				.antMatchers("/users/new").permitAll()
+				.antMatchers("/currentUser").permitAll()
 				.antMatchers("/session/**").permitAll()
-
 				.antMatchers("/players/new/**").permitAll()
-				.antMatchers("/players/edit/**").hasAnyAuthority("player")
-
-				.antMatchers("/players/list/").hasAnyAuthority("admin")
-				
+				.antMatchers("/players/list/**").hasAnyAuthority("admin")
+				.antMatchers("/players/myprofile/**").permitAll()
+				//.antMatchers("/myprofile/{username}/edit/**").hasAnyAuthority("player")
 				.antMatchers("/games/new/**").permitAll()
 				.antMatchers("/games/list/").hasAnyAuthority("admin")
-
 				.antMatchers("/tableros/**").permitAll()
 				.antMatchers("/casillas/**").permitAll()
 				.antMatchers("/game/**").permitAll()

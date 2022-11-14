@@ -6,7 +6,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="players">
-    <h2>Jugadores</h2>
+    <h2>Players</h2>
 
     <table id="playersTable" class="table table-striped">
         <thead>
@@ -22,16 +22,16 @@
         <c:forEach items="${selections}" var="player">
             <tr>
                 <td>
-                    <spring:url value="/players/profile/{id}" var="playerUrl">
-                        <spring:param name="playerId" value="${player.id}"/>
+                    <spring:url value="/players/list/{username}" var="profileUrl">
+                        <spring:param name="username" value="${player.user.username}"/>
                     </spring:url>
-                    <a href="${fn:escapeXml(playerUrl)}"><c:out value="${player.user.username}"/></a>
+                    <a href="${fn:escapeXml(profileUrl)}"><c:out value="${player.user.username}"/></a>
                 </td>
                 <td>
-                    <c:out value="${person.name}"/>
+                    <c:out value="${player.firstName}"/>
                 </td>
                 <td>
-                    <c:out value="${person.lastname}"/>
+                    <c:out value="${player.lastName}"/>
                 </td>
                 <td>
                     <c:out value="${player.mail}"/>

@@ -8,26 +8,32 @@ INSERT INTO authorities(id,username,authority) VALUES (2,'owner1','owner');
 INSERT INTO users(username,password,enabled) VALUES ('vet1','v3t',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (3,'vet1','veterinarian');
 
-INSERT INTO users(username,password,enabled) VALUES ('pabquide','p4bquide',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (4,'pabquide','owner');
+INSERT INTO users(username,password,enabled) VALUES ('pabquide','p4bqu1de',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (4,'pabquide','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('meriglmar','mer16',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (5,'meriglmar','owner');
+INSERT INTO users(username,password,enabled) VALUES ('meriglmar','mer1glm4r',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (5,'meriglmar','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('angbermar1','4ngbermar1',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (6,'angbermar1','owner');
+INSERT INTO authorities(id,username,authority) VALUES (6,'angbermar1','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('paomarsan','p4omarsan',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (7,'paomarsan','owner');
+INSERT INTO users(username,password,enabled) VALUES ('paomarsan','p4om4rs4n',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (7,'paomarsan','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('sanzultor','s4nzult0r',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (8,'sanzultor','owner');
+INSERT INTO authorities(id,username,authority) VALUES (8,'sanzultor','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('andgarriv','4ndg4rr1v',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (9,'andgarriv','owner');
+INSERT INTO authorities(id,username,authority) VALUES (9,'andgarriv','player');
 
-INSERT INTO players(id,first_name,last_name,username,mail) VALUES (1,'Pablo','Quindos','pabquide','pabquide@gmail.com');
-INSERT INTO players(id,first_name,last_name,username,mail) VALUES (2,'Mercedes','Iglesias','meriglmar','meriglmar@gmail.com');
+
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (1,'Pablo','Quindos','pabquide','pabquide@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (2,'Mercedes','Iglesias','meriglmar','meriglmar@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (3,'Ángela','Bernal','angbermar1','angbermar1@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (4,'Paola','Martín','paomarsan','paomarsan@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (5,'Santiago','Zuleta','sanzultor','sanzultor@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (6,'Andrés','García','andgarriv','andgarriv@alum.us.es');
+
 
 INSERT INTO vets(id, first_name,last_name) VALUES (1, 'James', 'Carter');
 INSERT INTO vets(id, first_name,last_name) VALUES (2, 'Helen', 'Leary');
@@ -36,15 +42,18 @@ INSERT INTO vets(id, first_name,last_name) VALUES (4, 'Rafael', 'Ortega');
 INSERT INTO vets(id, first_name,last_name) VALUES (5, 'Henry', 'Stevens');
 INSERT INTO vets(id, first_name,last_name) VALUES (6, 'Sharon', 'Jenkins');
 
+
 INSERT INTO specialties VALUES (1, 'radiology');
 INSERT INTO specialties VALUES (2, 'surgery');
 INSERT INTO specialties VALUES (3, 'dentistry');
+
 
 INSERT INTO vet_specialties VALUES (2, 1);
 INSERT INTO vet_specialties VALUES (3, 2);
 INSERT INTO vet_specialties VALUES (3, 3);
 INSERT INTO vet_specialties VALUES (4, 2);
 INSERT INTO vet_specialties VALUES (5, 1);
+
 
 INSERT INTO types VALUES (1, 'cat');
 INSERT INTO types VALUES (2, 'dog');
@@ -53,6 +62,7 @@ INSERT INTO types VALUES (4, 'snake');
 INSERT INTO types VALUES (5, 'bird');
 INSERT INTO types VALUES (6, 'hamster');
 INSERT INTO types VALUES (7, 'turtle');
+
 
 INSERT INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023', 'owner1');
 INSERT INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749', 'owner1');
@@ -72,21 +82,16 @@ INSERT INTO owners VALUES (15, 'Santi', 'Zuleta', 'Fidelio 7', 'Sevilla', '67362
 INSERT INTO owners VALUES (16, 'Andres', 'Garcia', '1 Manuel Suirot', 'Sevilla', '699749122', 'andgarriv');
 
 
-
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (1,9,14,15);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (2,13,17,30);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (3,18,18,65);
 INSERT INTO tableros(id,filas,columnas,numero_minas) VALUES (4,4,2,11);
 
 
-
-
 INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (1,4,10,4,TRUE,'BOMBA'); 
 INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (2,14,8,4,FALSE,'BANDERA'); 
 INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (3,4,4,4,TRUE,'BOMBA'); 
 INSERT INTO casillas(id, coordenada_x, coordenada_y, num_minas_adyacentes, esta_cubierta, contenido) VALUES (4,11,14,7,TRUE,'VACIA'); 
-
-
 
 
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
@@ -108,7 +113,6 @@ INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (16, 'Ángela', '20
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (17, 'Krissia', '2018-08-18', 1, 14);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (18, 'Santi', '2016-05-21', 1, 15);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (19, 'Chorizo', '2020-01-07', 2, 16);
-
 
 
 INSERT INTO visits(id,pet_id,visit_date,description) VALUES (1, 7, '2013-01-01', 'rabies shot');
