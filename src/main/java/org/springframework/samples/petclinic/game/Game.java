@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.game;
 
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -19,6 +20,10 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.tablero.Tablero;
+import org.springframework.samples.petclinic.user.UserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.samples.petclinic.player.Player;
 
 
@@ -62,12 +67,32 @@ public class Game extends BaseEntity{
     private Boolean lostGame;
     
     public String duration() {
-    	long diferencia = ChronoUnit.SECONDS.between(startTime, finishTime);
-    	long min=diferencia/60;
-    	long seg=diferencia%60;
-    	
-    	return String.valueOf(min) + " min" + String.valueOf(seg) + " seg ";
+        if(finishTime == null) {
+            long diffInSeconds = ChronoUnit.SECONDS.between(startTime, LocalDateTime.now());
+            long minutos = diffInSeconds/60;
+            long segundos = diffInSeconds%60;
+            return String.valueOf(minutos) + " minutos y " + String.valueOf(segundos) + " segundos";
+        }else {
+        long diffInSeconds = ChronoUnit.SECONDS.between(startTime, finishTime);
+        long minutos = diffInSeconds/60;
+        long segundos = diffInSeconds%60;
+        return String.valueOf(minutos) + " minutos y " + String.valueOf(segundos) + " segundos";
+        }
     }
+    
+//    public Game() {
+//    	
+//        startTime = LocalDateTime.now();
+//        numClicks = 0;
+//        inProgress = true;
+//        lostGame = false;
+//		//Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		//Player currentUser = (Player) authentication.getPrincipal();
+//        
+//        this.player.setUser(null);       
+//        this.tablero.setId(1);
+//
+//    }
     
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)

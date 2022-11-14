@@ -31,6 +31,9 @@ public interface GameRepository extends CrudRepository<Game, Integer>{
 	@Query("SELECT game FROM Game game WHERE game.player.user.username =:username")
 	public List<Game> findAllGamesPlayer(@Param("username") String username);
 
+	@Query("SELECT DISTINCT difficulty FROM Game")
+	List<String> findAllDifficulties();
+
 
     
 
