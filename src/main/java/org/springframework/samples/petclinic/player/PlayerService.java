@@ -74,7 +74,7 @@ public class PlayerService {
 	@Transactional
 	public void deletePlayer(String username) {
 		Integer id = playerRepository.findPlayerByUsername(username).getId();
-		playerRepository.deleteById(id); // it deletes a player and the correspondent user
+		playerRepository.deleteById(id); 
 
 	}
 
