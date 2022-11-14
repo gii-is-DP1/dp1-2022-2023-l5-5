@@ -108,6 +108,7 @@ public class PlayerController {
 		return VIEWS_PLAYERS_PROFILE;
 	}
 	
+
 	@GetMapping(value = "/myprofile")
 	public String showPlayerProfile(Player player, BindingResult result, Model model) {
 		
@@ -120,5 +121,13 @@ public class PlayerController {
 	}
 
 	
+
+	@GetMapping(value = "/{username}/delete")
+	public String deletePlayer(@PathVariable("username") String username) {
+		playerService.deletePlayer(username);
+		
+		return "players/playerDelete";
+	}
+
 
 }

@@ -15,6 +15,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequestMapping("/games")
@@ -24,6 +29,7 @@ public class GameController {
 	private GameService gameService;
 	
 	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
+	private static final String VIEWS_DELETE_GAME = "games/gameDelete";
 
 	@Autowired 
 	public GameController(GameService gameService) {
@@ -43,7 +49,7 @@ public class GameController {
 			//model.put("game", game);
 			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		}else {
-			gameService.save(game);
+			this.gameService.save(game);
 			//model.put("message", "Game sucessfully saved!");
 			//model.addAttribute("message", "Game sucessfully saved!");
 			return "redirect:/";
@@ -80,14 +86,37 @@ public class GameController {
 //		return view;
 	}
 	
-	@GetMapping(value= {"/list"})
-	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
+	@GetMapping(value= "/list")
+	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
 
-		List<Game> results = this.gameService.findAllGames();
+		List<Game> results = this.gameService.findAllGamesNotInProgress();
 		
 			model.put("selections", results);
 			return "games/gamesList";
 		
 	}
+
+	@GetMapping(value= "/listinprogress")
+	public String processFindFormProgress(Game game, BindingResult result, Map<String, Object> model) {
+
+		List<Game> results = this.gameService.findAllGamesInProgress();
+		
+			model.put("selections", results);
+			return "games/gamesListInProgress";
+		
+	}
+
+	@GetMapping(value= "/listplayer")
+	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model) {
+
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
+		
+	    List<Game> results = this.gameService.findAllGamesPlayer(currentUser.getUsername());
+		model.put("selections", results);
+		return "games/gamesListPlayer";
+		
+	}
+	
 
 }

@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.player;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "players")
-public class Player extends Person {
+public class Player extends Person implements Serializable{
     
 	@NotEmpty
 	@Email

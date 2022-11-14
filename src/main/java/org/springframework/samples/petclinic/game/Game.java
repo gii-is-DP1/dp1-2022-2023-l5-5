@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.samples.petclinic.casilla.Contenido;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.tablero.Tablero;
 import org.springframework.samples.petclinic.player.Player;
@@ -31,30 +31,25 @@ import lombok.Setter;
 @Table(name = "games")
 public class Game extends BaseEntity{
 	
-	//dificultad
-//	@Column(name = "difficulty")
-//	@NotEmpty
-//	private Difficulty difficulty;
     @NotEmpty
     @Enumerated(EnumType.STRING)
 	@Column(name = "difficulty")
 	private Difficulty difficulty;
 	
-	//tiempo
-	//Hay que cambiar el tipo
-//	@Column(name = "time")
-//    private Integer time;
+    
 	
 	@NotNull
-	@Column(name="startTime")
+	@Column(name="start_time")
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss.s")
 	private LocalDateTime startTime;
 	
 	@NotNull
-	@Column(name="finishTime")
+	@Column(name="finish_time")
+    @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss.s")
 	private LocalDateTime finishTime;
     
 	//numeroDePulsaciones
-	@Column(name = "numClicks")
+	@Column(name = "num_clicks")
     private Integer numClicks;
 	
 	//enProgreso
@@ -63,7 +58,7 @@ public class Game extends BaseEntity{
     
     
     //partidaPerdida
-    @Column(name = "lostGame")
+    @Column(name = "lost_game")
     private Boolean lostGame;
     
     public String duration() {
@@ -76,12 +71,12 @@ public class Game extends BaseEntity{
     
     //Relación Juego:Jugador
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private Player player;
     
     //Relación Juego:Tablero
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="id")
+    @JoinColumn(name="id_tablero", referencedColumnName = "id")
     private Tablero tablero;
     
 	
