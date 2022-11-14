@@ -48,7 +48,7 @@
 					<span>Audits</span>
 				</petclinic:menuItem> --> 
 				
-				<petclinic:menuItem active="${name eq 'profile'}" url="players/myprofile"
+				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
 					title="profile">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
