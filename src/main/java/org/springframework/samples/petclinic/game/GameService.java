@@ -45,7 +45,14 @@ public class GameService {
 	@Transactional(readOnly = true)
 	public List<Game> findAllGamesPlayer(String username){
 		return this.gameRepository.findAllGamesPlayer(username);
+		
 	}
+	
+	@Transactional(readOnly = true)
+	public List<String> findAllDifficulties(){
+		return this.gameRepository.findAllDifficulties();
+	}
+	
 
 
 }

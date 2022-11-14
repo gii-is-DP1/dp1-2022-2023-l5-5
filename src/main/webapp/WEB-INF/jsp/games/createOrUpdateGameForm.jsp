@@ -8,45 +8,28 @@
 
 <petclinic:layout pageName="games">
     <h2>
-        <c:if test="${game['new']}">New </c:if> Game
+        New Game
     </h2>
-    <form:form modelAttribute="game" class="form-horizontal" id="add-game-form">
-         <br class="form-group has-feedback">
-            <label for="difficulty">difficulty: </label>
-            <input type="text" label="Difficulty" name="difficulty"/>
-            <br></br>
-            <label for="startTime">startTime: </label>
-            <input type="datetime-local" label="Start time" name="startTime"/>
-            <br></br>
-            <label for="finishTime">finishTime: </label>
-            <input type="datetime-local" label="Finish time" name="finishTime"/>
-            <br></br>
-            <label for="numClicks">numClicks: </label>
-            <input type="number" label="Number of clicks" name="numClicks"/>
-            <br></br>
-            <label for="inProgress">inProgress: </label>
-            <input type="checkbox" label="Is the game in progress?" name="inProgress"/>
-            <br></br>
-            <label for="lostGame">lostGame: </label>
-            <input type="checkbox" label="Is the game lost?" name="lostGame"/>
-            <br></br>
-            <label for="player.user.username">username: </label>
-            <input type="text" label="Username" name="player.user.username"/>
-            <br></br>
-            <label for="tablero.id">id tablero: </label>
-            <input type="number" label="Id tablero" name="tablero.id"/>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <c:choose>
-                    <c:when test="${game['new']}">
-                        <button class="btn btn-default" type="submit">Add Game</button>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Game</button>
-                    </c:otherwise>
-                </c:choose>
+    
+    <form:form modelAttribute="partida"
+                   class="form-horizontal">
+            <form:hidden  path="id" />
+            <form:hidden  path="startTime" />
+            <form:hidden  path="finishTime" />
+            <form:hidden  path="numClicks" />
+            <form:hidden  path="inProgress" />
+            <form:hidden  path="lostGame" />
+            <form:hidden  path="player.user.username" />
+            <form:hidden  path="tablero.id" />
+            <div class="control-group">
+                   <petclinic:selectField name="difficulty" label="Difficulty " names="${difficulties}" size="1"/>
             </div>
-        </div>
-    </form:form>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+
+                    <button class="btn btn-default" type="submit">Create game</button>
+                </div>
+            </div>
+        </form:form>
 </petclinic:layout>
