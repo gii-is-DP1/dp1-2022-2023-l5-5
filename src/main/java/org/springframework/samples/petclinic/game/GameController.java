@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
+import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -28,6 +29,7 @@ public class GameController {
 	
 	
 	private GameService gameService;
+	private PlayerService playerService;
 	
 	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
 	private static final String VIEWS_DELETE_GAME = "games/gameDelete";
@@ -41,13 +43,16 @@ public class GameController {
 	public String initCreationForm(Map<String, Object> model){
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User currentUser = (User) authentication.getPrincipal();
+		String name = currentUser.getUsername();
 		
 		Game game = new Game();
         game.setStartTime(LocalDateTime.now());
         game.setNumClicks(0);
         game.setInProgress(true);
         game.setLostGame(false);
-        //game.setPlayer(currentUser.getUsername());
+        
+        game.setPlayer(playerService.getPlayerByUsername(name));
+        
         //game.setTablero();
 		model.put("game", game); 
 		model.put("difficulties", gameService.findAllDifficulties());
