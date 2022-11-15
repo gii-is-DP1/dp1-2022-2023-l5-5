@@ -71,6 +71,7 @@ public class PlayerController {
 		model.addAttribute(player);
 		return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
 	}
+	
 	@PostMapping(value = "/myprofile/{id}/edit")
 	public String processUpdatePlayerForm(@Valid Player player, 
 			BindingResult result, @PathVariable("id") int id, ModelMap model) {
