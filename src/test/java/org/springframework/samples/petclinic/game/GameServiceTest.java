@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.game;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -27,7 +28,7 @@ public class GameServiceTest {
 	private TableroService tableroService;
 	
 	
-	//Test de findGames y save de Game, getPlayerByUsername de Player y findTableroById de Tablero
+	//Test de crear juego (H6)
 	@Test
 	void shouldFindGames() {
 		
@@ -50,6 +51,17 @@ public class GameServiceTest {
 		
 		assertThat(size1<size2);
 		
+	}
+	
+	
+	//Test de listar partidas de un jugador (H7)
+	@Test
+	void shouldFindAllGamesPlayer() throws Exception {
+		Collection<Game> games = this.gameService.findAllGamesPlayer("paomarsan");
+		assertThat(games.size()).isEqualTo(1);
+		Game[] gameArr = games.toArray(new Game[games.size()]);
+		assertThat(gameArr[0].getPlayer()).isNotNull();
+		assertThat(gameArr[0].getPlayer().getUser().getUsername().equals("paomarsan"));
 	}
 	
 

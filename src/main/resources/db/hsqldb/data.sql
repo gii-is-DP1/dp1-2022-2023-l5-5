@@ -99,7 +99,7 @@ INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,l
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_tablero) VALUES (3,'EASY','1990-06-20 08:05:00.0', '1990-06-20 08:22:00.0',12,TRUE, FALSE,'pabquide',1);
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_tablero) VALUES (4,'MEDIUM','1990-06-20 08:06:00.0', '1990-06-20 08:23:00.0',13,TRUE, FALSE,'meriglmar',1);
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_tablero) VALUES (5,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'pabquide',1);
-
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_tablero) VALUES (6,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',1);
 
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (1, 'Leo', '2010-09-07', 1, 1);
 INSERT INTO pets(id,name,birth_date,type_id,owner_id) VALUES (2, 'Basil', '2012-08-06', 6, 2);
