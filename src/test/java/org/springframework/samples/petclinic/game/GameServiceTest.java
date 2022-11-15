@@ -64,5 +64,15 @@ public class GameServiceTest {
 		assertThat(gameArr[0].getPlayer().getUser().getUsername().equals("paomarsan"));
 	}
 	
+	
+	//Test de listar partidas en progreso (H8)
+	@Test
+	void shouldFindAllGamesInProgress()throws Exception {
+		Collection<Game> games = this.gameService.findAllGamesInProgress();
+		assertThat(games.size()).isEqualTo(3);
+		Game[] gameArr = games.toArray(new Game[games.size()]);
+		assertThat(gameArr[1].getInProgress().equals(true));
+	}
+	
 
 }
