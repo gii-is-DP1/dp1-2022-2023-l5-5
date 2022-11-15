@@ -45,6 +45,16 @@ public class PlayerServiceTest {
 		assertThat(size1<size2);
 	}
 	
+
+	@Test
+	void shouldGetPlayerByUsername() {
+		Player player = this.playerService.getPlayerByUsername("meriglmar");
+		String lastname = player.getLastName();
+		
+		assertThat(lastname.equals("Iglesias"));
+	}
+	
+	
 	
 	
 }
