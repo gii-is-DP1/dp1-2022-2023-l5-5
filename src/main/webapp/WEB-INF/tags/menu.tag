@@ -48,11 +48,11 @@
 					<span>Audits</span>
 				</petclinic:menuItem> --> 
 				
-				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
+<%-- 				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
 					title="profile">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
-				</petclinic:menuItem> 
+				</petclinic:menuItem>  --%>
 
 			</ul>
 
@@ -82,6 +82,10 @@
 										<div class="col-lg-8">
 											<p class="text-left">
 												<strong><sec:authentication property="name" /></strong>
+											</p>
+												<p class="text-left">
+												<a href="<c:url value="/players/myprofile" />"
+													class="btn btn-primary btn-block btn-sm">My profile</a>
 											</p>
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
