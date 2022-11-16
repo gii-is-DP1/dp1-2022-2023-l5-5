@@ -11,7 +11,7 @@
         New Game
     </h2>
     
-    <form:form modelAttribute="partida"
+    <form:form modelAttribute="game"
                    class="form-horizontal">
             <form:hidden  path="id" />
             <form:hidden  path="startTime" />
@@ -19,8 +19,7 @@
             <form:hidden  path="numClicks" />
             <form:hidden  path="inProgress" />
             <form:hidden  path="lostGame" />
-            <form:hidden  path="player.user.username" />
-            <form:hidden  path="tablero.id" />
+
             <div class="control-group">
                    <petclinic:selectField name="difficulty" label="Difficulty " names="${difficulties}" size="1"/>
             </div>
