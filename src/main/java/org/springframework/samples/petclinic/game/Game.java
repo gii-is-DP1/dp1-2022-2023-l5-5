@@ -1,7 +1,6 @@
 package org.springframework.samples.petclinic.game;
 
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -20,10 +19,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.tablero.Tablero;
-import org.springframework.samples.petclinic.user.UserService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.samples.petclinic.player.Player;
 
 
