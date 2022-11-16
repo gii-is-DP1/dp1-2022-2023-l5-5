@@ -6,26 +6,26 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="jugadores">
+<petclinic:layout pageName="players">
     <h2>
-        <c:if test="${jugador['new']}">New </c:if> Jugador
+        <c:if test="${player['new']}">New </c:if> Player
     </h2>
-    <form:form modelAttribute="jugador" class="form-horizontal" id="add-jugador-form">
+    <form:form modelAttribute="player" class="form-horizontal" id="add-player-form">
         <div class="form-group has-feedback">
-            <petclinic:inputField label="Nombre de Usuario" name="nombreUsuario"/>
-            <petclinic:inputField label="Contrasena" name="contrasena"/>
-            <petclinic:inputField label="Correo Electronico" name="correoElectronico"/>
+            <petclinic:inputField label="First Name" name="firstName"/>
+            <petclinic:inputField label="Last Name" name="lastName"/>
             <petclinic:inputField label="Username" name="user.username"/>
+            <petclinic:inputField label="Mail" name="mail"/>
             <petclinic:inputField label="Password" name="user.password"/>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <c:choose>
-                    <c:when test="${jugador['new']}">
-                        <button class="btn btn-default" type="submit">Add Jugador</button>
+                    <c:when test="${player['new']}">
+                        <button class="btn btn-default" type="submit">Add Player</button>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-default" type="submit">Update Jugador</button>
+                        <button class="btn btn-default" type="submit">Update Player</button>
                     </c:otherwise>
                 </c:choose>
             </div>

@@ -20,9 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * and open the template in the editor.
  */
 
-/**
- * @author japarejo
- */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -36,8 +33,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/resources/**","/webjars/**","/h2-console/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/","/oups").permitAll()
 				.antMatchers("/users/new").permitAll()
+				.antMatchers("/currentUser").permitAll()
 				.antMatchers("/session/**").permitAll()
-				.antMatchers("/jugadores/**").permitAll()
+        
+				.antMatchers("/players/new/**").permitAll()
+				//.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
+				//.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player","admin") 
+				.antMatchers("/players/myprofile/**").permitAll()
+				//.antMatchers("/myprofile/{username}/edit/**").hasAnyAuthority("player")
+				.antMatchers("/players/edit/**").hasAnyAuthority("player")
+				.antMatchers("/players/list/**").hasAnyAuthority("admin")
+				
+				
+				.antMatchers("/games/new/**").hasAnyAuthority("player")
+				.antMatchers("/games/list/**").hasAnyAuthority("admin")
+				.antMatchers("/games/listinprogress/**").hasAnyAuthority("admin")
+				.antMatchers("/games/listplayer/**").permitAll()
+
+				.antMatchers("/tableros/**").permitAll()
+				
+				.antMatchers("/casillas/**").permitAll()
+				
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
 				.antMatchers("/owners/**").hasAnyAuthority("owner","admin")				
 				.antMatchers("/vets/**").authenticated()
