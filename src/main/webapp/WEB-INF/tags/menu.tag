@@ -29,18 +29,22 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
 				</petclinic:menuItem>
-
-				<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
-					title="find players">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Find players</span>
+				
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
+						title="find players">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						<span>Find players</span>
+					</petclinic:menuItem>
+				</sec:authorize>
+				
+				<sec:authorize access="hasAuthority('player')">
+					<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
+						title="new Game">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						<span>New game</span>
 				</petclinic:menuItem>
-
-				<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
-					title="new Game">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					<span>New game</span>
-				</petclinic:menuItem>
+				</sec:authorize>
 
 				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
 					title="audits">
@@ -83,10 +87,14 @@
 											<p class="text-left">
 												<strong><sec:authentication property="name" /></strong>
 											</p>
-												<p class="text-left">
+											<p class="text-left">
+												<sec:authorize access="hasAuthority('player')">
 												<a href="<c:url value="/players/myprofile" />"
 													class="btn btn-primary btn-block btn-sm">My profile</a>
+												</sec:authorize>
 											</p>
+											
+
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
 													class="btn btn-primary btn-block btn-sm">Logout</a>
