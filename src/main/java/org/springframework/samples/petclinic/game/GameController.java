@@ -1,38 +1,37 @@
 package org.springframework.samples.petclinic.game;
 
-import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
+import org.springframework.samples.petclinic.tablero.Tablero;
+import org.springframework.samples.petclinic.tablero.TableroService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/games")
 public class GameController {
 	
-	
+	@Autowired
 	private GameService gameService;
+	@Autowired
 	private PlayerService playerService;
+	@Autowired
+	private TableroService boardService;
 	
-	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
-	private static final String VIEWS_DELETE_GAME = "games/gameDelete";
+	private static final String VIEWS_GAME_CREATE_FORM = "games/createGameForm";
+	//private static final String VIEWS_DELETE_GAME = "games/gameDelete";
 
 	@Autowired 
 	public GameController(GameService gameService) {
@@ -41,77 +40,54 @@ public class GameController {
 	
 	@GetMapping(value = "/new")
 	public String initCreationForm(Map<String, Object> model){
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		User currentUser = (User) authentication.getPrincipal();
-		String name = currentUser.getUsername();
 		
 		Game game = new Game();
         game.setStartTime(LocalDateTime.now());
         game.setNumClicks(0);
         game.setInProgress(true);
         game.setLostGame(false);
-        
-        game.setPlayer(playerService.getPlayerByUsername(name));
-        
-        //game.setTablero();
 		model.put("game", game); 
 		model.put("difficulties", gameService.findAllDifficulties());
-		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
+		return VIEWS_GAME_CREATE_FORM;
 	}
 	
 	@PostMapping(value="/new")
 	public String processCreationForm(@Valid Game game, BindingResult result, ModelMap model) {
-		//String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;;
-
+		//String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		if(result.hasErrors()) {
-			//model.put("game", game);
-			List<ObjectError> errores = result.getAllErrors();
-            String errores2 = "";
-
-            for(ObjectError i:errores) {
-                String error = i.toString();
-                errores2+=error;
-                }
-            model.put("message", errores2);
             
-			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
+			return VIEWS_GAME_CREATE_FORM;
 		}else {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	        org.springframework.security.core.userdetails.User currentUser =  (org.springframework.security.core.userdetails.User) auth.getPrincipal();
+	        String user = currentUser.getUsername();
+	        Player player = this.playerService.getPlayerByUsername(user);
+	        game.setPlayer(player);
+	        Difficulty diff = game.getDifficulty();
+	        String boardId = "";
+	        if (diff == Difficulty.EASY) {
+	        	Tablero facil = boardService.findTableroById(1);
+	        	game.setTablero(facil);
+	        	game.setDifficulty(Difficulty.EASY);
+	        	boardId = "1";
+	        }else if (diff == Difficulty.MEDIUM) {
+	        	Tablero medio = boardService.findTableroById(2);
+	        	game.setTablero(medio);
+	        	game.setDifficulty(Difficulty.MEDIUM);
+	        	boardId = "2";
+	        }else {
+	        	Tablero dificil = boardService.findTableroById(3);
+	        	game.setTablero(dificil);
+	        	game.setDifficulty(Difficulty.DIFFICULT);
+	        	boardId = "3";
+	        }
+
 			this.gameService.save(game);
-			//model.put("message", "Game sucessfully saved!");
-			//model.addAttribute("message", "Game sucessfully saved!");
-			return "redirect:/tableros/prueba/1";
+
+			return "redirect:/tableros/prueba/" + boardId;
 		}
-		//return view;
+		
 	}
-	
-//	//No sé si se puede editar una partida ya creada
-//	@GetMapping(value = "/edit/{id}")
-//	public String initUpdateGameForm(@PathVariable("id") int id, Model model) {
-//		Game game = this.gameService.getGameById(id).get();
-//		model.addAttribute(game);
-//		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
-//	}
-//
-//	@PostMapping(value = "/edit/{id}")
-//	public String processUpdateGameForm(@Valid Game game, 
-//			BindingResult result, @PathVariable("id") int id, ModelMap model) {
-//		//String view ="welcome";
-//		if (result.hasErrors()) {
-//			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
-//		}else {
-//			gameService.save(game);
-//			//model.put("message", "Game sucessfully saved!");
-//			//model.addAttribute("message", "Game sucessfully saved!");
-//			return "redirect:/";
-//		}
-////		}else {
-////			//game.setId(id)
-////			gameService.save(game);
-////			//model.put("message", "Game sucessfully saved!");
-////			model.addAttribute("message", "Game sucessfully saved!");
-////		}
-////		return view;
-//	}
 	
 	@GetMapping(value= "/list")
 	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
