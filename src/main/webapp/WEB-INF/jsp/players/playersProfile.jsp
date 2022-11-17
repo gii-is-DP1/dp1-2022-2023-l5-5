@@ -3,6 +3,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <petclinic:layout pageName="players">
 
@@ -29,11 +31,14 @@
             <th>Password</th>
             <td><c:out value="${player.user.password}"/></td>
     </table>
-
+	
+	
     <spring:url value="/players/myprofile/{id}/edit" var="editUrl">
         <spring:param name="id" value="${player.id}"/>
     </spring:url>
-    <a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Edit Player</a>
+    <sec:authorize access="hasAuthority('player')">
+    	<a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Edit Player</a>
+    </sec:authorize>
     
     <spring:url value="/players/myprofile/{id}/delete" var="deleteUrl">
         <spring:param name="id" value="${player.id}"/>
