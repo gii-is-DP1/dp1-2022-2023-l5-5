@@ -30,7 +30,7 @@ public class GameController {
 	@Autowired
 	private TableroService boardService;
 	
-	private static final String VIEWS_GAME_CREATE_OR_UPDATE_FORM = "games/createOrUpdateGameForm";
+	private static final String VIEWS_GAME_CREATE_FORM = "games/createGameForm";
 	//private static final String VIEWS_DELETE_GAME = "games/gameDelete";
 
 	@Autowired 
@@ -48,7 +48,7 @@ public class GameController {
         game.setLostGame(false);
 		model.put("game", game); 
 		model.put("difficulties", gameService.findAllDifficulties());
-		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
+		return VIEWS_GAME_CREATE_FORM;
 	}
 	
 	@PostMapping(value="/new")
@@ -56,7 +56,7 @@ public class GameController {
 		//String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		if(result.hasErrors()) {
             
-			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
+			return VIEWS_GAME_CREATE_FORM;
 		}else {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	        org.springframework.security.core.userdetails.User currentUser =  (org.springframework.security.core.userdetails.User) auth.getPrincipal();
@@ -88,35 +88,6 @@ public class GameController {
 		}
 		
 	}
-	
-//	//No se puede editar una partida ya creada
-//	@GetMapping(value = "/edit/{id}")
-//	public String initUpdateGameForm(@PathVariable("id") int id, Model model) {
-//		Game game = this.gameService.getGameById(id).get();
-//		model.addAttribute(game);
-//		return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
-//	}
-//
-//	@PostMapping(value = "/edit/{id}")
-//	public String processUpdateGameForm(@Valid Game game, 
-//			BindingResult result, @PathVariable("id") int id, ModelMap model) {
-//		//String view ="welcome";
-//		if (result.hasErrors()) {
-//			return VIEWS_GAME_CREATE_OR_UPDATE_FORM;
-//		}else {
-//			gameService.save(game);
-//			//model.put("message", "Game sucessfully saved!");
-//			//model.addAttribute("message", "Game sucessfully saved!");
-//			return "redirect:/";
-//		}
-////		}else {
-////			//game.setId(id)
-////			gameService.save(game);
-////			//model.put("message", "Game sucessfully saved!");
-////			model.addAttribute("message", "Game sucessfully saved!");
-////		}
-////		return view;
-//	}
 	
 	@GetMapping(value= "/list")
 	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
