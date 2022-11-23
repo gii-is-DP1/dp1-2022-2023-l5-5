@@ -37,13 +37,48 @@
 						<span>Find players</span>
 					</petclinic:menuItem>
 				</sec:authorize>
+
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'games'}"
+						url="/games/listinprogress" title="games in progress">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>Games in progress</span>
+					</petclinic:menuItem>
+				</sec:authorize>
 				
+				
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'games'}" 
+					    url="/games/list" title="games played">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>Games Played</span>
+					</petclinic:menuItem>
+				</sec:authorize>
+
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'achievements'}" url="/achievements/"
+						title="achievements">
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span>Achievements</span>
+					</petclinic:menuItem>
+				</sec:authorize>
+
+
 				<sec:authorize access="hasAuthority('player')">
 					<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
 						title="new Game">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						<span>New game</span>
 				</petclinic:menuItem>
+				</sec:authorize>
+
+
+				<sec:authorize access="hasAuthority('player')">
+					<petclinic:menuItem active="${name eq 'games'}" url="/games/listplayer"
+						title="My games">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>My games</span>
+					</petclinic:menuItem>
 				</sec:authorize>
 
 				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
