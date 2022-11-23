@@ -89,14 +89,15 @@
 											</p>
 							
 
-
 											<br>
-												<p class="text-left">
-                        <sec:authorize access="hasAuthority('player')">
-												  <a href="<c:url value="/players/myprofile" />"
+											
+											<p class="text-left">
+                        					<sec:authorize access="hasAuthority('player')">
+												 <a href="<c:url value="/players/myprofile" />"
 													  class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">My profile</a>
-											  </sec:authorize>
-                         </p>
+											 </sec:authorize>
+                         					</p>
+                         					
 											<br>
 
 											<p class="text-left">

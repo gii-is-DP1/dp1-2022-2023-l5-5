@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/players")
 public class PlayerController {
     
-    private static final String VIEWS_PLAYER_CREATE_OR_UPDATE_FORM = "players/createOrUpdatePlayerForm";
-    //private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
+    private static final String VIEWS_PLAYER_CREATE_FORM = "players/createPlayerForm";
+    private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
     private static final String VIEWS_PLAYERS_LIST = "players/playersList";
     private static final String VIEWS_PLAYERS_PROFILE = "players/playersProfile";
     private static final String VIEWS_PLAYERS_DELETE = "players/playersDelete";
@@ -45,16 +45,16 @@ public class PlayerController {
 	public String initCreationForm(Map<String, Object> model) {
 		Player player = new Player(); //Objeto juagador
 		model.put("player", player); //Meter en la vista el objeto jugador, y en la vista busco por el nombre entre ""
-		return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
+		return VIEWS_PLAYER_CREATE_FORM;
 	}
 	@PostMapping(value = "/new")
 	public String processCreationForm(@Valid Player player, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
-			return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
+			return VIEWS_PLAYER_CREATE_FORM;
 		}
 		else if (playerService.validator(player) == true) {
 			model.addAttribute("message", "This username is already chosen!");
-			return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
+			return VIEWS_PLAYER_CREATE_FORM;
 		}
 		else {
 			//creating owner, user and authorities
@@ -69,19 +69,19 @@ public class PlayerController {
 	public String initUpdatePlayerForm(@PathVariable("id") int id, Model model) {
 		Player player = this.playerService.getPlayerById(id).get();
 		model.addAttribute(player);
-		return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
+		return VIEWS_PLAYER_UPDATE_FORM;
 	}
 	
 	@PostMapping(value = "/myprofile/{id}/edit")
 	public String processUpdatePlayerForm(@Valid Player player, 
 			BindingResult result, @PathVariable("id") int id, ModelMap model) {
 		if (result.hasErrors()) {
-			return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
+			return VIEWS_PLAYER_UPDATE_FORM;
 		} 
-		else if (playerService.validator(player) == true){
-			model.addAttribute("message", "This username is already chosen!");
-			return VIEWS_PLAYER_CREATE_OR_UPDATE_FORM;
-		} 
+//		else if (playerService.validator(player) == true){
+//			model.addAttribute("message", "This username is already chosen!");
+//			return VIEWS_PLAYER_UPDATE_FORM;
+//		} 
 		else {
 			player.setId(id);
 			this.playerService.savePlayer(player);
