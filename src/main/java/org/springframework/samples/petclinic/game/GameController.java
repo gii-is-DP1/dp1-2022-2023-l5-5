@@ -120,5 +120,13 @@ public class GameController {
 		
 	}
 	
+	@GetMapping(value= "/statistics")
+	public String statistics(Game game, BindingResult result, Map<String, Object> model) {
+		
+		Integer nTotal = this.gameService.findnTotalGames();
+		model.put("nTotal", nTotal);
+		return "games/statistics";
+		
+	}
 
 }

@@ -72,8 +72,7 @@ public class PlayerService {
 	}
 
 	@Transactional
-	public void deletePlayer(String username) {
-		Integer id = playerRepository.findPlayerByUsername(username).getId();
+	public void deletePlayer(Integer id) {
 		playerRepository.deleteById(id); 
 
 	}

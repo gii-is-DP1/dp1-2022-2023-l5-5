@@ -34,6 +34,8 @@ public interface GameRepository extends CrudRepository<Game, Integer>{
 	@Query("SELECT DISTINCT difficulty FROM Game")
 	List<String> findAllDifficulties();
 
+	@Query("SELECT COUNT(game) FROM Game game")
+	Integer nTotalGames();
 
     
 

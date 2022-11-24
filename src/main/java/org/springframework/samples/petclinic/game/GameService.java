@@ -53,6 +53,10 @@ public class GameService {
 		return this.gameRepository.findAllDifficulties();
 	}
 	
+	@Transactional(readOnly = true)
+	public Integer findnTotalGames(){
+		return this.gameRepository.nTotalGames();
+	}
 
 
 }
