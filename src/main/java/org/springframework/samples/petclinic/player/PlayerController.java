@@ -91,8 +91,8 @@ public class PlayerController {
 	
 	//Un jugador elimina su propio jugador
 	@GetMapping(value = "/myprofile/{id}/delete")
-	public String deletePlayer(@PathVariable("username") String username) {
-		playerService.deletePlayer(username);
+	public String deletePlayer(@PathVariable("id") Integer id) {
+		playerService.deletePlayer(id);
 		
 		return VIEWS_PLAYERS_DELETE;
 	}
