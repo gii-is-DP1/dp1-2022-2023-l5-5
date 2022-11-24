@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 <%@ attribute name="name" required="true" rtexprvalue="true"
-	description="Name of the active menu: home, owners, vets or error"%>
+	description="Name of the active menu: home, owners, games, players, statistics or error"%>
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
@@ -55,14 +55,11 @@
 					</petclinic:menuItem>
 				</sec:authorize>
 
-				<sec:authorize access="hasAuthority('admin')">
-					<petclinic:menuItem active="${name eq 'achievements'}" url="/achievements/"
-						title="achievements">
+					<petclinic:menuItem active="${name eq 'statistics'}" url="/games/statistics"
+						title="statistics">
 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Achievements</span>
+						<span>Statistics</span>
 					</petclinic:menuItem>
-				</sec:authorize>
-
 
 				<sec:authorize access="hasAuthority('player')">
 					<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
