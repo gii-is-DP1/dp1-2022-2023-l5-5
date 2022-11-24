@@ -31,19 +31,18 @@ import lombok.Setter;
 @Table(name = "games")
 public class Game extends BaseEntity{
 	
-    @NotEmpty
+    @NotNull
     @Enumerated(EnumType.STRING)
 	@Column(name = "difficulty")
 	private Difficulty difficulty;
-	
     
 	
 	@NotNull
 	@Column(name="start_time")
     @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss.s")
 	private LocalDateTime startTime;
-	
-	@NotNull
+
+
 	@Column(name="finish_time")
     @DateTimeFormat(pattern = "yyyy-mm-dd hh:mm:ss.s")
 	private LocalDateTime finishTime;
@@ -53,7 +52,7 @@ public class Game extends BaseEntity{
     private Integer numClicks;
 	
 	//enProgreso
-    @NotEmpty
+    @NotNull
     private Boolean inProgress;
     
     
