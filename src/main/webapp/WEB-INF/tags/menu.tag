@@ -29,18 +29,57 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
 				</petclinic:menuItem>
+				
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
+						title="find players">
+						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+						<span>Find players</span>
+					</petclinic:menuItem>
+				</sec:authorize>
 
-				<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
-					title="find players">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-					<span>Find players</span>
-				</petclinic:menuItem>
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'games'}"
+						url="/games/listinprogress" title="games in progress">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>Games in progress</span>
+					</petclinic:menuItem>
+				</sec:authorize>
+				
+				
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'games'}" 
+					    url="/games/list" title="games played">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>Games Played</span>
+					</petclinic:menuItem>
+				</sec:authorize>
 
-				<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
-					title="new Game">
-					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					<span>New game</span>
+				<sec:authorize access="hasAuthority('admin')">
+					<petclinic:menuItem active="${name eq 'achievements'}" url="/achievements/"
+						title="achievements">
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span>Achievements</span>
+					</petclinic:menuItem>
+				</sec:authorize>
+
+
+				<sec:authorize access="hasAuthority('player')">
+					<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
+						title="new Game">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						<span>New game</span>
 				</petclinic:menuItem>
+				</sec:authorize>
+
+
+				<sec:authorize access="hasAuthority('player')">
+					<petclinic:menuItem active="${name eq 'games'}" url="/games/listplayer"
+						title="My games">
+						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+						<span>My games</span>
+					</petclinic:menuItem>
+				</sec:authorize>
 
 				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
 					title="audits">
@@ -48,11 +87,11 @@
 					<span>Audits</span>
 				</petclinic:menuItem> --> 
 				
-				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
+<%-- 				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
 					title="profile">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
-				</petclinic:menuItem> 
+				</petclinic:menuItem>  --%>
 
 			</ul>
 
@@ -83,9 +122,22 @@
 											<p class="text-left">
 												<strong><sec:authentication property="name" /></strong>
 											</p>
+							
+
+											<br>
+											
+											<p class="text-left">
+                        					<sec:authorize access="hasAuthority('player')">
+												 <a href="<c:url value="/players/myprofile" />"
+													  class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">My profile</a>
+											 </sec:authorize>
+                         					</p>
+                         					
+											<br>
+
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm">Logout</a>
+													class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Logout</a>
 											</p>
 										</div>
 									</div>
