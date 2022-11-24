@@ -3,7 +3,6 @@ package org.springframework.samples.petclinic.game;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
@@ -42,27 +41,27 @@ public class GameController {
 	public String initCreationForm(Map<String, Object> model){
 		
 		Game game = new Game();
-        game.setStartTime(LocalDateTime.now());
-        game.setNumClicks(0);
-        game.setInProgress(true);
-        game.setLostGame(false);
 		model.put("game", game); 
 		model.put("difficulties", gameService.findAllDifficulties());
 		return VIEWS_GAME_CREATE_FORM;
 	}
 	
 	@PostMapping(value="/new")
-	public String processCreationForm(@Valid Game game, BindingResult result, ModelMap model) {
+	public String processCreationForm(Game game, BindingResult result, ModelMap model) {
 		//String view =VIEWS_GAME_CREATE_OR_UPDATE_FORM;
 		if(result.hasErrors()) {
             
 			return VIEWS_GAME_CREATE_FORM;
 		}else {
+			game.setNumClicks(0);
+            game.setInProgress(true);
+		    game.setLostGame(false);
+			game.setStartTime(LocalDateTime.now());
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	        org.springframework.security.core.userdetails.User currentUser =  (org.springframework.security.core.userdetails.User) auth.getPrincipal();
 	        String user = currentUser.getUsername();
 	        Player player = this.playerService.getPlayerByUsername(user);
-	        game.setPlayer(player);
+	        game.setPlayer(player); 
 	        Difficulty diff = game.getDifficulty();
 	        String boardId = "";
 	        if (diff == Difficulty.EASY) {
