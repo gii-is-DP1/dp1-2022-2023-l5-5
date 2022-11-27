@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/players")
 public class PlayerController {
     
+	private static final String VIEWS_INICIO = "welcome";
     private static final String VIEWS_PLAYER_CREATE_FORM = "players/createPlayerForm";
     private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
     private static final String VIEWS_PLAYERS_LIST = "players/playersList";
@@ -90,11 +91,20 @@ public class PlayerController {
 	}
 	
 	//Un jugador elimina su propio jugador
-	@GetMapping(value = "/myprofile/{id}/delete")
-	public String deletePlayer(@PathVariable("id") Integer id) {
-		playerService.deletePlayer(id);
+		@GetMapping(value = "/myprofile/{id}/delete")
+		public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
+			Player player = this.playerService.getPlayerById(id).get();
+			model.addAttribute(player);
+			return VIEWS_PLAYERS_DELETE;
+		}
+	
+	
+	//Un jugador elimina su propio jugador
+	@GetMapping(value = "/myprofile/{id}/deleteConfirm")
+	public String deletePlayer(@PathVariable("id") Integer id, ModelMap model) {
+		this.playerService.deletePlayer(id);
 		
-		return VIEWS_PLAYERS_DELETE;
+		return "redirect:/";
 	}
 	
 

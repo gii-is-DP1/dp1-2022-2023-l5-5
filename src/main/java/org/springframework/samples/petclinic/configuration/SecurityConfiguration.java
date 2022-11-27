@@ -37,11 +37,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/session/**").permitAll()
         
 				.antMatchers("/players/new/**").permitAll()
-				//.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
-				//.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player","admin") 
+				.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player") 
+				.antMatchers("/players/myprofile/**/deleteConfirm").hasAnyAuthority("player")
 				.antMatchers("/players/myprofile/**").permitAll()
-				//.antMatchers("/myprofile/{username}/edit/**").hasAnyAuthority("player")
-				.antMatchers("/players/edit/**").hasAnyAuthority("player")
+				.antMatchers("/players/edit/**").hasAnyAuthority("admin")
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
