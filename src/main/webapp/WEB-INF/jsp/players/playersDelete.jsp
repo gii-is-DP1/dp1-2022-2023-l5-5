@@ -9,7 +9,11 @@
     <form:form modelAttribute="player" class="form-horizontal" id="delete-player-form">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                  <button class="btn btn-default" type="submit">Delete Player</button>
+            	<spring:url value="/players/myprofile/{id}/deleteConfirm" var="deleteUrl">
+        		  	<spring:param name="id" value="${player.id}"/>
+    			</spring:url>
+    			<a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Player</a>
+                 
             </div>
         </div>
         <div class="form-group">
