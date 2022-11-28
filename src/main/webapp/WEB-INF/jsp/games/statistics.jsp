@@ -5,9 +5,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="games">
+<petclinic:layout pageName="statistics">
     <h2>Games</h2>
-		<c:out value="${nTotal}"/>
+		 <c:out value="${nTotal}"/>
 		
 		    <table id="statisticsTable" class="table table-striped">
         <thead>
@@ -18,8 +18,6 @@
             <th style="width: 120px">Min</th>
         </tr>
         </thead>
-        <tbody>
-
         </tbody>
     </table>
 </petclinic:layout>

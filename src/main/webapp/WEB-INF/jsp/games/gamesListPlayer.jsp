@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="games">
+<petclinic:layout pageName="gamesPlayer">
     <h2>Games</h2>
 
     <table id="gamesTable" class="table table-striped">
@@ -39,7 +39,7 @@
                     <c:out value="${game.difficulty}"/>
                 </td>
                 <td>
-                    <c:out value="${game.tablero.id} "/>
+                    <c:out value="${game.board.id} "/>
                 </td>
                 <td>
                     <c:out value="${game.lostGame}"/>

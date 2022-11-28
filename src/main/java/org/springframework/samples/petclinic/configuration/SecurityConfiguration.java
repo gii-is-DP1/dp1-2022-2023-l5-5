@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -37,11 +36,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/session/**").permitAll()
         
 				.antMatchers("/players/new/**").permitAll()
-				//.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
-				//.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player","admin") 
+				.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player") 
+				.antMatchers("/players/myprofile/**/deleteConfirm").hasAnyAuthority("player")
 				.antMatchers("/players/myprofile/**").permitAll()
-				//.antMatchers("/myprofile/{username}/edit/**").hasAnyAuthority("player")
-				.antMatchers("/players/edit/**").hasAnyAuthority("player")
+				.antMatchers("/players/edit/**").hasAnyAuthority("admin")
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
@@ -49,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/games/list/**").hasAnyAuthority("admin")
 				.antMatchers("/games/listinprogress/**").hasAnyAuthority("admin")
 				.antMatchers("/games/listplayer/**").permitAll()
-				.antMatchers("/games/statistics").permitAll()
+				.antMatchers("/games/statistics/**").hasAnyAuthority("player","admin") 
 
 				.antMatchers("/tableros/**").permitAll()
 				
