@@ -18,8 +18,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.BaseEntity;
-import org.springframework.samples.petclinic.tablero.Tablero;
 import org.springframework.samples.petclinic.player.Player;
 
 
@@ -96,8 +96,8 @@ public class Game extends BaseEntity{
     
     //Relación Juego:Tablero
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="id_tablero", referencedColumnName = "id")
-    private Tablero tablero;
+    @JoinColumn(name="id_board", referencedColumnName = "id")
+    private Board board;
     
 	
 
