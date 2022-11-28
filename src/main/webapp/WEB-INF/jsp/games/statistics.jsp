@@ -7,7 +7,7 @@
 
 <petclinic:layout pageName="games">
     <h2>Games</h2>
-		<c:out value="${nTotal}"/>
+		 <c:out value="${nTotal}"/>
 		
 		    <table id="statisticsTable" class="table table-striped">
         <thead>
@@ -18,8 +18,6 @@
             <th style="width: 120px">Min</th>
         </tr>
         </thead>
-        <tbody>
-
         </tbody>
     </table>
 </petclinic:layout>

@@ -55,11 +55,13 @@
 					</petclinic:menuItem>
 				</sec:authorize>
 
+				
 					<petclinic:menuItem active="${name eq 'statistics'}" url="/games/statistics"
 						title="statistics">
 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						<span>Statistics</span>
 					</petclinic:menuItem>
+				
 
 				<sec:authorize access="hasAuthority('player')">
 					<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
