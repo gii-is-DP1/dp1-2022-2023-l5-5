@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.board.Board;
+import org.springframework.samples.petclinic.board.BoardService;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
-import org.springframework.samples.petclinic.tablero.Tablero;
-import org.springframework.samples.petclinic.tablero.TableroService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -27,7 +27,7 @@ public class GameController {
 	@Autowired
 	private PlayerService playerService;
 	@Autowired
-	private TableroService boardService;
+	private BoardService boardService;
 	
 	private static final String VIEWS_GAME_CREATE_FORM = "games/createGameForm";
 	//private static final String VIEWS_DELETE_GAME = "games/gameDelete";
@@ -65,25 +65,25 @@ public class GameController {
 	        Difficulty diff = game.getDifficulty();
 	        String boardId = "";
 	        if (diff == Difficulty.EASY) {
-	        	Tablero facil = boardService.findTableroById(1);
-	        	game.setTablero(facil);
+	        	Board facil = boardService.findBoardById(1);
+	        	game.setBoard(facil);
 	        	game.setDifficulty(Difficulty.EASY);
 	        	boardId = "1";
 	        }else if (diff == Difficulty.MEDIUM) {
-	        	Tablero medio = boardService.findTableroById(2);
-	        	game.setTablero(medio);
+	        	Board medio = boardService.findBoardById(2);
+	        	game.setBoard(medio);
 	        	game.setDifficulty(Difficulty.MEDIUM);
 	        	boardId = "2";
 	        }else {
-	        	Tablero dificil = boardService.findTableroById(3);
-	        	game.setTablero(dificil);
+	        	Board dificil = boardService.findBoardById(3);
+	        	game.setBoard(dificil);
 	        	game.setDifficulty(Difficulty.DIFFICULT);
 	        	boardId = "3";
 	        }
 
 			this.gameService.save(game);
 
-			return "redirect:/tableros/prueba/" + boardId;
+			return "redirect:/boards/prueba/" + boardId;
 		}
 		
 	}

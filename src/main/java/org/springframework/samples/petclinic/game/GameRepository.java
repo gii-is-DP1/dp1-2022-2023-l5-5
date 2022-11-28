@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.samples.petclinic.casilla.Casilla;
 import org.springframework.samples.petclinic.player.Player;
+import org.springframework.samples.petclinic.square.Square;
 import org.springframework.samples.petclinic.user.User;
 
 

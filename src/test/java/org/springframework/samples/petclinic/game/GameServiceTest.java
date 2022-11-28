@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.samples.petclinic.board.BoardService;
 import org.springframework.samples.petclinic.player.PlayerService;
-import org.springframework.samples.petclinic.tablero.TableroService;
 import org.springframework.stereotype.Service;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
@@ -25,7 +25,7 @@ public class GameServiceTest {
 	private PlayerService playerService;
 	
 	@Autowired
-	private TableroService tableroService;
+	private BoardService boardService;
 	
 	
 	//Test de crear juego (H6) No va a ir hasta que podamos crear el juego correctamente, pero está bien

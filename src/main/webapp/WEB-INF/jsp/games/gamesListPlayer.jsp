@@ -39,7 +39,7 @@
                     <c:out value="${game.difficulty}"/>
                 </td>
                 <td>
-                    <c:out value="${game.tablero.id} "/>
+                    <c:out value="${game.board.id} "/>
                 </td>
                 <td>
                     <c:out value="${game.lostGame}"/>
