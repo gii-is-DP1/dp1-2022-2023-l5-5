@@ -123,8 +123,12 @@ public class GameController {
 	@GetMapping(value= "/statistics")
 	public String statistics(Game game, BindingResult result, Map<String, Object> model) {
 		
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
 		Integer nTotal = this.gameService.findnTotalGames();
+		Integer gamesPlayerTotal = this.gameService.findnTotalGamesPlayer(currentUser.getUsername());
 		model.put("nTotal", nTotal);
+		model.put("gamesPlayerTotal", gamesPlayerTotal);
 		return "games/statistics";
 		
 	}

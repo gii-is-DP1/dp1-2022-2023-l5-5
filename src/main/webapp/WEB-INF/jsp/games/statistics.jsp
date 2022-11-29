@@ -84,14 +84,11 @@
 			    <tr>
 			      <th colspan=2 scope="col" style="text-align:center">PLAYER STATS</th>
 			    </tr>
-			    <tr>
-			      <th colspan=2 style="text-align:center" scope="col">Miscellaneous</th>
-			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr>
 					<th width="50%" >Number of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberPlayerGames}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotal}" /></td>
 				</tr>
 				<tr>
 					<th>Average duration games played</th>
