@@ -37,6 +37,7 @@ public interface GameRepository extends CrudRepository<Game, Integer>{
 	@Query("SELECT COUNT(game) FROM Game game")
 	Integer nTotalGames();
 
-    
+	@Query("SELECT COUNT(game) FROM Game game WHERE game.player.user.username =:username")
+	Integer nTotalGamesPlayer(@Param("username") String username);
 
 }
