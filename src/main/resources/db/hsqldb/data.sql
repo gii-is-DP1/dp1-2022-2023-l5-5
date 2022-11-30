@@ -3,22 +3,44 @@ INSERT INTO users(username,password,enabled) VALUES ('admin1','4dm1n',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (1,'admin1','admin');
 
 INSERT INTO users(username,password,enabled) VALUES ('pabquide','p4bqu1de',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (4,'pabquide','player');
+INSERT INTO authorities(id,username,authority) VALUES (2,'pabquide','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('meriglmar','mer1glm4r',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (5,'meriglmar','player');
+INSERT INTO authorities(id,username,authority) VALUES (3,'meriglmar','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('angbermar1','4ngbermar1',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (6,'angbermar1','player');
+INSERT INTO authorities(id,username,authority) VALUES (4,'angbermar1','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('paomarsan','p4om4rs4n',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (7,'paomarsan','player');
+INSERT INTO authorities(id,username,authority) VALUES (5,'paomarsan','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('sanzultor','s4nzult0r',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (8,'sanzultor','player');
+INSERT INTO authorities(id,username,authority) VALUES (6,'sanzultor','player');
 
 INSERT INTO users(username,password,enabled) VALUES ('andgarriv','4ndg4rr1v',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (9,'andgarriv','player');
+INSERT INTO authorities(id,username,authority) VALUES (7,'andgarriv','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('pedrito','pedrito',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (8,'pedrito','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('iked','iked',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (9,'iked','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('kfc','kfc',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (10,'kfc','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('uuuu','uuuu',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (11,'uuuu','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('padre','4ndg4rr1v',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (12,'padre','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('si','si',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (13,'si','player');
+
+INSERT INTO users(username,password,enabled) VALUES ('no','no',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (14,'no','player');
+
 
 
 INSERT INTO players(id,first_name,last_name,username,mail) VALUES (1,'Pablo','Quindos','pabquide','pabquide@alum.us.es');
@@ -27,6 +49,14 @@ INSERT INTO players(id,first_name,last_name,username,mail) VALUES (3,'Ángela','
 INSERT INTO players(id,first_name,last_name,username,mail) VALUES (4,'Paola','Martín','paomarsan','paomarsan@alum.us.es');
 INSERT INTO players(id,first_name,last_name,username,mail) VALUES (5,'Santiago','Zuleta','sanzultor','sanzultor@alum.us.es');
 INSERT INTO players(id,first_name,last_name,username,mail) VALUES (6,'Andrés','García','andgarriv','andgarriv@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (7,'Pedro','Benito','pedrito','pedrito@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (8,'Iker','Iked','iked','iked@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (9,'Pollo','Frito','kfc','kfc@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (10,'Taco','Bell','uuuu','si@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (11,'Luis','Enrique','padre','padre@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (12,'Si','Si','si','si@alum.us.es');
+INSERT INTO players(id,first_name,last_name,username,mail) VALUES (13,'No','No','no','no@alum.us.es');
+
 
 
 INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (1,null,800,800,15);
