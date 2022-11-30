@@ -21,6 +21,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
+import org.springframework.data.web.SortDefault.SortDefaults;
 
 
 @Controller
@@ -100,10 +105,24 @@ public class PlayerController {
 
 	//El admin ve el listado de jugadores
 	@GetMapping(value = "/list")
-	public String processFindForm(Player player, BindingResult result, Map<String, Object> model) {
-		List<Player> results = this.playerService.findAllPlayers();
+	public String processFindForm(Player player, BindingResult result, Map<String, Object> model, 
+		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
+			@SortDefault(sort = "id", direction = Sort.Direction.ASC),
+			@SortDefault(sort = "mail", direction = Sort.Direction.DESC), }) Pageable pageable) {
+
+
+		Integer numResults = this.playerService.countAllPlayers();
+		Integer page = 0;
+		List<Player> results = this.playerService.findAllPlayers(page, pageable);
 			// multiple players found
+			model.put("pageNumber", pageable.getPageNumber());
+			model.put("hasPrevious", pageable.hasPrevious());
+			Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
+			model.put("totalPages", totalPages);
 			model.put("selections", results);
+
+
+		
 			return VIEWS_PLAYERS_LIST;
 		
 	}
