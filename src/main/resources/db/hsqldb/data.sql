@@ -72,5 +72,11 @@ INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,l
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (6,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',1);
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (7,'MEDIUM','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',1);
 
-
-
+INSERT INTO achievements(id, title, rule, username) VALUES(1, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(2, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(3, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(4, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(5, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(6, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(7, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(8, '10 wins', TRUE, 'sanzultor');
