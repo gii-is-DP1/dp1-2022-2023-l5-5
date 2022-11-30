@@ -130,7 +130,6 @@ public class GameController {
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
 		return "games/statistics";
-		
 	}
 
 }

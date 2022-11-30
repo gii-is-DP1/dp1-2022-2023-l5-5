@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.samples.petclinic.achievements.Achievement;
 import org.springframework.samples.petclinic.game.Game;
 import org.springframework.samples.petclinic.model.Person;
 import org.springframework.samples.petclinic.user.User;
@@ -39,5 +40,8 @@ public class Player extends Person implements Serializable{
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
     private List<Game> game;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
+    private List<Achievement> achievements;
 	
 }
