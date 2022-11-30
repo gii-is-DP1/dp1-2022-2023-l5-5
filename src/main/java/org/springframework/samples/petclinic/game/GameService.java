@@ -57,6 +57,10 @@ public class GameService {
 	public Integer findnTotalGames(){
 		return this.gameRepository.nTotalGames();
 	}
-
+	
+	@Transactional(readOnly = true)
+	public Integer findnTotalGamesPlayer(String username){
+		return this.gameRepository.nTotalGamesPlayer(username);
+	}
 
 }
