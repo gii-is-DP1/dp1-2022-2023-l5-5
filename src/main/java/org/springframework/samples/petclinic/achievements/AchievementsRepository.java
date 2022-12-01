@@ -27,7 +27,7 @@ public interface AchievementsRepository extends CrudRepository<Achievement, Inte
 	Integer countAllAchievements();
 
 	@Query("SELECT achievement FROM Achievement achievement WHERE achievement.player.user.username=:username")
-	public Achievement findAchievementsByUsername(@Param("username") String username);
+	public List<Achievement> findAchievementsByUsername(@Param("username") String username,Pageable pageable);
 	
 	
 }

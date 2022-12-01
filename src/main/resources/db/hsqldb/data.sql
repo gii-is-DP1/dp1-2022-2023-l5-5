@@ -77,6 +77,9 @@ INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,l
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (5,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'pabquide',5);
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (6,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',6);
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (7,'MEDIUM','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',7);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (8,'EASY','1990-06-20 08:11:00.0', '1990-06-20 08:28:00.0',14,FALSE, FALSE,'angbermar1',8);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (9,'MEDIUM','1990-06-20 08:32:00.0', '1990-06-20 08:56:00.0',14,FALSE, TRUE,'angbermar1',9);
+
 
 INSERT INTO achievements(id, title, rule, username) VALUES(1, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(2, '10 wins', TRUE, 'sanzultor');
@@ -85,4 +88,10 @@ INSERT INTO achievements(id, title, rule, username) VALUES(4, '10 wins', TRUE, '
 INSERT INTO achievements(id, title, rule, username) VALUES(5, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(6, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(7, '10 wins', TRUE, 'sanzultor');
-INSERT INTO achievements(id, title, rule, username) VALUES(8, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(8, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(9, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(10, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(11, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(12, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(13, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(14, '10 wins', FALSE, 'pabquide');

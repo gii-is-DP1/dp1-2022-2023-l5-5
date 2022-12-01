@@ -38,8 +38,8 @@ public class AchievementsService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Achievement getAchievementsByUsername(String username) throws DataAccessException {
-		return achievementsRepository.findAchievementsByUsername(username);
+	public List<Achievement> getAchievementsByUsername(String username, Pageable pageable, Integer page) throws DataAccessException {
+		return achievementsRepository.findAchievementsByUsername(username,pageable);
 	}
 
 }
