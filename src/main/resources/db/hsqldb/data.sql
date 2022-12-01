@@ -81,4 +81,10 @@ INSERT INTO achievements(id, title, rule, username) VALUES(4, '10 wins', TRUE, '
 INSERT INTO achievements(id, title, rule, username) VALUES(5, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(6, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(7, '10 wins', TRUE, 'sanzultor');
-INSERT INTO achievements(id, title, rule, username) VALUES(8, '10 wins', TRUE, 'sanzultor');
+INSERT INTO achievements(id, title, rule, username) VALUES(8, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(9, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(10, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(11, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(12, '10 wins', TRUE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(13, '10 wins', FALSE, 'pabquide');
+INSERT INTO achievements(id, title, rule, username) VALUES(14, '10 wins', FALSE, 'pabquide');

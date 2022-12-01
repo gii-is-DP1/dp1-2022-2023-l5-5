@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.user.AuthoritiesService;
 import org.springframework.samples.petclinic.user.UserService;
 import org.springframework.security.core.Authentication;
@@ -60,25 +61,26 @@ public class AchievementsController {
 
 			return "/achievements/achievementsList";
 	}
-
-	@GetMapping(value = "/achievements/list/")
-	public String processFindFormPlayer(Achievement achievement, BindingResult result, Map<String, Object> model, 
-		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
-			@SortDefault(sort = "title", direction = Sort.Direction.ASC),
-			@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
-
-
+	
+	@GetMapping(value = "/myprofile/achievements")
+	public String showPlayerAchievements(Player player, BindingResult result, Map<String, Object> model,
+	@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
+		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
+		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		User currentUser = (User) authentication.getPrincipal();
+		
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
-		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
-			// multiple players found
-			model.put("pageNumber", pageable.getPageNumber());
-			model.put("hasPrevious", pageable.hasPrevious());
+		List<Achievement> results = this.achievementsService.getAchievementsByUsername(currentUser.getUsername(),pageable,page);
+		// multiple players found
+		    model.put("pageNumber", pageable.getPageNumber());
+		    model.put("hasPrevious", pageable.hasPrevious());
 			Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
 			model.put("totalPages", totalPages);
 			model.put("selections", results);
-
-			return "/achievements/achievementsList";
+		return "achievements/playerAchievements";
 	}
 
 
