@@ -107,49 +107,7 @@
 					<td style="font-size:20px;text-align:center"><c:out value="${minDurationPlayerGames}" /> minutes</td>
 				</tr>
 			  </tbody>
-			  <thead>
-			    <tr>
-			      <th colspan=2 style="text-align:center" scope="col">Game stats</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<tr>
-					<th width="50%">TOTAL GAMES WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberWonGames}" /></td>
-				</tr>
-			    <tr>
-					<th width="50%">Total activated mines</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberActivatedMines}" /></td>
-				</tr>
-				<tr>
-					<th>Total mine explosions contained</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberGuessedMines}" /></td>
-				</tr>
-				<tr>
-					<th>Total flags placed</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberTotalFlags}" /></td>
-				</tr>
-				<tr>
-					<th>Total cells clicked</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberCellsClicked}" /></td>
-				</tr>
-			  </tbody>
-			  <thead>
-			    <tr>
-			      <th colspan=2 style="text-align:center" scope="col">Achievements</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<tr>
-					<th>BRONZE LEVEL: You have won <c:out value="${bronzeMinimumGames}" /> games.</th>
-				</tr>
-				<tr>
-					<th>SILVER LEVEL: You have won <c:out value="${silverMinimumGames}" /> games.</th>
-				</tr>
-				<tr>
-					<th>GOLD LEVEL: You have won <c:out value="${goldMinimumGames}" /> games.</th>
-				</tr>
-			  </tbody>
+			  	
 			</table>
 	</c:if>
 	<c:if test="${fn:contains(principal.authorities, 'admin')}">
