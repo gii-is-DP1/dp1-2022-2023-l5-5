@@ -62,17 +62,24 @@ INSERT INTO players(id,first_name,last_name,username,mail) VALUES (13,'No','No',
 INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (1,null,800,800,15);
 INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (2,null,800,800,30);
 INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (3,null,800,800,65);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (4,null,800,800,15);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (5,null,800,800,30);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (6,null,800,800,65);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (7,null,800,800,15);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (8,null,800,800,30);
+INSERT INTO boards(id,background,width,heigth,mines_number) VALUES (9,null,800,800,65);
 
 
 INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (1,'EASY','1990-06-20 08:03:00.0', '1990-06-20 08:20:00.0',10,FALSE, TRUE,'pabquide',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (2,'EASY','1990-06-20 08:04:00.0', '1990-06-20 08:21:00.0',11,TRUE, FALSE,'meriglmar',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (3,'EASY','1990-06-20 08:05:00.0', '1990-06-20 08:22:00.0',12,TRUE, FALSE,'pabquide',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (4,'MEDIUM','1990-06-20 08:06:00.0', '1990-06-20 08:23:00.0',13,TRUE, FALSE,'meriglmar',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (5,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'pabquide',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (6,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (7,'MEDIUM','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (8,'EASY','1990-06-20 08:11:00.0', '1990-06-20 08:28:00.0',14,FALSE, FALSE,'angbermar1',1);
-INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (9,'MEDIUM','1990-06-20 08:32:00.0', '1990-06-20 08:56:00.0',14,FALSE, TRUE,'angbermar1',1);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (2,'EASY','1990-06-20 08:04:00.0', '1990-06-20 08:21:00.0',11,TRUE, FALSE,'meriglmar',2);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (3,'EASY','1990-06-20 08:05:00.0', '1990-06-20 08:22:00.0',12,TRUE, FALSE,'pabquide',3);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (4,'MEDIUM','1990-06-20 08:06:00.0', '1990-06-20 08:23:00.0',13,TRUE, FALSE,'meriglmar',4);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (5,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'pabquide',5);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (6,'DIFFICULT','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',6);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (7,'MEDIUM','1990-06-20 08:07:00.0', '1990-06-20 08:24:00.0',14,FALSE, TRUE,'paomarsan',7);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (8,'EASY','1990-06-20 08:11:00.0', '1990-06-20 08:28:00.0',14,FALSE, FALSE,'angbermar1',8);
+INSERT INTO games(id,difficulty,start_time, finish_time,num_clicks,in_progress,lost_game,username,id_board) VALUES (9,'MEDIUM','1990-06-20 08:32:00.0', '1990-06-20 08:56:00.0',14,FALSE, TRUE,'angbermar1',9);
+
 
 INSERT INTO achievements(id, title, rule, username) VALUES(1, '10 wins', TRUE, 'sanzultor');
 INSERT INTO achievements(id, title, rule, username) VALUES(2, '10 wins', TRUE, 'sanzultor');

@@ -45,7 +45,7 @@ public class Board extends BaseEntity{
     public Board(){
     }
 
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "board",fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "board",fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Square> square;
 	
 	//Relación Game:Board

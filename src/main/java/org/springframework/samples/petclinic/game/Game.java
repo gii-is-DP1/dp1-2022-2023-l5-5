@@ -17,6 +17,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.BaseEntity;
@@ -95,8 +97,9 @@ public class Game extends BaseEntity{
     private Player player;
     
     //Relación Juego:Tablero
-    @OneToOne(cascade=CascadeType.ALL)
+    @OneToOne(cascade=CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name="id_board", referencedColumnName = "id")
+    @OnDelete( action = OnDeleteAction.CASCADE )
     private Board board;
     
 	

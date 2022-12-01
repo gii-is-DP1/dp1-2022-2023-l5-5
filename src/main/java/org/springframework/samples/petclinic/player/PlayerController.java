@@ -109,7 +109,7 @@ public class PlayerController {
 	public String deletePlayer(@PathVariable("id") Integer id, ModelMap model) {
 		this.playerService.deletePlayer(id);
 		
-		return "redirect:/";
+		return "redirect:/logout";
 	}
 	
 

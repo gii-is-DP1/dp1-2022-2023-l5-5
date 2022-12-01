@@ -14,7 +14,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.samples.petclinic.achievements.Achievement;
+import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.game.Game;
 import org.springframework.samples.petclinic.model.Person;
 import org.springframework.samples.petclinic.user.User;
@@ -38,7 +41,8 @@ public class Player extends Person implements Serializable{
 	@Valid
 	private User user;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="username", referencedColumnName = "username")
     private List<Game> game;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
