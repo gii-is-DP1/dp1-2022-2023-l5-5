@@ -78,7 +78,7 @@ public class GameServiceTest {
 		@Test
 		void shouldFindAllGamesNotInProgress() throws Exception {
 			Collection<Game> games = this.gameService.findAllGamesNotInProgress();
-			assertThat(games.size()).isEqualTo(4);
+			assertThat(games.size()).isEqualTo(6);
 			Game[] gameArr = games.toArray(new Game[games.size()]);
 			assertThat(gameArr[0].getInProgress().equals(false));
 		}
