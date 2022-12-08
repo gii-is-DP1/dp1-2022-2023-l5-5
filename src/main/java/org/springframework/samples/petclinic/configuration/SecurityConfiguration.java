@@ -44,15 +44,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
-				.antMatchers("/games/new/**").hasAnyAuthority("player")
-				.antMatchers("/games/list/**").hasAnyAuthority("admin")
-				.antMatchers("/games/listinprogress/**").hasAnyAuthority("admin")
-				.antMatchers("/games/listplayer/**").permitAll()
-				.antMatchers("/games/statistics/**").hasAnyAuthority("player","admin") 
+				.antMatchers("/board/new/**").hasAnyAuthority("player")
+				.antMatchers("/board/list/**").hasAnyAuthority("admin")
+				.antMatchers("/board/listinprogress/**").hasAnyAuthority("admin")
+				.antMatchers("/board/listplayer/**").permitAll()
+				.antMatchers("/board/statistics/**").hasAnyAuthority("player","admin") 
 
-				.antMatchers("/tableros/**").permitAll()
+				.antMatchers("/boards/**").permitAll()
 				
-				.antMatchers("/casillas/**").permitAll()
+				.antMatchers("/squares/**").permitAll()
 				
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
 				.antMatchers("/owners/**").hasAnyAuthority("owner","admin")				

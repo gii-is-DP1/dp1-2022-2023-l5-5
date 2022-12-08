@@ -65,4 +65,5 @@
             </c:if>
 
         </tr>
+     </table>
 </petclinic:layout>

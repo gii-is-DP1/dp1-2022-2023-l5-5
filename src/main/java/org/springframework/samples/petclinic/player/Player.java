@@ -1,11 +1,11 @@
 package org.springframework.samples.petclinic.player;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -14,8 +14,8 @@ import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-import org.springframework.samples.petclinic.game.Game;
-import org.springframework.samples.petclinic.model.Person;
+import org.springframework.samples.petclinic.board.Board;
+import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.user.User;
 
 import lombok.Getter;
@@ -25,7 +25,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "players")
-public class Player extends Person implements Serializable{
+public class Player extends AuditableEntity {
+	
+	@Column(name = "first_name")
+	@NotEmpty
+	protected String firstName;
+
+	@Column(name = "last_name")
+	@NotEmpty
+	protected String lastName;
     
 	@NotEmpty
 	@Email
@@ -37,7 +45,11 @@ public class Player extends Person implements Serializable{
 	@Valid
 	private User user;
 
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
+//    private List<Game> game;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
-    private List<Game> game;
+	private List<Board> board;
+
 	
 }

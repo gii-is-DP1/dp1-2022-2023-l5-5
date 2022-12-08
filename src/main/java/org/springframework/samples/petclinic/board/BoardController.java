@@ -1,79 +1,106 @@
 package org.springframework.samples.petclinic.board;
 
-
+import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
-import java.util.Collection;
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.user.AuthoritiesService;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.samples.petclinic.player.PlayerService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
-    
+	
+	private static final String VIEWS_BOARD = "boards/board";
 
 	@Autowired
-	private final BoardService boardService;
+	private BoardService boardService;
 
-    @Autowired
-	public BoardController(BoardService boardService, AuthoritiesService authoritiesService) {
-		this.boardService = boardService;
-	}
-
-    @InitBinder
-	public void setAllowedFields(WebDataBinder dataBinder) {
-		dataBinder.setDisallowedFields("id");
-	}
-
+	@Autowired
+	private PlayerService playerService;
 	
-    //Código que habrá que poner dentro de un método para crear un board
-    
+	@GetMapping(path = "/new/**")
+	public String board(ModelMap modelMap) {
+		return VIEWS_BOARD;
+	}
+	
+//	@GetMapping(value= "/list")
+//	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
+//
+//		List<Board> results = this.boardService.findAllGamesNotInProgress();
+//		
+//			model.put("selections", results);
+//			return "games/gamesList";
+//		
+//	}
 
-    
+//	@GetMapping(value= "/listinprogress")
+//	public String processFindFormProgress(Game game, BindingResult result, Map<String, Object> model) {
+//
+//		List<Game> results = this.gameService.findAllGamesInProgress();
+//		
+//			model.put("selections", results);
+//			return "games/gamesListInProgress";
+//		
+//	}
 
-	@GetMapping(value = "/boards")
-	public String processFindForm(Board board, BindingResult result, Map<String, Object> model) {
-
-		// allow parameterless GET request for /owners to return all records
-		if (board.getMines_number()==null) {
-			board.setMines_number(0); // empty string signifies broadest possible search
+//	@GetMapping(value= "/listplayer")
+//	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model) {
+//
+//		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+//		User currentUser=(User) authentication.getPrincipal();
+//		
+//	    List<Game> results = this.gameService.findAllGamesPlayer(currentUser.getUsername());
+//		model.put("selections", results);
+//		return "games/gamesListPlayer";
+//		
+//	}
+	
+	@GetMapping(value = "/listinprogress")
+	public String processFindFormProgress(ModelMap modelMap) {
+		String vista = "boards/gamesListInProgress";
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null)
+			if (authentication.isAuthenticated()) {
+				User currentUser = (User) authentication.getPrincipal();
+				List<Board> board = boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS);
+				modelMap.addAttribute("board", board);
+				return vista;
+			} else {
+				System.out.println("User not authenticated");
 		}
-
-		// find owners by last name
-		Collection<Board> results = this.boardService.findAll();
-		
-			// multiple owners found
-			model.put("selections", results);
-			return "boards/boardsList";
+		return "welcome";
 		
 	}
-
-	@GetMapping("/boards/{boardId}")
-	public ModelAndView showBoard(@PathVariable("boardId") int boardId) {
-		ModelAndView mav = new ModelAndView("boards/boardsDetails");
-		mav.addObject(this.boardService.findBoardById(boardId));
-		return mav;
+    
+	@GetMapping(path="/list")
+	public String processFindForm(ModelMap modelMap) {
+		List<Board> board = boardService.findAllGamesNotInProgress(GameStatus.NONE);
+		modelMap.addAttribute("board", board);
+		return "boards/gamesList";
 	}
+	
+	@GetMapping(value= "/listplayer")
+	public String processFindFormPlayer(Board board, BindingResult result, Map<String, Object> model) {
 
-
-	@GetMapping("/boards/prueba/{boardId}")
-	public String prueba(Map<String,Object> model, HttpServletResponse response, @PathVariable("boardId") int boardId){
-		response.addHeader("Refresh", "1");
-		model.put("now", new Date());
-		model.put("board", this.boardService.findBoardById(boardId));
-		model.put("boardImagen","resources/images/tablero-buscaminas.jpg");
-		return "boards/boardsPrueba";
-	}	
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
+		
+	    List<Board> results = this.boardService.findAllGamesPlayer(currentUser.getUsername());
+		model.put("selections", results);
+		return "boards/gamesListPlayer";
+		
+	}
 
 	
 	

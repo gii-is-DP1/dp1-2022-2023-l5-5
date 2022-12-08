@@ -1,11 +1,11 @@
-<%@ page session="false" trimDirectiveWhitespaces="true" %>
+ <%@ page session="false" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="gamesProgress">
+<petclinic:layout pageName="gamesPlayer">
     <h2>Games</h2>
 
     <table id="gamesTable" class="table table-striped">
@@ -24,39 +24,43 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${selections}" var="game">
+        <c:forEach items="${board}" var="board">
             <tr>
-                <td>
+<%--                 <td>
                     <spring:url value="/games/{gameId}" var="gameUrl">
                         <spring:param name="gameId" value="${game.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.id}"/></a>
+                </td> --%>
+                <td>
+                    <c:out value="${board.player.user.username}"/>
                 </td>
                 <td>
-                    <c:out value="${game.player.user.username}"/>
+                    <c:out value="${board.id} "/>
                 </td>
                 <td>
-                    <c:out value="${game.difficulty}"/>
+                    <c:out value="${board.gameStatus}"/>
                 </td>
                 <td>
-                    <c:out value="${game.board.id} "/>
+                    <c:out value="${board.duration}"/>
                 </td>
                 <td>
-                    <c:out value="${game.lostGame}"/>
+                    <c:out value="${board.startTime}"/>
+                </td>
+				<td>
+                    <c:out value="${board.finishTime}"/>
                 </td>
                 <td>
-                    <c:out value="${game.inProgress}"/>
-                </td>
-                <td>
-                    <c:out value="${game.startTime}"/>
-                </td>
-                <td>
-                    <c:out value="${game.finishTime}"/>
-                </td>
-                <td>
-                    <c:out value="${game.numClicks}"/>
-                </td>
-                
+				<c:if test = "${board.rowsNumber == 8}">
+                    <c:out value="Easy"/>
+                </c:if>
+                <c:if test = "${board.rowsNumber == 14}">
+                    <c:out value="Medium"/>
+                </c:if>
+                <c:if test = "${board.rowsNumber == 24}">
+                    <c:out value="Difficult"/>
+                </c:if>
+                </td>  
                 
       
 <!--
