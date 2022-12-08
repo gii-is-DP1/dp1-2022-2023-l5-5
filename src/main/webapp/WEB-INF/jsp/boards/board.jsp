@@ -143,7 +143,7 @@
 			for (let j = 0; j < array2D[i].length; j++) {
 			    let x = j * squareSide;
 			    let y = i * squareSide;
-			    squareColor = 'lightgrey';
+ 			    squareColor = 'lightgrey';
 				let img = new Image();
 			    if (array2D[i][j] === 'X') img.src = "resources/images/covered_square.png";
 			    if (array2D[i][j] === '*') img.src = "resources/images/mine.png";
