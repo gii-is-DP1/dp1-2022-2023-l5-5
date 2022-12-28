@@ -44,7 +44,7 @@
                         <c:out value="---"/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${board.duaration}"/>
+                        <c:out value="${board.duration}"/>
                     </c:otherwise>
                 </c:choose>
                 </td>

@@ -97,7 +97,7 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		
 	    List<Board> results = this.boardService.findAllGamesPlayer(currentUser.getUsername());
-		model.put("selections", results);
+		model.put("board", results);
 		return "boards/gamesListPlayer";
 		
 	}

@@ -8,14 +8,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <petclinic:layout pageName="board">
-<!-- 	<style>
+<!--  	<style>
 	body {
 		text-align: center;
 		font-family: calibri;
 		margin: 0;
 		padding: 0;
 		user-select: none;
-		background: lightsteelblue;
+		background: lightsteelpink;
 	  }
 
 	  #titulo{
@@ -31,7 +31,7 @@
 		font-size: large;
 	  }
 
-	</style> -->
+	</style>  -->
 	
 	<div id="title">MINESWEEPER</div>
 	<br>
@@ -143,7 +143,7 @@
 			for (let j = 0; j < array2D[i].length; j++) {
 			    let x = j * squareSide;
 			    let y = i * squareSide;
-			    squareColor = 'lightgrey';
+ 			    squareColor = 'lightgrey';
 				let img = new Image();
 			    if (array2D[i][j] === 'X') img.src = "resources/images/covered_square.png";
 			    if (array2D[i][j] === '*') img.src = "resources/images/mine.png";
