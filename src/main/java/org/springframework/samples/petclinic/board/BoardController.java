@@ -29,7 +29,7 @@ public class BoardController {
 	@Autowired
 	private PlayerService playerService;
 	
-	@GetMapping(path = "/new/**")
+	@GetMapping(path = "/game/**")
 	public String board(ModelMap modelMap) {
 		return VIEWS_BOARD;
 	}

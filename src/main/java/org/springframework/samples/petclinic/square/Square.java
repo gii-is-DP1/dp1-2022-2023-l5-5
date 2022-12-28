@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="casillas")
-@JsonIgnoreProperties(value="tablero")
+@JsonIgnoreProperties(value="board")
 public class Square extends BaseEntity{
 	@Column(name = "fila")
 	public int fila;
