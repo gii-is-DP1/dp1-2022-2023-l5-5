@@ -65,7 +65,7 @@
 	
  	function createBoard(difficulty) {
 		document.getElementById("mensajeFinPartida").style.display = "none";
-		axios.get(`/boards/new/`+difficulty.toString())
+		axios.get("/boards/new/"+difficulty.toString())
 		.then(board=>{
 			console.log(board);
 			renderBoard(board);
@@ -101,15 +101,15 @@
 	} 
 	
  	//Refresca el tablero cuando se cambia la dificultad para borrar los datos del tablero anterior
-	function redirect(dificultad){
-		window.location.href = "http://localhost:8080/board/new?dificulty="difficulty.toString();
+	function redirect(difficulty){
+		window.location.href = 'http://localhost:8080/board/new?dificulty='+difficulty.toString();
 	}
 
 	//Obtenemos el parametro de dificultad de la URL
 	var queryString = window.location.search;
 	var urlParams = new URLSearchParams(queryString);
-	var anuncioParam = urlParams.get('dificulty');
-	window.onload = createBoard(anuncioParam);
+	var dificultad = urlParams.get('dificulty');
+	window.onload = createBoard(dificultad);
 	function renderBoard(board){
 		/* actualizarBanderas(); */
 		/* finPartida(); */
@@ -129,6 +129,7 @@
 			}
 			array2D.push(a);
 		}
+	}
 	
 	
 	 	//Importamos la imagen a cada casilla correspondiendo con su valor
