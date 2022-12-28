@@ -40,7 +40,7 @@
 
 				<sec:authorize access="hasAuthority('admin')">
 					<petclinic:menuItem active="${name eq 'gamesProgress'}"
-						url="/games/listinprogress" title="games in progress">
+						url="/board/listinprogress" title="games in progress">
 						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 						<span>Games in progress</span>
 					</petclinic:menuItem>
@@ -49,7 +49,7 @@
 				
 				<sec:authorize access="hasAuthority('admin')">
 					<petclinic:menuItem active="${name eq 'gamesPlayed'}" 
-					    url="/games/list" title="games played">
+					    url="/board/list" title="games played">
 						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 						<span>Games Played</span>
 					</petclinic:menuItem>
