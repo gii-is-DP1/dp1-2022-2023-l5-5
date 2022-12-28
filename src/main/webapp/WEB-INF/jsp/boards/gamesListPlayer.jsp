@@ -11,15 +11,23 @@
     <table id="gamesTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 120px">Id de partida</th>
-            <th style="width: 150px;">Nombre Usuario</th>
-            <th style="width: 200px;">Dificultad</th>
+<!--             <th style="width: 120px">Board id</th>
+            <th style="width: 150px;">Username</th>
+            <th style="width: 200px;">Difficulty</th>
             <th style="width: 120px">Id de tablero</th>
             <th style="width: 120px">Ha perdido?</th>
             <th style="width: 120px">Esta en progreso?</th>
             <th style="width: 120px">Fecha de inicio</th>
             <th style="width: 120px">Fecha de fin</th>
-            <th style="width: 120px">Numero de clicks</th>
+            <th style="width: 120px">Numero de clicks</th> -->
+            
+            <th style="width: 150px;">Username</th>
+            <th style="width: 120px">Board id</th>
+            <th style="width: 120px">Result</th>
+            <th style="width: 120px">Time</th>
+            <th style="width: 120px">Start Date</th>
+            <th style="width: 120px">Finish Date</th>
+            <th style="width: 120px">Difficulty</th>
 
         </tr>
         </thead>
