@@ -212,7 +212,7 @@ public class Board extends AuditableEntity {
 	        	if(this.squares.get(j+i*this.columnsNumber).isMine()) {
 	            	res+="*";
 	            }else {
-	            	Integer v = this.squares.get(j+i*this.columnsNumber).getValor();
+	            	Integer v = this.squares.get(j+i*this.columnsNumber).getValue();
 	            	res= res + v.toString();
 	            }
 	        }

@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.board;
 
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -62,6 +63,7 @@ public class BoardService {
 //		return this.boardRepository.nTotalGamesPlayer(username);
 //	}
 	
+
 	@Transactional
 	 public Board click(int row, int column, Board board) {
 		 	if(board.getGameStatus()==GameStatus.NONE) {
@@ -82,11 +84,12 @@ public class BoardService {
 		    		    	board.squares.set(j+i*board.columnsNumber, c1);
 		    			}else if(c1.isFlag && !c1.isMine()) {
 		    				c1.setWrong(true);
+
 		    			}
 		    		}
 		    	}
 		    	return board;
-	    	
+
 	    	}else if(square.valor !=0 && square.isCovered){
 				square.setCovered(false);
 				board.squares.set(column+row*board.columnsNumber, square);
@@ -105,6 +108,7 @@ public class BoardService {
 	    		return board;
 	    	}
 	    	return board;
+
 	    }
 	 
 	 public Board rightClick(int row, int column, Board board) {
@@ -155,7 +159,7 @@ public class BoardService {
 		 return t;
 	 }
 	
-	
+
 
 
 
