@@ -90,19 +90,19 @@ public class BoardService {
 		    	}
 		    	return board;
 
-	    	}else if(square.valor !=0 && square.isCovered){
+	    	}else if(square.value !=0 && square.isCovered){
 				square.setCovered(false);
 				board.squares.set(column+row*board.columnsNumber, square);
 				return board;
 	    	
-	    	}else if (square.valor == 0 && square.isCovered){
+	    	}else if (square.value == 0 && square.isCovered){
 	    		square.setCovered(false);
 				board.squares.set(column+row*board.columnsNumber, square);
 	    		List<Square> squares = board.surroundingSquares(row, column);
 	    		for(int sq = 0; sq<squares.size(); sq++) {
 	    			Square s = squares.get(sq);
-	    			if(s.fila>=0 && s.fila<board.rowsNumber&& s.columna>=0 && s.columna<board.columnsNumber) {
-	    				board = click(s.fila,s.columna, board);
+	    			if(s.row>=0 && s.row<board.rowsNumber&& s.column>=0 && s.column<board.columnsNumber) {
+	    				board = click(s.row,s.column, board);
 	    			}
 	    		}
 	    		return board;

@@ -11,9 +11,9 @@ public class SquareTest {
 	@Test
 	public void testCreateSquare() {
 		Square square = new Square(3, 4, new Board(4, 4, 4, 4, null));
-		assertEquals(square.getFila(), 3);
-		assertEquals(square.getColumna(), 4);
-		assertEquals(square.getValor(), 0);
+		assertEquals(square.getRow(), 3);
+		assertEquals(square.getColumn(), 4);
+		assertEquals(square.getValue(), 0);
 		assertEquals(square.isCovered(), true);
 		assertEquals(square.isMine(), false);
 	}
@@ -22,7 +22,7 @@ public class SquareTest {
 	public void testIncreaseValue() {
 		Square square = new Square(2, 1, new Board(4, 4, 4, 4, null));
 		square.increaseValue();
-		assertEquals(square.getValor(), 1);
+		assertEquals(square.getValue(), 1);
 	}
 	
 

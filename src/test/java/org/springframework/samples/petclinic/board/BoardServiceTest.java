@@ -116,19 +116,19 @@ public class BoardServiceTest {
 	    	}
 	    	return board;
     	
-    	}else if(s.valor!=0&&s.isCovered){
+    	}else if(s.value!=0&&s.isCovered){
 			s.setCovered(false);
 			board.squares.set(column+row*board.columnsNumber, s);
 			return board;
     	
-    	}else if (s.valor==0&&s.isCovered){
+    	}else if (s.value==0&&s.isCovered){
     		s.setCovered(false);
 			board.squares.set(column+row*board.columnsNumber, s);
     		List<Square> square = board.surroundingSquares(row, column);
     		for(int squ = 0; squ<square.size(); squ++) {
     			Square sq = square.get(squ);
-    			if(sq.fila>=0 && sq.fila<board.rowsNumber&& sq.columna>=0 && sq.columna<board.columnsNumber) {
-    				board = click1(sq.fila,sq.columna, board);
+    			if(sq.row>=0 && sq.row<board.rowsNumber&& sq.column>=0 && sq.column<board.columnsNumber) {
+    				board = click1(sq.row,sq.column, board);
     			
     			}
     		}
