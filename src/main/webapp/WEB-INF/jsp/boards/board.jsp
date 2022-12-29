@@ -4,7 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags"%>
+
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -107,8 +108,7 @@
 	<canvas id= "canvas" onclick="start()">
 	
 	<script>
-	
-	function click(squareSide, board){
+/* 	function click(squareSide, board){
 		let column = Math.floor((event.pageX-canvas.offsetLeft)/squareSide);
 		let row = Math.floor((event.pageY-canvas.offsetTop)/squareSide);
 		let id = board.data.id;
@@ -118,7 +118,7 @@
 			renderTablero(boardT);
 		})
 		.catch(function(error){console.log(error)});
-	}
+	} */
 	
 	
  	function createBoard(difficulty) {
@@ -147,7 +147,7 @@
 			let column = Math.floor((event.pageX-canvas.offsetLeft)/squareSide);
 			let row = Math.floor((event.pageY-canvas.offsetTop)/squareSide);
 			let id = board.data.id;
-			let url = '/boards/'+id.toString()+'/clickDerecho/'+row.toString()+'/'+column.toString();
+			let url = '/boards/'+id.toString()+'/rightClick/'+row.toString()+'/'+column.toString();
 			console.log(url);
 			axios.get(url)
 			.then(boardT=>{
@@ -190,7 +190,6 @@
 			}
 			array2D.push(a);
 		}
-	}
 	
 	
 	 	//Importamos la imagen a cada casilla correspondiendo con su valor
@@ -245,38 +244,61 @@
 			    elementsList.push(square);  
 			}
 		}
-	}
 	
-	function gameOver(){
-		if(board.data.gameStatus == "LOST"){
-			document.getElementById("gameOverMessage").style.display = "block";
-			document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
-			//Paramos el cronometro de la vista cuando perdemos
-			stop();
-			document.getElementById("canvas").addEventListener("click", function(){
-				if(confirm("OHHH HAS PERDIDO... Desea jugar otra partida?")){
-					window.location.href = "http://localhost:8080/board/new?dificulty=2";
-				}else{
-					window.location.href = "http://localhost:8080/players/myprofile";
-				};
-			});
-		}
-		if(board.data.gameStatus == "WON"){
-			document.getElementById("gameOverMessage").style.display = "block";
-			document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
-			stop();	
-			document.getElementById("canvas").addEventListener("click", function(){
-					if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
-						window.location.href = "http://localhost:8080/board/new?dificulty=2";
+	
+		function gameOver(){
+			if(board.data.gameStatus == "LOST"){
+				document.getElementById("gameOverMessage").style.display = "block";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
+				//Paramos el cronometro de la vista cuando perdemos
+				stop();
+				document.getElementById("canvas").addEventListener("click", function(){
+					if(confirm("OHHH HAS PERDIDO... Desea jugar otra partida?")){
+						window.location.href = "http://localhost:8080/board/game?dificulty=2";
 					}else{
 						window.location.href = "http://localhost:8080/players/myprofile";
 					};
-			});
+				});
+			}
+			if(board.data.gameStatus == "WON"){
+				document.getElementById("gameOverMessage").style.display = "block";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
+				stop();	
+				document.getElementById("canvas").addEventListener("click", function(){
+						if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
+							window.location.href = "http://localhost:8080/board/game?dificulty=2";
+						}else{
+							window.location.href = "http://localhost:8080/players/myprofile";
+						};
+				});
+			}
+		}
+		
+		function endMessage(){
+			if(board.data.gameStatus == "WON"){
+				if(confirm("ENHORABUENA HAS GANADO!! <br> Has completado el tablero en:"
+				+document.getElementById("screen").innerHTML+"<br> Desea jugar otra partida?")){
+					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+				}else{
+					window.location.href = "http://localhost:8080/players/myprofile";
+				};
+			}
+
+			if(board.data.gameStatus == "LOST"){
+				if(confirm("OHH HAS PERDIDO... Has completado el tablero en:"
+				+document.getElementById("screen").innerHTML+"Desea jugar otra partida?")){
+					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+				}else{
+					window.location.href = "http://localhost:8080/players/myprofile";
+				};
+			}
+		}
+
+		function updateFlags(){
+			document.getElementById("flagsNumber").innerHTML = "&#x1f6a9 "+ board.data.flagsNumber;
 		}
 	}
 	</script>
-	
 	</canvas>
-	
 	
 </petclinic:layout>
