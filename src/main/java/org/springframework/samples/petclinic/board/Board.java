@@ -23,9 +23,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
 @Getter
 @Setter
+@Entity
 @Table(name = "boards")
 public class Board extends AuditableEntity {
     
@@ -220,6 +220,7 @@ public class Board extends AuditableEntity {
 	    }
 	    return res;
 	}
+	 
 
 	public String toString2() {
 		String res = "";

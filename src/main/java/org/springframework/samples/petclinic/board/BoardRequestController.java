@@ -60,27 +60,29 @@ public class BoardRequestController {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Board board = new Board();
-    	if (authentication.getName()=="anonymousUser") {
-    		board = new Board(row, column, mine, mine, null);
-    	} else {
+//    	if (authentication.getName()=="anonymousUser") {
+//    		board = new Board(row, column, mine, mine, null);
+//    	} else {
     		User currentUser = (User) authentication.getPrincipal();
     		board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
-    	}
+//    	}
 		boardService.saveBoard(board);
 		
 		return board;
 	}
 	
 	@GetMapping("/{boardId}/click/{row}/{column}")
-	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int r, @PathVariable("column") int c) {
+
+	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int f, @PathVariable("column") int c) {
 		Board board = boardService.findBoardById(id).get();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null) {
 			if (authentication.isAuthenticated()) {
-				if((board.modifier.equals("anonymousUser")) || (board.getPlayer().getUser().getUsername().equals(authentication.getName()))) {
-					boardService.click(r, c, board);
-					//boardService.hasGanado(board);
-					//boardService.hasPerdido(board);
+				//if((board.modifier.equals("anonymousUser")) || (board.getPlayer().getUser().getUsername().equals(authentication.getName()))) {
+				if ((board.getPlayer().getUser().getUsername().equals(authentication.getName()))) {	
+					boardService.click(f, c, board);
+					boardService.hasWon(board);
+					boardService.hasLost(board);
 					boardService.saveBoard(board);
 					return board;
 				}
@@ -89,13 +91,14 @@ public class BoardRequestController {
 		return board;
 	}
 	
-	
+
 	@GetMapping("/{boardId}/rightClick/{row}/{column}")
 	public Board clickDerecho(@PathVariable("boardId") int id, @PathVariable("row") int f, @PathVariable("column") int c) {
-		Board board = boardService.findBoardById(id).get();
-		boardService.clickDerecho(f, c, board);
-		boardService.saveBoard(board);
-		return board;	
+		Board t = boardService.findBoardById(id).get();
+		boardService.rightClick(f, c, t);
+		boardService.saveBoard(t);
+		return t;	
+
 	}
 	
 }
