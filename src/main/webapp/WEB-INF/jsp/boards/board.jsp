@@ -43,6 +43,7 @@
 		<button class="emerald" onclick="redirect(3)">Difficult</button>
 		
 	</div>
+	<br>
 	
 	<!-- 		<input type="radio" id="easy" name="difficulty" value="Easy" checked /> <label for="easy">Easy</label><br>
 		<input type="radio" id="medium" name="difficulty" value="Medium" /> <label for="medium">Medium</label><br>
@@ -107,12 +108,11 @@
 	<canvas id= "canvas" onclick="start()">
 	
 	<script>
-	
 	function click(squareSide, board){
 		let column = Math.floor((event.pageX-canvas.offsetLeft)/squareSide);
 		let row = Math.floor((event.pageY-canvas.offsetTop)/squareSide);
 		let id = board.data.id;
-		let url = '/boards/'+id.toString()+'/click/' + row.toString() + '/' + column.toString();
+		let url='/boards/'+id.toString()+'/click/'+row.toString()+'/'+column.toString();
 		axios.get(url)
 		.then(boardT=>{
 			renderTablero(boardT);
@@ -174,7 +174,7 @@
 	
 	function renderBoard(board){
 		/* actualizarBanderas(); */
-		/* finPartida(); */
+		gameOver();
 		var array2D = [];
 		for (let i=0;i<board.data.rowsNumber;i++){
 			const a = []
@@ -243,35 +243,35 @@
 			    elementsList.push(square);  
 			}
 		}
-	}
 	
-	/* function gameOver(){
-		if(board.data.gameStatus == "LOST"){
-			document.getElementById("gameOverMessage").style.display = "block";
-			document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
-			//Paramos el cronometro de la vista cuando perdemos
-			stop();
-			document.getElementById("canvas").addEventListener("click", function(){
-				if(confirm("OHHH HAS PERDIDO... Desea jugar otra partida?")){
-					window.location.href = "http://localhost:8080/board/new?dificulty=2";
-				}else{
-					window.location.href = "http://localhost:8080/players/myprofile";
-				};
-			});
-		}
-		if(board.data.gameStatus == "WON"){
-			document.getElementById("gameOverMessage").style.display = "block";
-			document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
-			stop();	
-			document.getElementById("canvas").addEventListener("click", function(){
-					if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
+		function gameOver(){
+			if(board.data.gameStatus == "LOST"){
+				document.getElementById("gameOverMessage").style.display = "block";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				//Paramos el cronometro de la vista cuando perdemos
+				stop();
+				document.getElementById("canvas").addEventListener("click", function(){
+					if(confirm("OHHH HAS PERDIDO... Desea jugar otra partida?")){
 						window.location.href = "http://localhost:8080/board/new?dificulty=2";
 					}else{
 						window.location.href = "http://localhost:8080/players/myprofile";
 					};
-			});
-		}
-	} */
+				});
+			}
+			if(board.data.gameStatus == "WON"){
+				document.getElementById("gameOverMessage").style.display = "block";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				stop();	
+				document.getElementById("canvas").addEventListener("click", function(){
+						if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
+							window.location.href = "http://localhost:8080/board/new?dificulty=2";
+						}else{
+							window.location.href = "http://localhost:8080/players/myprofile";
+						};
+				});
+			}
+		} 
+	}
 	</script>
 	
 	</canvas>

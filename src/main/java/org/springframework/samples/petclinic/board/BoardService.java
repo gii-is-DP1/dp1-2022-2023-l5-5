@@ -1,10 +1,12 @@
 package org.springframework.samples.petclinic.board;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,6 +60,70 @@ public class BoardService {
 //	public Integer findnTotalGamesPlayer(String username){
 //		return this.boardRepository.nTotalGamesPlayer(username);
 //	}
+	
+	
+	@Transactional
+	 public Board click(int row, int column, Board board) {
+		 	if(board.getGameStatus()==GameStatus.NONE) {
+		 		board.setGameStatus(GameStatus.IN_PROGRESS);
+		 		board.setStartTime(LocalDateTime.now());
+		 		board.putMines(row, column);
+		 	}
+		 	
+	    	Square s = board.squares.get(column+row*board.columnsNumber);
+	    	if(s.isMine()) {
+		    	s.setCovered(false);
+		    	board.squares.set(column+row*board.columnsNumber, s);
+		    	for (int i = 0; i < board.rowsNumber; i++) {
+		    		for (int j = 0; j < board.columnsNumber; j++) {
+	    		    	Square s1 = board.squares.get(j+i*board.columnsNumber);
+		    			if(s1.isMine( ) && s1.isCovered) {
+		    				s1.setCovered(false);
+		    				board.squares.set(j+i*board.columnsNumber, s1);
+		    			}else if(s1.isFlag && !s1.isMine()) {
+		    				s1.setWrong(true);
+		    			}
+		    		}
+		    	}
+		    	return board;
+	    	
+	    	}else if(s.value !=0 && s.isCovered){
+				s.setCovered(false);
+				board.squares.set(column+row*board.columnsNumber, s);
+				return board;
+	    	
+	    	}else if (s.value == 0 && s.isCovered){
+	    		s.setCovered(false);
+				board.squares.set(column+row*board.columnsNumber, s);
+	    		List<Square> lista = board.surroundingSquares(row, column);
+	    		for(int ca = 0; ca<lista.size(); ca++) {
+	    			Square square = lista.get(ca);
+	    			if(square.row>=0 && square.row<board.rowsNumber&& square.column>=0 && square.column<board.columnsNumber) {
+	    				board = click(square.row,square.column, board);
+	    			}
+	    		}
+	    		return board;
+	    	}
+	    	return board;
+	}
+	
+	public Board clickDerecho(int row, int column, Board board) {
+		 if(board.getGameStatus()==GameStatus.NONE) {
+			 	board.setGameStatus(GameStatus.IN_PROGRESS);
+			 	board.setStartTime(LocalDateTime.now());		 	}
+		 Square s = board.squares.get(column+row*board.columnsNumber);
+		 if (s.isCovered && board.flagsNumber>0) {
+			 s.setFlag(true);
+			 s.setCovered(false);
+			 board.setFlagsNumber(board.flagsNumber-1);
+		 }else if (!s.isCovered && s.isFlag) {
+			 s.setCovered(true);
+			 s.setFlag(false);
+			 board.setFlagsNumber(board.flagsNumber+1);
+		 }
+		 
+		 return board;
+	 }
 
 
 
