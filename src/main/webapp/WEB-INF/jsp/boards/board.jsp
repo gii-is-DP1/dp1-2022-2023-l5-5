@@ -13,12 +13,12 @@
 	
 	<div id="title">MINESWEEPER</div>
 	<br>
-	<img name="1" id="1" src="/resources/images/one.png">
-	<img name="2" id="2" src="/resources/images/two.png">
-	<img name="3" id="3" src="/resources/images/three.png">
-	<img name="4" id="4" src="/resources/images/four.png">
-	<img name="5" id="5" src="/resources/images/five.png">
-	<img name="6" id="6" src="/resources/images/six.png">
+	<img name="1" id="1" src="/resources/images/one.png" style= "display:None;">
+	<img name="2" id="2" src="/resources/images/two.png" style= "display:None;">
+	<img name="3" id="3" src="/resources/images/three.png" style= "display:None;">
+	<img name="4" id="4" src="/resources/images/four.png" style= "display:None;">
+	<img name="5" id="5" src="/resources/images/five.png" style= "display:None;">
+	<img name="6" id="6" src="/resources/images/six.png" style= "display:None;">
 	<div>
 		<p>Choose the difficulty:</p>
 		<button class="emerald" onclick="redirect(1)">Easy</button>
