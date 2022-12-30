@@ -19,6 +19,11 @@
 	<img name="4" id="4" src="/resources/images/four.png" style= "display:None;">
 	<img name="5" id="5" src="/resources/images/five.png" style= "display:None;">
 	<img name="6" id="6" src="/resources/images/six.png" style= "display:None;">
+	<img name="7" id="7" src="/resources/images/seven.png" style= "display:None;">
+	<img name="flag" id="flag" src="/resources/images/flag.png" style= "display:None;">
+	<img name="wrong" id="wrong" src="/resources/images/wrong.png" style= "display:None;">
+	<img name="mine" id="mine" src="/resources/images/mine.png" style= "display:None;">
+	
 	<div>
 		<p>Choose the difficulty:</p>
 		<button class="emerald" onclick="redirect(1)">Easy</button>
@@ -33,7 +38,7 @@
 	<div id="crono">00 : 00</div>
 	
 	<!-- Cuadro de mensaje de victoria o derrota que se muestra cuando se acaba la partida -->
-	<div id="gameOverMessage" style="color:aliceblue; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
+	<div id="gameOverMessage" style="display:None; color:aliceblue; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
 	border-width: 10px; background-color: #2a6478; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
 	<br> 
 	
@@ -103,7 +108,6 @@
 
  	function createBoard(difficulty) {
 
-		
 		axios.get('/boards/new/'+difficulty.toString())
 
 		.then(board=>{
@@ -140,11 +144,6 @@
           	});
 	} 
 	
- 	//Refresca el tablero cuando se cambia la dificultad para borrar los datos del tablero anterior
- 	function redirect(difficulty){
-			window.location.href = "http://localhost:8080/board/game?dificulty=" +difficulty.toString();
-	}
-	
 
 	//Obtenemos el parametro de dificultad de la URL
 	var queryString = window.location.search;
@@ -153,7 +152,7 @@
 	window.onload = createBoard(difficultyParam);
 	
 	function renderBoard(board){
-		/* actualizarBanderas(); */
+		/* updateFlags(); */
 		gameOver();
 		var array2D = [];
 		for (let i=0;i<board.data.rowsNumber;i++){
@@ -227,7 +226,7 @@
 		function gameOver(){
 			if(board.data.gameStatus == "LOST"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
 				//Paramos el cronometro de la vista cuando perdemos
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
@@ -240,7 +239,7 @@
 			}
 			if(board.data.gameStatus == "WON"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("screen").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
 						if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
@@ -255,7 +254,7 @@
 		function endMessage(){
 			if(board.data.gameStatus == "WON"){
 				if(confirm("ENHORABUENA HAS GANADO!! <br> Has completado el tablero en:"
-				+document.getElementById("screen").innerHTML+"<br> Desea jugar otra partida?")){
+				+document.getElementById("crono").innerHTML+"<br> Desea jugar otra partida?")){
 					window.location.href = "http://localhost:8080/board/game?dificulty=2";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
@@ -264,7 +263,7 @@
 
 			if(board.data.gameStatus == "LOST"){
 				if(confirm("OHH HAS PERDIDO... Has completado el tablero en:"
-				+document.getElementById("screen").innerHTML+"Desea jugar otra partida?")){
+				+document.getElementById("crono").innerHTML+"Desea jugar otra partida?")){
 					window.location.href = "http://localhost:8080/board/game?dificulty=2";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
