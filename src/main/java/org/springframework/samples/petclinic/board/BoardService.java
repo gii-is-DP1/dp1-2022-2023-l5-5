@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,15 @@ public class BoardService {
 		boardRepository.save(board);
 	}
 	
+	@Transactional
+    public int boardCount() {
+        return (int) boardRepository.count();
+    }
+	
+//	@Transactional
+//	public List<Board> findAllBoardsWithoutState(GameStatus gameStatus, Pageable pageable){
+//		return boardRepository.findAllBoardsWithoutState(gameStatus, pageable);
+//	}
 	
 	@Transactional
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{

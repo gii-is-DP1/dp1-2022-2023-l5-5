@@ -85,12 +85,44 @@ public class BoardServiceTest {
 		assertNotNull(board2.getId());
 	}
 	
-// 	Este no va
-//	@Test
-//	public void testFindBoardByUsername() {
-//		List<Board> boards = boardService.findBoardByUsername("meriglmar", GameStatus.NONE);
-//		assertEquals(boards.size(), 6);
-//	}
+	@Test
+	public void testFindBoardByUsername() {
+		List<Board> boards = boardService.findBoardByUsername("angbermar1", GameStatus.NONE);
+		assertEquals(boards.size(), 2);
+	}
+	
+	@Test
+	public void testFindValueSquare() {
+		Board b = new Board(3, 3, 0, 3, null);
+		boardService.saveBoard(b);
+		int s = b.getSquare(2, 2).getValue();
+		assertEquals(s, 0);
+	}
+	
+	@Test
+	public void testDiscoverAllSquares() {
+		Board b0 = new Board(10,10,0);
+		Board bFinal = new Board(10,10,0);
+		for(int i=0;i<b0.columnsNumber;i++) {
+			for(int j=0;j<b0.rowsNumber;j++) {
+				bFinal = boardService.click(i, j, b0);
+			}
+		}
+		for(int i=0;i<b0.columnsNumber;i++) {
+			for(int j=0;j<b0.rowsNumber;j++) {
+				assertEquals(bFinal.getSquare(i,j).isCovered, false);
+			}
+		}
+	}
+	
+	@Test
+	public void testTableroSaveAndCount() {
+		Board b0 = new Board(10,10,0);
+		Board b1 = new Board(10,10,0);
+		boardService.saveBoard(b0);
+		boardService.saveBoard(b1);
+		assertEquals(boardService.boardCount(), 21);
+	}
 	
 	public Board click1(int row, int column, Board board) {
 		if(board.getGameStatus()==GameStatus.NONE) {
@@ -136,4 +168,35 @@ public class BoardServiceTest {
     	}
     	return board;
     }
+	
+	@Test
+	public void testStateAfterStartGameWithRightClick() {
+		Player p = new Player();
+		Board b0 = new Board(10,10,10,10,p);
+		boardService.rightClick(0, 4, b0);
+		assertEquals(b0.gameStatus, GameStatus.IN_PROGRESS);
+	}
+	
+	@Test 
+	public void testRightClickOneTime() {
+		Board b = new Board(10,10,10,10,null);
+		Integer flagsNum = b.flagsNumber;
+		Board b1 = boardService.rightClick(0, 0, b);
+		assertEquals(b1.flagsNumber, flagsNum-1);
+	}
+	@Test 
+	public void testRightClickTwoTime() {
+		Board b = new Board(10,10,10,10,null);
+		Integer flagsNum = b.flagsNumber;
+		Board b1 = boardService.rightClick(0, 0, b);
+		assertEquals(b1.flagsNumber, flagsNum-1);
+		Board b2 = boardService.rightClick(0, 0, b1);
+		assertEquals(b2.flagsNumber,flagsNum);
+	}
+	
+	@Test
+	public void testFindAll() {
+		assertEquals(boardService.findAllBoards().size(),19);
+	}
+
 }
