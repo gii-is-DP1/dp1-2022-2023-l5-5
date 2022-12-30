@@ -11,7 +11,7 @@
 
 <petclinic:layout pageName="board">
 	
-	<div id="title">MINESWEEPER</div>
+	<div id="title" style= "font-weight: bold; font-size: 30">MINESWEEPER</div>
 	<br>
 	<img name="1" id="1" src="/resources/images/one.png" style= "display:None;">
 	<img name="2" id="2" src="/resources/images/two.png" style= "display:None;">
@@ -21,10 +21,9 @@
 	<img name="6" id="6" src="/resources/images/six.png" style= "display:None;">
 	<div>
 		<p>Choose the difficulty:</p>
-		<button class="emerald" onclick="redirect(1)">Easy</button>
-		<a href="http://localhost:8080/board/game?dificulty=1" class="btn">Easy</a>
-		<button class="emerald" onclick="redirect(2)">Medium</button>
-		<button class="emerald" onclick="redirect(3)">Difficult</button>		
+		<a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
+		<a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
+		<a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>		
 	</div>
 	<br>
 	
