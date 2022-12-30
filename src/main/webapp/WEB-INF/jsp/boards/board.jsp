@@ -37,8 +37,8 @@
 	<div id="crono">00 : 00</div>
 	
 	<!-- Cuadro de mensaje de victoria o derrota que se muestra cuando se acaba la partida -->
-	<div id="gameOverMessage" style="display:None; color:aliceblue; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
-	border-width: 10px; background-color: #2a6478; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
+	<div id="gameOverMessage" style="display:None; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
+	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
 	<br> 
 	
 	<script> 
@@ -225,11 +225,11 @@
 		function gameOver(){
 			if(board.data.gameStatus == "LOST"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 OHHH..has perdido la partida <br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
 				//Paramos el cronometro de la vista cuando perdemos
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
-					if(confirm("OHHH HAS PERDIDO... Desea jugar otra partida?")){
+					if(confirm("You have lost the game! Do you want to play another game?")){
 						window.location.href = "http://localhost:8080/board/game?dificulty=2";
 					}else{
 						window.location.href = "http://localhost:8080/players/myprofile";
@@ -238,10 +238,10 @@
 			}
 			if(board.data.gameStatus == "WON"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 ENHORABUENA! Has completado el tablero<br> La duracion de la partida ha sido: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
-						if(confirm("ENHORABUENA HAS GANADO LA PARTIDA!! Deseas jugar otra?")){
+						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
 							window.location.href = "http://localhost:8080/board/game?dificulty=2";
 						}else{
 							window.location.href = "http://localhost:8080/players/myprofile";
@@ -252,8 +252,8 @@
 		
 		function endMessage(){
 			if(board.data.gameStatus == "WON"){
-				if(confirm("ENHORABUENA HAS GANADO!! <br> Has completado el tablero en:"
-				+document.getElementById("crono").innerHTML+"<br> Desea jugar otra partida?")){
+				if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! <br> You have completed the board in:"
+				+document.getElementById("crono").innerHTML+"<br> Do you want to play another game?")){
 					window.location.href = "http://localhost:8080/board/game?dificulty=2";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
@@ -261,8 +261,8 @@
 			}
 
 			if(board.data.gameStatus == "LOST"){
-				if(confirm("OHH HAS PERDIDO... Has completado el tablero en:"
-				+document.getElementById("crono").innerHTML+"Desea jugar otra partida?")){
+				if(confirm("You have lost the game! You have completed the board in:"
+				+document.getElementById("crono").innerHTML+"Do you want to play another game?")){
 					window.location.href = "http://localhost:8080/board/game?dificulty=2";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
