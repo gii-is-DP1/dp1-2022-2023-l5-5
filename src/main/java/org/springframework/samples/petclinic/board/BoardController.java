@@ -34,38 +34,6 @@ public class BoardController {
 		return VIEWS_BOARD;
 	}
 	
-//	@GetMapping(value= "/list")
-//	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		List<Board> results = this.boardService.findAllGamesNotInProgress();
-//		
-//			model.put("selections", results);
-//			return "games/gamesList";
-//		
-//	}
-
-//	@GetMapping(value= "/listinprogress")
-//	public String processFindFormProgress(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		List<Game> results = this.gameService.findAllGamesInProgress();
-//		
-//			model.put("selections", results);
-//			return "games/gamesListInProgress";
-//		
-//	}
-
-//	@GetMapping(value= "/listplayer")
-//	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-//		User currentUser=(User) authentication.getPrincipal();
-//		
-//	    List<Game> results = this.gameService.findAllGamesPlayer(currentUser.getUsername());
-//		model.put("selections", results);
-//		return "games/gamesListPlayer";
-//		
-//	}
-	
 	@GetMapping(value = "/listinprogress")
 	public String processFindFormProgress(ModelMap modelMap) {
 		String vista = "boards/gamesListInProgress";
@@ -101,7 +69,19 @@ public class BoardController {
 		return "boards/gamesListPlayer";
 		
 	}
-
+	
+	@GetMapping(value= "/statistics")
+	public String statistics(Board board, BindingResult result, Map<String, Object> model) {
+		
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
+		Integer nTotal = this.boardService.findnTotalGames();
+		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
+		model.put("nTotal", nTotal);
+		model.put("gamesPlayerTotal", gamesPlayerTotal);
+		return "games/statistics";
+		
+	}
 	
 	
 

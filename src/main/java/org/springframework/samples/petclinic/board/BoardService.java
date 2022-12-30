@@ -52,16 +52,16 @@ public class BoardService {
 		return this.boardRepository.findAllGamesPlayer(username);
 		
 	}
-//Estos métodos habría que hacerlos con Board y NO con games, que se ha borrado
-//	@Transactional(readOnly = true)
-//	public Integer findnTotalGames(){
-//		return this.boardRepository.nTotalGames();
-//	}
-//	
-//	@Transactional(readOnly = true)
-//	public Integer findnTotalGamesPlayer(String username){
-//		return this.boardRepository.nTotalGamesPlayer(username);
-//	}
+
+	@Transactional(readOnly = true)
+	public Integer findnTotalGames(){
+		return this.boardRepository.nTotalGames();
+	}
+	
+	@Transactional(readOnly = true)
+	public Integer findnTotalGamesPlayer(String username){
+		return this.boardRepository.nTotalGamesPlayer(username);
+	}
 	
 
 	@Transactional

@@ -31,6 +31,12 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 	@Query("SELECT board FROM Board board WHERE board.player.user.username =:username")
 	public List<Board> findAllGamesPlayer(@Param("username") String username);
 	
+	@Query("SELECT COUNT(board) FROM Board board")
+	Integer nTotalGames();
+
+	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username")
+	Integer nTotalGamesPlayer(@Param("username") String username);
+	
 //	@Query("SELECT COUNT(game) FROM Game game")
 //	Integer nTotalGames();
 //
