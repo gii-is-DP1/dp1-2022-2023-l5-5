@@ -199,4 +199,47 @@ public class BoardServiceTest {
 		assertEquals(boardService.findAllBoards().size(),19);
 	}
 
+	@Test
+	public void testBeforeStartGame(){
+		Player p= new Player();
+		Board b0= new Board(10,10,10,10,p);
+		assertEquals(b0.gameStatus, GameStatus.NONE);
+	}
+
+	@Test
+	public void testAfterStartGame(){
+		Player p= new Player();
+		Board b0= new Board(10,10,10,10,p);
+		boardService.click(7, 7, b0);
+		assertEquals(b0.gameStatus, GameStatus.IN_PROGRESS);
+	}
+
+	@Test
+	public void testYouWon(){
+		Board b0= new Board(5,5,5);
+		click1(0, 4, b0);
+		click1(1, 0, b0);
+		click1(1, 1, b0);
+		click1(2, 0, b0);
+		click1(3, 0, b0);
+		click1(4, 0, b0);
+		click1(3, 1, b0);
+		click1(3, 2, b0);
+		click1(3, 4, b0);
+		click1(4, 2, b0);
+		click1(4, 3, b0);
+		String b1=b0.toString2();
+		assertEquals(b1, "TFFFF\nFFFFF\nFTFFF\nFFFTF\nFTFFT\n");
+		assertEquals(BoardService.hasWon(b0).gameStatus, GameStatus.WON);
+	}
+
+
+	@Test
+	public void testYouLost(){
+		Board b0= new Board(5,5,5);
+		click1(0,0,b0);
+		Board b1=BoardService.hasLost(b0);
+		assertEquals(b1.gameStatus, GameStatus.LOST);
+	}
+
 }
