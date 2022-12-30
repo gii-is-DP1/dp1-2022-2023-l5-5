@@ -18,6 +18,8 @@ import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.user.User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,12 +45,14 @@ public class Player extends AuditableEntity {
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username", referencedColumnName = "username")
 	@Valid
+	@JsonIgnore
 	private User user;
 
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 //    private List<Game> game;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
+	@JsonIgnore
 	private List<Board> board;
 
 	
