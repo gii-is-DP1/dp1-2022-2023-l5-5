@@ -7,12 +7,9 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="games">
-    <h2>
-        New Game
-    </h2>
+    <h2>New Game</h2>
     
-    <form:form modelAttribute="game"
-                   class="form-horizontal">
+    <form:form modelAttribute="game" class="form-horizontal" id="select-game-form">
             <form:hidden  path="id" />
             <form:hidden  path="startTime" />
             <form:hidden  path="finishTime" />
@@ -22,13 +19,15 @@
 
             <div class="control-group">
                    <petclinic:selectField name="difficulty" label="Difficulty " names="${difficulties}" size="1"/>
-            </div>
+            </div> 
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-
                     <button class="btn btn-default" type="submit">Create game</button>
                 </div>
             </div>
         </form:form>
 </petclinic:layout>
+
+<script>
+</script>
