@@ -217,7 +217,7 @@
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
 					if(confirm("You have lost the game! Do you want to play another game?")){
-						window.location.href = "http://localhost:8080/board/game?dificulty=2";
+						window.location.href = "http://localhost:8080/board/game?dificulty=1";
 					}else{
 						window.location.href = "http://localhost:8080/players/myprofile";
 					};
@@ -229,7 +229,7 @@
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
 						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
-							window.location.href = "http://localhost:8080/board/game?dificulty=2";
+							window.location.href = "http://localhost:8080/board/game?dificulty=1";
 						}else{
 							window.location.href = "http://localhost:8080/players/myprofile";
 						};
@@ -241,7 +241,7 @@
 			if(board.data.gameStatus == "WON"){
 				if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! <br> You have completed the board in:"
 				+document.getElementById("crono").innerHTML+"<br> Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+					window.location.href = "http://localhost:8080/board/game?dificulty=1";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
 				};
@@ -250,7 +250,7 @@
 			if(board.data.gameStatus == "LOST"){
 				if(confirm("You have lost the game! You have completed the board in:"
 				+document.getElementById("crono").innerHTML+"Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+					window.location.href = "http://localhost:8080/board/game?dificulty=1";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
 				};
