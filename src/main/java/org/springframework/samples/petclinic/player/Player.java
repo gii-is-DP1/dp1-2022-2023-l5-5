@@ -47,9 +47,6 @@ public class Player extends AuditableEntity {
 	@Valid
 	@JsonIgnore
 	private User user;
-
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
-//    private List<Game> game;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 	@JsonIgnore
