@@ -1,56 +1,60 @@
 package org.springframework.samples.petclinic.square;
 
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.Range;
 import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.BaseEntity;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
-@Table(name = "squares")
+@Entity
+@Table(name="casillas")
+@JsonIgnoreProperties(value="board")
 public class Square extends BaseEntity{
-    
-    String type;
-    
-    @Range(min=0,max=15)
-    private Integer coordinateX;
+	@Column(name = "fila")
+	public int row;
+	@Column(name = "columna")
+	public int column;
+	@Column(name = "valor")
+	public int value;
+	@Column(name = "is_covered")
+	public boolean isCovered;
+	@Column(name = "is_mine")
+	public boolean isMine;
+	@Column(name = "isFlag")
+	public boolean isFlag;
+	@Column(name = "isWrong")
+	public boolean isWrong;
+	
+	@JoinColumn(name = "tablero_id")
+	@ManyToOne
+	private Board board;
 
-    
-    @Range(min=0,max=15)
-    private Integer coordinateY;
-
-
-    @Range(min=0,max=8)
-    private Integer minesAdjacentNumber;
-
-    
-    private Boolean isMine;
-    
-    @ManyToOne
-    Board board;
-
-
-    public Integer getPositionXInPixels(Integer size){
-        return coordinateX*size;
-    }
-    public Integer getPositionYInPixels(Integer size){
-        return coordinateY*size;
-    }
-
-//    private Boolean isCovered;
-    
-    public Square() {
-		this.type = "COVERED";
+	public Square() {
+		
 	}
 
-
-
+	public Square(int fila, int columna, Board tablero) {
+		this.row = fila;
+		this.column= columna;
+		this.value = 0;
+		this.isCovered=true;
+		this.isMine=false;
+		this.isFlag=false;
+		this.board=tablero;
+	}
+	
+	public void increaseValue() {
+		this.value+=1;
+	}
 }

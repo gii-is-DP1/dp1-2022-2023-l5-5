@@ -12,33 +12,36 @@ import org.springframework.stereotype.Service;
 @Service
 public class SquareService {
     
-    @Autowired
     private SquareRepository squareRepository;
 
     @Autowired
 	public SquareService(SquareRepository squareRepository) {
 		this.squareRepository = squareRepository;
 	}
-
     
-    @Transactional(readOnly = true)
-	public Square findSquareById(int id) throws DataAccessException {
-		return squareRepository.findById(id);
-	}
-
-
-
-    @Transactional
-	public List<Square> findAll(){
-		List<Square> allSquares= new ArrayList<Square>();
-		squareRepository.findAll().forEach(allSquares::add);
-		return allSquares;
-	}
-
-
-
-    @Transactional
-    public Square findSquareByPosition(int coordinateX, int coordinateY) throws DataAccessException{
-        return squareRepository.findByPosition(coordinateX,coordinateY);
-    }
+	/*@Transactional
+	public void saveSquare(Square square) throws DataAccessException {
+		squareRepository.save(square);
+	}*/
+    
+//    @Transactional(readOnly = true)
+//	public Square findSquareById(int id) throws DataAccessException {
+//		return squareRepository.findById(id);
+//	}
+//
+//
+//
+//    @Transactional
+//	public List<Square> findAll(){
+//		List<Square> allSquares= new ArrayList<Square>();
+//		squareRepository.findAll().forEach(allSquares::add);
+//		return allSquares;
+//	}
+//
+//
+//
+//    @Transactional
+//    public Square findSquareByPosition(int coordinateX, int coordinateY) throws DataAccessException{
+//        return squareRepository.findByPosition(coordinateX,coordinateY);
+//    }
 }

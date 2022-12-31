@@ -11,52 +11,51 @@
     <table id="gamesTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 120px">Id de partida</th>
-            <th style="width: 150px;">Nombre Usuario</th>
-            <th style="width: 200px;">Dificultad</th>
-            <th style="width: 120px">Id de tablero</th>
-            <th style="width: 120px">Ha perdido?</th>
-            <th style="width: 120px">Esta en progreso?</th>
-            <th style="width: 120px">Fecha de inicio</th>
-            <th style="width: 120px">Fecha de fin</th>
-            <th style="width: 120px">Numero de clicks</th>
+            <th style="width: 150px;">Username</th>
+            <th style="width: 120px">Board id</th>
+            <th style="width: 120px">Result</th>
+            <th style="width: 120px">Time</th>
+            <th style="width: 120px">Start Date</th>
+            <th style="width: 120px">Difficulty</th>
 
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${selections}" var="game">
+        <c:forEach items="${board}" var="board">
             <tr>
-                <td>
+<%--                 <td>
                     <spring:url value="/games/{gameId}" var="gameUrl">
                         <spring:param name="gameId" value="${game.id}"/>
                     </spring:url>
                     <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.id}"/></a>
+                </td> --%>
+                <td>
+                    <c:out value="${board.player.user.username}"/>
                 </td>
                 <td>
-                    <c:out value="${game.player.user.username}"/>
+                    <c:out value="${board.id} "/>
                 </td>
                 <td>
-                    <c:out value="${game.difficulty}"/>
+                    <c:out value="${board.gameStatus}"/>
                 </td>
                 <td>
-                    <c:out value="${game.board.id} "/>
+                    <c:out value="${board.duration}"/>
                 </td>
                 <td>
-                    <c:out value="${game.lostGame}"/>
+                    <c:out value="${board.startTime}"/>
                 </td>
                 <td>
-                    <c:out value="${game.inProgress}"/>
-                </td>
-                <td>
-                    <c:out value="${game.startTime}"/>
-                </td>
-                <td>
-                    <c:out value="${game.finishTime}"/>
-                </td>
-                <td>
-                    <c:out value="${game.numClicks}"/>
-                </td>
+                <c:if test = "${board.rowsNumber == 8}">
+                    <c:out value="Easy"/>
+                </c:if>
+                <c:if test = "${board.rowsNumber == 14}">
+                    <c:out value="Medium"/>
+                </c:if>
+                <c:if test = "${board.rowsNumber == 24}">
+                    <c:out value="Difficult"/>
+                </c:if>
                 
+        		</td>
                 
       
 <!--
