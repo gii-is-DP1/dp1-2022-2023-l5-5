@@ -38,6 +38,7 @@ public class PlayerController {
     private static final String VIEWS_PLAYERS_LIST = "players/playersList";
     private static final String VIEWS_PLAYERS_PROFILE = "players/playersProfile";
     private static final String VIEWS_PLAYERS_DELETE = "players/playersDelete";
+    private static final String VIEWS_PLAYERS_DELETE_ADMIN = "players/playersDeleteAdmin";
     
 	private final PlayerService playerService;
 
@@ -102,15 +103,31 @@ public class PlayerController {
 			model.addAttribute(player);
 			return VIEWS_PLAYERS_DELETE;
 		}
+		
+	//El admin elimina un jugador
+		@GetMapping(value = "/myprofile/{id}/deleteAdmin")
+		public String redirectDeleteAdmin(@PathVariable("id") Integer id, ModelMap model) {
+			Player player = this.playerService.getPlayerById(id).get();
+			model.addAttribute(player);
+			return VIEWS_PLAYERS_DELETE_ADMIN;
+		}
 	
 	
-	//Un jugador elimina su propio jugador
+	//Confirmación de eliminar para un player
 	@GetMapping(value = "/myprofile/{id}/deleteConfirm")
 	public String deletePlayer(@PathVariable("id") Integer id, ModelMap model) {
 		this.playerService.deletePlayer(id);
 		
 		return "redirect:/logout";
 	}
+	
+	//Confirmación de eliminar para un admin
+		@GetMapping(value = "/myprofile/{id}/deleteConfirmAdmin")
+		public String deletePlayerAdmin(@PathVariable("id") Integer id, ModelMap model) {
+			this.playerService.deletePlayer(id);
+			
+			return "redirect:/";
+		}
 	
 
 	//El admin ve el listado de jugadores
