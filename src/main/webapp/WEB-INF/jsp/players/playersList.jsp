@@ -16,6 +16,7 @@
             <th style="width: 150px;">Lastname</th>
             <th style="width: 120px">Mail</th>
             <th style="width: 200px;">Password</th>
+            <th style="width: 200px;"></th>
         </tr>
         </thead>
         <tbody>
@@ -38,6 +39,19 @@
                 </td>
                 <td>
                     <c:out value="${player.user.password}"/>
+                </td>           
+                <td>
+                    <spring:url value="/players/myprofile/{id}/edit" var="editUrl">
+                        <spring:param name="id" value="${player.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(editUrl)}">&#128456 Edit</a>
+           
+           			<br>
+           			
+                    <spring:url value="/players/myprofile/{id}/deleteAdmin" var="deleteUrl">
+                        <spring:param name="id" value="${player.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(deleteUrl)}">&#x1F5D1 Delete</a>
                 </td>
 
                 
