@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.board;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +53,10 @@ public class Board extends AuditableEntity {
 	@Column(name = "finish_time")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	public LocalDateTime finishTime;
+	
+	public long getDurationGame() {
+		return ChronoUnit.SECONDS.between(startTime, finishTime);
+	}
 	
 	@Column(name = "duration")
 	@DateTimeFormat(pattern="mm:ss")

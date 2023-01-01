@@ -73,6 +73,12 @@ public class BoardService {
 		return this.boardRepository.nTotalGamesPlayer(username);
 	}
 	
+	@Transactional(readOnly = true)
+	public long totalDurationGamesPlayed(){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
+		return res;
+	}
 
 	@Transactional
 	 public Board click(int row, int column, Board board) {
