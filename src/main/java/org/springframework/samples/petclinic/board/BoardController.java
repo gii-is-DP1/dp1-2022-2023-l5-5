@@ -77,9 +77,14 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		Integer nTotal = this.boardService.findnTotalGames();
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
+		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
+		long minutes = timeTotalPlayed/60;
+		long seconds = timeTotalPlayed%60;
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
-		return "games/statistics";
+		model.put("minutesTotalPlayed", minutes);
+		model.put("secondsTotalPlayed", seconds);
+		return "boards/statistics";
 		
 	}
 	
