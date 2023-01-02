@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -35,24 +34,29 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/users/new").permitAll()
 				.antMatchers("/currentUser").permitAll()
 				.antMatchers("/session/**").permitAll()
-        
+				.antMatchers("/achievements/list/**").hasAnyAuthority("admin")
+				.antMatchers("/myprofile/**").permitAll()
 				.antMatchers("/players/new/**").permitAll()
-				//.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
-				//.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player","admin") 
+				.antMatchers("/players/myprofile/**/edit").permitAll()
+				.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/deleteAdmin").hasAnyAuthority("admin")
+				.antMatchers("/players/myprofile/**/deleteConfirm").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/deleteConfirmAdmin").hasAnyAuthority("admin")
 				.antMatchers("/players/myprofile/**").permitAll()
-				//.antMatchers("/myprofile/{username}/edit/**").hasAnyAuthority("player")
-				.antMatchers("/players/edit/**").hasAnyAuthority("player")
+				.antMatchers("/players/edit/**").hasAnyAuthority("admin")
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
-				.antMatchers("/games/new/**").hasAnyAuthority("player")
-				.antMatchers("/games/list/**").hasAnyAuthority("admin")
-				.antMatchers("/games/listinprogress/**").hasAnyAuthority("admin")
-				.antMatchers("/games/listplayer/**").permitAll()
+				.antMatchers("/board/game/**").hasAnyAuthority("player")
+				.antMatchers("/board/setDifficulty").permitAll()
+				.antMatchers("/board/list/**").hasAnyAuthority("admin")
+				.antMatchers("/board/listinprogress/**").hasAnyAuthority("admin")
+				.antMatchers("/board/listplayer/**").permitAll()
+				.antMatchers("/board/statistics/**").hasAnyAuthority("player","admin") 
 
-				.antMatchers("/tableros/**").permitAll()
+				.antMatchers("/boards/**").permitAll()
 				
-				.antMatchers("/casillas/**").permitAll()
+				.antMatchers("/squares/**").permitAll()
 				
 				.antMatchers("/admin/**").hasAnyAuthority("admin")
 				.antMatchers("/owners/**").hasAnyAuthority("owner","admin")				

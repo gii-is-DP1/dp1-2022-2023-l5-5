@@ -8,22 +8,21 @@
 
 <petclinic:layout pageName="players">
     <h2>
-        Update player
+        New Player
     </h2>
     <form:form modelAttribute="player" class="form-horizontal" id="add-player-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="First Name" name="firstName"/>
             <petclinic:inputField label="Last Name" name="lastName"/>
-           <%--  <petclinic:inputField label="Username" name="user.username"/> --%>
-            <form:hidden  path="user.username" />
+            <petclinic:inputField label="Username" name="user.username"/>
             <petclinic:inputField label="Mail" name="mail"/>
             <petclinic:inputField label="Password" name="user.password"/>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">                
-                  
-            	<button class="btn btn-default" type="submit">Update Player</button>
+            <div class="col-sm-offset-2 col-sm-10">            
                     
+            	<button class="btn btn-default" type="submit">Add Player</button>                  
+                
             </div>
         </div>
     </form:form>
