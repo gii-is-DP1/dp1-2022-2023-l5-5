@@ -11,6 +11,7 @@
 
 <petclinic:layout pageName="board">
 	
+	<div class= "col-2 text-center">
 	<div id="title" style= "font-weight: bold; font-size: 30">MINESWEEPER</div>
 	<br>
 	<img name="1" id="1" src="/resources/images/one.png" style= "display:None;">
@@ -23,14 +24,7 @@
 	<img name="flag" id="flag" src="/resources/images/flag.png" style= "display:None;">
 	<img name="wrong" id="wrong" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
-	
-	<div>
-		<p>Choose the difficulty:</p>
-		<a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
-		<a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
-		<a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>		
-	</div>
-	<br>
+
 	
 	
 	<div id=flagsNumber></div>
@@ -88,8 +82,9 @@
 	}
 	</script>
 	
-	<canvas id= "canvas" onclick="start()">
 	
+	<canvas id= "canvas" onclick="start()">
+	</div>
 	<script>
 
  	function click(squareSide, board){

@@ -4,7 +4,6 @@
 <br/>
 <div class="container">
     <div class="row">
-        <div class="col-12 text-center"><img src="<spring:url value="/resources/images/spring-pivotal-logo.png" htmlEscape="true" />"
-                                             alt="Sponsored by Pivotal"/></div>
+        <div class="col-2 text-center"><img width="200" height="50" src="<spring:url value="/resources/images/piePagi.png" htmlEscape="true" />" /></div>
     </div>
 </div>

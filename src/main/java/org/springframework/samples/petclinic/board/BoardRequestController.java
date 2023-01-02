@@ -41,6 +41,7 @@ public class BoardRequestController {
 		return res;
 	}
 	
+
 	@GetMapping(path = "/new/{difficulty}")
 	public Board nuevo(@PathVariable("difficulty") int difficulty) {
 		int row, column, mine = 0;
