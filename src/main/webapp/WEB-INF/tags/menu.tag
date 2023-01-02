@@ -56,7 +56,7 @@
 				</sec:authorize>
 
 				<sec:authorize access="hasAuthority('player')">
-					<petclinic:menuItem active="${name eq 'games'}" url="/board/game?dificulty=1"
+					<petclinic:menuItem active="${name eq 'games'}" url="/board/setDifficulty"
 						title="New Game">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						<span>New game</span>

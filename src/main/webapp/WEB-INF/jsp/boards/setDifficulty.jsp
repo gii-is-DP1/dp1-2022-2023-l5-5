@@ -7,21 +7,13 @@
 <!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->
 <game:layout pageName="tableroPrueba">
 
-    <h2>Tablero Prueba</h2>
+    <h2>Set difficulty</h2>
 
-
-    <p>	
-        <h2><c:out value="${now}"/></h2>
+    <p>Choose the difficulty:</p>
+    <a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
+    <a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
+    <a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>	
     
-        <div class="row">
-            <div class="col-md-12">
-                <game:tablero tablero="${tablero}" tableroImage="${tableroImagen}">
-                <c:forEach items="${tablero.casilla}" var="casilla">
-                    <game:casilla size="100" casilla="${casilla}"/>            	
-                </c:forEach> 
-                </game:tablero>
-            </div>
-        </div>
 
     <br/>
     <br/>

@@ -23,14 +23,7 @@
 	<img name="flag" id="flag" src="/resources/images/flag.png" style= "display:None;">
 	<img name="wrong" id="wrong" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
-	
-	<div>
-		<p>Choose the difficulty:</p>
-		<a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
-		<a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
-		<a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>		
-	</div>
-	<br>
+
 	
 	
 	<div id=flagsNumber></div>
