@@ -5,7 +5,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <!--  >%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%-->
 <%@ attribute name="name" required="true" rtexprvalue="true"
-	description="Name of the active menu: home, owners, games, players, statistics or error"%>
+	description="Name of the active menu: home, owners, vets or error"%>
 
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
@@ -29,56 +29,18 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 					<span>Home</span>
 				</petclinic:menuItem>
-				
-				<sec:authorize access="hasAuthority('admin')">
-					<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
-						title="find players">
-						<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						<span>Find players</span>
-					</petclinic:menuItem>
-				</sec:authorize>
 
-				<sec:authorize access="hasAuthority('admin')">
-					<petclinic:menuItem active="${name eq 'gamesProgress'}"
-						url="/board/listinprogress" title="games in progress">
-						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-						<span>Games in progress</span>
-					</petclinic:menuItem>
-				</sec:authorize>
-				
-				
-				<sec:authorize access="hasAuthority('admin')">
-					<petclinic:menuItem active="${name eq 'gamesPlayed'}" 
-					    url="/board/list" title="games played">
-						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-						<span>Games Played</span>
-					</petclinic:menuItem>
-				</sec:authorize>
-
-				<sec:authorize access="isAuthenticated()">
-					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
-						title="statistics">
-						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Statistics</span>
-					</petclinic:menuItem>
-				</sec:authorize>
-
-				<sec:authorize access="hasAuthority('player')">
-					<petclinic:menuItem active="${name eq 'games'}" url="/board/setDifficulty"
-						title="New Game">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-						<span>New game</span>
+				<petclinic:menuItem active="${name eq 'players'}" url="/players/list/"
+					title="find players">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+					<span>Find players</span>
 				</petclinic:menuItem>
-				</sec:authorize>
 
-
-				<sec:authorize access="hasAuthority('player')">
-					<petclinic:menuItem active="${name eq 'gamesPlayer'}" url="/board/listplayer"
-						title="My games">
-						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-						<span>My games</span>
-					</petclinic:menuItem>
-				</sec:authorize>
+				<petclinic:menuItem active="${name eq 'games'}" url="/games/new/"
+					title="new Game">
+					<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					<span>New game</span>
+				</petclinic:menuItem>
 
 				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
 					title="audits">
@@ -121,22 +83,13 @@
 											<p class="text-left">
 												<strong><sec:authentication property="name" /></strong>
 											</p>
-							
-
-											<br>
-											
-											<p class="text-left">
-                        					<sec:authorize access="hasAuthority('player')">
-												 <a href="<c:url value="/players/myprofile" />"
-													  class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">My profile</a>
-											 </sec:authorize>
-                         					</p>
-                         					
-											<br>
-
+												<p class="text-left">
+												<a href="<c:url value="/players/myprofile" />"
+													class="btn btn-primary btn-block btn-sm">My profile</a>
+											</p>
 											<p class="text-left">
 												<a href="<c:url value="/logout" />"
-													class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Logout</a>
+													class="btn btn-primary btn-block btn-sm">Logout</a>
 											</p>
 										</div>
 									</div>

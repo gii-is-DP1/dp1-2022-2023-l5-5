@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.user.AuthoritiesService;
 import org.springframework.samples.petclinic.user.UserService;
 import org.springframework.stereotype.Service;
@@ -30,13 +29,8 @@ public class PlayerService {
 	}	
 
 	@Transactional(readOnly = true)
-	public List<Player> findAllPlayers(Integer page, Pageable pageable) {
-		return this.playerRepository.findAllPlayers(pageable);
-	}
-
-	@Transactional(readOnly = true)
-	public Integer countAllPlayers() throws DataAccessException {
-		return playerRepository.countAllPlayers();
+	public List<Player> findAllPlayers() {
+		return this.playerRepository.findAllPlayers();
 	}
 
 
@@ -78,7 +72,8 @@ public class PlayerService {
 	}
 
 	@Transactional
-	public void deletePlayer(Integer id) {
+	public void deletePlayer(String username) {
+		Integer id = playerRepository.findPlayerByUsername(username).getId();
 		playerRepository.deleteById(id); 
 
 	}
