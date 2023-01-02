@@ -7,13 +7,16 @@
 <!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->
 <game:layout pageName="tableroPrueba">
 
-    <h2>Set difficulty</h2>
+	<div class= "col-2 text-center">
+    <h1>Set difficulty</h1>
+	<br>
 
-    <p>Choose the difficulty:</p>
-    <a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
-    <a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
-    <a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>	
-    
+    <h2>Choose the difficulty of the game:</h2>
+    <br>
+    <a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary btn-lg" class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;" >Easy</a>
+    <a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary btn-lg" class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;">Medium</a>
+    <a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary btn-lg" class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;">Difficult</a>	
+    </div>
 
     <br/>
     <br/>
