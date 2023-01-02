@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.board;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.square.Square;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -54,13 +58,46 @@ public class Board extends AuditableEntity {
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	public LocalDateTime finishTime;
 	
+	@JsonIgnore
 	public long getDurationGame() {
-		return ChronoUnit.SECONDS.between(startTime, finishTime);
+		Duration durationGame = Duration.between(startTime, finishTime);
+//		long difHours = durationGame.toHours();
+//		long difMinuts = durationGame.toMinutes();
+		long difSeconds = durationGame.toSeconds();
+		//return ChronoUnit.SECONDS.between(startTime, finishTime);
+		return difSeconds;
 	}
 	
 	@Column(name = "duration")
 	@DateTimeFormat(pattern="mm:ss")
 	public Duration duration;
+
+	@JsonIgnore
+	public String durationString() {
+		if(finishTime == null) {
+			long diffInSeconds = ChronoUnit.SECONDS.between(startTime, LocalDateTime.now());
+			long minutos = diffInSeconds/60;
+			long segundos = diffInSeconds%60;
+			return String.valueOf(minutos) + " minuts and " + String.valueOf(segundos) + " seconds";
+		}else {
+			long diffInSeconds = ChronoUnit.SECONDS.between(startTime, finishTime);
+			long minutos = diffInSeconds/60;
+			long segundos = diffInSeconds%60;
+			return String.valueOf(minutos) + " minuts and " + String.valueOf(segundos) + " seconds";
+		}
+	}
+	
+	@JsonIgnore
+	public String startTimeString() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
+		return formato.format(startTime);
+	}	
+	
+	@JsonIgnore
+	public String finishTimeString() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
+		return formato.format(finishTime);
+	}
 	
 	@ManyToOne
 	@JoinColumn(name="username")

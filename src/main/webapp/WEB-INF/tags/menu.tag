@@ -55,14 +55,6 @@
 					</petclinic:menuItem>
 				</sec:authorize>
 
-				<sec:authorize access="isAuthenticated()">
-					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
-						title="statistics">
-						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Statistics</span>
-					</petclinic:menuItem>
-				</sec:authorize>
-
 				<sec:authorize access="hasAuthority('player')">
 					<petclinic:menuItem active="${name eq 'games'}" url="/board/game?dificulty=1"
 						title="New Game">
@@ -91,6 +83,14 @@
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
 				</petclinic:menuItem>  --%>
+			
+				<sec:authorize access="isAuthenticated()">
+					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
+						title="statistics">
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span>Statistics</span>
+					</petclinic:menuItem>
+				</sec:authorize>
 
 			</ul>
 

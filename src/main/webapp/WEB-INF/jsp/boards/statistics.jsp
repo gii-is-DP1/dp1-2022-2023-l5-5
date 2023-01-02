@@ -193,7 +193,7 @@
 			  <tbody>
 			    <tr>
 			      	<th width="50%">Total games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberGlobalGames}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${nTotal}" /></td>
 			    </tr>
 <%-- 			    <tr>
 			      	<th>Average games played by player</th>
@@ -205,7 +205,7 @@
 				</tr>
 				<tr>
 					<th>Total duration games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${timeTotalPlayed}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${minutesTotalPlayed}" /> minutes and <c:out value="${secondsTotalPlayed}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Maximum duration of games played</th>

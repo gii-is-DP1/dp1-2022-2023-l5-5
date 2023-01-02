@@ -12,10 +12,11 @@
         <thead>
         <tr>
             <th style="width: 150px;">Username</th>
-            <th style="width: 200px;">Board id</th>
+ <!--            <th style="width: 200px;">Board id</th> -->
             <th style="width: 120px">Result</th>
             <th style="width: 120px">Time</th>
             <th style="width: 120px">Start Date</th>
+            <th style="width: 120px">Finish Date</th>
             <th style="width: 120px">Difficulty</th>
 
         </tr>
@@ -32,9 +33,9 @@
                 <td>
                     <c:out value="${board.player.user.username}"/>
                 </td>
-                <td>
+<%--                 <td>
                     <c:out value="${board.id} "/>
-                </td>
+                </td> --%>
                 <td>
                     <c:out value="${board.gameStatus}"/>
                 </td>
@@ -44,15 +45,15 @@
                         <c:out value="---"/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${board.duration}"/>
+                        <c:out value="${board.durationString()}"/>
                     </c:otherwise>
                 </c:choose>
                 </td>
                 <td>
-                    <c:out value="${board.startTime}"/>
+                    <c:out value="${board.startTimeString()}"/>
                 </td>
                 <td>
-                    <c:out value="${board.finishTime}"/>
+                    <c:out value="${board.finishTimeString()}"/>
                 </td>
                 <td>
 				<c:if test = "${board.rowsNumber == 8}">
