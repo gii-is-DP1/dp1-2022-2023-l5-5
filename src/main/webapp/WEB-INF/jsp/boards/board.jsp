@@ -11,6 +11,7 @@
 
 <petclinic:layout pageName="board">
 	
+	<div class= "col-2 text-center">
 	<div id="title" style= "font-weight: bold; font-size: 30">MINESWEEPER</div>
 	<br>
 	<img name="1" id="1" src="/resources/images/one.png" style= "display:None;">
@@ -81,8 +82,9 @@
 	}
 	</script>
 	
-	<canvas id= "canvas" onclick="start()">
 	
+	<canvas id= "canvas" onclick="start()">
+	</div>
 	<script>
 
  	function click(squareSide, board){
