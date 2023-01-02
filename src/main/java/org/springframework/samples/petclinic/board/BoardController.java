@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BoardController {
 	
 	private static final String VIEWS_BOARD = "boards/board";
+	private static final String VIEWS_NEW_BOARD = "boards/setDifficulty";
 
 	@Autowired
 	private BoardService boardService;
@@ -83,6 +84,9 @@ public class BoardController {
 		
 	}
 	
-	
+	@GetMapping(value = "setDifficulty")
+	public String setDifficulty() {
+		return VIEWS_NEW_BOARD;
+	}
 
 }
