@@ -8,8 +8,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.user.AuthoritiesService;
-import org.springframework.samples.petclinic.user.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -25,7 +23,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
-import org.springframework.data.web.SortDefault.SortDefaults;
 
 
 @Controller
@@ -42,15 +39,19 @@ public class PlayerController {
     
 	private final PlayerService playerService;
 
+
     @Autowired
-	public PlayerController(PlayerService playerService, UserService userService, AuthoritiesService authoritiesService) {
+	public PlayerController(PlayerService playerService) {
 		this.playerService = playerService;
+
 	}
+    
+    
 
   //Un usuario cualquiera puede crear un nuevo jugador
 	@GetMapping(value = "/new")
 	public String initCreationForm(Map<String, Object> model) {
-		Player player = new Player(); //Objeto juagador
+		Player player = new Player(); //Objeto jugador
 		model.put("player", player); //Meter en la vista el objeto jugador, y en la vista busco por el nombre entre ""
 		return VIEWS_PLAYER_CREATE_FORM;
 	}
@@ -91,21 +92,21 @@ public class PlayerController {
 		}
 	}
 	
-	//Un jugador elimina su propio jugador
-		@GetMapping(value = "/myprofile/{id}/delete")
-		public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
-			Player player = this.playerService.getPlayerById(id).get();
-			model.addAttribute(player);
-			return VIEWS_PLAYERS_DELETE;
-		}
-		
-	//El admin elimina un jugador
-		@GetMapping(value = "/myprofile/{id}/deleteAdmin")
-		public String redirectDeleteAdmin(@PathVariable("id") Integer id, ModelMap model) {
-			Player player = this.playerService.getPlayerById(id).get();
-			model.addAttribute(player);
-			return VIEWS_PLAYERS_DELETE_ADMIN;
-		}
+	// Un jugador elimina su propio jugador
+	@GetMapping(value = "/myprofile/{id}/delete")
+	public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
+		Player player = this.playerService.getPlayerById(id).get();
+		model.addAttribute(player);
+		return VIEWS_PLAYERS_DELETE;
+	}
+
+	// El admin elimina un jugador
+	@GetMapping(value = "/myprofile/{id}/deleteAdmin")
+	public String redirectDeleteAdmin(@PathVariable("id") Integer id, ModelMap model) {
+		Player player = this.playerService.getPlayerById(id).get();
+		model.addAttribute(player);
+		return VIEWS_PLAYERS_DELETE_ADMIN;
+	}
 	
 	
 	//Confirmación de eliminar para un player
@@ -152,9 +153,6 @@ public class PlayerController {
 	//El admin ve el perfil de un jugador
 	@GetMapping(value = "/list/{username}")
 	public String showPlayerProfile(Player player, @PathVariable("username") String username, BindingResult result, Model model) {
-		
-		//Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		//User currentUser = (User) authentication.getPrincipal();
 		
 		Player results = this.playerService.getPlayerByUsername(username);
 		model.addAttribute(results);

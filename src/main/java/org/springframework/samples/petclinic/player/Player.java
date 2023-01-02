@@ -49,7 +49,7 @@ public class Player extends AuditableEntity {
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 	@JsonIgnore
-	private List<Board> board;
+	private List<Board> boards;
 
 	
 }
