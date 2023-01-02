@@ -64,7 +64,6 @@ public class PlayerController {
 			return VIEWS_PLAYER_CREATE_FORM;
 		}
 		else {
-			//creating owner, user and authorities
 			this.playerService.savePlayer(player);
 			
 			return "redirect:/";
@@ -85,10 +84,6 @@ public class PlayerController {
 		if (result.hasErrors()) {
 			return VIEWS_PLAYER_UPDATE_FORM;
 		} 
-//		else if (playerService.validator(player) == true){
-//			model.addAttribute("message", "This username is already chosen!");
-//			return VIEWS_PLAYER_UPDATE_FORM;
-//		} 
 		else {
 			player.setId(id);
 			this.playerService.savePlayer(player);
