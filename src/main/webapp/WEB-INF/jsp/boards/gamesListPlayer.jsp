@@ -34,8 +34,15 @@
                     <c:out value="${board.player.user.username}"/>
                 </td>
                 <td>
-                    <c:out value="${board.gameStatus}"/>
-                </td>
+                    <%-- <c:out value="${board.gameStatus}"/> --%> 
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+							<c:out value="In progress.." />
+					</c:if> <c:if test="${board.gameStatus == 'WON'}">
+							<c:out value="Won" />
+					</c:if> <c:if test="${board.gameStatus == 'LOST'}">
+							<c:out value="Lost" />
+					</c:if>
+				</td>
                 <td>
                     <c:out value="${board.durationString()}"/>
                 </td>
