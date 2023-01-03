@@ -57,6 +57,11 @@ public class BoardService {
 		return boardRepository.findAllGamesNotInProgress(status);
 	}
 
+	@Transactional
+	public List<Board> findAllGamesInProgress(GameStatus status){
+		return boardRepository.findAllGamesInProgress(status);
+	}
+
 	@Transactional(readOnly = true)
 	public List<Board> findAllGamesPlayer(String username){
 		return this.boardRepository.findAllGamesPlayer(username);
@@ -71,6 +76,16 @@ public class BoardService {
 	@Transactional(readOnly = true)
 	public Integer findnTotalGamesPlayer(String username){
 		return this.boardRepository.nTotalGamesPlayer(username);
+	}
+
+	@Transactional(readOnly = true)
+	public Integer findnTotalGamesPlayerWon(String username, GameStatus gameStatus){
+		return this.boardRepository.nTotalGamesPlayerWon(username,gameStatus);
+	}
+
+	@Transactional(readOnly = true)
+	public Integer findnTotalActvitadedMines(String username, GameStatus gameStatus){
+		return this.boardRepository.nTotalActivatedMines(username,gameStatus);
 	}
 	
 	@Transactional(readOnly = true)

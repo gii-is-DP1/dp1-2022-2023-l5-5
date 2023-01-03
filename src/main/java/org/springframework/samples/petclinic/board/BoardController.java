@@ -41,8 +41,7 @@ public class BoardController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null)
 			if (authentication.isAuthenticated()) {
-				User currentUser = (User) authentication.getPrincipal();
-				List<Board> board = boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS);
+				List<Board> board = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
 				modelMap.addAttribute("board", board);
 				return vista;
 			} else {
@@ -78,11 +77,15 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		Integer nTotal = this.boardService.findnTotalGames();
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
+		Integer gamesPlayerTotalWon= this.boardService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
+		Integer gamesActivatedMines= this.boardService.findnTotalActvitadedMines(currentUser.getUsername(), GameStatus.LOST);
 		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
 		long minutes = timeTotalPlayed/60;
 		long seconds = timeTotalPlayed%60;
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
+		model.put("gamesPlayerTotalWon", gamesPlayerTotalWon);
+		model.put("minesActivated", gamesActivatedMines);
 		model.put("minutesTotalPlayed", minutes);
 		model.put("secondsTotalPlayed", seconds);
 		return "boards/statistics";
