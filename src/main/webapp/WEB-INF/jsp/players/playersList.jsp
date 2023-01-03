@@ -38,7 +38,8 @@
                     <c:out value="${player.mail}"/>
                 </td>
                 <td>
-                    <c:out value="${player.user.password}"/>
+                    <%-- <c:out value="${player.user.password}"/> --%>
+                    <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                 </td>           
                 <td>
                     <spring:url value="/players/myprofile/{id}/edit" var="editUrl">

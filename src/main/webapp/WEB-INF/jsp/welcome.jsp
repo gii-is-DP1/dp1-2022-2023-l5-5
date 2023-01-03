@@ -8,11 +8,11 @@
 <petclinic:layout pageName="home">
     <h1><fmt:message key="welcome"/></h1>
     <div class="row">
-    <h2>Project ${tittle}</h2>
+    <h2>Project Minesweeper </h2>
     <h2>Group ${group}</h2>
     <ul>
     <c:forEach items="${persons}" var="person">
-        <li>${person.firstName} ${person.lastName}</li>
+       <b> <li>${person.firstName} ${person.lastName}</li></b>
     </c:forEach>
     </ul>
     </div>
