@@ -84,7 +84,7 @@ public class BoardService {
 	}
 
 	@Transactional(readOnly = true)
-	public Integer findnTotalActvitadedMines(String username, GameStatus gameStatus){
+	public Integer findnTotalActivatedMines(String username, GameStatus gameStatus){
 		return this.boardRepository.nTotalActivatedMines(username,gameStatus);
 	}
 	
@@ -94,7 +94,62 @@ public class BoardService {
 		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
 		return res;
 	}
-
+	
+	@Transactional(readOnly = true)
+	public long averageDurationGamesPlayed(){
+		List<Board> list = boardRepository.findAll();
+		Double res = list.stream().mapToInt(x -> (int) x.getDurationGame()).average().orElse(0.0);
+		long res1 = res.longValue();
+		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long maxDurationGamesPlayed(){
+		List<Board> list = boardRepository.findAll();
+		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).max().orElse(0);
+		long res1 =  res.longValue();
+		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long minDurationGamesPlayed(){
+		List<Board> list = boardRepository.findAll();
+		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).min().orElse(0);
+		long res1 =  res.longValue();
+		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long totalDurationGamesPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long averageDurationGamesPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		Double res = list.stream().mapToInt(x -> (int) x.getDurationGame()).average().orElse(0.0);
+		long res1 = res.longValue();
+		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long maxDurationGamesPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).max().orElse(0);
+		long res1 = res.longValue();
+		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long minDurationGamesPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).min().orElse(0);
+		long res1 = res.longValue();
+		return res1;
+	}
+	
 	@Transactional
 	 public Board click(int row, int column, Board board) {
 		 	if(board.getGameStatus()==GameStatus.NONE) {

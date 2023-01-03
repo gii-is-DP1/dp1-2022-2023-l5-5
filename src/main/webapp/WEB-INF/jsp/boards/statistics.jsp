@@ -63,7 +63,7 @@
 			    </tr> --%>
 			    <tr>
 					<th>Average duration games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${averageDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${avgminTimePlayed}" /> minutes and <c:out value="${avgsecTimePlayed}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Total duration games played</th>
@@ -71,11 +71,11 @@
 				</tr>
 				<tr>
 					<th>Maximum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${maxDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${maxminTimePlayed}" /> minutes and <c:out value="${maxsecTimePlayed}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Minimum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${minDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${minminTimePlayed}" /> minutes and <c:out value="${minsecTimePlayed}" /> seconds</td>
 				</tr>
 			  </tbody>
 			</table>
@@ -92,19 +92,19 @@
 				</tr>
 				<tr>
 					<th>Average duration games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${averageDurationPlayerGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${avgminTimePlayer}" /> minutes and <c:out value="${avgsecTimePlayer}" /> seconds</td>
 				</tr>
 				<tr>
-					<th>Total duration games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${totalDurationPlayerGames}" /> minutes</td>
+					<th>Total duration games played by player</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${minutesTotalPlayer}" /> minutes and <c:out value="${secondsTotalPlayer}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Maximum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${maxDurationPlayerGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${maxminTimePlayer}" /> minutes and <c:out value="${maxsecTimePlayer}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Minimum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${minDurationPlayerGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${minminTimePlayer}" /> minutes and <c:out value="${minsecTimePlayer}" /> seconds</td>
 				</tr>
 			  </tbody>
 			  <thead>
