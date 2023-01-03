@@ -115,11 +115,11 @@
 			  <tbody>
 			  	<tr>
 					<th width="50%">TOTAL GAMES WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberWonGames}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotalWon}" /></td>
 				</tr>
 			    <tr>
 					<th width="50%">Total activated mines</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberActivatedMines}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${minesActivated}" /></td>
 				</tr>
 				<tr>
 					<th>Total mine explosions contained</th>

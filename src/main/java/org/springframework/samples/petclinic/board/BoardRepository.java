@@ -15,12 +15,9 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 
 	@Query("SELECT board FROM Board board")
 	public List<Board> findAll();
-	
-//	@Query("SELECT board FROM Board board WHERE board.inProgress=false")
-//	public List<Board> findAllGamesNotInProgress();
 
-//	@Query("SELECT game FROM Game game WHERE game.inProgress=true")
-//	public List<Board> findAllGamesInProgress();
+    @Query("SELECT board FROM Board board WHERE board.gameStatus LIKE :gameStatus")
+	public List<Board> findAllGamesInProgress(GameStatus gameStatus);
 	
 	@Query("SELECT board FROM Board board WHERE board.player.user.username LIKE :username AND board.gameStatus NOT LIKE :gameStatus AND board.finishTime != NULL  ORDER BY board.finishTime DESC")
 	List<Board> findBoardByUsername(String username, GameStatus gameStatus);
@@ -36,4 +33,10 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 
 	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username")
 	Integer nTotalGamesPlayer(@Param("username") String username);
+
+	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
+	Integer nTotalGamesPlayerWon(@Param("username") String username, GameStatus gameStatus);
+
+	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
+	Integer nTotalActivatedMines(@Param("username") String username, GameStatus gameStatus);
 }
