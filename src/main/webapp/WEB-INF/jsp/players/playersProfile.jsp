@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <th>Password</th>
-            <td><c:out value="${player.user.password}"/></td>
+            <td><%-- <c:out value="${player.user.password}"/> --%><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></td>
     </table>
 	
 	

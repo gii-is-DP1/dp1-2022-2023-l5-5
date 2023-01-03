@@ -33,16 +33,8 @@
                 </td>
 
                	<td>
-                  	<c:out value="${board.gameStatus == 'IN_PROGRESS'}"/> 
-                  <%--   <c:when test="${board.gameStatus == 'IN_PROGRESS'}">
-                        <c:out value="In progress"/>
-                    </c:when>  --%> 
-<%--                  <td>
-                	<c:if test="${board.finishTime == null}"><c:out value="In progress"/></c:if>
-                	<c:if test="${board.finishTime != null}"><c:out value="${board.finishTimeString()}"/></c:if>
-                </td> --%>
                 
-                <%-- <c:if test="${board.gameStatus== 'IN_PROGRESS'}"><c:out value="In progress"/></c:if> --%>
+                <c:if test="${board.gameStatus == 'IN_PROGRESS'}"><c:out value="In progress.."/></c:if>
                 </td>
                 
                 <td>

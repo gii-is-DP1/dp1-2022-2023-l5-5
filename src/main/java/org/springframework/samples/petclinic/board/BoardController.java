@@ -41,8 +41,7 @@ public class BoardController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null)
 			if (authentication.isAuthenticated()) {
-				User currentUser = (User) authentication.getPrincipal();
-				List<Board> board = boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS);
+				List<Board> board = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
 				modelMap.addAttribute("board", board);
 				return vista;
 			} else {
@@ -78,13 +77,52 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		Integer nTotal = this.boardService.findnTotalGames();
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
+		Integer gamesPlayerTotalWon= this.boardService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
+		Integer gamesActivatedMines= this.boardService.findnTotalActivatedMines(currentUser.getUsername(), GameStatus.LOST);
 		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
 		long minutes = timeTotalPlayed/60;
 		long seconds = timeTotalPlayed%60;
+		long timeTotalPlayer = this.boardService.totalDurationGamesPlayer(currentUser.getUsername());
+		long minut = timeTotalPlayer/60;
+		long secon = timeTotalPlayer%60;
+		long averageTimePlayed = this.boardService.averageDurationGamesPlayed();
+		long minu = averageTimePlayed/60;
+		long seco = averageTimePlayed%60;
+		long averageTimePlayer = this.boardService.averageDurationGamesPlayer(currentUser.getUsername());
+		long min = averageTimePlayer/60;
+		long sec = averageTimePlayer%60;
+		long maxTimePlayed = this.boardService.maxDurationGamesPlayed();
+		long mi = maxTimePlayed/60;
+		long se = maxTimePlayed%60;
+		long maxTimePlayer = this.boardService.maxDurationGamesPlayer(currentUser.getUsername());
+		long m = maxTimePlayer/60;
+		long s = maxTimePlayer%60;
+		long minTimePlayed = this.boardService.minDurationGamesPlayed();
+		long mm = minTimePlayed/60;
+		long ss = minTimePlayed%60;
+		long minTimePlayer = this.boardService.minDurationGamesPlayer(currentUser.getUsername());
+		long mmm = minTimePlayer/60;
+		long sss = minTimePlayer%60;
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
+		model.put("gamesPlayerTotalWon", gamesPlayerTotalWon);
+		model.put("minesActivated", gamesActivatedMines);
 		model.put("minutesTotalPlayed", minutes);
 		model.put("secondsTotalPlayed", seconds);
+		model.put("minutesTotalPlayer", minut);
+		model.put("secondsTotalPlayer", secon);
+		model.put("avgminTimePlayed", minu);
+		model.put("avgsecTimePlayed", seco);
+		model.put("avgminTimePlayer", min);
+		model.put("avgsecTimePlayer", sec);
+		model.put("maxminTimePlayed", mi);
+		model.put("maxsecTimePlayed", se);
+		model.put("maxminTimePlayer", m);
+		model.put("maxsecTimePlayer", s);
+		model.put("minminTimePlayed", mm);
+		model.put("minsecTimePlayed", ss);
+		model.put("minminTimePlayer", mmm);
+		model.put("minsecTimePlayer", sss);
 		return "boards/statistics";
 		
 	}
