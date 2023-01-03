@@ -88,7 +88,7 @@ public class BoardServiceTest {
 	@Test
 	public void testFindBoardByUsername() {
 		List<Board> boards = boardService.findBoardByUsername("angbermar1", GameStatus.NONE);
-		assertEquals(boards.size(), 2);
+		assertEquals(boards.size(), 4);
 	}
 	
 	@Test
