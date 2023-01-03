@@ -13,7 +13,6 @@
         <tr>
             
             <th style="width: 150px;">Username</th>
-            <th style="width: 120px">Board id</th>
             <th style="width: 120px">Result</th>
             <th style="width: 120px">Time</th>
             <th style="width: 120px">Start Date</th>
@@ -33,9 +32,6 @@
                 </td> --%>
                 <td>
                     <c:out value="${board.player.user.username}"/>
-                </td>
-                <td>
-                    <c:out value="${board.id} "/>
                 </td>
                 <td>
                     <c:out value="${board.gameStatus}"/>
@@ -60,16 +56,6 @@
                     <c:out value="Difficult"/>
                 </c:if>
                 </td>  
-                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
-                </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
                 
             </tr>
         </c:forEach>
