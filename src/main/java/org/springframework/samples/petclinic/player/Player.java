@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -47,13 +46,10 @@ public class Player extends AuditableEntity {
 	@Valid
 	@JsonIgnore
 	private User user;
-
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
-//    private List<Game> game;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
 	@JsonIgnore
-	private List<Board> board;
+	private List<Board> boards;
 
 	
 }

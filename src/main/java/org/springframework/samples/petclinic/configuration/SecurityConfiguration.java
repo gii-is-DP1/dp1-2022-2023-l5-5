@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  * and open the template in the editor.
  */
 
+@EnableJpaAuditing
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -35,17 +37,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/currentUser").permitAll()
 				.antMatchers("/session/**").permitAll()
 				.antMatchers("/achievements/list/**").hasAnyAuthority("admin")
-				.antMatchers("/myprofile/**").hasAnyAuthority("player")
+				.antMatchers("/myprofile/**").permitAll()
 				.antMatchers("/players/new/**").permitAll()
-				.antMatchers("/players/myprofile/**/edit").hasAnyAuthority("player")
-				.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player") 
+				.antMatchers("/players/myprofile/**/edit").permitAll()
+				.antMatchers("/players/myprofile/**/delete").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/deleteAdmin").hasAnyAuthority("admin")
 				.antMatchers("/players/myprofile/**/deleteConfirm").hasAnyAuthority("player")
+				.antMatchers("/players/myprofile/**/deleteConfirmAdmin").hasAnyAuthority("admin")
 				.antMatchers("/players/myprofile/**").permitAll()
 				.antMatchers("/players/edit/**").hasAnyAuthority("admin")
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
 				.antMatchers("/board/game/**").hasAnyAuthority("player")
+				.antMatchers("/board/setDifficulty").permitAll()
 				.antMatchers("/board/list/**").hasAnyAuthority("admin")
 				.antMatchers("/board/listinprogress/**").hasAnyAuthority("admin")
 				.antMatchers("/board/listplayer/**").permitAll()

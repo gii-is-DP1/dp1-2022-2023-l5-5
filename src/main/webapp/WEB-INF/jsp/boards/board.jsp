@@ -11,6 +11,7 @@
 
 <petclinic:layout pageName="board">
 	
+	<div class= "col-2 text-center">
 	<div id="title" style= "font-weight: bold; font-size: 30">MINESWEEPER</div>
 	<br>
 	<img name="1" id="1" src="/resources/images/one.png" style= "display:None;">
@@ -23,14 +24,7 @@
 	<img name="flag" id="flag" src="/resources/images/flag.png" style= "display:None;">
 	<img name="wrong" id="wrong" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
-	
-	<div>
-		<p>Choose the difficulty:</p>
-		<a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary" >Easy</a>
-		<a href="http://localhost:8080/board/game?dificulty=2" class="btn btn-primary">Medium</a>
-		<a href="http://localhost:8080/board/game?dificulty=3" class="btn btn-primary">Difficult</a>		
-	</div>
-	<br>
+
 	
 	
 	<div id=flagsNumber></div>
@@ -88,8 +82,9 @@
 	}
 	</script>
 	
-	<canvas id= "canvas" onclick="start()">
 	
+	<canvas id= "canvas" onclick="start()">
+	</div>
 	<script>
 
  	function click(squareSide, board){
@@ -217,7 +212,7 @@
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
 					if(confirm("You have lost the game! Do you want to play another game?")){
-						window.location.href = "http://localhost:8080/board/game?dificulty=2";
+						window.location.href = "http://localhost:8080/board/game?dificulty=1";
 					}else{
 						window.location.href = "http://localhost:8080/players/myprofile";
 					};
@@ -229,7 +224,7 @@
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
 						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
-							window.location.href = "http://localhost:8080/board/game?dificulty=2";
+							window.location.href = "http://localhost:8080/board/game?dificulty=1";
 						}else{
 							window.location.href = "http://localhost:8080/players/myprofile";
 						};
@@ -241,7 +236,7 @@
 			if(board.data.gameStatus == "WON"){
 				if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! <br> You have completed the board in:"
 				+document.getElementById("crono").innerHTML+"<br> Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+					window.location.href = "http://localhost:8080/board/game?dificulty=1";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
 				};
@@ -250,7 +245,7 @@
 			if(board.data.gameStatus == "LOST"){
 				if(confirm("You have lost the game! You have completed the board in:"
 				+document.getElementById("crono").innerHTML+"Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=2";
+					window.location.href = "http://localhost:8080/board/game?dificulty=1";
 				}else{
 					window.location.href = "http://localhost:8080/players/myprofile";
 				};

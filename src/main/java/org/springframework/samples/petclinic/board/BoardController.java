@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class BoardController {
 	
 	private static final String VIEWS_BOARD = "boards/board";
+	private static final String VIEWS_NEW_BOARD = "boards/setDifficulty";
 
 	@Autowired
 	private BoardService boardService;
@@ -77,12 +78,20 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		Integer nTotal = this.boardService.findnTotalGames();
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
+		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
+		long minutes = timeTotalPlayed/60;
+		long seconds = timeTotalPlayed%60;
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
-		return "games/statistics";
+		model.put("minutesTotalPlayed", minutes);
+		model.put("secondsTotalPlayed", seconds);
+		return "boards/statistics";
 		
 	}
 	
-	
+	@GetMapping(value = "setDifficulty")
+	public String setDifficulty() {
+		return VIEWS_NEW_BOARD;
+	}
 
 }

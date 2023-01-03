@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PlayerService {
     
-	@Autowired
     private PlayerRepository playerRepository;	
 
 	@Autowired
@@ -71,6 +70,7 @@ public class PlayerService {
 	public Optional<Player> getPlayerById(int id) throws DataAccessException {
 		return playerRepository.findById(id);
 	}
+	
 	
 	@Transactional(readOnly = true)
 	public Player getPlayerByUsername(String username) throws DataAccessException {

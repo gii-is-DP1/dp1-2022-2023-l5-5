@@ -11,15 +11,6 @@
     <table id="gamesTable" class="table table-striped">
         <thead>
         <tr>
-<!--             <th style="width: 120px">Board id</th>
-            <th style="width: 150px;">Username</th>
-            <th style="width: 200px;">Difficulty</th>
-            <th style="width: 120px">Id de tablero</th>
-            <th style="width: 120px">Ha perdido?</th>
-            <th style="width: 120px">Esta en progreso?</th>
-            <th style="width: 120px">Fecha de inicio</th>
-            <th style="width: 120px">Fecha de fin</th>
-            <th style="width: 120px">Numero de clicks</th> -->
             
             <th style="width: 150px;">Username</th>
             <th style="width: 120px">Board id</th>
@@ -50,13 +41,13 @@
                     <c:out value="${board.gameStatus}"/>
                 </td>
                 <td>
-                    <c:out value="${board.duration}"/>
+                    <c:out value="${board.durationString()}"/>
                 </td>
                 <td>
-                    <c:out value="${board.startTime}"/>
+                    <c:out value="${board.startTimeString()}"/>
                 </td>
 				<td>
-                    <c:out value="${board.finishTime}"/>
+                    <c:out value="${board.finishTimeString()}"/>
                 </td>
                 <td>
 				<c:if test = "${board.rowsNumber == 8}">
