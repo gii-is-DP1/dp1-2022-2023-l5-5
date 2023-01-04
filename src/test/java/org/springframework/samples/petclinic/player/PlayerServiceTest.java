@@ -144,7 +144,7 @@ public class PlayerServiceTest {
 	 }
 
 	@Test
-	public void shouldFindPlayerById(){
+	void shouldFindPlayerById(){
 		Player players = this.playerService.getPlayerById(1).get();
 		assertThat(players.getFirstName()).isEqualTo("Pablo");
 	}

@@ -73,7 +73,6 @@ public class BoardRequestController {
 	}
 	
 	@GetMapping("/{boardId}/click/{row}/{column}")
-
 	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int f, @PathVariable("column") int c) {
 		Board board = boardService.findBoardById(id).get();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
