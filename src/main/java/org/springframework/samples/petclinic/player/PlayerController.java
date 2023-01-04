@@ -144,7 +144,7 @@ public class PlayerController {
 	
 	//Confirmación de eliminar para un admin
 		@GetMapping(value = "/myprofile/{id}/deleteConfirmAdmin")
-		public String deletePlayerAdmin(@PathVariable("id") Integer id, ModelMap model) {
+		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
 			this.playerService.deletePlayer(id);
 			
 			return "redirect:/players/list?firstName=&page=0";
