@@ -79,6 +79,9 @@ public class BoardController {
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
 		Integer gamesPlayerTotalWon= this.boardService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
 		Integer gamesActivatedMines= this.boardService.findnTotalActivatedMines(currentUser.getUsername(), GameStatus.LOST);
+		//no sale bien el numero de banderas colocadas, no sé como hacerlo
+		//Integer gamesPlacedFlags= this.boardService.findnTotalPlacedFlags(currentUser.getUsername(), GameStatus.LOST);
+
 		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
 		long minutes = timeTotalPlayed/60;
 		long seconds = timeTotalPlayed%60;
@@ -103,10 +106,22 @@ public class BoardController {
 		long minTimePlayer = this.boardService.minDurationGamesPlayer(currentUser.getUsername());
 		long mmm = minTimePlayer/60;
 		long sss = minTimePlayer%60;
+		long numWonPlayer = this.boardService.numGamesWonPlayer(currentUser.getUsername());
+		long numWonPlayed = this.boardService.numGamesWonPlayed();
+		long numLostPlayer = this.boardService.numGamesLostPlayer(currentUser.getUsername());
+		long numLostPlayed = this.boardService.numGamesLostPlayed();
+		long numGamesWinEasyPlayer = this.boardService.numGamesWinEasyPlayer(currentUser.getUsername());
+		long numGamesWinMediumPlayer = this.boardService.numGamesWinMediumPlayer(currentUser.getUsername());
+		long numGamesWinDifficultPlayer = this.boardService.numGamesWinDifficultPlayer(currentUser.getUsername());
+		long numGamesWinEasyPlayed = this.boardService.numGamesWinEasyPlayed();
+		long numGamesWinMediumPlayed = this.boardService.numGamesWinMediumPlayed();
+		long numGamesWinDifficultPlayed = this.boardService.numGamesWinDifficultPlayed();
+
 		model.put("nTotal", nTotal);
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
 		model.put("gamesPlayerTotalWon", gamesPlayerTotalWon);
 		model.put("minesActivated", gamesActivatedMines);
+		//model.put("gamesPlacedFlags", gamesPlacedFlags);
 		model.put("minutesTotalPlayed", minutes);
 		model.put("secondsTotalPlayed", seconds);
 		model.put("minutesTotalPlayer", minut);
@@ -123,6 +138,16 @@ public class BoardController {
 		model.put("minsecTimePlayed", ss);
 		model.put("minminTimePlayer", mmm);
 		model.put("minsecTimePlayer", sss);
+		model.put("numWonPlayer", numWonPlayer);
+		model.put("numWonPlayed", numWonPlayed);
+		model.put("numLostPlayer", numLostPlayer);
+		model.put("numLostPlayed", numLostPlayed);
+		model.put("numGamesWinEasyPlayer", numGamesWinEasyPlayer);
+		model.put("numGamesWinMediumPlayer", numGamesWinMediumPlayer);
+		model.put("numGamesWinDifficultPlayer", numGamesWinDifficultPlayer);
+		model.put("numGamesWinEasyPlayed", numGamesWinEasyPlayed);
+		model.put("numGamesWinMediumPlayed", numGamesWinMediumPlayed);
+		model.put("numGamesWinDifficultPlayed", numGamesWinDifficultPlayed);
 		return "boards/statistics";
 		
 	}

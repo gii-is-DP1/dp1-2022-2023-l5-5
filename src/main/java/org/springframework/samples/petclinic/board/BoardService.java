@@ -5,16 +5,20 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardService {
+	
+	private static final int EASY_BOARD_SIZE = 8;
+    private static final int MEDIUM_BOARD_SIZE = 14;
+    private static final int DIFFICULT_BOARD_SIZE  = 24;
     
 	@Autowired
     private BoardRepository boardRepository;	
@@ -89,6 +93,11 @@ public class BoardService {
 	}
 	
 	@Transactional(readOnly = true)
+	public Integer findnTotalPlacedFlags(String username, GameStatus gameStatus){
+		return this.boardRepository.nTotalPlacedFlags(username, gameStatus);
+	}
+	
+	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayed(){
 		List<Board> list = boardRepository.findAll();
 		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
@@ -120,6 +129,41 @@ public class BoardService {
 	}
 	
 	@Transactional(readOnly = true)
+	public long numGamesWonPlayed (){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesLostPlayed (){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinEasyPlayed (){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == EASY_BOARD_SIZE).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinMediumPlayed (){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == MEDIUM_BOARD_SIZE).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinDifficultPlayed (){
+		List<Board> list = boardRepository.findAll();
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == DIFFICULT_BOARD_SIZE).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayer (String username){
 		List<Board> list = boardRepository.findAllGamesPlayer(username);
 		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
@@ -148,6 +192,41 @@ public class BoardService {
 		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).min().orElse(0);
 		long res1 = res.longValue();
 		return res1;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWonPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesLostPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinEasyPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == EASY_BOARD_SIZE).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinMediumPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == MEDIUM_BOARD_SIZE).count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long numGamesWinDifficultPlayer (String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == DIFFICULT_BOARD_SIZE).count();
+		return res;
 	}
 	
 	@Transactional
