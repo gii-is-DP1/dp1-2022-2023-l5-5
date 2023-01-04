@@ -19,7 +19,7 @@
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
-			      <th colspan=3 scope="col" style="text-align:center">HALL OF FAME</th>
+			      <th colspan=3 scope="col" style="text-align:center">RANKING</th>
 			    </tr>
 			    <tr>
 			      <th width="10%" style="text-align:center" scope="col">#</th>
@@ -49,18 +49,37 @@
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
-			      <th colspan=2 scope="col" style="text-align:center">GLOBAL STATS</th>
+			      <th colspan=2 scope="col" style="text-align:center">GLOBAL STATISTICS</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr>
-			      	<th width="50%">Total games played</th>
+			      	<th width="50%">TOTAL games played</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${nTotal}" /></td>
 			    </tr>
-<%-- 			    <tr>
-			      	<th>Average games played by player</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${averageNumberGlobalGames}" /></td>
-			    </tr> --%>
+			    <tr>
+					<th width="50%" >Number of games WON</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numWonPlayed}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with EASY difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinEasyPlayed}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games WON with MEDIUM difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinMediumPlayed}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with DIFFICULT difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinDifficultPlayed}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games LOST</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numLostPlayed}" /></td>
+				</tr>
+
 			    <tr>
 					<th>Average duration games played</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${avgminTimePlayed}" /> minutes and <c:out value="${avgsecTimePlayed}" /> seconds</td>
@@ -82,13 +101,35 @@
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
-			      <th colspan=2 scope="col" style="text-align:center">PLAYER STATS</th>
+			      <th colspan=2 scope="col" style="text-align:center">PLAYER STATISTICS</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			    <tr>
-					<th width="50%" >Number of games played</th>
+					<th width="50%" >TOTAL number of games played</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotal}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numWonPlayer}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with EASY difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinEasyPlayer}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games WON with MEDIUM difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinMediumPlayer}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with DIFFICULT difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinDifficultPlayer}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games LOST</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numLostPlayer}" /></td>
 				</tr>
 				<tr>
 					<th>Average duration games played</th>
@@ -127,7 +168,7 @@
 				</tr>
 				<tr>
 					<th>Total flags placed</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberTotalFlags}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlacedFlags}" /></td>
 				</tr>
 				<tr>
 					<th>Total cells clicked</th>
@@ -191,17 +232,36 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			    <tr>
-			      	<th width="50%">Total games played</th>
+			   <tr>
+			      	<th width="50%">TOTAL games played</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${nTotal}" /></td>
 			    </tr>
-<%-- 			    <tr>
-			      	<th>Average games played by player</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${averageNumberGlobalGames}" /></td>
-			    </tr> --%>
+			    <tr>
+					<th width="50%" >Number of games WON</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numWonPlayed}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with EASY difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinEasyPlayed}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games WON with MEDIUM difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinMediumPlayed}" /></td>
+				</tr>
+				<tr>
+					<th width="50%" >Number of games WON with DIFFICULT difficulty</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numGamesWinDifficultPlayed}" /></td>
+				</tr>
+				
+				<tr>
+					<th width="50%" >Number of games LOST</th>
+					<td style="font-size:20px;text-align:center"><c:out value="${numLostPlayed}" /></td>
+				</tr>
+
 			    <tr>
 					<th>Average duration games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${averageDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${avgminTimePlayed}" /> minutes and <c:out value="${avgsecTimePlayed}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Total duration games played</th>
@@ -209,11 +269,11 @@
 				</tr>
 				<tr>
 					<th>Maximum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${maxDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${maxminTimePlayed}" /> minutes and <c:out value="${maxsecTimePlayed}" /> seconds</td>
 				</tr>
 				<tr>
 					<th>Minimum duration of games played</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${minDurationGlobalGames}" /> minutes</td>
+					<td style="font-size:20px;text-align:center"><c:out value="${minminTimePlayed}" /> minutes and <c:out value="${minsecTimePlayed}" /> seconds</td>
 				</tr>
 			  </tbody>
 			</table>
