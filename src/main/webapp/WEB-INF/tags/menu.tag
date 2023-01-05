@@ -85,17 +85,59 @@
 				</petclinic:menuItem>  --%>
 			
 				<sec:authorize access="isAuthenticated()">
-					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
-						title="statistics">
-						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Statistics</span>
-					</petclinic:menuItem>
+<%-- 					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
+						title="statistics"> --%>
+<!-- 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span>Statistics</span> -->
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-star"></span> 
+							Stats <span
+							class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-login">
+									<div class="row">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/board/statistics" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Statistics</a>
+                         					</p>
+										</div>
+										
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/board/rankings" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Rankings</a>
+                         					</p>
+										</div>
+										
+										<sec:authorize access="hasAuthority('player')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/board/rankings" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Achievs</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+						</ul></li>
+					<%-- </petclinic:menuItem> --%>
 				</sec:authorize>
 
 			</ul>
-
-
-
 
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">

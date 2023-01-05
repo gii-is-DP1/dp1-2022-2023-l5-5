@@ -40,6 +40,6 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
 	Integer nTotalActivatedMines(@Param("username") String username, GameStatus gameStatus);
 
-	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
-	Integer nTotalPlacedFlags(@Param("username") String username, GameStatus gameStatus);
+//	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
+//	Integer nTotalPlacedFlags(@Param("username") String username, GameStatus gameStatus);
 }

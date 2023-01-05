@@ -4,11 +4,14 @@ package org.springframework.samples.petclinic.board;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,8 +96,9 @@ public class BoardService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Integer findnTotalPlacedFlags(String username, GameStatus gameStatus){
-		return this.boardRepository.nTotalPlacedFlags(username, gameStatus);
+	public Integer findnTotalPlacedFlags(String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		return list.stream().mapToInt(x -> x.getFlagsNumber()).sum();
 	}
 	
 	@Transactional(readOnly = true)
@@ -202,6 +206,13 @@ public class BoardService {
 	}
 	
 	@Transactional(readOnly = true)
+	public List<Board> gamesWonPlayer (){
+		List<Board> list = boardRepository.findAll();
+		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).collect(Collectors.toList());
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
 	public long numGamesLostPlayer (String username){
 		List<Board> list = boardRepository.findAllGamesPlayer(username);
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
@@ -228,6 +239,31 @@ public class BoardService {
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == DIFFICULT_BOARD_SIZE).count();
 		return res;
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Map.Entry<String, Integer>> ranking (List<Player> players, List<Board> games) {
+		
+		Map<String, Integer> sortedMap =  new TreeMap<>();
+		for (Player player : players) {
+			for (Board game : games) {
+				if (player.equals(game.getPlayer())) {
+					if (sortedMap.containsKey(player.getUser().getUsername())) {
+						Integer res = sortedMap.get(player.getUser().getUsername());
+						res++;
+						sortedMap.put(player.getUser().getUsername(), res);
+					} else {
+						sortedMap.put(player.getUser().getUsername(), 1);
+					}
+				}
+			}
+		}
+		List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream()
+				.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+				.collect(Collectors.toList());
+		return list;
+	}
+
+
 	
 	@Transactional
 	 public Board click(int row, int column, Board board) {

@@ -32,6 +32,11 @@ public class PlayerService {
 	public List<Player> findAllPlayers(Integer page, Pageable pageable) {
 		return this.playerRepository.findAllPlayers(pageable);
 	}
+	
+	@Transactional(readOnly = true)
+	public List<Player> findAll() {
+		return this.playerRepository.findAllPlayers();
+	}
 
 	@Transactional(readOnly = true)
 	public Integer countAllPlayers() throws DataAccessException {
