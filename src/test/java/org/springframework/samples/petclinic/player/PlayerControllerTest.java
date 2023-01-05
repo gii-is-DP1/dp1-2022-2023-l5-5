@@ -92,15 +92,23 @@ public class PlayerControllerTest {
 			   .andExpect(view().name("players/createPlayerForm"));
 	}
 	
-	@WithMockUser(value = "spring")
+	@WithMockUser(value = "spring", authorities={"admin"})
 	@Test
-	public void testInitUpdateForm() throws Exception {
+	public void testInitUpdateFormSuccess() throws Exception {
 		mockMvc.perform(get("/players/myprofile/{id}/edit", TEST_PLAYER_ID))
 				.andExpect(status().isOk())
 				.andExpect(view().name("players/updatePlayerForm"));
 	}
 	
 	@WithMockUser(value = "spring")
+	@Test
+	public void testInitUpdateFormHasErrors() throws Exception {
+		mockMvc.perform(get("/players/myprofile/{id}/edit", TEST_PLAYER_ID))
+				.andExpect(status().is3xxRedirection())
+				.andExpect(view().name("redirect:/"));
+	}
+	
+	@WithMockUser(value = "spring", authorities={"admin", "player"})
 	@Test
 	public void testProcessUpdateFormSuccess() throws Exception {
 		mockMvc.perform(post("/players/myprofile/{id}/edit", TEST_PLAYER_ID)
@@ -114,9 +122,9 @@ public class PlayerControllerTest {
 				.andExpect(view().name("redirect:/"));
 	}
 	
-    @WithMockUser(value = "spring")
+    @WithMockUser(value = "spring", authorities={"admin", "player"})
 	@Test
-	void testProcessUpdateFormHasErrors() throws Exception {
+	public void testProcessUpdateFormHasErrors() throws Exception {
 		mockMvc.perform(post("/players/myprofile/{id}/edit", TEST_PLAYER_ID)
 							.with(csrf())
 							.param("firstName", "John")
@@ -126,6 +134,51 @@ public class PlayerControllerTest {
 							.param("user.password", "password123"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("players/updatePlayerForm"));
+	}
+    
+	
+	@WithMockUser(value = "spring", authorities={"admin"})
+	@Test
+	public void testDeletePlayer() throws Exception {
+		mockMvc.perform(get("/players/myprofile/{id}/deleteAdmin", TEST_PLAYER_ID))
+				.andExpect(status().isOk())
+				.andExpect(view().name("players/playersDeleteAdmin"));
+	}
+	
+	@WithMockUser(value = "spring", authorities={"admin"})
+	@Test
+	public void testDeletePlayerSuccess() throws Exception {
+		mockMvc.perform(get("/players/myprofile/{id}/deleteConfirmAdmin", TEST_PLAYER_ID))
+			   .andExpect(status().is3xxRedirection())
+			   .andExpect(view().name("redirect:/players/list?firstName=&page=0"));
+	}
+	
+	@Test
+	@WithMockUser(value = "spring", authorities={"admin"})
+	public void testProcessFindForm() throws Exception {
+		mockMvc.perform(get("/players/list?firstName=&page=0"))
+			   .andExpect(status().isOk())
+				.andExpect(model().attributeExists("pageNumber"))
+				.andExpect(model().attributeExists("hasPrevious"))
+				.andExpect(model().attributeExists("totalPages"))
+				.andExpect(model().attributeExists("selections"))
+				.andExpect(view().name("players/playersList"));
+	}
+	
+	@WithMockUser(value = "spring", authorities={"admin"})
+	@Test
+	public void testShowPlayerProfileAdmin() throws Exception {
+		mockMvc.perform(get("/players/list/{username}", "meriglmar"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("players/playersProfile"));
+	}
+	
+	@WithMockUser(value = "spring", authorities={"player"})
+	@Test
+	public void testShowPlayerProfilePlayer() throws Exception {
+		mockMvc.perform(get("/players/myprofile"))
+				.andExpect(status().isOk())
+				.andExpect(view().name("players/playersProfile"));
 	}
 	
 }

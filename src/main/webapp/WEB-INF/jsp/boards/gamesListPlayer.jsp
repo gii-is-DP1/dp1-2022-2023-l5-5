@@ -13,7 +13,6 @@
         <tr>
             
             <th style="width: 150px;">Username</th>
-            <th style="width: 120px">Board id</th>
             <th style="width: 120px">Result</th>
             <th style="width: 120px">Time</th>
             <th style="width: 120px">Start Date</th>
@@ -35,11 +34,15 @@
                     <c:out value="${board.player.user.username}"/>
                 </td>
                 <td>
-                    <c:out value="${board.id} "/>
-                </td>
-                <td>
-                    <c:out value="${board.gameStatus}"/>
-                </td>
+                    <%-- <c:out value="${board.gameStatus}"/> --%> 
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+							<c:out value="In progress.." />
+					</c:if> <c:if test="${board.gameStatus == 'WON'}">
+							<c:out value="Won" />
+					</c:if> <c:if test="${board.gameStatus == 'LOST'}">
+							<c:out value="Lost" />
+					</c:if>
+				</td>
                 <td>
                     <c:out value="${board.durationString()}"/>
                 </td>
@@ -60,16 +63,6 @@
                     <c:out value="Difficult"/>
                 </c:if>
                 </td>  
-                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
-                </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
                 
             </tr>
         </c:forEach>
