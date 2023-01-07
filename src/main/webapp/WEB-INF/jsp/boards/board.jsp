@@ -11,6 +11,13 @@
 
 <petclinic:layout pageName="board">
 	
+	<style>
+	  #flagsNumber, #crono{
+		font-size: large;
+	  }
+	</style>
+	
+	
 	<div class= "col-2 text-center">
 	<div id="title" style= "font-weight: bold; font-size: 30">MINESWEEPER</div>
 	<br>
@@ -146,7 +153,7 @@
 	window.onload = createBoard(difficultyParam);
 	
 	function renderBoard(board){
-		/* updateFlags(); */
+		updateFlags();
 		gameOver();
 		var array2D = [];
 		for (let i=0;i<board.data.rowsNumber;i++){
