@@ -21,8 +21,8 @@
 	<img name="5" id="5" src="/resources/images/five.png" style= "display:None;">
 	<img name="6" id="6" src="/resources/images/six.png" style= "display:None;">
 	<img name="7" id="7" src="/resources/images/seven.png" style= "display:None;">
-	<img name="flag" id="flag" src="/resources/images/flag.png" style= "display:None;">
-	<img name="wrong" id="wrong" src="/resources/images/wrong.png" style= "display:None;">
+	<img name="flag" id="8" src="/resources/images/flag.png" style= "display:None;">
+	<img name="wrong" id="9" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
 
 	
@@ -182,8 +182,8 @@
 				let img = new Image();				
 			 	if (array2D[i][j] === 'X') squareColor = 'lightgrey';
 			 	else if (array2D[i][j] === '0') squareColor = 'white';			
-				else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img.src = "https://www.freepng.es/png-tyhx2v/download.html";
-				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img.src = "https://pngimage.net/wp-content/uploads/2018/06/red-x-mark-png-5.png"; 				
+				else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img=document.getElementById("8");
+				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img=document.getElementById("9"); 				
 				else img=document.getElementById(array2D[i][j]);
 				
 				const square = new Path2D();
