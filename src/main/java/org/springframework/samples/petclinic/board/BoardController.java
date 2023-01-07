@@ -1,10 +1,19 @@
 package org.springframework.samples.petclinic.board;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.util.Pair;
+import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -79,8 +88,8 @@ public class BoardController {
 		Integer gamesPlayerTotal = this.boardService.findnTotalGamesPlayer(currentUser.getUsername());
 		Integer gamesPlayerTotalWon= this.boardService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
 		Integer gamesActivatedMines= this.boardService.findnTotalActivatedMines(currentUser.getUsername(), GameStatus.LOST);
-		//no sale bien el numero de banderas colocadas, no sé como hacerlo
-		//Integer gamesPlacedFlags= this.boardService.findnTotalPlacedFlags(currentUser.getUsername(), GameStatus.LOST);
+		//no funciona bien
+		Integer gamesPlacedFlags= this.boardService.findnTotalPlacedFlags(currentUser.getUsername());
 
 		long timeTotalPlayed = this.boardService.totalDurationGamesPlayed();
 		long minutes = timeTotalPlayed/60;
@@ -121,7 +130,7 @@ public class BoardController {
 		model.put("gamesPlayerTotal", gamesPlayerTotal);
 		model.put("gamesPlayerTotalWon", gamesPlayerTotalWon);
 		model.put("minesActivated", gamesActivatedMines);
-		//model.put("gamesPlacedFlags", gamesPlacedFlags);
+		model.put("gamesPlacedFlags", gamesPlacedFlags);
 		model.put("minutesTotalPlayed", minutes);
 		model.put("secondsTotalPlayed", seconds);
 		model.put("minutesTotalPlayer", minut);
@@ -151,6 +160,24 @@ public class BoardController {
 		return "boards/statistics";
 		
 	}
+	
+	@GetMapping("/rankings")
+    public String showRanking(Map<String, Object> model){
+		
+			
+			List<Player> players =  playerService.findAll();
+            List<Board> games = boardService.gamesWonPlayer();
+
+            List<Map.Entry<String, Integer>> list = boardService.ranking(players, games);
+            
+            model.put("player1", list.get(0).getKey()); 
+            model.put("gameswon1",list.get(0).getValue());
+            model.put("player2", list.get(1).getKey());
+            model.put("gameswon2",list.get(1).getValue());
+            model.put("player3", list.get(2).getKey());
+            model.put("gameswon3",list.get(2).getValue());
+            return "boards/ranking";
+    }
 	
 	@GetMapping(value = "setDifficulty")
 	public String setDifficulty() {

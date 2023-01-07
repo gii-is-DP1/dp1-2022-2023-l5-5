@@ -55,6 +55,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/board/listinprogress/**").hasAnyAuthority("admin")
 				.antMatchers("/board/listplayer/**").permitAll()
 				.antMatchers("/board/statistics/**").hasAnyAuthority("player","admin") 
+				.antMatchers("/board/rankings/**").hasAnyAuthority("player","admin") 
 
 				.antMatchers("/boards/**").permitAll()
 				
