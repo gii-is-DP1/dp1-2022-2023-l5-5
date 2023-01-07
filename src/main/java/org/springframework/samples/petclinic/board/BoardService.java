@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.player.Player;

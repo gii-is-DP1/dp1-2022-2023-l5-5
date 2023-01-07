@@ -1,18 +1,8 @@
 package org.springframework.samples.petclinic.board;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.util.Pair;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.security.core.Authentication;
@@ -23,8 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("/board")
