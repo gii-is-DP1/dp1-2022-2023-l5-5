@@ -146,7 +146,7 @@
 	window.onload = createBoard(difficultyParam);
 	
 	function renderBoard(board){
-		/* updateFlags(); */
+		updateFlags();
 		gameOver();
 		var array2D = [];
 		for (let i=0;i<board.data.rowsNumber;i++){
@@ -182,7 +182,7 @@
 				let img = new Image();				
 			 	if (array2D[i][j] === 'X') squareColor = 'lightgrey';
 			 	else if (array2D[i][j] === '0') squareColor = 'white';			
-				else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAmVBMVEW5ubn8/Px1dXUAAAD+AAD///9vb2+xsbHAwMC9vb23vb7ReHdpaWkHBwe2traioqJ7e3uoqKi0wsLWdnaxw8DHl5flUE/sOjrPiIi8ra/1GhvwMjPRg4G2v77pSEjiXFvab3DKkpHCoKGDg4PApaT0JCbfYmP3BQWVdXbbAACGAQDOAQNsAQC5AgFPAAHvAQGgAQA2AAC4e3fXcfv7AAADeklEQVR4nO3daW+bQBgE4K13fUBSGrB7pC09kia9z///4wqJ43DsAgtY3nc089lBPIJoMspKVk+ws0zUqW/huFkm59jCAriAFpZAaOEdEFl4DwQW7oG4wgcgrPAARBU+AkGFFSCmsAqEFNaAiMI6EFDYAOIJm0A4YQuIJmwDwYQWIJbQBoQSWoFIQjsQSOgA4ghdwA7hUlZcQLdwuREV5QJ2CRMlKOvVCOGpb9orFFIYfiikMPxQSGH4oZDC8BOaMI7nvmJgwuzt2dyXDEqYX740Z3M/xJCEu60xyML8041BFsb5rTHIwuz5Z4MszJMXxiALs1fGIAvLikAWxtnWGGRhdnVjkIV5fGuagRI+VgSmMK5UBKSwVhGAwkZF4Al3W4cPRLhfEbDCw4pAFVorAkiY2ysCR7hzVASK0F0RGMLWikAT5q0VgSXsqQj5wr6KkC6MVV9FCBe6VgSKcFBFSBZ2rAgIYeeKABAOrwihQo+KECnMfSpConDAihAt9K0IacKBK0Kw8Or1eKAM4eU7dKHKPqILVRy/BxeWk37kL6MYYfGqfkAXFqX4BlxYnsNDF6o88S4OYcIRxSFOqHLP4pAnLE+U+BSHRGHxl7hHcYgUehWHUGHxGIcWh1RheXxmWHHIFQ4tDslCFecDikO0cFBxCBcOWBzihb3FIV/YtzgQhN2LA0LYWRwgwo7FgSJ0FweO0LU4gISO4oASWhcHltC2ONCE7eLAEzb/xwEoLB7jl6/gwuhCf4MXav0dXqh/wAu1/gkv1L9+owu1/gMv1H//RTNfPTShvqDQNxRSOEconBYKKZwjFE4LhRTOEQqnhUIK5wiF00IhhXOEwmmhkMI5QuG0UEjhHKFwWiik0DeRJZuacGP7iBzh+pkl6aoiXKW2j6ylCGvvo08mvLsUUkghhRRSSCGFFFKIK4xcXwN+PVJ47fxe8RMJU/3UkZFC5+XS0wijdCTEP2nv60shhRRSSCGFFFJIIYUUUkghhRSOFioK5Qtthw2Ok95bCeK0yXFDIYXhh0IKww+FFAafaIwwWUtK6i1cJucrUXEBXcIC6PwRYbELgYB2IRLQKoQC2oRYQIsQDNgWogFbQjhgU4gHbAgBgXUhIrAmhARWhZjAihAU+ChEBR6EsMAHIS5wLwQG3guRgXdCaGApxAYWQnDgQqEDFwoduPgPr9MYhw8NclcAAAAASUVORK5CYII=";
+				else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img.src = "https://www.freepng.es/png-tyhx2v/download.html";
 				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img.src = "https://pngimage.net/wp-content/uploads/2018/06/red-x-mark-png-5.png"; 				
 				else img=document.getElementById(array2D[i][j]);
 				
@@ -204,10 +204,12 @@
 	
 
 	
+		//Comprueba por cada click si se ha perdido o ganado la partida, si se ha ganado o perdido, para el crono y pone el mensaje, si no, no hace nada
 		function gameOver(){
 			if(board.data.gameStatus == "LOST"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				+"\n Click on the board to play again";
 				//Paramos el cronometro de la vista cuando perdemos
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
@@ -218,9 +220,10 @@
 					};
 				});
 			}
-			if(board.data.gameStatus == "WON"){
+			else if(board.data.gameStatus == "WON"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3";
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				+"\n Click on the board to play again";
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
 						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
@@ -232,25 +235,6 @@
 			}
 		}
 		
-		function endMessage(){
-			if(board.data.gameStatus == "WON"){
-				if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! <br> You have completed the board in:"
-				+document.getElementById("crono").innerHTML+"<br> Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=1";
-				}else{
-					window.location.href = "http://localhost:8080/players/myprofile";
-				};
-			}
-
-			if(board.data.gameStatus == "LOST"){
-				if(confirm("You have lost the game! You have completed the board in:"
-				+document.getElementById("crono").innerHTML+"Do you want to play another game?")){
-					window.location.href = "http://localhost:8080/board/game?dificulty=1";
-				}else{
-					window.location.href = "http://localhost:8080/players/myprofile";
-				};
-			}
-		}
 
 		function updateFlags(){
 			document.getElementById("flagsNumber").innerHTML = "&#x1f6a9 "+ board.data.flagsNumber;

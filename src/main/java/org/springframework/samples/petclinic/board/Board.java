@@ -282,13 +282,6 @@ public class Board extends AuditableEntity {
 	public Square getSquare(int row, int column) {
 	   	return this.squares.get(column+column*row);
 	}
-	
-	
-	
-	
-	
-
-
-     
+	  
 
 }
