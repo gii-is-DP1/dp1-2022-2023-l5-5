@@ -156,7 +156,7 @@ public class BoardController {
 
             List<Map.Entry<String, Integer>> list = boardService.ranking(players, games);
             List<Map.Entry<String, Integer>> listEasy = boardService.rankingEasy(players, games);
-            List<Map.Entry<String, Integer>> listMed = boardService.rankingEasy(players, games);
+            List<Map.Entry<String, Integer>> listMed = boardService.rankingMedium(players, games);
             List<Map.Entry<String, Integer>> listDiff = boardService.rankingDifficult(players, games);
             
             model.put("player1", list.get(0).getKey()); model.put("gameswon1",list.get(0).getValue());
