@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.board;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -305,11 +306,15 @@ public class BoardService {
 					}
 				}
 			}
-			List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream()
-					.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
-					.collect(Collectors.toList());
-			return list;
-		}
+			List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream().collect(Collectors.toList());
+			if (list.size() >= 2 ) {
+			  list.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+			  return list;
+			}
+			else {
+			  return new ArrayList<>();
+			}
+			}
 		
 		//ranking nivel dificil, más partidas ganadas por nivel dificultad dificil
 		@Transactional(readOnly = true)
