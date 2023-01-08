@@ -13,6 +13,7 @@
         <tr>
             <th style="width: 150px;">Id</th>
             <th style="width: 150px;">Title</th>
+            <th style="width: 150px;">Rule</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                 </td>
                 <td>
                     <c:out value="${achievement.title}"/>
+                </td> 
+                <td>
+                    <c:out value="${achievement.rule}"/>
                 </td>                
             </tr>
         </c:forEach>
