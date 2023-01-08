@@ -197,12 +197,12 @@ public class BoardService {
 		return res1;
 	}
 	
-	@Transactional(readOnly = true)
-	public long numGamesWonPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
-		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
-		return res;
-	}
+//	@Transactional(readOnly = true)
+//	public long numGamesWonPlayer (String username){
+//		List<Board> list = boardRepository.findAllGamesPlayer(username);
+//		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
+//		return res;
+//	}
 	
 	@Transactional(readOnly = true)
 	public List<Board> gamesWonPlayer (){
@@ -239,6 +239,7 @@ public class BoardService {
 		return res;
 	}
 	
+	//ranking en general, más partidas ganadas 
 	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> ranking (List<Player> players, List<Board> games) {
 		
@@ -261,6 +262,78 @@ public class BoardService {
 				.collect(Collectors.toList());
 		return list;
 	}
+	
+	//ranking nivel facil, más partidas ganadas por nivel dificultad facil 
+		@Transactional(readOnly = true)
+		public List<Map.Entry<String, Integer>> rankingEasy (List<Player> players, List<Board> games) {
+			
+			Map<String, Integer> sortedMap =  new TreeMap<>();
+			for (Player player : players) {
+				for (Board game : games) {
+					if (game.getColumnsNumber() == EASY_BOARD_SIZE && player.equals(game.getPlayer())) {
+						if (sortedMap.containsKey(player.getUser().getUsername())) {
+							Integer res = sortedMap.get(player.getUser().getUsername());
+							res++;
+							sortedMap.put(player.getUser().getUsername(), res);
+						} else {
+							sortedMap.put(player.getUser().getUsername(), 1);
+						}
+					}
+				}
+			}
+			List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream()
+					.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+					.collect(Collectors.toList());
+			return list;
+		}
+		
+		//ranking nivel medio, más partidas ganadas por nivel dificultad medio
+		@Transactional(readOnly = true)
+		public List<Map.Entry<String, Integer>> rankingMedium (List<Player> players, List<Board> games) {
+			
+			Map<String, Integer> sortedMap =  new TreeMap<>();
+			for (Player player : players) {
+				for (Board game : games) {
+					if (game.getColumnsNumber() == MEDIUM_BOARD_SIZE && player.equals(game.getPlayer())) {
+						if (sortedMap.containsKey(player.getUser().getUsername())) {
+							Integer res = sortedMap.get(player.getUser().getUsername());
+							res++;
+							sortedMap.put(player.getUser().getUsername(), res);
+						} else {
+							sortedMap.put(player.getUser().getUsername(), 1);
+						}
+					}
+				}
+			}
+			List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream()
+					.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+					.collect(Collectors.toList());
+			return list;
+		}
+		
+		//ranking nivel dificil, más partidas ganadas por nivel dificultad dificil
+		@Transactional(readOnly = true)
+		public List<Map.Entry<String, Integer>> rankingDifficult (List<Player> players, List<Board> games) {
+			
+			Map<String, Integer> sortedMap =  new TreeMap<>();
+			for (Player player : players) {
+				for (Board game : games) {
+					if (game.getColumnsNumber() == DIFFICULT_BOARD_SIZE && player.equals(game.getPlayer())) {
+						if (sortedMap.containsKey(player.getUser().getUsername())) {
+							Integer res = sortedMap.get(player.getUser().getUsername());
+							res++;
+							sortedMap.put(player.getUser().getUsername(), res);
+						} else {
+							sortedMap.put(player.getUser().getUsername(), 1);
+						}
+					}
+				}
+			}
+			List<Map.Entry<String, Integer>> list = sortedMap.entrySet().stream()
+					.sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
+					.collect(Collectors.toList());
+			return list;
+		}
 
 
 	

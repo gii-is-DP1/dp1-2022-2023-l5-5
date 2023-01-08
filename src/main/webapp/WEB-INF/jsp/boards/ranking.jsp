@@ -19,7 +19,7 @@
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
-			      <th colspan=3 scope="col" style="text-align:center">RANKING</th>
+			      <th colspan=3 scope="col" style="text-align:center">GLOBAL RANKING</th>
 			    </tr>
 			    <tr>
 			      <th width="10%" style="text-align:center" scope="col">Rank</th>
@@ -46,6 +46,96 @@
 			  </tbody>
 			</table>
 			<br/>
+			<table class="table table-striped table-bordered">
+			  <thead>
+			    <tr>
+			      <th colspan=3 scope="col" style="text-align:center">RANKING EASY DIFFICULTY</th>
+			    </tr>
+			    <tr>
+			      <th width="10%" style="text-align:center" scope="col">Rank</th>
+			      <th width="40%" style="text-align:center" scope="col">Username of the player</th>
+			      <th style="text-align:center" scope="col">Games Won</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr style="background-color:#FFD700">
+			      <th style="text-align:center" scope="row">TOP 1</th>
+			      <th style="text-align:center"><c:out value="${playerEasy1}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonEasy1}" /></td>
+			    </tr>
+			    <tr style="background-color:#BEBEBE">
+			      <th style="text-align:center" scope="row">TOP 2</th>
+			      <th style="text-align:center"><c:out value="${playerEasy2}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonEasy2}" /></td>
+			    </tr>
+			    <tr style="background-color:#bf8970">
+			      <th style="text-align:center" scope="row">TOP 3</th>
+			      <th style="text-align:center"><c:out value="${playerEasy3}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonEasy3}" /></td>
+			    </tr>
+			  </tbody>
+			</table>
+			<br>
+						<table class="table table-striped table-bordered">
+			  <thead>
+			    <tr>
+			      <th colspan=3 scope="col" style="text-align:center">RANKING MEDIUM DIFFICULTY</th>
+			    </tr>
+			    <tr>
+			      <th width="10%" style="text-align:center" scope="col">Rank</th>
+			      <th width="40%" style="text-align:center" scope="col">Username of the player</th>
+			      <th style="text-align:center" scope="col">Games Won</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr style="background-color:#FFD700">
+			      <th style="text-align:center" scope="row">TOP 1</th>
+			      <th style="text-align:center"><c:out value="${playerMed1}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonMed1}" /></td>
+			    </tr>
+			    <tr style="background-color:#BEBEBE">
+			      <th style="text-align:center" scope="row">TOP 2</th>
+			      <th style="text-align:center"><c:out value="${playerMed2}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonMed2}" /></td>
+			    </tr>
+			    <tr style="background-color:#bf8970">
+			      <th style="text-align:center" scope="row">TOP 3</th>
+			      <th style="text-align:center"><c:out value="${playerMed3}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonMed3}" /></td>
+			    </tr>
+			  </tbody>
+			</table>
+			<br>
+			<table class="table table-striped table-bordered">
+			  <thead>
+			    <tr>
+			      <th colspan=3 scope="col" style="text-align:center">RANKING DIFFICULT DIFFICULTY</th>
+			    </tr>
+			    <tr>
+			      <th width="10%" style="text-align:center" scope="col">Rank</th>
+			      <th width="40%" style="text-align:center" scope="col">Username of the player</th>
+			      <th style="text-align:center" scope="col">Games Won</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr style="background-color:#FFD700">
+			      <th style="text-align:center" scope="row">TOP 1</th>
+			      <th style="text-align:center"><c:out value="${playerDiff1}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonDiff1}" /></td>
+			    </tr>
+			    <tr style="background-color:#BEBEBE">
+			      <th style="text-align:center" scope="row">TOP 2</th>
+			      <th style="text-align:center"><c:out value="${playerDiff2}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonDiff2}" /></td>
+			    </tr>
+			    <tr style="background-color:#bf8970">
+			      <th style="text-align:center" scope="row">TOP 3</th>
+			      <th style="text-align:center"><c:out value="${playerDiff3}" /></th>
+			      <td style="font-size:20px;text-align:center"><c:out value="${gameswonDiff3}" /></td>
+			    </tr>
+			  </tbody>
+			</table>
+			<br>
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>

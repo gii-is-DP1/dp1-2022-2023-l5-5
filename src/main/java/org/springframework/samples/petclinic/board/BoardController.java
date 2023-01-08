@@ -103,7 +103,6 @@ public class BoardController {
 		long minTimePlayer = this.boardService.minDurationGamesPlayer(currentUser.getUsername());
 		long mmm = minTimePlayer/60;
 		long sss = minTimePlayer%60;
-		long numWonPlayer = this.boardService.numGamesWonPlayer(currentUser.getUsername());
 		long numWonPlayed = this.boardService.numGamesWonPlayed();
 		long numLostPlayer = this.boardService.numGamesLostPlayer(currentUser.getUsername());
 		long numLostPlayed = this.boardService.numGamesLostPlayed();
@@ -135,7 +134,6 @@ public class BoardController {
 		model.put("minsecTimePlayed", ss);
 		model.put("minminTimePlayer", mmm);
 		model.put("minsecTimePlayer", sss);
-		model.put("numWonPlayer", numWonPlayer);
 		model.put("numWonPlayed", numWonPlayed);
 		model.put("numLostPlayer", numLostPlayer);
 		model.put("numLostPlayed", numLostPlayed);
@@ -157,13 +155,25 @@ public class BoardController {
             List<Board> games = boardService.gamesWonPlayer();
 
             List<Map.Entry<String, Integer>> list = boardService.ranking(players, games);
+            List<Map.Entry<String, Integer>> listEasy = boardService.rankingEasy(players, games);
+            List<Map.Entry<String, Integer>> listMed = boardService.rankingEasy(players, games);
+            List<Map.Entry<String, Integer>> listDiff = boardService.rankingDifficult(players, games);
             
-            model.put("player1", list.get(0).getKey()); 
-            model.put("gameswon1",list.get(0).getValue());
-            model.put("player2", list.get(1).getKey());
-            model.put("gameswon2",list.get(1).getValue());
-            model.put("player3", list.get(2).getKey());
-            model.put("gameswon3",list.get(2).getValue());
+            model.put("player1", list.get(0).getKey()); model.put("gameswon1",list.get(0).getValue());
+            model.put("player2", list.get(1).getKey()); model.put("gameswon2",list.get(1).getValue());
+            model.put("player3", list.get(2).getKey()); model.put("gameswon3",list.get(2).getValue());
+            
+            model.put("playerEasy1", listEasy.get(0).getKey()); model.put("gameswonEasy1",listEasy.get(0).getValue());
+            model.put("playerEasy2", listEasy.get(1).getKey()); model.put("gameswonEasy2",listEasy.get(1).getValue());
+            model.put("playerEasy3", listEasy.get(2).getKey()); model.put("gameswonEasy3",listEasy.get(2).getValue());
+            
+            model.put("playerMed1", listMed.get(0).getKey()); model.put("gameswonMed1",listMed.get(0).getValue());
+            model.put("playerMed2", listMed.get(1).getKey()); model.put("gameswonMed2",listMed.get(1).getValue());
+            model.put("playerMed3", listMed.get(2).getKey()); model.put("gameswonMed3",listMed.get(2).getValue());
+            
+            model.put("playerDiff1", listDiff.get(0).getKey()); model.put("gameswonDiff1",listDiff.get(0).getValue());
+            model.put("playerDiff2", listDiff.get(1).getKey()); model.put("gameswonDiff2",listDiff.get(1).getValue());
+            model.put("playerDiff3", listDiff.get(2).getKey()); model.put("gameswonDiff3",listDiff.get(2).getValue());
             return "boards/ranking";
     }
 	
