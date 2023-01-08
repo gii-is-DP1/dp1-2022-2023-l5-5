@@ -103,7 +103,7 @@
 										<div class="col-lg-8">
 											<br>
 											<p>
-											<a href="<c:url value="/board/statistics" />"
+											<a href="<c:url value="/statistic/statistics" />"
 											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Statistics</a>
                          					</p>
 										</div>
@@ -113,7 +113,7 @@
 										<div class="col-lg-8">
 											<br>
 											<p>
-											<a href="<c:url value="/board/rankings" />"
+											<a href="<c:url value="/statistic/rankings" />"
 											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Rankings</a>
                          					</p>
 										</div>

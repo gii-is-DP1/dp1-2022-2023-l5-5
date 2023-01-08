@@ -83,7 +83,7 @@
 				</tr>
 				<tr>
 					<th width="50%" >Number of games WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numWonPlayer}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotalWon}" /></td>
 				</tr>
 				<tr>
 					<th width="50%" >Number of games WON with EASY difficulty</th>
@@ -126,17 +126,9 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<tr>
-					<th width="50%">TOTAL GAMES WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotalWon}" /></td>
-				</tr>
 			    <tr>
 					<th width="50%">Total activated mines</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${minesActivated}" /></td>
-				</tr>
-				<tr>
-					<th>Total mine explosions contained</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberGuessedMines}" /></td>
 				</tr>
 				<tr>
 					<th>Total flags placed</th>
