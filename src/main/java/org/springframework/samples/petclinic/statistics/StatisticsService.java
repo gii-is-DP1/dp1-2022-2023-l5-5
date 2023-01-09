@@ -51,12 +51,12 @@ public class StatisticsService {
 
 	@Transactional(readOnly = true)
 	public Integer findnTotalGamesPlayerWon(String username, GameStatus gameStatus){
-		return this.boardRepository.nTotalGamesPlayerWon(username,gameStatus);
+		return this.boardRepository.nTotalGamesByPlayerAndStatus(username,gameStatus);
 	}
 
 	@Transactional(readOnly = true)
 	public Integer findnTotalActivatedMines(String username, GameStatus gameStatus){
-		return this.boardRepository.nTotalActivatedMines(username,gameStatus);
+		return this.boardRepository.nTotalGamesByPlayerAndStatus(username,gameStatus);
 	}
 	
 //	@Transactional(readOnly = true)

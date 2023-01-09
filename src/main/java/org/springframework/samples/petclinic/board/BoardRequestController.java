@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/boards")
 public class BoardRequestController {
-	
-	private static final int EASY_BOARD_SIZE = 8;
-	private static final int MEDIUM_BOARD_SIZE = 14;
-	private static final int DIFFICULT_BOARD_SIZE = 24;
-	private static final double MINES_NUMBER = 0.15;
 
 	@Autowired
 	public BoardService boardService;
@@ -42,17 +37,17 @@ public class BoardRequestController {
 	public Board nuevo(@PathVariable("difficulty") int difficulty) {
 		int row, column, mine = 0;
 		if(difficulty==1) {
-			row = EASY_BOARD_SIZE;
-			column = EASY_BOARD_SIZE;
-			mine = (int) (EASY_BOARD_SIZE * EASY_BOARD_SIZE * MINES_NUMBER);
+			row = 8;
+			column = 8;
+			mine = 9;
 		}else if (difficulty==2) {
-			row = MEDIUM_BOARD_SIZE;
-			column = MEDIUM_BOARD_SIZE;
-			mine = (int) (MEDIUM_BOARD_SIZE * MEDIUM_BOARD_SIZE * MINES_NUMBER);
+			row = 14;
+			column = 14;
+			mine = 30;
 		}else {
-			row= DIFFICULT_BOARD_SIZE;
-			column= DIFFICULT_BOARD_SIZE;
-			mine= (int) (DIFFICULT_BOARD_SIZE * DIFFICULT_BOARD_SIZE * MINES_NUMBER);
+			row= 24;
+			column= 24;
+			mine= 86;
 		}
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -77,14 +72,13 @@ public class BoardRequestController {
 //	}
 	
 	@GetMapping("/{boardId}/click/{row}/{column}")
-	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int f, @PathVariable("column") int c) {
+	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int r, @PathVariable("column") int c) {
 		Board board = boardService.findBoardById(id).get();
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null) {
 			if (authentication.isAuthenticated()) {
-				//if((board.modifier.equals("anonymousUser")) || (board.getPlayer().getUser().getUsername().equals(authentication.getName()))) {
 				if ((board.getPlayer().getUser().getUsername().equals(authentication.getName()))) {	
-					boardService.click(f, c, board);
+					boardService.click(r, c, board);
 					boardService.hasWon(board);
 					boardService.hasLost(board);
 					boardService.saveBoard(board);
