@@ -30,33 +30,50 @@ public class StatisticsService {
         this.boardServ = boardServ;
     }
 	
-	public List<Board> findAll(){
-	    return boardServ.findAllBoards();
-	}
+//	public List<Board> findAll(){
+//	    return boardServ.findAllBoards();
+//	}
+	
 	@Transactional(readOnly = true)
-	public List<Board> findAllGamesPlayer(String username){
-		return this.boardRepository.findAllGamesPlayer(username);
-		
-	}
-
-	@Transactional(readOnly = true)
-	public Integer findnTotalGames(){
-		return this.boardRepository.nTotalGames();
+	public List<Board> findAllWonAndLostGamesGlobal (){
+		List<Board> list = boardRepository.findAll();
+		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return res;
 	}
 	
 	@Transactional(readOnly = true)
-	public Integer findnTotalGamesPlayer(String username){
-		return this.boardRepository.nTotalGamesPlayer(username);
+	public List<Board> findAllWonAndlostGamesPlayer(String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return res;
 	}
 
 	@Transactional(readOnly = true)
-	public Integer findnTotalGamesPlayerWon(String username, GameStatus gameStatus){
-		return this.boardRepository.nTotalGamesByPlayerAndStatus(username,gameStatus);
+	public long findnTotalGames(){
+		List<Board> list = findAllWonAndLostGamesGlobal();
+		long res = list.stream().count();
+		return res;
+	}
+	
+	@Transactional(readOnly = true)
+	public long findnTotalGamesPlayer(String username){
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
+		long res = list.stream().count();
+		return res;
 	}
 
 	@Transactional(readOnly = true)
-	public Integer findnTotalActivatedMines(String username, GameStatus gameStatus){
-		return this.boardRepository.nTotalGamesByPlayerAndStatus(username,gameStatus);
+	public long findnTotalGamesPlayerWon(String username){
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
+		return res;
+	}
+
+	@Transactional(readOnly = true)
+	public long findnTotalActivatedMines(String username){
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
+		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
+		return res;
 	}
 	
 //	@Transactional(readOnly = true)
@@ -66,20 +83,20 @@ public class StatisticsService {
 //	}
 	@Transactional(readOnly = true)
 	public long findnTotalPlacedFlags(String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		return list.stream().mapToLong(x -> x.getFlagsNumber()).count();
 	}
 	
 	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayed(){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long averageDurationGamesPlayed(){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		Double res = list.stream().mapToInt(x -> (int) x.getDurationGame()).average().orElse(0.0);
 		long res1 = res.longValue();
 		return res1;
@@ -87,7 +104,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public long maxDurationGamesPlayed(){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).max().orElse(0);
 		long res1 =  res.longValue();
 		return res1;
@@ -95,7 +112,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public long minDurationGamesPlayed(){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).min().orElse(0);
 		long res1 =  res.longValue();
 		return res1;
@@ -103,49 +120,49 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public long numGamesWonPlayed (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesLostPlayed (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinEasyPlayed (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == EASY_BOARD_SIZE).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinMediumPlayed (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == MEDIUM_BOARD_SIZE).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinDifficultPlayed (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == DIFFICULT_BOARD_SIZE).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		long res = list.stream().mapToInt(x -> (int) x.getDurationGame()).sum();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long averageDurationGamesPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		Double res = list.stream().mapToInt(x -> (int) x.getDurationGame()).average().orElse(0.0);
 		long res1 = res.longValue();
 		return res1;
@@ -153,7 +170,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public long maxDurationGamesPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).max().orElse(0);
 		long res1 = res.longValue();
 		return res1;
@@ -161,7 +178,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public long minDurationGamesPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		Integer res = list.stream().mapToInt(x -> (int) x.getDurationGame()).min().orElse(0);
 		long res1 = res.longValue();
 		return res1;
@@ -176,35 +193,35 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public List<Board> gamesWonPlayer (){
-		List<Board> list = boardRepository.findAll();
+		List<Board> list = findAllWonAndLostGamesGlobal();
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).collect(Collectors.toList());
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesLostPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.LOST).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinEasyPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == EASY_BOARD_SIZE).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinMediumPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == MEDIUM_BOARD_SIZE).count();
 		return res;
 	}
 	
 	@Transactional(readOnly = true)
 	public long numGamesWinDifficultPlayer (String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = findAllWonAndlostGamesPlayer(username);
 		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON && x.getColumnsNumber() == DIFFICULT_BOARD_SIZE).count();
 		return res;
 	}

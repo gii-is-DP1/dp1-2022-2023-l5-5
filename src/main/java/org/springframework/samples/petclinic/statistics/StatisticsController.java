@@ -43,10 +43,10 @@ public class StatisticsController {
 		
 		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 		User currentUser=(User) authentication.getPrincipal();
-		Integer nTotal = this.statisticsService.findnTotalGames();
-		Integer gamesPlayerTotal = this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
-		Integer gamesPlayerTotalWon= this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
-		Integer gamesActivatedMines= this.statisticsService.findnTotalActivatedMines(currentUser.getUsername(), GameStatus.LOST);
+		long nTotal = this.statisticsService.findnTotalGames();
+		long gamesPlayerTotal = this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
+		long gamesPlayerTotalWon= this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername());
+		long gamesActivatedMines= this.statisticsService.findnTotalActivatedMines(currentUser.getUsername());
 		//no funciona bien
 		long gamesPlacedFlags= this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
 
@@ -158,60 +158,6 @@ public class StatisticsController {
             addToModel(model, listMed, "playerMed");
             addToModel(model, listDiff, "playerDiff");
 
-//            String msg = "No data available yet";
-//            
-//            if (list.size() == 0) {
-//            	model.put("player1", msg ); //model.put("gameswon1", msg);
-//			} else if (list.size() == 1) {
-//				model.put("player1", list.get(0).getKey()); model.put("gameswon1", list.get(0).getValue());
-//			} else if (list.size() == 2) {
-//				model.put("player1", list.get(0).getKey()); model.put("gameswon1", list.get(0).getValue());
-//				model.put("player2", list.get(1).getKey()); model.put("gameswon2", list.get(1).getValue());
-//			} else {
-//				model.put("player1", list.get(0).getKey()); model.put("gameswon1", list.get(0).getValue());
-//				model.put("player2", list.get(1).getKey()); model.put("gameswon2", list.get(1).getValue());
-//				model.put("player3", list.get(2).getKey()); model.put("gameswon3", list.get(2).getValue());
-//			}
-//            
-//            if (listEasy.size() == 0) {
-//            	model.put("playerEasy1", msg ); model.put("gameswonEasy1", msg);
-//			} else if (listEasy.size() == 1) {
-//            	model.put("playerEasy1", listEasy.get(0).getKey()); model.put("gameswonEasy1",listEasy.get(0).getValue());
-//            } else if (listEasy.size() == 2) {
-//            	model.put("playerEasy1", listEasy.get(0).getKey()); model.put("gameswonEasy1",listEasy.get(0).getValue());
-//            	model.put("playerEasy2", listEasy.get(1).getKey()); model.put("gameswonEasy2",listEasy.get(1).getValue());
-//            } else {
-//            	model.put("playerEasy1", listEasy.get(0).getKey()); model.put("gameswonEasy1",listEasy.get(0).getValue());
-//            	model.put("playerEasy2", listEasy.get(1).getKey()); model.put("gameswonEasy2",listEasy.get(1).getValue());
-//            	model.put("playerEasy3", listEasy.get(2).getKey()); model.put("gameswonEasy3",listEasy.get(2).getValue());
-//            }
-//            
-//            if (listMed.size() == 0) {
-//            	model.put("playerMed1", msg ); model.put("gameswonMed1", msg);
-//			} else if (listMed.size() == 1) {
-//            	model.put("playerMed1", listMed.get(0).getKey()); model.put("gameswonMed1",listMed.get(0).getValue());
-//            } else if (listMed.size() == 2) {
-//            	model.put("playerMed1", listMed.get(0).getKey()); model.put("gameswonMed1",listMed.get(0).getValue());
-//            	model.put("playerMed2", listMed.get(1).getKey()); model.put("gameswonMed2",listMed.get(1).getValue());
-//            } else {
-//            	model.put("playerMed1", listMed.get(0).getKey()); model.put("gameswonMed1",listMed.get(0).getValue());
-//            	model.put("playerMed2", listMed.get(1).getKey()); model.put("gameswonMed2",listMed.get(1).getValue());
-//            	model.put("playerMed3", listMed.get(2).getKey()); model.put("gameswonMed3",listMed.get(2).getValue());
-//            }
-//            
-//            if (listDiff.size() == 0) {
-//            	model.put("playerDiff1", msg ); model.put("gameswonDiff1", msg);
-//			} else if (listDiff.size() == 1) {
-//            	model.put("playerDiff1", listDiff.get(0).getKey()); model.put("gameswonDiff1",listDiff.get(0).getValue());
-//            } else if (listDiff.size() == 2) {
-//            	model.put("playerDiff1", listDiff.get(0).getKey()); model.put("gameswonDiff1",listDiff.get(0).getValue());
-//            	model.put("playerDiff2", listDiff.get(1).getKey()); model.put("gameswonDiff2",listDiff.get(1).getValue());
-//            } else {
-//            	model.put("playerDiff1", listDiff.get(0).getKey()); model.put("gameswonDiff1",listDiff.get(0).getValue());
-//            	model.put("playerDiff2", listDiff.get(1).getKey()); model.put("gameswonDiff2",listDiff.get(1).getValue());
-//            	model.put("playerDiff3", listDiff.get(2).getKey()); model.put("gameswonDiff3",listDiff.get(2).getValue());
-//            }
-//            
             return "statistics/ranking";
     }
 	
