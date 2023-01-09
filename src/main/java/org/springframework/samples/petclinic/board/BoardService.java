@@ -42,17 +42,17 @@ public class BoardService {
 //		return boardRepository.findAllBoardsWithoutState(gameStatus, pageable);
 //	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findBoardByUsername(username, gameStatus);
     }
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllGamesInProgress(GameStatus status){
 		return boardRepository.findAllGamesInProgress(status);
 	}

@@ -1,7 +1,5 @@
 package org.springframework.samples.petclinic.board;
 
-
-
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
