@@ -124,8 +124,32 @@
 										<div class="col-lg-8">
 											<br>
 											<p>
-											<a href="<c:url value="/board/rankings" />"
+											<a href="<c:url value="/achievements/myprofile" />"
 											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Achievs</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+
+										<sec:authorize access="hasAuthority('admin')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/achievements/list" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Achievs</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+
+										<sec:authorize access="hasAuthority('admin')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/achievements/new" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">New Achie</a>
                          					</p>
 										</div>
 										</sec:authorize>
