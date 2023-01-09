@@ -59,10 +59,15 @@ public class StatisticsService {
 		return this.boardRepository.nTotalActivatedMines(username,gameStatus);
 	}
 	
+//	@Transactional(readOnly = true)
+//	public Integer findnTotalPlacedFlags(String username){
+//		List<Board> list = boardRepository.findAllGamesPlayer(username);
+//		return list.stream().mapToInt(x -> x.getFlagsNumber()).sum();
+//	}
 	@Transactional(readOnly = true)
-	public Integer findnTotalPlacedFlags(String username){
+	public long findnTotalPlacedFlags(String username){
 		List<Board> list = boardRepository.findAllGamesPlayer(username);
-		return list.stream().mapToInt(x -> x.getFlagsNumber()).sum();
+		return list.stream().mapToLong(x -> x.getFlagsNumber()).count();
 	}
 	
 	@Transactional(readOnly = true)

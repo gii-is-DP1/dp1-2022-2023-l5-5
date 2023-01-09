@@ -48,7 +48,7 @@ public class StatisticsController {
 		Integer gamesPlayerTotalWon= this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
 		Integer gamesActivatedMines= this.statisticsService.findnTotalActivatedMines(currentUser.getUsername(), GameStatus.LOST);
 		//no funciona bien
-		Integer gamesPlacedFlags= this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
+		long gamesPlacedFlags= this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
 
 		long timeTotalPlayed = this.statisticsService.totalDurationGamesPlayed();
 		long minutes = timeTotalPlayed/60;
