@@ -14,7 +14,6 @@
             <th style="width: 150px;"> </th>
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
-            <th style="width: 150px;">Number</th>
         </tr>  
         </thead>
         <tbody>
@@ -31,10 +30,7 @@
                 </td> 
                 <td>
                     <c:out value="${achievement.achievementType}"/>
-                </td>      
-                <td>
-                    <c:out value="${achievement.number}"/>
-                </td>             
+                </td>                  
             </tr>
         </c:forEach>
         </tbody>
