@@ -59,7 +59,7 @@ public class BoardController {
 		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 		User currentUser=(User) authentication.getPrincipal();
 		
-	    List<Board> results = this.boardService.findAllGamesPlayer(currentUser.getUsername());
+	    List<Board> results = this.boardService.findAllGamesByPlayerNotByStatus(currentUser.getUsername(), GameStatus.NONE);
 		model.put("board", results);
 		return "boards/gamesListPlayer";
 		
