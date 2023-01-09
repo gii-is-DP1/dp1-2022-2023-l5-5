@@ -32,8 +32,6 @@
 	<img name="wrong" id="9" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
 
-	
-	
 	<div id=flagsNumber></div>
 	<div id="crono">00 : 00</div>
 	
@@ -101,7 +99,7 @@
 		let url='/boards/'+id.toString()+'/click/'+row.toString()+'/'+column.toString();
 		axios.get(url)
 		.then(boardT=>{
-			renderTablero(boardT);
+			renderBoard(boardT);
 		})
 		.catch(function(error){console.log(error)});
 	} 

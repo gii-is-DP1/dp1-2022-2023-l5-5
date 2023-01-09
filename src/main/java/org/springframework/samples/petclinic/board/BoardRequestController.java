@@ -5,6 +5,7 @@ import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,7 @@ public class BoardRequestController {
 	
 
 	@GetMapping(path = "/new/{difficulty}")
-	public Board nuevo(@PathVariable("difficulty") int difficulty) {
+	public Board nuevo(@PathVariable("difficulty") int difficulty, ModelMap model) {
 		int row, column, mine = 0;
 		if(difficulty==1) {
 			row = 8;
@@ -58,7 +59,7 @@ public class BoardRequestController {
 			
 		} else {
 			board = boardService.findGamesInProgressPlayer(currentUser.getUsername()).get(0);
-			
+			model.addAttribute("message", "You must end your last game!");
 		}
 		return board;
 	}
