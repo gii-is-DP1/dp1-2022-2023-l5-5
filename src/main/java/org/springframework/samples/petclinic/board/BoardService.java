@@ -63,6 +63,12 @@ public class BoardService {
 		
 	}
 	
+	@Transactional(readOnly = true)
+	public List<Board> findAllGamesByPlayerNotByStatus(String username, GameStatus status){
+		return this.boardRepository.findAllGamesByPlayerNotByStatus(username, status);
+		
+	}
+	
 	@Transactional
 	 public Board click(int row, int column, Board board) {
 		 	if(board.getGameStatus()==GameStatus.NONE) {
