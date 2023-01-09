@@ -84,10 +84,42 @@ INSERT INTO boards(id,created_date,creator,last_modified_date,modifier,duration,
 INSERT INTO achievementtypes VALUES (1,'won games');
 INSERT INTO achievementtypes VALUES (2,'played games');
 INSERT INTO achievementtypes VALUES (3,'lost games');
+INSERT INTO achievementtypes VALUES (4,'easy games won');
+INSERT INTO achievementtypes VALUES (5,'difficult games won');
+INSERT INTO achievementtypes VALUES (6,'medium games won');
+INSERT INTO achievementtypes VALUES (7,'average game duration');
+INSERT INTO achievementtypes VALUES (8,'total placed flags');
+INSERT INTO achievementtypes VALUES (9,'maximun game duration');
+INSERT INTO achievementtypes VALUES (10,'minimum game duration');
+INSERT INTO achievementtypes VALUES (11,'total game duration');
 
 
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (1,'Has won 10 games?',1,10);
 
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (1,'Has played 1 games or more?',2,1);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (2,'Has played 40 games or more?',2,40);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (3,'Has lost 2 games or more?',3,2);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (4,'Has won 3 games or more?',1,3);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (5,'Has won 4 games or more?',1,4);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (6,'Has lost 5 games or more?',3,5);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (7,'Has won 1 easy games or more?',4,1);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (8,'Has played 4 games or more?',2,4);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (9,'Has played 5 games or more?',2,5);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (10,'Has played 6 games or more?',2,6);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (11,'Has played 7 games or more?',2,7);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (12,'Has won 2 difficult games or more?',5,2);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (13,'Has won 4 medium games or more?',6,4);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (14,'Has averaged more time than 8?',7,8);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (15,'Has placed more than 20 flags?',8,20);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (16,'Has any game lasted longer than 2?',9,2);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (17,'Has any game lasted less than 1?',10,1);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (18,'Has more total game duration than 1?',11,1);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (19,'Has won 5 difficult games or more?',5,5);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (20,'Has won 8 medium games or more?',6,8);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (21,'Has averaged more time than 3?',7,3);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (22,'Has placed more than 2 flags?',8,2);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (23,'Has any game lasted longer than 5?',9,5);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (24,'Has any game lasted less than 6?',10,6);
+INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (25,'Has more total game duration than 7?',11,7);
 
 
 INSERT INTO CASILLAS(ID,COLUMNA,FILA,IS_COVERED,IS_FLAG,IS_MINE,IS_WRONG,VALOR,TABLERO_ID) VALUES (1,0,0,TRUE,FALSE,FALSE,FALSE,0,1);

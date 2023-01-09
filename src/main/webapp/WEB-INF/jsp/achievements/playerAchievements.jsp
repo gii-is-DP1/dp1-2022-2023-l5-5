@@ -6,27 +6,26 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="achievements">
-    <h2>Players</h2>
+    <h2> Achievements acomplished by ${player}</h2>
 
     <table id="achievementsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Achieved</th>
-            <th style="width: 150px;">Id</th>
+            <th style="width: 150px;"> </th>
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
             <th style="width: 150px;">Number</th>
-        </tr>
+        </tr>  
         </thead>
         <tbody>
         <c:forEach items="${selections}" var="achievement">
             <tr>
-                <td>
-                    <c:out value="${achievement.id}"/>
-                </td>
-                <td>
-                    <c:out value="${achievement.id}"/>
-                </td>
+            <td>
+                <div class="col-md-5">
+                    <spring:url value="/resources/images/medal.png" htmlEscape="true" var="bmImage"/>
+                    <img class="img-responsive" src="${bmImage}"/>
+                </div>
+            </td>
                 <td>
                     <c:out value="${achievement.title}"/>
                 </td> 
@@ -45,17 +44,17 @@
         <tr>
             <c:if test="${hasPrevious}">
                 <td><a
-                    href="/myprofile/achievements?title=${title}&page=${pageNumber - 1}"
+                    href="myprofile?title=${title}&page=${pageNumber - 1}"
                     class="btn btn-default">Previous</a></td>
             </c:if>
 
             <c:forEach begin="1" end="${totalPages+1}" var="i">
-                <td><a href="/myprofile/achievements?title=${title}&page=${i-1}">${i}</a></td>
+                <td><a href="myprofile?title=${title}&page=${i-1}">${i}</a></td>
             </c:forEach>
 
             <c:if test="${pageNumber != totalPages}">
                 <td><a
-                    href="/myprofile/achievements?title=${title}&page=${pageNumber + 1}"
+                    href="myprofile?title=${title}&page=${pageNumber + 1}"
                     class="btn btn-default">Next</a></td>
             </c:if>
 
