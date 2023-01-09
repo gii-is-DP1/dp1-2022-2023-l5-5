@@ -17,9 +17,6 @@ public class BoardService {
 	@Autowired
     private BoardRepository boardRepository;	
 	
-//	@Autowired
-//    private SquareService squareService;
-
     @Transactional(readOnly = true)
 	public Optional<Board> findBoardById(int id) throws DataAccessException {
 		return boardRepository.findById(id);
