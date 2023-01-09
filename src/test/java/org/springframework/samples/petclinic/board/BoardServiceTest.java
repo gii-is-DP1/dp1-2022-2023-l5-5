@@ -195,10 +195,28 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindAll() {
+	public void testFindAllBoards() {
 		assertEquals(boardService.findAllBoards().size(),20);
 	}
-
+	
+	@Test
+	public void testFindAllGamesNotInProgress() {
+		List<Board> boards = boardService.findAllGamesNotInProgress(GameStatus.NONE);
+		assertEquals(boards.size(), 20);
+	}
+	
+	@Test
+	public void testFindAllGamesInProgress() {
+		List<Board> boards = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
+		assertEquals(boards.size(), 0);
+	}
+	
+	@Test
+	public void testFindAllGamesPlayer() {
+		List<Board> boards = boardService.findAllGamesPlayer("meriglmar");
+		assertEquals(boards.size(), 4);
+	}
+	
 	@Test
 	public void testBeforeStartGame(){
 		Player p= new Player();
