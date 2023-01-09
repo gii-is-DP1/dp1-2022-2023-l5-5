@@ -99,14 +99,14 @@ public class AchievementsController {
 		
 		Boolean res= false;
 		if(results.get(i).getAchievementType().getId()==1){
-			Integer query = this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername(), GameStatus.WON);
+			Integer query = (int) this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername());
 			Integer number=results.get(i).getNumber();
 			res= query>=number;
 			if(res==true){
 				list.add(results.get(i));
 			}
 		}else if(results.get(i).getAchievementType().getId()==2){
-			Integer query = this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
+			Integer query = (int) this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
 			Integer number=results.get(i).getNumber();
 			res= query>=number;
 			if(res==true){
