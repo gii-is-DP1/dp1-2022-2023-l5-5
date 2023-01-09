@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.square.Square;
@@ -42,17 +44,24 @@ public class BoardService {
 //		return boardRepository.findAllBoardsWithoutState(gameStatus, pageable);
 //	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findBoardByUsername(username, gameStatus);
     }
 	
-	@Transactional(readOnly = true)
+	@Transactional
+    public List<Board> findGamesInProgressPlayer(String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.IN_PROGRESS).collect(Collectors.toList());
+		return res;
+    }
+	
+	@Transactional
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Board> findAllGamesInProgress(GameStatus status){
 		return boardRepository.findAllGamesInProgress(status);
 	}
@@ -60,6 +69,12 @@ public class BoardService {
 	@Transactional(readOnly = true)
 	public List<Board> findAllGamesPlayer(String username){
 		return this.boardRepository.findAllGamesPlayer(username);
+		
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Board> findAllGamesByPlayerNotByStatus(String username, GameStatus status){
+		return this.boardRepository.findAllGamesByPlayerNotByStatus(username, status);
 		
 	}
 	
@@ -158,8 +173,4 @@ public class BoardService {
 		 return t;
 	 }
 	
-
-
-
-
 }
