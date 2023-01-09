@@ -26,7 +26,7 @@
                     <c:out value="${achievement.title}"/>
                 </td> 
                 <td>
-                    <c:out value="${achievement.rule}"/>
+                    <c:out value="${achievement.achievementType}"/>
                 </td>                
             </tr>
         </c:forEach>

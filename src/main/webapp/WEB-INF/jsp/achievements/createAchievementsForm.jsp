@@ -13,7 +13,11 @@
     <form:form modelAttribute="achievement" class="form-horizontal" id="add-achievement-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Title" name="title"/>
-            <petclinic:selectField name="achievementType" label="AchievementType" names="${achievementtypes}" size="3"/>
+            <select name="achievementType" size="3">
+                <c:forEach items="${achievementtypes}" var="type">
+                <option value="${type.id}"><c:out value="${type.name}"></c:out></option>
+                </c:forEach>
+            </select>
             <petclinic:inputField label="Number" name="number"/>
         </div>
         <div class="form-group">
