@@ -57,16 +57,24 @@ public class BoardRequestController {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Board board = new Board();
-//    	if (authentication.getName()=="anonymousUser") {
-//    		board = new Board(row, column, mine, mine, null);
-//    	} else {
-    		User currentUser = (User) authentication.getPrincipal();
-    		board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
-//    	}
+		User currentUser = (User) authentication.getPrincipal();
+		board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
 		boardService.saveBoard(board);
 		
 		return board;
 	}
+//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//		User currentUser = (User) authentication.getPrincipal();
+//		Board board = new Board();
+//		if (boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS).isEmpty()) {
+//			board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
+//			boardService.saveBoard(board);
+//			
+//		} else {
+//			System.out.println("You must end a game to start another");
+//		}
+//		return board;
+//	}
 	
 	@GetMapping("/{boardId}/click/{row}/{column}")
 	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int f, @PathVariable("column") int c) {
