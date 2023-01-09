@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.player.Player;
@@ -40,6 +41,7 @@ public class Achievement extends BaseEntity implements Serializable {
     private AchievementType achievementType;
 
 	@NotNull
+	@Positive
 	@Column(name= "number")
 	private Integer number;
 

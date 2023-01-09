@@ -11,9 +11,11 @@
     <table id="achievementsTable" class="table table-striped">
         <thead>
         <tr>
+            <th style="width: 150px;">Achieved</th>
             <th style="width: 150px;">Id</th>
             <th style="width: 150px;">Title</th>
-            <th style="width: 150px;">Achieved?</th>
+            <th style="width: 150px;">Achievement Type</th>
+            <th style="width: 150px;">Number</th>
         </tr>
         </thead>
         <tbody>
@@ -23,11 +25,17 @@
                     <c:out value="${achievement.id}"/>
                 </td>
                 <td>
+                    <c:out value="${achievement.id}"/>
+                </td>
+                <td>
                     <c:out value="${achievement.title}"/>
                 </td> 
                 <td>
-                    <c:out value="${achievement.rule}"/>
-                </td>               
+                    <c:out value="${achievement.achievementType}"/>
+                </td>      
+                <td>
+                    <c:out value="${achievement.number}"/>
+                </td>             
             </tr>
         </c:forEach>
         </tbody>

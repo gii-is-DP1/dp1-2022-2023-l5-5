@@ -80,9 +80,9 @@ INSERT INTO boards(id,created_date,creator,last_modified_date,modifier,duration,
 (19,'2022-01-21 15:51:49.759773','meriglmar','2022-01-21 15:51:52.841085','meriglmar','2187806000',1,9,8,8,9,'2022-01-21 15:51:52.83809','2022-01-21 15:51:50.650284',1);
 
 
-INSERT INTO achievementtypes VALUES (1,'ganadas');
-INSERT INTO achievementtypes VALUES (2,'jugadas');
-INSERT INTO achievementtypes VALUES (3,'perdidas');
+INSERT INTO achievementtypes VALUES (1,'won games');
+INSERT INTO achievementtypes VALUES (2,'played games');
+INSERT INTO achievementtypes VALUES (3,'lost games');
 
 
 INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (1,'Has won 10 games?',1,10);
