@@ -116,12 +116,12 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testTableroSaveAndCount() {
+	public void testBoardSaveAndCount() {
 		Board b0 = new Board(10,10,0);
 		Board b1 = new Board(10,10,0);
 		boardService.saveBoard(b0);
 		boardService.saveBoard(b1);
-		assertEquals(boardService.boardCount(), 21);
+		assertEquals(boardService.boardCount(), 22);
 	}
 	
 	public Board click1(int row, int column, Board board) {
@@ -196,7 +196,7 @@ public class BoardServiceTest {
 	
 	@Test
 	public void testFindAll() {
-		assertEquals(boardService.findAllBoards().size(),19);
+		assertEquals(boardService.findAllBoards().size(),20);
 	}
 
 	@Test
