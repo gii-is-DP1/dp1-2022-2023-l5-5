@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.board.BoardRepository;
-import org.springframework.samples.petclinic.board.BoardService;
 import org.springframework.samples.petclinic.board.GameStatus;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.stereotype.Service;
@@ -22,17 +21,6 @@ public class StatisticsService {
     
 	@Autowired
     private BoardRepository boardRepository;	
-
-	private BoardService boardServ;
-	
-	@Autowired
-    public StatisticsService(BoardService boardServ){
-        this.boardServ = boardServ;
-    }
-	
-//	public List<Board> findAll(){
-//	    return boardServ.findAllBoards();
-//	}
 	
 	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndLostGamesGlobal (){

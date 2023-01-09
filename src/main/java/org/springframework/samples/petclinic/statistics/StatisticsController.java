@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.board.Board;
-import org.springframework.samples.petclinic.board.GameStatus;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.security.core.Authentication;
@@ -19,25 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/statistic")
 public class StatisticsController {
 
-	//private final StatisticsService statisticsService;
-	//private final PlayerService playerService;
-
 	@Autowired
 	private StatisticsService statisticsService;
 	
 	@Autowired
 	private PlayerService playerService;
 
-//	@Autowired
-//	public StatisticsController(PlayerService playerService, StatisticsService statisticsService) {
-//		this.playerService = playerService;
-//		this.statisticsService = statisticsService;
-//	}
-
-//	@InitBinder
-//	public void setAllowedFields(WebDataBinder dataBinder) {
-//		dataBinder.setDisallowedFields("id");
-//	}
 	@GetMapping(value= "/statistics")
 	public String statistics(Board board, BindingResult result, Map<String, Object> model) {
 		

@@ -49,27 +49,19 @@ public class BoardRequestController {
 			column= 24;
 			mine= 86;
 		}
-		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		Board board = new Board();
 		User currentUser = (User) authentication.getPrincipal();
-		board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
-		boardService.saveBoard(board);
-		
+		Board board = new Board();
+		if (boardService.findGamesInProgressPlayer(currentUser.getUsername()).isEmpty()) {
+			board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
+			boardService.saveBoard(board);
+			
+		} else {
+			board = boardService.findGamesInProgressPlayer(currentUser.getUsername()).get(0);
+			
+		}
 		return board;
 	}
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		User currentUser = (User) authentication.getPrincipal();
-//		Board board = new Board();
-//		if (boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS).isEmpty()) {
-//			board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
-//			boardService.saveBoard(board);
-//			
-//		} else {
-//			System.out.println("You must end a game to start another");
-//		}
-//		return board;
-//	}
 	
 	@GetMapping("/{boardId}/click/{row}/{column}")
 	public Board click(@PathVariable("boardId") int id, @PathVariable("row") int r, @PathVariable("column") int c) {
