@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -26,10 +27,11 @@ public interface AchievementsRepository extends CrudRepository<Achievement, Inte
 	@Query("SELECT COUNT(ID) FROM Achievement achievement")
 	Integer countAllAchievements();
 
-	@Query("SELECT achievement FROM Achievement achievement WHERE achievement.player.user.username=:username")
-	public List<Achievement> findAchievementsByUsername(@Param("username") String username,Pageable pageable);
+	//@Query("SELECT achievement FROM Achievement achievement WHERE achievement.user.username=:username")
+	//public List<Achievement> findAchievementsByUsername(@Param("username") String username,Pageable pageable);
 	
-	
+	@Query("SELECT atype FROM AchievementType atype ORDER BY atype.name")
+    List<AchievementType> findAllAchievementTypes() throws DataAccessException;
 }
 
 
