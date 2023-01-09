@@ -24,6 +24,9 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 	@Query("SELECT board FROM Board board WHERE board.gameStatus NOT LIKE :gameStatus ORDER BY board.finishTime DESC")
 	List<Board> findAllGamesNotInProgress(GameStatus gameStatus);
 	
+	@Query("SELECT board FROM Board board WHERE board.player.user.username =:username AND board.gameStatus NOT LIKE :gameStatus ORDER BY board.finishTime DESC")
+	List<Board> findAllGamesByPlayerNotByStatus(@Param("username") String username, GameStatus gameStatus);
+	
 	@Query("SELECT board FROM Board board WHERE board.player.user.username =:username")
 	public List<Board> findAllGamesPlayer(@Param("username") String username);
 	
