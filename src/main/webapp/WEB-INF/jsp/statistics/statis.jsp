@@ -15,37 +15,9 @@
 	<c:if
 		test="${player.user.username eq principal.username or fn:contains(principal.authorities, 'player')}">
 		
-		<h2>GAME STATISTICS</h2><br/>
-			<table class="table table-striped table-bordered">
-			  <thead>
-			    <tr>
-			      <th colspan=3 scope="col" style="text-align:center">RANKING</th>
-			    </tr>
-			    <tr>
-			      <th width="10%" style="text-align:center" scope="col">#</th>
-			      <th width="40%" style="text-align:center" scope="col">Player (Username)</th>
-			      <th style="text-align:center" scope="col">Games Won</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr style="background-color:#ffdb4d">
-			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${playerTop1Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop1WinGames}" /></td>
-			    </tr>
-			    <tr style="background-color:#cccccc">
-			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${playerTop2Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop2WinGames}" /></td>
-			    </tr>
-			    <tr style="background-color:#e6cbb3">
-			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${playerTop3Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop3WinGames}" /></td>
-			    </tr>
-			  </tbody>
-			</table>
-			<br/>
+		<h2>STATISTICS</h2>
+		<br/>
+
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
@@ -111,7 +83,7 @@
 				</tr>
 				<tr>
 					<th width="50%" >Number of games WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numWonPlayer}" /></td>
+					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotalWon}" /></td>
 				</tr>
 				<tr>
 					<th width="50%" >Number of games WON with EASY difficulty</th>
@@ -154,17 +126,9 @@
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<tr>
-					<th width="50%">TOTAL GAMES WON</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlayerTotalWon}" /></td>
-				</tr>
 			    <tr>
 					<th width="50%">Total activated mines</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${minesActivated}" /></td>
-				</tr>
-				<tr>
-					<th>Total mine explosions contained</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberGuessedMines}" /></td>
 				</tr>
 				<tr>
 					<th>Total flags placed</th>
@@ -175,22 +139,6 @@
 					<td style="font-size:20px;text-align:center"><c:out value="${numberCellsClicked}" /></td>
 				</tr>
 			  </tbody>
-			  <thead>
-			    <tr>
-			      <th colspan=2 style="text-align:center" scope="col">Achievements</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			  	<tr>
-					<th>BRONZE LEVEL: You have won <c:out value="${bronzeMinimumGames}" /> games.</th>
-				</tr>
-				<tr>
-					<th>SILVER LEVEL: You have won <c:out value="${silverMinimumGames}" /> games.</th>
-				</tr>
-				<tr>
-					<th>GOLD LEVEL: You have won <c:out value="${goldMinimumGames}" /> games.</th>
-				</tr>
-			  </tbody>
 			</table>
 	</c:if>
 	<c:if test="${fn:contains(principal.authorities, 'admin')}">
@@ -198,37 +146,7 @@
 			<table class="table table-striped table-bordered">
 			  <thead>
 			    <tr>
-			      <th colspan=3 scope="col" style="text-align:center">HALL OF FAME</th>
-			    </tr>
-			    <tr>
-			      <th width="10%" style="text-align:center" scope="col">#</th>
-			      <th width="40%" style="text-align:center" scope="col">Player (Username)</th>
-			      <th style="text-align:center" scope="col">Games Won</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr style="background-color:#ffdb4d">
-			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${playerTop1Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop1WinGames}" /></td>
-			    </tr>
-			    <tr style="background-color:#cccccc">
-			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${playerTop2Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop2WinGames}" /></td>
-			    </tr>
-			    <tr style="background-color:#e6cbb3">
-			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${playerTop3Username}" /></th>
-			      <td style="font-size:20px;text-align:center"><c:out value="${playerTop3WinGames}" /></td>
-			    </tr>
-			  </tbody>
-			</table>
-			<br/>
-			<table class="table table-striped table-bordered">
-			  <thead>
-			    <tr>
-			      <th colspan=2 scope="col" style="text-align:center">GLOBAL STATS</th>
+			      <th colspan=2 scope="col" style="text-align:center">GLOBAL STATISTICS</th>
 			    </tr>
 			  </thead>
 			  <tbody>

@@ -4,7 +4,6 @@ package org.springframework.samples.petclinic.board;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -40,6 +39,6 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
 	Integer nTotalActivatedMines(@Param("username") String username, GameStatus gameStatus);
 
-	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
-	Integer nTotalPlacedFlags(@Param("username") String username, GameStatus gameStatus);
+//	@Query("SELECT COUNT(board) FROM  Board board WHERE board.player.user.username =:username AND board.gameStatus LIKE :gameStatus")
+//	Integer nTotalPlacedFlags(@Param("username") String username, GameStatus gameStatus);
 }

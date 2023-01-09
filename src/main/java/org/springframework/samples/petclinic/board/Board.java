@@ -58,6 +58,17 @@ public class Board extends AuditableEntity {
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	public LocalDateTime finishTime;
 	
+	@Column(name = "duration")
+	@DateTimeFormat(pattern="mm:ss")
+	public Duration duration;
+	
+	@ManyToOne
+	@JoinColumn(name="username")
+	private Player player;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "board", fetch = FetchType.EAGER)
+	public List<Square> squares;
+	
 	@JsonIgnore
 	public long getDurationGame() {
 		Duration durationGame = Duration.between(startTime, finishTime);
@@ -68,10 +79,6 @@ public class Board extends AuditableEntity {
 		return difSeconds;
 	}
 	
-	@Column(name = "duration")
-	@DateTimeFormat(pattern="mm:ss")
-	public Duration duration;
-
 	@JsonIgnore
 	public String durationString() {
 		if(finishTime == null) {
@@ -98,13 +105,6 @@ public class Board extends AuditableEntity {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
 		return formato.format(finishTime);
 	}
-	
-	@ManyToOne
-	@JoinColumn(name="username")
-	private Player player;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "board", fetch = FetchType.EAGER)
-	public List<Square> squares;
 	
 	public Board() {
 		
@@ -282,13 +282,6 @@ public class Board extends AuditableEntity {
 	public Square getSquare(int row, int column) {
 	   	return this.squares.get(column+column*row);
 	}
-	
-	
-	
-	
-	
-
-
-     
+	  
 
 }
