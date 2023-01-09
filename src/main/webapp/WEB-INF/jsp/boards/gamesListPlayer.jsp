@@ -44,13 +44,29 @@
 					</c:if>
 				</td>
                 <td>
-                    <c:out value="${board.durationString()}"/>
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+						<c:out value="In progress.." />
+					</c:if>
+					<c:if test="${board.gameStatus == 'WON'}">
+						<c:out value="${board.durationString()}"/>
+					</c:if>
+					<c:if test="${board.gameStatus == 'LOST'}">
+						<c:out value="${board.durationString()}"/>
+					</c:if>
                 </td>
                 <td>
                     <c:out value="${board.startTimeString()}"/>
                 </td>
 				<td>
-                    <c:out value="${board.finishTimeString()}"/>
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+						<c:out value="In progress.." />
+					</c:if>
+					<c:if test="${board.gameStatus == 'WON'}">
+						<c:out value="${board.finishTimeString()}"/>
+					</c:if>
+					<c:if test="${board.gameStatus == 'LOST'}">
+						<c:out value="${board.finishTimeString()}"/>
+					</c:if>
                 </td>
                 <td>
 				<c:if test = "${board.rowsNumber == 8}">
