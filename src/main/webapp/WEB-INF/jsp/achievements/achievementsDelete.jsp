@@ -4,20 +4,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
-<petclinic:layout pageName="delete Player">
-	<h1>Are you sure you want to delete the player?</h1>
+<petclinic:layout pageName="deleteAchievements">
+	<h1>Are you sure you want to delete the achievement?</h1>
    <!--  <form:form modelAttribute="player" class="form-horizontal" id="delete-player-form"> -->
         <br>
         <br>
         <div class="row form-group">
            
-            	<spring:url value="/players/myprofile/{id}/deleteConfirmAdmin" var="deleteUrl">
-        		  	<spring:param name="id" value="${player.id}"/>
+            	<spring:url value="/achievements/{id}/deleteConfirm" var="deleteUrl">
+        		  	<spring:param name="id" value="${achievement.id}"/>
     			</spring:url>
-    			<a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Player</a>
+    			<a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Achievement</a>
                  
-                <spring:url value="/players/list" var="cancel">
-        		  	<spring:param name="id" value="${player.id}"/>
+                <spring:url value="/achievements/list" var="cancel">
+        		  	<spring:param name="id" value="${achievement.id}"/>
     			</spring:url>
     			<a href="${fn:escapeXml(cancel)}" class="btn btn-default">Cancel</a>
             
