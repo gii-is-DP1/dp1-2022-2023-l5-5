@@ -27,12 +27,10 @@ import org.springframework.data.web.SortDefault;
 @RequestMapping("/players")
 public class PlayerController {
     
-	//private static final String VIEWS_INICIO = "welcome";
     private static final String VIEWS_PLAYER_CREATE_FORM = "players/createPlayerForm";
     private static final String VIEWS_PLAYER_UPDATE_FORM = "players/updatePlayerForm";
     private static final String VIEWS_PLAYERS_LIST = "players/playersList";
     private static final String VIEWS_PLAYERS_PROFILE = "players/playersProfile";
-   // private static final String VIEWS_PLAYERS_DELETE = "players/playersDelete";
     private static final String VIEWS_PLAYERS_DELETE_ADMIN = "players/playersDeleteAdmin";
     
 	private final PlayerService playerService;
@@ -96,14 +94,6 @@ public class PlayerController {
 			return "redirect:/";
 		}
 	}
-	
-	// Un jugador elimina su propio jugador
-//	@GetMapping(value = "/myprofile/{id}/delete")
-//	public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
-//		Player player = this.playerService.getPlayerById(id).get();
-//		model.addAttribute(player);
-//		return VIEWS_PLAYERS_DELETE;
-//	}
 
 	// El admin elimina un jugador
 	@GetMapping(value = "/myprofile/{id}/deleteAdmin")
@@ -113,15 +103,6 @@ public class PlayerController {
 		return VIEWS_PLAYERS_DELETE_ADMIN;
 	}
 	
-	
-	//Confirmación de eliminar para un player
-//	@GetMapping(value = "/myprofile/{id}/deleteConfirm")
-//	public String deletePlayer(@PathVariable("id") Integer id, ModelMap model) {
-//		this.playerService.deletePlayer(id);
-//		
-//		return "redirect:/logout";
-//	}
-	
 	//Confirmación de eliminar para un admin
 		@GetMapping(value = "/myprofile/{id}/deleteConfirmAdmin")
 		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
@@ -130,15 +111,12 @@ public class PlayerController {
 			return "redirect:/players/list?firstName=&page=0";
 		}
 	
-
 	//El admin ve el listado de jugadores
 	@GetMapping(value = "/list")
 	public String processFindForm(Player player, BindingResult result, Map<String, Object> model, 
-		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
+			@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
 			@SortDefault(sort = "id", direction = Sort.Direction.ASC),
 			@SortDefault(sort = "mail", direction = Sort.Direction.DESC), }) Pageable pageable) {
-
-
 		Integer numResults = this.playerService.countAllPlayers();
 		Integer page = 0;
 		List<Player> results = this.playerService.findAllPlayers(page, pageable);
