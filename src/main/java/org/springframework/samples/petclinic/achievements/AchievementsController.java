@@ -241,11 +241,11 @@ public class AchievementsController {
 		}
 		
 		//ESTO LO TENGO COMENTADO XQ TODAVIA NO VA
-//		//Confirmación de eliminar para un admin
-//		@GetMapping(value = "/{id}/deleteConfirm")
-//		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
-//			this.achievementsService.deleteAchievement(id);	
-//			return "redirect:/";
-//		}
+		//Confirmación de eliminar para un admin
+		@GetMapping(value = "/{id}/deleteConfirm")
+		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+			this.achievementsService.deleteAchievement(id);	
+			return "redirect:/achievements/list";
+		}
 
 }
