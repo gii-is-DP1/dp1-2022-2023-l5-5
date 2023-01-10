@@ -12,13 +12,13 @@
     <h2>Group ${group}</h2>
     <ul>
     <c:forEach items="${persons}" var="person">
-       <b> <li>${person.firstName} ${person.lastName}</li></b>
+       <b> <li> ${person.firstName} ${person.lastName}</li> </b>
     </c:forEach>
     </ul>
     </div>
     <br>
-    <div class="row">
-        <div class="col-md-5">
+    <div class="row text-center">
+        <div class="col-md-5 text-center">
             <spring:url value="/resources/images/minesweeper.png" htmlEscape="true" var="bmImage"/>
             <img class="img-responsive" src="${bmImage}"/>
         </div>
