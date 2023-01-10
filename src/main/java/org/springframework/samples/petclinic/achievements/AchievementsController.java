@@ -3,18 +3,12 @@ package org.springframework.samples.petclinic.achievements;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-
 import java.util.Map;
-import java.util.function.Predicate;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.board.BoardService;
-import org.springframework.samples.petclinic.board.GameStatus;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.statistics.StatisticsService;
 import org.springframework.samples.petclinic.user.AuthoritiesService;
@@ -35,7 +29,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.SortDefault;
-import org.springframework.data.web.SortDefault.SortDefaults;
 
 
 @Controller
@@ -47,6 +40,8 @@ public class AchievementsController {
 
 	private static final String VIEWS_ACHIEVEMENT_CREATE_FORM = "achievements/createAchievementsForm";
     private static final String VIEWS_ACHIEVEMENT_UPDATE_FORM = "achievements/updateAchievementsForm";
+    private static final String VIEWS_ACHIEVEMENT_LIST = "achievements/achievementsList";
+    private static final String VIEWS_ACHIEVEMENT_LIST_PLAYER = "achievements/playerAchievements";
 
 	@Autowired
 	private BoardService boardService;
@@ -78,7 +73,7 @@ public class AchievementsController {
 			model.put("totalPages", totalPages);
 			model.put("selections", results);
 
-			return "/achievements/achievementsList";
+			return VIEWS_ACHIEVEMENT_LIST;
 	}
 	
 	@GetMapping(value = "/myprofile")
@@ -190,7 +185,7 @@ public class AchievementsController {
 			model.put("totalPages", totalPages);
 			model.put("selections", list);
 			model.put("player", currentUser.getUsername());
-		return "achievements/playerAchievements";
+		return VIEWS_ACHIEVEMENT_LIST_PLAYER;
 	}
 
 
