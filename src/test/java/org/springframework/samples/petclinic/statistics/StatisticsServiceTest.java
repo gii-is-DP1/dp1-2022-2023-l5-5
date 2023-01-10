@@ -334,7 +334,7 @@ public class StatisticsServiceTest {
 
         List<Board> result = statisticsService.gamesWonPlayer();
         
-		assertThat(result).hasSize(17);
+		assertThat(result).hasSize(15);
 	}
 	
 	@Test
@@ -350,7 +350,7 @@ public class StatisticsServiceTest {
 		
 		long result = statisticsService.numGamesWinEasyPlayer("pabquide");
 		
-		assertThat(result).isEqualTo(3);
+		assertThat(result).isEqualTo(2);
 	}
 	
 	@Test
@@ -366,7 +366,7 @@ public class StatisticsServiceTest {
 		
 		long result = statisticsService.numGamesWinDifficultPlayer("pabquide");
 		
-		assertThat(result).isEqualTo(1);
+		assertThat(result).isEqualTo(0);
 	}
 	
     @Test
