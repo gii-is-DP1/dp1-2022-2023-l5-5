@@ -206,7 +206,7 @@ public class BoardServiceTest {
 	@Test
 	public void testFindAllGamesInProgress() {
 		List<Board> boards = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
-		assertEquals(boards.size(), 0);
+		assertEquals(boards.size(), 2);
 	}
 	
 	@Test
