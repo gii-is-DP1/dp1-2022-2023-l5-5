@@ -39,7 +39,6 @@ public class PlayerController {
     @Autowired
 	public PlayerController(PlayerService playerService) {
 		this.playerService = playerService;
-
 	}
     
   //Un usuario cualquiera puede crear un nuevo jugador
@@ -49,6 +48,7 @@ public class PlayerController {
 		model.put("player", player); //Meter en la vista el objeto jugador, y en la vista busco por el nombre entre ""
 		return VIEWS_PLAYER_CREATE_FORM;
 	}
+	
 	@PostMapping(value = "/new")
 	public String processCreationForm(@Valid Player player, BindingResult result, ModelMap model) {
 		if (result.hasErrors()) {
@@ -125,9 +125,7 @@ public class PlayerController {
 			Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
 			model.put("totalPages", totalPages);
 			model.put("selections", results);
-		
-			return VIEWS_PLAYERS_LIST;
-		
+			return VIEWS_PLAYERS_LIST;	
 	}
 	
 	//El admin ve el perfil de un jugador

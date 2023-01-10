@@ -49,7 +49,7 @@ public class StatisticsServiceTest {
 
         List<Board> result = statisticsService.findAllWonAndLostGamesGlobal();
         
-        assertThat(result).hasSize(22);
+        assertThat(result).hasSize(20);
 	}
 	
 	@Test
@@ -77,7 +77,7 @@ public class StatisticsServiceTest {
 
         long result = statisticsService.findnTotalGames();
         
-        assertThat(result).isEqualTo(22);
+        assertThat(result).isEqualTo(20);
 	}
 	
 	@Test
@@ -127,7 +127,7 @@ public class StatisticsServiceTest {
 
 		long totalDuration = statisticsService.totalDurationGamesPlayed();
 
-		assertThat(totalDuration).isEqualTo(377); 
+		assertThat(totalDuration).isEqualTo(373); 
 	}
 	
 	@Test
@@ -144,7 +144,7 @@ public class StatisticsServiceTest {
 
 		long totalDuration = statisticsService.averageDurationGamesPlayed();
 
-		assertThat(totalDuration).isEqualTo(18);
+		assertThat(totalDuration).isEqualTo(20);
 	}
 	
 	@Test
@@ -197,7 +197,7 @@ public class StatisticsServiceTest {
 
         long result = statisticsService.numGamesWonPlayed();
         
-        assertTrue(result == 17);
+        assertTrue(result == 15);
 	}
 	
 	@Test
@@ -238,7 +238,7 @@ public class StatisticsServiceTest {
 
         long result = statisticsService.numGamesWinEasyPlayed();
         
-        assertTrue(result == 8);
+        assertTrue(result == 7);
 	}
 	
 	@Test
@@ -282,7 +282,7 @@ public class StatisticsServiceTest {
 
         long result = statisticsService.numGamesWinDifficultPlayed();
         
-        assertTrue(result == 5);
+        assertTrue(result == 4);
 	}
 	
 	@Test

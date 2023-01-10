@@ -35,24 +35,4 @@
         </c:forEach>
         </tbody>
     </table>
-
-    <table border="1">
-        <tr>
-            <c:if test="${hasPrevious}">
-                <td><a
-                    href="myprofile?title=${title}&page=${pageNumber - 1}"
-                    class="btn btn-default">Previous</a></td>
-            </c:if>
-
-            <c:forEach begin="1" end="${totalPages+1}" var="i">
-                <td><a href="myprofile?title=${title}&page=${i-1}">${i}</a></td>
-            </c:forEach>
-
-            <c:if test="${pageNumber != totalPages}">
-                <td><a
-                    href="myprofile?title=${title}&page=${pageNumber + 1}"
-                    class="btn btn-default">Next</a></td>
-            </c:if>
-
-        </tr>
 </petclinic:layout>

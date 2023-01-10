@@ -7,23 +7,34 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="achievements">
-    <h2>
+    <h2 class="text-center">
         Update achievement
     </h2>
+    <br>
+    <br>
     <form:form modelAttribute="achievement" class="form-horizontal" id="update-achievement-form">
-        <div class="form-group has-feedback">
+        <div class="form-group has-feedback"  style="width: 700px; margin-left: 200px;">
             <petclinic:inputField label="Title" name="title"/>
-            <select name="achievementType" size="3">
+            <br>
+            <div class = "text-center">
+            <h3 style="margin-right: 200px;">Choose the achievement type..</h3>
+            <select name="achievementType" size="4" style="width: 550px; margin-left: 125px;">
                 <c:forEach items="${achievementtypes}" var="type">
                 <option value="${type.id}"><c:out value="${type.name}"></c:out></option>
                 </c:forEach>
             </select>
+            </div>
+            <br>
+            <br>
             <petclinic:inputField label="Number" name="number"/>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="text-center"> 
             	<button class="btn btn-default" type="submit">Update Achievement</button>
             </div>
         </div>
+        <br>
+      	<br>
+      	<br>
     </form:form>
 </petclinic:layout>

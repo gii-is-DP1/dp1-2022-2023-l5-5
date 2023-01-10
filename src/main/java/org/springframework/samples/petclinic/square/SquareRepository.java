@@ -9,6 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface SquareRepository extends CrudRepository<Square,Integer>{
 	
 	@Query("SELECT s from Square s where s.board=:board and s.row=:row and s.column=:column")
-	Square findByPosition(@Param("board") int board,
-			@Param("row") int row, @Param("column") int column);
+	Square findByPosition(@Param("board") int board, @Param("row") int row, @Param("column") int column);
 }

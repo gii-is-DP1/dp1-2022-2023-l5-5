@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Pageable;
 
 
 public interface BoardRepository extends CrudRepository<Board, Integer>{
@@ -12,6 +13,9 @@ public interface BoardRepository extends CrudRepository<Board, Integer>{
 
 	@Query("SELECT board FROM Board board")
 	public List<Board> findAll();
+	
+	@Query("SELECT board FROM Board board")
+	public List<Board> findAllPageable(Pageable pageable);
 
     @Query("SELECT board FROM Board board WHERE board.gameStatus LIKE :gameStatus")
 	public List<Board> findAllGamesInProgress(GameStatus gameStatus);
