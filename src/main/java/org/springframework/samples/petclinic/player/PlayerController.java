@@ -85,8 +85,7 @@ public class PlayerController {
 	}
 	
 	@PostMapping(value = "/myprofile/{id}/edit")
-	public String processUpdatePlayerForm(@Valid Player player, 
-			BindingResult result, @PathVariable("id") int id, ModelMap model) {
+	public String processUpdatePlayerForm(@Valid Player player, BindingResult result, @PathVariable("id") int id, ModelMap model) {
 		if (result.hasErrors()) {
 			model.put("player", player);
 			return VIEWS_PLAYER_UPDATE_FORM;

@@ -21,10 +21,8 @@
             <petclinic:inputField label="Number" name="number"/>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">            
-
+            <div class="col-sm-offset-2 col-sm-10">     
             	<button class="btn btn-default" type="submit">Add Achievement</button>                  
-                
             </div>
         </div>
     </form:form>
