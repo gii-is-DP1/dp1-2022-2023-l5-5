@@ -28,8 +28,8 @@
 	<img name="5" id="5" src="/resources/images/five.png" style= "display:None;">
 	<img name="6" id="6" src="/resources/images/six.png" style= "display:None;">
 	<img name="7" id="7" src="/resources/images/seven.png" style= "display:None;">
-	<img name="flag" id="8" src="/resources/images/flag.png" style= "display:None;">
-	<img name="wrong" id="9" src="/resources/images/wrong.png" style= "display:None;">
+	<img name="flag" id="F" src="/resources/images/flag.png" style= "display:None;">
+	<img name="wrong" id="W" src="/resources/images/wrong.png" style= "display:None;">
 	<img name="mine" id="*" src="/resources/images/mine.png" style= "display:None;">
 
 	<div id=flagsNumber></div>
@@ -160,6 +160,8 @@
 				let c = "";
 				if(board.data.squares[j+board.data.columnsNumber*i].isCovered){
 					c = "X";
+				} else if(board.data.squares[j+board.data.columnsNumber*i].isFlag){
+					c = "F";
 				} else if(board.data.squares[j+board.data.columnsNumber*i].isMine){
 					c = "*";
 				} else{
@@ -187,8 +189,8 @@
 				let img = new Image();				
 			 	if (array2D[i][j] === 'X') squareColor = 'lightgrey';
 			 	else if (array2D[i][j] === '0') squareColor = 'white';			
-				else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img=document.getElementById("8");
-				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img=document.getElementById("9"); 				
+				/* else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img=document.getElementById("8");
+				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img=document.getElementById("9"); */ 				
 				else img=document.getElementById(array2D[i][j]);
 				
 				const square = new Path2D();
