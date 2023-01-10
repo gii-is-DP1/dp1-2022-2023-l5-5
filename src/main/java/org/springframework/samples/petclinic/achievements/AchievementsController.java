@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.board.BoardService;
 import org.springframework.samples.petclinic.board.GameStatus;
@@ -45,6 +46,7 @@ public class AchievementsController {
 	private final AchievementsService achievementsService;
 
 	private static final String VIEWS_ACHIEVEMENT_CREATE_FORM = "achievements/createAchievementsForm";
+    private static final String VIEWS_ACHIEVEMENT_UPDATE_FORM = "achievements/updateAchievementsForm";
 
 	@Autowired
 	private BoardService boardService;
@@ -215,7 +217,25 @@ public class AchievementsController {
     public Collection<AchievementType> populateAchievementTypes(){
         return this.achievementsService.findAllAchievementTypes();
     }
-
-
+	
+	@GetMapping(value = "/{id}/edit")
+	public String initUpdateAchievementForm(@PathVariable("id") int id, Model model) {
+		Achievement achievement = this.achievementsService.getAchievementById(id).get();
+		model.addAttribute(achievement);
+		return VIEWS_ACHIEVEMENT_UPDATE_FORM;
+	}
+	
+	@PostMapping(value = "/{id}/edit")
+	public String processUpdateAchievementForm(@Valid Achievement achievement, BindingResult result, @PathVariable("id") int id, ModelMap model) {
+		if (result.hasErrors()) {
+			model.put("achievement", achievement);
+			return VIEWS_ACHIEVEMENT_UPDATE_FORM;
+		} else {
+			Achievement achievementToUpdate = this.achievementsService.getAchievementById(id).get();
+			BeanUtils.copyProperties(achievement, achievementToUpdate, "id", "creator", "createdDate");
+			this.achievementsService.saveAchievement(achievementToUpdate);	
+			return "redirect:/achievements/list";
+		}
+	}
 
 }

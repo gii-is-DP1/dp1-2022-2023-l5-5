@@ -14,6 +14,7 @@
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
             <th style="width: 150px;">Number</th>
+            <th style="width: 50px;"></th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +28,20 @@
                 </td>   
                 <td>
                     <c:out value="${achievement.number}"/>
-                </td>               
+                </td>   
+                <td>
+                    <spring:url value="/achievements/{id}/edit" var="editUrl">
+                        <spring:param name="id" value="${achievement.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(editUrl)}">&#128456 Edit</a>
+                    
+                    <br>
+           			
+                    <spring:url value="/achievements/{id}/delete" var="deleteUrl">
+                        <spring:param name="id" value="${achievement.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(deleteUrl)}">&#x1F5D1 Delete</a>
+                </td>            
             </tr>
         </c:forEach>
         </tbody>
