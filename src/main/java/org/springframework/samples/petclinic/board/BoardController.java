@@ -21,9 +21,6 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-
-//	@Autowired
-//	private PlayerService playerService;
 	
 	@GetMapping(path = "/game/**")
 	public String board(ModelMap modelMap) {

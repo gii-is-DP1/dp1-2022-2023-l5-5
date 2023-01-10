@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.samples.petclinic.board.BoardService;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.statistics.StatisticsService;
 import org.springframework.samples.petclinic.user.AuthoritiesService;
@@ -57,125 +56,121 @@ public class AchievementsController {
 	@GetMapping(value = "/list")
 	public String processFindForm(Achievement achievement, BindingResult result, Map<String, Object> model, 
 		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
-			@SortDefault(sort = "title", direction = Sort.Direction.ASC),
-			@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
+		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
+		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
 
 
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
 		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
-			// multiple players found
-			model.put("pageNumber", pageable.getPageNumber());
-			model.put("hasPrevious", pageable.hasPrevious());
-			Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
-			model.put("totalPages", totalPages);
-			model.put("selections", results);
+		// multiple players found
+		model.put("pageNumber", pageable.getPageNumber());
+		model.put("hasPrevious", pageable.hasPrevious());
+		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
+		model.put("totalPages", totalPages);
+		model.put("selections", results);
 
-			return VIEWS_ACHIEVEMENT_LIST;
+		return VIEWS_ACHIEVEMENT_LIST;
 	}
 	
 	@GetMapping(value = "/myprofile")
 	public String showPlayerAchievements(Player player, BindingResult result, Map<String, Object> model,
-	@PageableDefault(page = 0, size = 100) @SortDefault.SortDefaults({
+		@PageableDefault(page = 0, size = 100) @SortDefault.SortDefaults({
 		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
 		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User currentUser = (User) authentication.getPrincipal();
 
-		
 		Integer page = 0;
 		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
 		List<Achievement> list = new ArrayList<Achievement>();
 
 		Integer i=0;
-
 		while(i!=results.size()-1){
 		
-		Boolean res= false;
-		if(results.get(i).getAchievementType().getId()==1){
-			Integer query = (int) this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
+			Boolean res= false;
+			if(results.get(i).getAchievementType().getId()==1){
+				Integer query = (int) this.statisticsService.findnTotalGamesPlayerWon(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==2){
+				Integer query = (int) this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==3){
+				Integer query = (int) this.statisticsService.numGamesLostPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==4){
+				Integer query = (int) this.statisticsService.numGamesWinEasyPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==5){
+				Integer query = (int) this.statisticsService.numGamesWinDifficultPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==6){
+				Integer query = (int) this.statisticsService.numGamesWinMediumPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==7){
+				Integer query = (int) this.statisticsService.averageDurationGamesPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==8){
+				Integer query = (int) this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==9){
+				Integer query = (int) this.statisticsService.maxDurationGamesPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==10){
+				Integer query = (int) this.statisticsService.minDurationGamesPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
+			}else if(results.get(i).getAchievementType().getId()==11){
+				Integer query = (int) this.statisticsService.totalDurationGamesPlayer(currentUser.getUsername());
+				Integer number=results.get(i).getNumber();
+				res= query>=number;
+				if(res==true){
+					list.add(results.get(i));
+				}
 			}
-		}else if(results.get(i).getAchievementType().getId()==2){
-			Integer query = (int) this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==3){
-			Integer query = (int) this.statisticsService.numGamesLostPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==4){
-			Integer query = (int) this.statisticsService.numGamesWinEasyPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==5){
-			Integer query = (int) this.statisticsService.numGamesWinDifficultPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==6){
-			Integer query = (int) this.statisticsService.numGamesWinMediumPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==7){
-			Integer query = (int) this.statisticsService.averageDurationGamesPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==8){
-			Integer query = (int) this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==9){
-			Integer query = (int) this.statisticsService.maxDurationGamesPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==10){
-			Integer query = (int) this.statisticsService.minDurationGamesPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
-		}else if(results.get(i).getAchievementType().getId()==11){
-			Integer query = (int) this.statisticsService.totalDurationGamesPlayer(currentUser.getUsername());
-			Integer number=results.get(i).getNumber();
-			res= query>=number;
-			if(res==true){
-				list.add(results.get(i));
-			}
+			i++;
 		}
-		i++;
-	}
-
 		// multiple players found
-
 		    Integer numResults = list.size();
 		    model.put("pageNumber", pageable.getPageNumber());
 		    model.put("hasPrevious", pageable.hasPrevious());
@@ -185,7 +180,6 @@ public class AchievementsController {
 			model.put("player", currentUser.getUsername());
 		return VIEWS_ACHIEVEMENT_LIST_PLAYER;
 	}
-
 
 	@GetMapping(value = "/new")
 	public String initCreationForm(Map<String, Object> model) {
@@ -232,19 +226,19 @@ public class AchievementsController {
 		}
 	}
 	
-	// El admin elimina un logro
-		@GetMapping(value = "/{id}/delete")
-		public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
-			Achievement achievement = this.achievementsService.getAchievementById(id).get();
-			model.addAttribute(achievement);
-			return VIEWS_ACHIEVEMENTS_DELETE_ADMIN;
-		}
+	//El admin elimina un logro
+	@GetMapping(value = "/{id}/delete")
+	public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
+		Achievement achievement = this.achievementsService.getAchievementById(id).get();
+		model.addAttribute(achievement);
+		return VIEWS_ACHIEVEMENTS_DELETE_ADMIN;
+	}
 		
-		//Confirmación de eliminar para un admin
-		@GetMapping(value = "/{id}/deleteConfirm")
-		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
-			this.achievementsService.deleteAchievement(id);	
-			return "redirect:/achievements/list";
-		}
+	//Confirmación de eliminar para un admin
+	@GetMapping(value = "/{id}/deleteConfirm")
+	public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+		this.achievementsService.deleteAchievement(id);	
+		return "redirect:/achievements/list";
+	}
 
 }

@@ -39,11 +39,6 @@ public class BoardService {
         return (int) boardRepository.count();
     }
 	
-//	@Transactional
-//	public List<Board> findAllBoardsWithoutState(GameStatus gameStatus, Pageable pageable){
-//		return boardRepository.findAllBoardsWithoutState(gameStatus, pageable);
-//	}
-	
 	@Transactional
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findBoardByUsername(username, gameStatus);
@@ -123,13 +118,13 @@ public class BoardService {
 	    	}
 	    	return board;
 
-	    }
+	 }
 	 
 	 public Board rightClick(int row, int column, Board board) {
 		 if(board.getGameStatus()==GameStatus.NONE) {
 		 		board.setGameStatus(GameStatus.IN_PROGRESS);
 		 		board.setStartTime(LocalDateTime.now());
-		 	}
+		 }
 		 Square c = board.squares.get(column+row*board.columnsNumber);
 		 if (c.isCovered && board.flagsNumber>0) {
 			 c.setFlag(true);
@@ -140,10 +135,8 @@ public class BoardService {
 			 c.setFlag(false);
 			 board.setFlagsNumber(board.flagsNumber+1);
 		 }
-		 
 		 return board;
 	 }
-	 
 	 
 	 public static Board hasWon(Board board) {
 		 List<Square> lista = board.getSquares();
@@ -168,9 +161,8 @@ public class BoardService {
 			 t.setFinishTime(LocalDateTime.now());
 			 t.setDuration(Duration.between(t.startTime, t.finishTime));
 			 }
-		 
 		 }
 		 return t;
 	 }
-	
+	 
 }
