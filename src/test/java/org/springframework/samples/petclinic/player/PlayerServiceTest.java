@@ -58,7 +58,6 @@ public class PlayerServiceTest {
 	
 
 	@Test
-	@Transactional
 	void shouldCountAllPlayers() {
 		Player player1 = new Player();
 		player1.setFirstName("John");
@@ -87,7 +86,7 @@ public class PlayerServiceTest {
 		
 		int count = this.playerService.countAllPlayers();
 
-		assertThat(count).isEqualTo(15); //15 porque son los 13 players que hay en la bd, más estos dos nuevos que hemos creado
+		assertThat(count).isEqualTo(15); 
 	}
 
 	
@@ -137,8 +136,6 @@ public class PlayerServiceTest {
 		
 		player = playerRepository.save(player);
 				
-		// Comprobamos que el método validator() devuelva true al pasarle el jugador que
-		// acabamos de crear
 		assertTrue(playerService.validator(player));
 
 	 }
