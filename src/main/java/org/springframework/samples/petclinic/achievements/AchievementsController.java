@@ -42,9 +42,7 @@ public class AchievementsController {
     private static final String VIEWS_ACHIEVEMENT_UPDATE_FORM = "achievements/updateAchievementsForm";
     private static final String VIEWS_ACHIEVEMENT_LIST = "achievements/achievementsList";
     private static final String VIEWS_ACHIEVEMENT_LIST_PLAYER = "achievements/playerAchievements";
-
-	@Autowired
-	private BoardService boardService;
+    private static final String VIEWS_ACHIEVEMENTS_DELETE_ADMIN = "achievements/achievementsDelete";
 
 	@Autowired
 	private StatisticsService statisticsService;
@@ -213,6 +211,7 @@ public class AchievementsController {
         return this.achievementsService.findAllAchievementTypes();
     }
 	
+	//El admin edita un logro
 	@GetMapping(value = "/{id}/edit")
 	public String initUpdateAchievementForm(@PathVariable("id") int id, Model model) {
 		Achievement achievement = this.achievementsService.getAchievementById(id).get();
@@ -232,5 +231,20 @@ public class AchievementsController {
 			return "redirect:/achievements/list";
 		}
 	}
+	
+	// El admin elimina un logro
+		@GetMapping(value = "/{id}/delete")
+		public String redirectDelete(@PathVariable("id") Integer id, ModelMap model) {
+			Achievement achievement = this.achievementsService.getAchievementById(id).get();
+			model.addAttribute(achievement);
+			return VIEWS_ACHIEVEMENTS_DELETE_ADMIN;
+		}
+		
+		//Confirmación de eliminar para un admin
+		@GetMapping(value = "/{id}/deleteConfirm")
+		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+			this.achievementsService.deleteAchievement(id);	
+			return "redirect:/achievements/list";
+		}
 
 }

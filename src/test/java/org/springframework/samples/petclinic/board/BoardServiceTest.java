@@ -23,8 +23,6 @@ public class BoardServiceTest {
 	@Autowired
 	private BoardService boardService;
 	
-	@Autowired
-	private PlayerService playerService;
 	
 	@Test
 	public void testClickBoardwithoutMines() {
