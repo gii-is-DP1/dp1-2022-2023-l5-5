@@ -34,5 +34,4 @@ public class Achievement extends AuditableEntity implements Serializable {
 	@Positive
 	@Column(name= "number")
 	private Integer number;
-	
 }
