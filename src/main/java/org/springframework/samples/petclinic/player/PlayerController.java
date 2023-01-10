@@ -2,11 +2,8 @@ package org.springframework.samples.petclinic.player;
 
 
 import java.util.List;
-
 import java.util.Map;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -73,10 +70,6 @@ public class PlayerController {
 	//Un jugador edita su propio jugador
 	@GetMapping(value = "/myprofile/{id}/edit")
 	public String initUpdatePlayerForm(@PathVariable("id") int id, Model model) {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		User currentUser = (User) authentication.getPrincipal();
-//		Player player = this.playerService.getPlayerByUsername(currentUser.getUsername());
-//		model.addAttribute(player);
 		 Player player = this.playerService.getPlayerById(id).get();
 	        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	        if (authentication != null) {
@@ -94,14 +87,6 @@ public class PlayerController {
 	@PostMapping(value = "/myprofile/{id}/edit")
 	public String processUpdatePlayerForm(@Valid Player player, 
 			BindingResult result, @PathVariable("id") int id, ModelMap model) {
-//		if (result.hasErrors()) {
-//			return VIEWS_PLAYER_UPDATE_FORM;
-//		} 
-//		else {
-//			player.setId(id);
-//			this.playerService.savePlayer(player);
-//			return "redirect:/";
-//		}
 		if (result.hasErrors()) {
 			model.put("player", player);
 			return VIEWS_PLAYER_UPDATE_FORM;
