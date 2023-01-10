@@ -54,8 +54,7 @@
                     </spring:url>
                     <a style="color:black" href="${fn:escapeXml(deleteUrl)}">&#x1F5D1 Delete</a>
                 </td>
-
-                
+  
             </tr>
         </c:forEach>
         </tbody>
