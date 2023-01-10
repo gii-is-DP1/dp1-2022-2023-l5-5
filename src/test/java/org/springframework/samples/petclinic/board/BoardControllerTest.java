@@ -20,17 +20,16 @@ import org.springframework.test.web.servlet.MockMvc;
 @WebMvcTest(controllers = BoardController.class,
 			excludeFilters = @ComponentScan.Filter(type=FilterType.ASSIGNABLE_TYPE, classes = WebSecurityConfigurer.class),
 			excludeAutoConfiguration = SecurityConfiguration.class)
-
 public class BoardControllerTest {
 	
 	@Autowired
 	private MockMvc mockMvc;
 	
 	@MockBean
-	public BoardService boardService;
+	private BoardService boardService;
 	
 	@MockBean
-	public PlayerService playerService;
+	private PlayerService playerService;
 	
 	
 	@WithMockUser(value = "spring")
