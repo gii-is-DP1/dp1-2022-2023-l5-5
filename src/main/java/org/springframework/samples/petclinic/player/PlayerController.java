@@ -104,12 +104,11 @@ public class PlayerController {
 	}
 	
 	//Confirmación de eliminar para un admin
-		@GetMapping(value = "/myprofile/{id}/deleteConfirmAdmin")
-		public String deletePlayerAdmin(@PathVariable("id") Integer id) {
-			this.playerService.deletePlayer(id);
-			
-			return "redirect:/players/list?firstName=&page=0";
-		}
+	@GetMapping(value = "/myprofile/{id}/deleteConfirmAdmin")
+	public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+		this.playerService.deletePlayer(id);	
+		return "redirect:/players/list?firstName=&page=0";
+	}
 	
 	//El admin ve el listado de jugadores
 	@GetMapping(value = "/list")

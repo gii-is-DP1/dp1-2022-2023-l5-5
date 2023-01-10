@@ -61,4 +61,9 @@ public class AchievementsService {
         return achievementsRepository.findAllAchievementTypes();
     }
 	
+	@Transactional
+	public void deleteAchievement(Integer id) {
+		achievementsRepository.deleteById(id); 
+	}
+	
 }
