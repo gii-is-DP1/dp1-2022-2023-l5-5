@@ -62,7 +62,7 @@ public class AchievementsController {
 
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
-		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
+		List<Achievement> results = this.achievementsService.findAllAchievementsPageable(page, pageable);
 		// multiple players found
 		model.put("pageNumber", pageable.getPageNumber());
 		model.put("hasPrevious", pageable.hasPrevious());
@@ -74,16 +74,12 @@ public class AchievementsController {
 	}
 	
 	@GetMapping(value = "/myprofile")
-	public String showPlayerAchievements(Player player, BindingResult result, Map<String, Object> model,
-		@PageableDefault(page = 0, size = 100) @SortDefault.SortDefaults({
-		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
-		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
+	public String showPlayerAchievements(Player player, BindingResult result, Map<String, Object> model) {
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User currentUser = (User) authentication.getPrincipal();
 
-		Integer page = 0;
-		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
+		List<Achievement> results = this.achievementsService.findAllAchievements();
 		List<Achievement> list = new ArrayList<Achievement>();
 
 		Integer i=0;
@@ -171,11 +167,6 @@ public class AchievementsController {
 			i++;
 		}
 		// multiple players found
-		    Integer numResults = list.size();
-		    model.put("pageNumber", pageable.getPageNumber());
-		    model.put("hasPrevious", pageable.hasPrevious());
-			Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
-			model.put("totalPages", totalPages);
 			model.put("selections", list);
 			model.put("player", currentUser.getUsername());
 		return VIEWS_ACHIEVEMENT_LIST_PLAYER;
