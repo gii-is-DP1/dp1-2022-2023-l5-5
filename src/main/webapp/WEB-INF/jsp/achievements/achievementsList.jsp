@@ -14,6 +14,7 @@
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
             <th style="width: 150px;">Number</th>
+            <th style="width: 50px;"></th>
         </tr>
         </thead>
         <tbody>
@@ -27,29 +28,48 @@
                 </td>   
                 <td>
                     <c:out value="${achievement.number}"/>
-                </td>               
+                </td>   
+                <td>
+                    <spring:url value="/achievements/{id}/edit" var="editUrl">
+                        <spring:param name="id" value="${achievement.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(editUrl)}">&#128456 Edit</a>
+                    
+                    <br>
+           			
+                    <spring:url value="/achievements/{id}/delete" var="deleteUrl">
+                        <spring:param name="id" value="${achievement.id}"/>
+                    </spring:url>
+                    <a style="color:black" href="${fn:escapeXml(deleteUrl)}">&#x1F5D1 Delete</a>
+                </td>            
             </tr>
         </c:forEach>
         </tbody>
     </table>
 
-    <table border="1">
+    <table border="0">
         <tr>
             <c:if test="${hasPrevious}">
-                <td><a
+                <td>
+                <a  style="margin-right:5px"
                     href="/achievements/list?title=${title}&page=${pageNumber - 1}"
-                    class="btn btn-default">Previous</a></td>
+                    class="btn btn-default">Previous</a>
+            	</td>
             </c:if>
 
             <c:forEach begin="1" end="${totalPages+1}" var="i">
-                <td><a href="/achievements/list?title=${title}&page=${i-1}">${i}</a></td>
+                <td>
+                	<a style="margin-left:5px; margin-right:5px;" href="/achievements/list?title=${title}&page=${i-1}">${i}
+                	</a>
+            	</td>
             </c:forEach>
 
             <c:if test="${pageNumber != totalPages}">
-                <td><a
+                <td>
+                	<a style="margin-left:5px;"
                     href="/achievements/list?title=${title}&page=${pageNumber + 1}"
                     class="btn btn-default">Next</a></td>
             </c:if>
-
         </tr>
+	</table>
 </petclinic:layout>

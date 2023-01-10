@@ -8,9 +8,9 @@
 
 <petclinic:layout pageName="achievements">
     <h2>
-        New Achievement
+        Update achievement
     </h2>
-    <form:form modelAttribute="achievement" class="form-horizontal" id="add-achievement-form">
+    <form:form modelAttribute="achievement" class="form-horizontal" id="update-achievement-form">
         <div class="form-group has-feedback">
             <petclinic:inputField label="Title" name="title"/>
             <select name="achievementType" size="3">
@@ -21,8 +21,8 @@
             <petclinic:inputField label="Number" name="number"/>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">     
-            	<button class="btn btn-default" type="submit">Add Achievement</button>                  
+            <div class="col-sm-offset-2 col-sm-10">
+            	<button class="btn btn-default" type="submit">Update Achievement</button>
             </div>
         </div>
     </form:form>

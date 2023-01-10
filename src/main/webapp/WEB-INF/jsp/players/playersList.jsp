@@ -16,7 +16,7 @@
             <th style="width: 150px;">Lastname</th>
             <th style="width: 120px">Mail</th>
             <th style="width: 200px;">Password</th>
-            <th style="width: 200px;"></th>
+            <th style="width: 50px;"></th>
         </tr>
         </thead>
         <tbody>
