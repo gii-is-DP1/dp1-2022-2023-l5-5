@@ -12,47 +12,45 @@
         <thead>
         <tr>
             <th style="width: 150px;">Username</th>
-            <th style="width: 200px;">Board id</th>
             <th style="width: 120px">Result</th>
             <th style="width: 120px">Time</th>
             <th style="width: 120px">Start Date</th>
+            <th style="width: 120px">Finish Date</th>
             <th style="width: 120px">Difficulty</th>
 
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${board}" var="board">
+        <c:forEach items="${selections}" var="board">
             <tr>
-<%--                 <td>
-                    <spring:url value="/games/{gameId}" var="gameUrl">
-                        <spring:param name="gameId" value="${game.id}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.id}"/></a>
-                </td> --%>
                 <td>
                     <c:out value="${board.player.user.username}"/>
                 </td>
-                <td>
-                    <c:out value="${board.id} "/>
-                </td>
-                <td>
-                    <c:out value="${board.gameStatus}"/>
-                </td>
-                <td>
+					<td>
+						<c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+							<c:out value="In progress.." />
+						</c:if> <c:if test="${board.gameStatus == 'WON'}">
+							<c:out value="Won" />
+						</c:if> <c:if test="${board.gameStatus == 'LOST'}">
+							<c:out value="Lost" />
+						</c:if>
+					</td>
+
+					<td>
                 <c:choose>
                     <c:when test="${board.gameStatus == 'IN_PROGRESS'}">
                         <c:out value="---"/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="${board.duaration}"/>
+                        <c:out value="${board.durationString()}"/>
                     </c:otherwise>
                 </c:choose>
                 </td>
                 <td>
-                    <c:out value="${board.startTime}"/>
+                    <c:out value="${board.startTimeString()}"/>
                 </td>
                 <td>
-                    <c:out value="${board.finishTime}"/>
+                    <c:out value="${board.finishTimeString()}"/>
                 </td>
                 <td>
 				<c:if test = "${board.rowsNumber == 8}">
@@ -65,18 +63,33 @@
                     <c:out value="Difficult"/>
                 </c:if>
                 </td>                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
-                </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
-                
+                     
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    
+    <table class="center" border="0">
+        <tr>
+            <c:if test="${hasPrevious}">
+                <td><a
+                    style="margin-right:5px"  
+                    href="/board/list?page=${pageNumber - 1}"
+                    class="btn btn-default">Previous</a>
+            	</td>
+            </c:if>
+
+            <c:forEach begin="1" end="${totalPages+1}" var="i">
+                <td><a style="margin-left:5px; margin-right:5px;" href="/board/list?page=${i-1}">${i}</a></td>
+            </c:forEach>
+
+            <c:if test="${pageNumber != totalPages}">
+                <td><a
+                	style="margin-left:5px;" 
+                    href="/board/list?page=${pageNumber + 1}"
+                    class="btn btn-default">Next</a></td>
+            </c:if>
+
+        </tr>
+     </table>
 </petclinic:layout>

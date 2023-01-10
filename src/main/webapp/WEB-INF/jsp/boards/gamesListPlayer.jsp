@@ -11,15 +11,13 @@
     <table id="gamesTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 120px">Id de partida</th>
-            <th style="width: 150px;">Nombre Usuario</th>
-            <th style="width: 200px;">Dificultad</th>
-            <th style="width: 120px">Id de tablero</th>
-            <th style="width: 120px">Ha perdido?</th>
-            <th style="width: 120px">Esta en progreso?</th>
-            <th style="width: 120px">Fecha de inicio</th>
-            <th style="width: 120px">Fecha de fin</th>
-            <th style="width: 120px">Numero de clicks</th>
+            
+            <th style="width: 150px;">Username</th>
+            <th style="width: 120px">Result</th>
+            <th style="width: 120px">Time</th>
+            <th style="width: 120px">Start Date</th>
+            <th style="width: 120px">Finish Date</th>
+            <th style="width: 120px">Difficulty</th>
 
         </tr>
         </thead>
@@ -36,19 +34,39 @@
                     <c:out value="${board.player.user.username}"/>
                 </td>
                 <td>
-                    <c:out value="${board.id} "/>
+                    <%-- <c:out value="${board.gameStatus}"/> --%> 
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+							<c:out value="In progress.." />
+					</c:if> <c:if test="${board.gameStatus == 'WON'}">
+							<c:out value="Won" />
+					</c:if> <c:if test="${board.gameStatus == 'LOST'}">
+							<c:out value="Lost" />
+					</c:if>
+				</td>
+                <td>
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+						<c:out value="In progress.." />
+					</c:if>
+					<c:if test="${board.gameStatus == 'WON'}">
+						<c:out value="${board.durationString()}"/>
+					</c:if>
+					<c:if test="${board.gameStatus == 'LOST'}">
+						<c:out value="${board.durationString()}"/>
+					</c:if>
                 </td>
                 <td>
-                    <c:out value="${board.gameStatus}"/>
-                </td>
-                <td>
-                    <c:out value="${board.duration}"/>
-                </td>
-                <td>
-                    <c:out value="${board.startTime}"/>
+                    <c:out value="${board.startTimeString()}"/>
                 </td>
 				<td>
-                    <c:out value="${board.finishTime}"/>
+                    <c:if test="${board.gameStatus == 'IN_PROGRESS'}">
+						<c:out value="In progress.." />
+					</c:if>
+					<c:if test="${board.gameStatus == 'WON'}">
+						<c:out value="${board.finishTimeString()}"/>
+					</c:if>
+					<c:if test="${board.gameStatus == 'LOST'}">
+						<c:out value="${board.finishTimeString()}"/>
+					</c:if>
                 </td>
                 <td>
 				<c:if test = "${board.rowsNumber == 8}">
@@ -61,16 +79,6 @@
                     <c:out value="Difficult"/>
                 </c:if>
                 </td>  
-                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
-                </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
                 
             </tr>
         </c:forEach>

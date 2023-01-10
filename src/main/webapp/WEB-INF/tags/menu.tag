@@ -40,7 +40,7 @@
 
 				<sec:authorize access="hasAuthority('admin')">
 					<petclinic:menuItem active="${name eq 'gamesProgress'}"
-						url="/games/listinprogress" title="games in progress">
+						url="/board/listinprogress" title="games in progress">
 						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 						<span>Games in progress</span>
 					</petclinic:menuItem>
@@ -49,23 +49,15 @@
 				
 				<sec:authorize access="hasAuthority('admin')">
 					<petclinic:menuItem active="${name eq 'gamesPlayed'}" 
-					    url="/games/list" title="games played">
+					    url="/board/list" title="games played">
 						<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 						<span>Games Played</span>
 					</petclinic:menuItem>
 				</sec:authorize>
 
-				<sec:authorize access="isAuthenticated()">
-					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
-						title="statistics">
-						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Statistics</span>
-					</petclinic:menuItem>
-				</sec:authorize>
-
 				<sec:authorize access="hasAuthority('player')">
-					<petclinic:menuItem active="${name eq 'games'}" url="/board/new?dificulty=2"
-						title="new Game">
+					<petclinic:menuItem active="${name eq 'games'}" url="/board/setDifficulty"
+						title="New Game">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						<span>New game</span>
 				</petclinic:menuItem>
@@ -91,11 +83,85 @@
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 					<span>Profile</span>
 				</petclinic:menuItem>  --%>
+			
+				<sec:authorize access="isAuthenticated()">
+<%-- 					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
+						title="statistics"> --%>
+<!-- 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span>Statistics</span> -->
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <span class="glyphicon glyphicon-star"></span> 
+							Stats <span
+							class="glyphicon glyphicon-chevron-down"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="navbar-login">
+									<div class="row">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/statistic/statistics" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Statistics</a>
+                         					</p>
+										</div>
+										
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/statistic/rankings" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Rankings</a>
+                         					</p>
+										</div>
+										
+										<sec:authorize access="hasAuthority('player')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/achievements/myprofile" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Achievs</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+
+										<sec:authorize access="hasAuthority('admin')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/achievements/list" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 15px;margin-left: -30px;">Achievs</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+
+										<sec:authorize access="hasAuthority('admin')">
+										<div class="col-lg-4">
+										</div>
+										<div class="col-lg-8">
+											<br>
+											<p>
+											<a href="<c:url value="/achievements/new" />"
+											class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;font-size: 14.5px;margin-left: -30px;">New achiev</a>
+                         					</p>
+										</div>
+										</sec:authorize>
+									</div>
+								</div>
+							</li>
+							<li class="divider"></li>
+						</ul></li>
+					<%-- </petclinic:menuItem> --%>
+				</sec:authorize>
 
 			</ul>
-
-
-
 
 			<ul class="nav navbar-nav navbar-right">
 				<sec:authorize access="!isAuthenticated()">

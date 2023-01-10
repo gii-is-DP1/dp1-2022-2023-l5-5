@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.samples.petclinic.board.Board;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.user.User;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -43,13 +44,12 @@ public class Player extends AuditableEntity {
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "username", referencedColumnName = "username")
 	@Valid
+	@JsonIgnore
 	private User user;
-
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
-//    private List<Game> game;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "player")
-	private List<Board> board;
+	@JsonIgnore
+	private List<Board> boards;
 
 	
 }

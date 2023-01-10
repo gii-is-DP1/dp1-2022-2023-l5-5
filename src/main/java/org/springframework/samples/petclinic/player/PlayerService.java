@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PlayerService {
     
-	@Autowired
     private PlayerRepository playerRepository;	
 
 	@Autowired
@@ -32,6 +31,11 @@ public class PlayerService {
 	@Transactional(readOnly = true)
 	public List<Player> findAllPlayers(Integer page, Pageable pageable) {
 		return this.playerRepository.findAllPlayers(pageable);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Player> findAll() {
+		return this.playerRepository.findAllPlayers();
 	}
 
 	@Transactional(readOnly = true)
@@ -72,6 +76,7 @@ public class PlayerService {
 		return playerRepository.findById(id);
 	}
 	
+	
 	@Transactional(readOnly = true)
 	public Player getPlayerByUsername(String username) throws DataAccessException {
 		return playerRepository.findPlayerByUsername(username);
@@ -80,9 +85,6 @@ public class PlayerService {
 	@Transactional
 	public void deletePlayer(Integer id) {
 		playerRepository.deleteById(id); 
-
 	}
-
-
 
 }

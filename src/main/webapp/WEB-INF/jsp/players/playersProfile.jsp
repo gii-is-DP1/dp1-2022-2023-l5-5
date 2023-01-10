@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <th>Password</th>
-            <td><c:out value="${player.user.password}"/></td>
+            <td><%-- <c:out value="${player.user.password}"/> --%><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></td>
     </table>
 	
 	
@@ -40,10 +40,10 @@
     	<a href="${fn:escapeXml(editUrl)}" class="btn btn-default">Edit Player</a>
     </sec:authorize>
     
-    <spring:url value="/players/myprofile/{id}/delete" var="deleteUrl">
+<%--     <spring:url value="/players/myprofile/{id}/delete" var="deleteUrl">
         <spring:param name="id" value="${player.id}"/>
     </spring:url>
-    <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Player</a>
+    <a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Player</a> --%>
 
     <br/>
     <br/>

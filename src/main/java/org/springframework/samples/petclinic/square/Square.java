@@ -19,20 +19,27 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="casillas")
-@JsonIgnoreProperties(value="tablero")
+@JsonIgnoreProperties(value="board")
 public class Square extends BaseEntity{
+	
 	@Column(name = "fila")
-	public int fila;
+	public int row;
+	
 	@Column(name = "columna")
-	public int columna;
+	public int column;
+	
 	@Column(name = "valor")
-	public int valor;
+	public int value;
+	
 	@Column(name = "is_covered")
 	public boolean isCovered;
+	
 	@Column(name = "is_mine")
 	public boolean isMine;
+	
 	@Column(name = "isFlag")
 	public boolean isFlag;
+	
 	@Column(name = "isWrong")
 	public boolean isWrong;
 	
@@ -45,9 +52,9 @@ public class Square extends BaseEntity{
 	}
 
 	public Square(int fila, int columna, Board tablero) {
-		this.fila = fila;
-		this.columna= columna;
-		this.valor = 0;
+		this.row = fila;
+		this.column= columna;
+		this.value = 0;
 		this.isCovered=true;
 		this.isMine=false;
 		this.isFlag=false;
@@ -55,6 +62,6 @@ public class Square extends BaseEntity{
 	}
 	
 	public void increaseValue() {
-		this.valor+=1;
+		this.value+=1;
 	}
 }

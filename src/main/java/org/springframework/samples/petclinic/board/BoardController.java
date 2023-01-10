@@ -2,10 +2,11 @@ package org.springframework.samples.petclinic.board;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.samples.petclinic.player.PlayerService;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -14,57 +15,21 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 @Controller
 @RequestMapping("/board")
 public class BoardController {
 	
 	private static final String VIEWS_BOARD = "boards/board";
+	private static final String VIEWS_NEW_BOARD = "boards/setDifficulty";
 
 	@Autowired
 	private BoardService boardService;
-
-	@Autowired
-	private PlayerService playerService;
 	
-	@GetMapping(path = "/new/**")
+	@GetMapping(path = "/game/**")
 	public String board(ModelMap modelMap) {
 		return VIEWS_BOARD;
 	}
-	
-//	@GetMapping(value= "/list")
-//	public String processFindForm(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		List<Board> results = this.boardService.findAllGamesNotInProgress();
-//		
-//			model.put("selections", results);
-//			return "games/gamesList";
-//		
-//	}
-
-//	@GetMapping(value= "/listinprogress")
-//	public String processFindFormProgress(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		List<Game> results = this.gameService.findAllGamesInProgress();
-//		
-//			model.put("selections", results);
-//			return "games/gamesListInProgress";
-//		
-//	}
-
-//	@GetMapping(value= "/listplayer")
-//	public String processFindFormPlayer(Game game, BindingResult result, Map<String, Object> model) {
-//
-//		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-//		User currentUser=(User) authentication.getPrincipal();
-//		
-//	    List<Game> results = this.gameService.findAllGamesPlayer(currentUser.getUsername());
-//		model.put("selections", results);
-//		return "games/gamesListPlayer";
-//		
-//	}
 	
 	@GetMapping(value = "/listinprogress")
 	public String processFindFormProgress(ModelMap modelMap) {
@@ -72,8 +37,7 @@ public class BoardController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null)
 			if (authentication.isAuthenticated()) {
-				User currentUser = (User) authentication.getPrincipal();
-				List<Board> board = boardService.findBoardByUsername(currentUser.getUsername(), GameStatus.IN_PROGRESS);
+				List<Board> board = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
 				modelMap.addAttribute("board", board);
 				return vista;
 			} else {
@@ -84,9 +48,17 @@ public class BoardController {
 	}
     
 	@GetMapping(path="/list")
-	public String processFindForm(ModelMap modelMap) {
-		List<Board> board = boardService.findAllGamesNotInProgress(GameStatus.NONE);
-		modelMap.addAttribute("board", board);
+	public String processFindForm(ModelMap modelMap, @PageableDefault(page = 0, size = 6) 
+		@SortDefault.SortDefaults({@SortDefault(sort = "id", direction = Sort.Direction.ASC)}) Pageable pageable) {
+		Integer page = 0;
+		List<Board> results = boardService.findAllWonAndLostGamesPageable(page, pageable);
+		Integer numResults = results.size();
+		//modelMap.addAttribute("board", board);
+		modelMap.put("pageNumber", pageable.getPageNumber());
+		modelMap.put("hasPrevious", pageable.hasPrevious());
+		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
+		modelMap.put("totalPages", totalPages);
+		modelMap.put("selections", results);
 		return "boards/gamesList";
 	}
 	
@@ -96,13 +68,15 @@ public class BoardController {
 		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
 		User currentUser=(User) authentication.getPrincipal();
 		
-	    List<Board> results = this.boardService.findAllGamesPlayer(currentUser.getUsername());
-		model.put("selections", results);
+	    List<Board> results = this.boardService.findAllGamesByPlayerNotByStatus(currentUser.getUsername(), GameStatus.NONE);
+		model.put("board", results);
 		return "boards/gamesListPlayer";
 		
 	}
-
 	
-	
+	@GetMapping(value = "setDifficulty")
+	public String setDifficulty() {
+		return VIEWS_NEW_BOARD;
+	}
 
 }

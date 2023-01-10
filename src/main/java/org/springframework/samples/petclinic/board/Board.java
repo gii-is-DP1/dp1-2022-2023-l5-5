@@ -2,9 +2,10 @@ package org.springframework.samples.petclinic.board;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,19 +14,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.square.Square;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
 @Getter
 @Setter
+@Entity
 @Table(name = "boards")
 public class Board extends AuditableEntity {
     
@@ -64,6 +64,46 @@ public class Board extends AuditableEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "board", fetch = FetchType.EAGER)
 	public List<Square> squares;
 	
+	@JsonIgnore
+	public long getDurationGame() {
+		Duration durationGame = Duration.between(startTime, finishTime);
+//		long difHours = durationGame.toHours();
+//		long difMinuts = durationGame.toMinutes();
+		long difSeconds = durationGame.toSeconds();
+		//return ChronoUnit.SECONDS.between(startTime, finishTime);
+		return difSeconds;
+	}
+	
+	@JsonIgnore
+	public String durationString() {
+		if(finishTime == null) {
+			long diffInSeconds = ChronoUnit.SECONDS.between(startTime, LocalDateTime.now());
+			long minutos = diffInSeconds/60;
+			long segundos = diffInSeconds%60;
+			return String.valueOf(minutos) + " minuts and " + String.valueOf(segundos) + " seconds";
+		}else {
+			long diffInSeconds = ChronoUnit.SECONDS.between(startTime, finishTime);
+			long minutos = diffInSeconds/60;
+			long segundos = diffInSeconds%60;
+			return String.valueOf(minutos) + " minuts and " + String.valueOf(segundos) + " seconds";
+		}
+	}
+	
+	@JsonIgnore
+	public String startTimeString() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
+		return formato.format(startTime);
+	}	
+	
+	@JsonIgnore
+	public String finishTimeString() {
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
+		if(finishTime == null) {
+			return formato.format(LocalDateTime.now());
+		}
+		return formato.format(finishTime);
+	}
+	
 	public Board() {
 		
 	}
@@ -74,7 +114,7 @@ public class Board extends AuditableEntity {
 	    this.minesNumber = minesNumber;
 	    this.flagsNumber = flagsNumber;
 	    this.gameStatus = GameStatus.NONE;
-	    this.startTime = null;
+	    this.startTime = LocalDateTime.now();
 	    this.finishTime = null;
 	    this.duration = null;
 	    this.player = player;
@@ -86,7 +126,7 @@ public class Board extends AuditableEntity {
 	    this.columnsNumber = columnsNumber;
 	    this.minesNumber = minesNumber;
 	    this.gameStatus = GameStatus.NONE;
-	    this.startTime = null;
+	    this.startTime = LocalDateTime.now();
 	    this.finishTime = null;
 	    this.duration = null;
 	    this.createSquares1();
@@ -212,7 +252,7 @@ public class Board extends AuditableEntity {
 	        	if(this.squares.get(j+i*this.columnsNumber).isMine()) {
 	            	res+="*";
 	            }else {
-	            	Integer v = this.squares.get(j+i*this.columnsNumber).getValor();
+	            	Integer v = this.squares.get(j+i*this.columnsNumber).getValue();
 	            	res= res + v.toString();
 	            }
 	        }
@@ -220,6 +260,7 @@ public class Board extends AuditableEntity {
 	    }
 	    return res;
 	}
+	 
 
 	public String toString2() {
 		String res = "";
@@ -239,13 +280,5 @@ public class Board extends AuditableEntity {
 	public Square getSquare(int row, int column) {
 	   	return this.squares.get(column+column*row);
 	}
-	
-	
-	
-	
-	
-
-
-     
-
+	  
 }

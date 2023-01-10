@@ -12,7 +12,6 @@
         <thead>
         <tr>
             <th style="width: 150px;">Username</th>
-            <th style="width: 120px">Board id</th>
             <th style="width: 120px">Result</th>
             <th style="width: 120px">Time</th>
             <th style="width: 120px">Start Date</th>
@@ -21,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${board}" var="board">
+        <c:forEach items="${board}" var="board"> 
             <tr>
 <%--                 <td>
                     <spring:url value="/games/{gameId}" var="gameUrl">
@@ -32,18 +31,19 @@
                 <td>
                     <c:out value="${board.player.user.username}"/>
                 </td>
+
+               	<td>
+                
+                <c:if test="${board.gameStatus == 'IN_PROGRESS'}"><c:out value="In progress.."/></c:if>
+                </td>
+                
                 <td>
-                    <c:out value="${board.id} "/>
+                    <c:out value="${board.durationString()}"/>
                 </td>
                 <td>
-                    <c:out value="${board.gameStatus}"/>
+                    <c:out value="${board.startTimeString()}"/>
                 </td>
-                <td>
-                    <c:out value="${board.duration}"/>
-                </td>
-                <td>
-                    <c:out value="${board.startTime}"/>
-                </td>
+                
                 <td>
                 <c:if test = "${board.rowsNumber == 8}">
                     <c:out value="Easy"/>
@@ -56,16 +56,6 @@
                 </c:if>
                 
         		</td>
-                
-      
-<!--
-                <td> 
-                    <c:out value="${owner.user.username}"/> 
-                </td>
-                <td> 
-                   <c:out value="${owner.user.password}"/> 
-                </td> 
--->
                 
             </tr>
         </c:forEach>

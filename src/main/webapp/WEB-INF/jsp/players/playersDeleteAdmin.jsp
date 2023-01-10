@@ -5,21 +5,21 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="delete Player">
-	<h2>Delete Player</h2>
-    <form:form modelAttribute="player" class="form-horizontal" id="delete-player-form">
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-            	<spring:url value="/players/myprofile/{id}/deleteConfirm" var="deleteUrl">
+	<h1>Are you sure you want to delete the player?</h1>
+   <!--  <form:form modelAttribute="player" class="form-horizontal" id="delete-player-form"> -->
+        <br>
+        <br>
+        <div class="row form-group">
+           
+            	<spring:url value="/players/myprofile/{id}/deleteConfirmAdmin" var="deleteUrl">
         		  	<spring:param name="id" value="${player.id}"/>
     			</spring:url>
     			<a href="${fn:escapeXml(deleteUrl)}" class="btn btn-default">Delete Player</a>
                  
-            </div>
+                <spring:url value="/players/list" var="cancel">
+        		  	<spring:param name="id" value="${player.id}"/>
+    			</spring:url>
+    			<a href="${fn:escapeXml(cancel)}" class="btn btn-default">Cancel</a>
+            
         </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                  <button class="btn btn-default" type="submit">Cancel</button>
-            </div>
-        </div>
-    </form:form>
 </petclinic:layout>
