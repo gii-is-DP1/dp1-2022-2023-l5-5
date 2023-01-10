@@ -33,23 +33,29 @@
         </tbody>
     </table>
 
-    <table border="1">
+    <table border="0">
         <tr>
             <c:if test="${hasPrevious}">
-                <td><a
+                <td>
+                <a  style="margin-right:5px"
                     href="/achievements/list?title=${title}&page=${pageNumber - 1}"
-                    class="btn btn-default">Previous</a></td>
+                    class="btn btn-default">Previous</a>
+            	</td>
             </c:if>
 
             <c:forEach begin="1" end="${totalPages+1}" var="i">
-                <td><a href="/achievements/list?title=${title}&page=${i-1}">${i}</a></td>
+                <td>
+                	<a style="margin-left:5px; margin-right:5px;" href="/achievements/list?title=${title}&page=${i-1}">${i}
+                	</a>
+            	</td>
             </c:forEach>
 
             <c:if test="${pageNumber != totalPages}">
-                <td><a
+                <td>
+                	<a style="margin-left:5px;"
                     href="/achievements/list?title=${title}&page=${pageNumber + 1}"
                     class="btn btn-default">Next</a></td>
             </c:if>
-
         </tr>
+	</table>
 </petclinic:layout>
