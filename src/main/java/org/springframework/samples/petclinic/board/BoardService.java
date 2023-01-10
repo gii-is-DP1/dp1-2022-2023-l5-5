@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,6 +55,13 @@ public class BoardService {
 	@Transactional
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
+	}
+	
+	@Transactional
+	public List<Board> findAllWonAndLostGamesPageable(Integer page, Pageable pageable){
+		List<Board> list = boardRepository.findAllPageable(pageable);
+		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return list_filtrada;
 	}
 
 	@Transactional

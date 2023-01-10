@@ -3,6 +3,10 @@ package org.springframework.samples.petclinic.board;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -44,9 +48,17 @@ public class BoardController {
 	}
     
 	@GetMapping(path="/list")
-	public String processFindForm(ModelMap modelMap) {
-		List<Board> board = boardService.findAllGamesNotInProgress(GameStatus.NONE);
-		modelMap.addAttribute("board", board);
+	public String processFindForm(ModelMap modelMap, @PageableDefault(page = 0, size = 6) 
+		@SortDefault.SortDefaults({@SortDefault(sort = "id", direction = Sort.Direction.ASC)}) Pageable pageable) {
+		Integer page = 0;
+		List<Board> results = boardService.findAllWonAndLostGamesPageable(page, pageable);
+		Integer numResults = results.size();
+		//modelMap.addAttribute("board", board);
+		modelMap.put("pageNumber", pageable.getPageNumber());
+		modelMap.put("hasPrevious", pageable.hasPrevious());
+		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
+		modelMap.put("totalPages", totalPages);
+		modelMap.put("selections", results);
 		return "boards/gamesList";
 	}
 	
