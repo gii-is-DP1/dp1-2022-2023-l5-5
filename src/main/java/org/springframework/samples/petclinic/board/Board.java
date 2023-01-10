@@ -6,7 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,15 +14,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.square.Square;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -286,5 +281,4 @@ public class Board extends AuditableEntity {
 	   	return this.squares.get(column+column*row);
 	}
 	  
-
 }
