@@ -93,10 +93,6 @@ public class PlayerController {
 			Player playerToUpdate = this.playerService.getPlayerById(id).get();
 			BeanUtils.copyProperties(player, playerToUpdate, "id", "creator", "createdDate");
 			this.playerService.savePlayer(playerToUpdate);
-			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			if (authentication.getPrincipal() == "admin") {
-				
-			}
 			return "redirect:/";
 		}
 	}
