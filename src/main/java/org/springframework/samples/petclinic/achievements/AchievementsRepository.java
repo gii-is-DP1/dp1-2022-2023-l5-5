@@ -17,9 +17,12 @@ public interface AchievementsRepository extends CrudRepository<Achievement, Inte
 
 	@Query("SELECT achievement FROM Achievement achievement")
 	Achievement findAchievements();
+	
+	@Query("SELECT achievement FROM Achievement achievement ORDER BY achievement.id")
+	List<Achievement> findAllAchievements();
 
 	@Query("SELECT achievement FROM Achievement achievement ORDER BY achievement.id")
-	List<Achievement> findAllAchievements(Pageable pageable);
+	List<Achievement> findAllAchievementsPageable(Pageable pageable);
 
 	@Query("SELECT achievement FROM Achievement achievement WHERE achievement.id =:id")
 	public Optional<Achievement> findById(@Param("id") int id);
