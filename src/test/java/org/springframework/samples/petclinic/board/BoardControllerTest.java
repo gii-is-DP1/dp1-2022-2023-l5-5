@@ -55,7 +55,7 @@ public class BoardControllerTest {
 	public void testProcessFindForm() throws Exception {
 		mockMvc.perform(get("/board/list"))
 				.andExpect(status().isOk())
-				.andExpect(model().attributeExists("board"))
+				.andExpect(model().attributeExists("selections"))
 				.andExpect(view().name("boards/gamesList"));
 	}
 	
