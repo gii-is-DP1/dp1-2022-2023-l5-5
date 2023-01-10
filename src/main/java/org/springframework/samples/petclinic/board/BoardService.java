@@ -5,6 +5,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.square.Square;
@@ -48,6 +50,13 @@ public class BoardService {
     }
 	
 	@Transactional
+    public List<Board> findGamesInProgressPlayer(String username){
+		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.IN_PROGRESS).collect(Collectors.toList());
+		return res;
+    }
+	
+	@Transactional
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
 	}
@@ -60,6 +69,12 @@ public class BoardService {
 	@Transactional(readOnly = true)
 	public List<Board> findAllGamesPlayer(String username){
 		return this.boardRepository.findAllGamesPlayer(username);
+		
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Board> findAllGamesByPlayerNotByStatus(String username, GameStatus status){
+		return this.boardRepository.findAllGamesByPlayerNotByStatus(username, status);
 		
 	}
 	
@@ -158,8 +173,4 @@ public class BoardService {
 		 return t;
 	 }
 	
-
-
-
-
 }

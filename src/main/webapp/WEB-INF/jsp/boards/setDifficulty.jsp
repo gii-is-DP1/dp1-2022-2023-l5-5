@@ -9,8 +9,7 @@
 
 	<div class= "col-2 text-center">
     <h1>Set difficulty</h1>
-	<br>
-
+	<br> 
     <h2>Choose the difficulty of the game:</h2>
     <br>
     <a href="http://localhost:8080/board/game?dificulty=1" class="btn btn-primary btn-lg" class="btn btn-primary btn-block btn-sm" style="background-color: rgb(255, 140, 198); border-radius: 6px; color: rgb(255, 236, 245);border: 2px solid #34302D;" >Easy</a>

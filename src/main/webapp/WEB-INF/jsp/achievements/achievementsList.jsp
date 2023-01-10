@@ -6,12 +6,11 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="achievements">
-    <h2>Players</h2>
+    <h2>Achievements</h2>
 
     <table id="achievementsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;">Id</th>
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
             <th style="width: 150px;">Number</th>
@@ -20,9 +19,6 @@
         <tbody>
         <c:forEach items="${selections}" var="achievement">
             <tr>
-                <td>
-                    <c:out value="${achievement.id}"/>
-                </td>
                 <td>
                     <c:out value="${achievement.title}"/>
                 </td> 

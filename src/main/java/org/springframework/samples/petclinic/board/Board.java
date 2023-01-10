@@ -103,6 +103,9 @@ public class Board extends AuditableEntity {
 	@JsonIgnore
 	public String finishTimeString() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm, dd'/'MM'/'yyyy");
+		if(finishTime == null) {
+			return formato.format(LocalDateTime.now());
+		}
 		return formato.format(finishTime);
 	}
 	
@@ -116,7 +119,7 @@ public class Board extends AuditableEntity {
 	    this.minesNumber = minesNumber;
 	    this.flagsNumber = flagsNumber;
 	    this.gameStatus = GameStatus.NONE;
-	    this.startTime = null;
+	    this.startTime = LocalDateTime.now();
 	    this.finishTime = null;
 	    this.duration = null;
 	    this.player = player;
@@ -128,7 +131,7 @@ public class Board extends AuditableEntity {
 	    this.columnsNumber = columnsNumber;
 	    this.minesNumber = minesNumber;
 	    this.gameStatus = GameStatus.NONE;
-	    this.startTime = null;
+	    this.startTime = LocalDateTime.now();
 	    this.finishTime = null;
 	    this.duration = null;
 	    this.createSquares1();
