@@ -56,7 +56,7 @@
 				</sec:authorize>
 
 				<sec:authorize access="hasAuthority('player')">
-					<petclinic:menuItem active="${name eq 'games'}" url="/board/setDifficulty"
+					<petclinic:menuItem active="${name eq 'new_games'}" url="/board/setDifficulty"
 						title="New Game">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						<span>New game</span>
@@ -71,24 +71,8 @@
 						<span>My games</span>
 					</petclinic:menuItem>
 				</sec:authorize>
-
-				<!-- <petclinic:menuItem active="${name eq 'audits'}" url="/audits"
-					title="audits">
-					<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-					<span>Audits</span>
-				</petclinic:menuItem> --> 
-				
-<%-- 				<petclinic:menuItem active="${name eq 'profile'}" url="/players/myprofile"
-					title="profile">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					<span>Profile</span>
-				</petclinic:menuItem>  --%>
 			
 				<sec:authorize access="isAuthenticated()">
-<%-- 					<petclinic:menuItem active="${name eq 'statistics'}" url="/board/statistics"
-						title="statistics"> --%>
-<!-- 						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<span>Statistics</span> -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown"> <span class="glyphicon glyphicon-star"></span> 
 							Stats <span
@@ -158,7 +142,6 @@
 							</li>
 							<li class="divider"></li>
 						</ul></li>
-					<%-- </petclinic:menuItem> --%>
 				</sec:authorize>
 
 			</ul>
@@ -209,21 +192,6 @@
 								</div>
 							</li>
 							<li class="divider"></li>
-<!-- 							
-                            <li> 
-								<div class="navbar-login navbar-login-session">
-									<div class="row">
-										<div class="col-lg-12">
-											<p>
-												<a href="#" class="btn btn-primary btn-block">My Profile</a>
-												<a href="#" class="btn btn-danger btn-block">Change
-													Password</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</li>
--->
 						</ul></li>
 				</sec:authorize>
 			</ul>
