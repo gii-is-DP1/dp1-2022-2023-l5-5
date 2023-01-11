@@ -6,17 +6,17 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="achievements">
-    <h2> Achievements acomplished by ${player}</h2>
+    <h2> Achievements acomplished by @${player}</h2>
     <br>
     
     <c:if test="${selections.size()==0}">
-        <h3> ${player} doesn't have any achievements </h3>
+        <h3>@${player} doesn't have any achievements </h3>
     </c:if>
 
     <table id="achievementsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;"> </th>
+            <th style="width: 100px;"> </th>
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
         </tr>  

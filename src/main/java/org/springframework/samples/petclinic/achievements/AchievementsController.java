@@ -62,7 +62,7 @@ public class AchievementsController {
 
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
-		List<Achievement> results = this.achievementsService.findAllAchievementsPageable(page, pageable);
+		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
 		// multiple players found
 		model.put("pageNumber", pageable.getPageNumber());
 		model.put("hasPrevious", pageable.hasPrevious());
