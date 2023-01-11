@@ -10,7 +10,7 @@
     <br>
     
     <c:if test="${selections.size()==0}">
-        <h3> ${player} doesn't have any achievements </h3>
+        <h3>@${player} doesn't have any achievements </h3>
     </c:if>
 
     <table id="achievementsTable" class="table table-striped">
