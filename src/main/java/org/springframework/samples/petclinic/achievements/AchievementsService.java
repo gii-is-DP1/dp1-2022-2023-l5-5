@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AchievementsService {
     
-	@Autowired
-    private AchievementsRepository achievementsRepository;	
+	private AchievementsRepository achievementsRepository;	
 
 	@Autowired
 	public AchievementsService(AchievementsRepository achievementsRepository) {
