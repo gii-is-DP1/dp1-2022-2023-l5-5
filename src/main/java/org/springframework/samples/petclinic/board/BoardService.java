@@ -25,7 +25,7 @@ public class BoardService {
 		return boardRepository.findById(id);
 	}  
     
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllBoards(){
 		return boardRepository.findAll();
 	}
@@ -35,43 +35,43 @@ public class BoardService {
 		boardRepository.save(board);
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
     public int boardCount() {
         return (int) boardRepository.count();
     }
 	
-	@Transactional
+	@Transactional(readOnly = true)
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findBoardByUsername(username, gameStatus);
     }
 	
-	@Transactional
+	@Transactional(readOnly = true)
     public List<Board> findGamesInProgressPlayer(String username){
 		List<Board> list = boardRepository.findAllGamesPlayer(username);
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.IN_PROGRESS).collect(Collectors.toList());
 		return res;
     }
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndLostGames(Integer page, Pageable pageable){
 		List<Board> list = boardRepository.findAll(pageable);
 		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return list_filtrada;
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndLostGames(){
 		List<Board> list = boardRepository.findAll();
 		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return list_filtrada;
 	}
 
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllGamesInProgress(GameStatus status){
 		return boardRepository.findAllGamesInProgress(status);
 	}
@@ -88,8 +88,7 @@ public class BoardService {
 		
 	}
 	
-	@Transactional
-	 public Board click(int row, int column, Board board) {
+	public Board click(int row, int column, Board board) {
 		 	if(board.getGameStatus()==GameStatus.NONE) {
 		 		board.setGameStatus(GameStatus.IN_PROGRESS);
 		 		board.setStartTime(LocalDateTime.now());;
