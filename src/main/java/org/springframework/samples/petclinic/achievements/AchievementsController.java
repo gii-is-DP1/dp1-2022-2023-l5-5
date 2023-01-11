@@ -200,7 +200,7 @@ public class AchievementsController {
 		
 	//Confirmación de eliminar para un admin
 	@GetMapping(value = "/{id}/deleteConfirm")
-	public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+	public String deleteAchievementAdmin(@PathVariable("id") Integer id) {
 		this.achievementsService.deleteAchievement(id);	
 		return "redirect:/achievements/list";
 	}
