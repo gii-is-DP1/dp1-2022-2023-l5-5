@@ -21,7 +21,7 @@ public class SquareService {
 		squareRepository.save(square);
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
 	public Square findByPosition(int boardId, int row, int column) {
 		return this.squareRepository.findByPosition(boardId, row, column);
 	}
