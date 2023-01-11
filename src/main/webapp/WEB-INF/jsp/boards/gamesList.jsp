@@ -69,7 +69,7 @@
         </tbody>
     </table>
     
-    <table class="center" border="0">
+   <%-- <table class="center" border="0">
         <tr>
             <c:if test="${hasPrevious}">
                 <td><a
@@ -91,5 +91,5 @@
             </c:if>
 
         </tr>
-     </table>
+     </table> --%>
 </petclinic:layout>

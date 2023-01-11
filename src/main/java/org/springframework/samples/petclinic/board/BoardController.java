@@ -22,7 +22,10 @@ public class BoardController {
 	
 	private static final String VIEWS_BOARD = "boards/board";
 	private static final String VIEWS_NEW_BOARD = "boards/setDifficulty";
-
+	private static final String VIEWS_LIST_GAMES = "boards/gamesList";
+	private static final String VIEWS_LIST_INPROGRESS_GAMES = "boards/gamesListInProgress";
+	private static final String VIEWS_LIST_PLAYER_GAMES = "boards/gamesListPlayer";
+	
 	@Autowired
 	private BoardService boardService;
 	
@@ -33,13 +36,12 @@ public class BoardController {
 	
 	@GetMapping(value = "/listinprogress")
 	public String processFindFormProgress(ModelMap modelMap) {
-		String vista = "boards/gamesListInProgress";
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null)
 			if (authentication.isAuthenticated()) {
 				List<Board> board = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
 				modelMap.addAttribute("board", board);
-				return vista;
+				return VIEWS_LIST_INPROGRESS_GAMES;
 			} else {
 				System.out.println("User not authenticated");
 		}
@@ -49,20 +51,22 @@ public class BoardController {
     
 	//El admin ve el listado de partidas
 	@GetMapping(path="/list")
-	public String processFindForm(Map<String, Object> model, 
-		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
-		@SortDefault(sort = "id", direction = Sort.Direction.ASC), 
-		@SortDefault(sort = "rowsNumber", direction = Sort.Direction.DESC),}) Pageable pageable) {
-		Integer page = 0;
-		List<Board> results = boardService.findAllWonAndLostGamesPageable(page, pageable);
-		Integer numResults = results.size();
-		//modelMap.addAttribute("board", board);
-		model.put("pageNumber", pageable.getPageNumber());
-		model.put("hasPrevious", pageable.hasPrevious());
-		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
-		model.put("totalPages", totalPages);
+	public String processFindForm(Map<String, Object> model
+		 
+//		,@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
+//		@SortDefault(sort = "id", direction = Sort.Direction.ASC), 
+//		@SortDefault(sort = "rowsNumber", direction = Sort.Direction.DESC),}) Pageable pageable
+		) {
+//		Integer page = 0;
+		List<Board> results = boardService.findAllWonAndLostGames(); //page, pageable
+//		Integer numResults = results.size();
+//		//modelMap.addAttribute("board", board);
+//		model.put("pageNumber", pageable.getPageNumber());
+//		model.put("hasPrevious", pageable.hasPrevious());
+//		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
+//		model.put("totalPages", totalPages);
 		model.put("selections", results);
-		return "boards/gamesList";
+		return VIEWS_LIST_GAMES;
 	}
 	
 	@GetMapping(value= "/listplayer")
@@ -73,7 +77,7 @@ public class BoardController {
 		
 	    List<Board> results = this.boardService.findAllGamesByPlayerNotByStatus(currentUser.getUsername(), GameStatus.NONE);
 		model.put("selections", results);
-		return "boards/gamesListPlayer";
+		return VIEWS_LIST_PLAYER_GAMES;
 		
 	}
 	
