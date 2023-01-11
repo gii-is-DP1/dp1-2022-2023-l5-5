@@ -47,18 +47,21 @@ public class BoardController {
 		
 	}
     
+	//El admin ve el listado de partidas
 	@GetMapping(path="/list")
-	public String processFindForm(ModelMap modelMap, @PageableDefault(page = 0, size = 6) 
-		@SortDefault.SortDefaults({@SortDefault(sort = "id", direction = Sort.Direction.ASC)}) Pageable pageable) {
+	public String processFindForm(Map<String, Object> model, 
+		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
+		@SortDefault(sort = "id", direction = Sort.Direction.ASC), 
+		@SortDefault(sort = "rowsNumber", direction = Sort.Direction.DESC),}) Pageable pageable) {
 		Integer page = 0;
 		List<Board> results = boardService.findAllWonAndLostGamesPageable(page, pageable);
 		Integer numResults = results.size();
 		//modelMap.addAttribute("board", board);
-		modelMap.put("pageNumber", pageable.getPageNumber());
-		modelMap.put("hasPrevious", pageable.hasPrevious());
+		model.put("pageNumber", pageable.getPageNumber());
+		model.put("hasPrevious", pageable.hasPrevious());
 		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
-		modelMap.put("totalPages", totalPages);
-		modelMap.put("selections", results);
+		model.put("totalPages", totalPages);
+		model.put("selections", results);
 		return "boards/gamesList";
 	}
 	
@@ -69,7 +72,7 @@ public class BoardController {
 		User currentUser=(User) authentication.getPrincipal();
 		
 	    List<Board> results = this.boardService.findAllGamesByPlayerNotByStatus(currentUser.getUsername(), GameStatus.NONE);
-		model.put("board", results);
+		model.put("selections", results);
 		return "boards/gamesListPlayer";
 		
 	}
