@@ -25,13 +25,13 @@ public class Achievement extends AuditableEntity implements Serializable {
 	@Column(name = "title")
 	private String title;
 
-	@ManyToOne
-	@NotNull
-    @JoinColumn(name = "achievementtypes_id")
-    private AchievementType achievementType;
-
 	@NotNull
 	@Positive
 	@Column(name= "number")
 	private Integer number;
+	
+	@ManyToOne
+	@NotNull
+    @JoinColumn(name = "achievementtypes_id")
+    private AchievementType achievementType;
 }

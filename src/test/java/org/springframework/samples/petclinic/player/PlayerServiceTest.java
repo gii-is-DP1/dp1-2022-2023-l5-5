@@ -108,7 +108,7 @@ public class PlayerServiceTest {
 		user.setUsername("johndoe1");
 		user.setPassword("password123");
 		user.setEnabled(true);
-		player.setUser(user);;
+		player.setUser(user);
 		
 		this.playerService.savePlayer(player);
 		
