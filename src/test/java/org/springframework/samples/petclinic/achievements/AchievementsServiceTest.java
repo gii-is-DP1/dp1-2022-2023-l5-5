@@ -14,11 +14,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.samples.petclinic.player.Player;
-import org.springframework.samples.petclinic.user.User;
 import org.springframework.stereotype.Service;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
 @DataJpaTest(includeFilters = @ComponentScan.Filter(Service.class))
 public class AchievementsServiceTest {
