@@ -41,7 +41,7 @@ public class PlayerController {
 		this.playerService = playerService;
 	}
     
-  //Un usuario cualquiera puede crear un nuevo jugador
+    //Un usuario cualquiera puede crear un nuevo jugador
 	@GetMapping(value = "/new")
 	public String initCreationForm(Map<String, Object> model) {
 		Player player = new Player(); //Objeto jugador

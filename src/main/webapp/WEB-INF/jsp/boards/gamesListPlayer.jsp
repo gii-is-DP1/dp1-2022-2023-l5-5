@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${board}" var="board">
+        <c:forEach items="${selections}" var="board">
             <tr>
 <%--                 <td>
                     <spring:url value="/games/{gameId}" var="gameUrl">

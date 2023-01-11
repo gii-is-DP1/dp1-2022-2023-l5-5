@@ -58,8 +58,15 @@ public class BoardService {
 	}
 	
 	@Transactional
-	public List<Board> findAllWonAndLostGamesPageable(Integer page, Pageable pageable){
-		List<Board> list = boardRepository.findAllPageable(pageable);
+	public List<Board> findAllWonAndLostGames(Integer page, Pageable pageable){
+		List<Board> list = boardRepository.findAll(pageable);
+		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return list_filtrada;
+	}
+	
+	@Transactional
+	public List<Board> findAllWonAndLostGames(){
+		List<Board> list = boardRepository.findAll();
 		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return list_filtrada;
 	}
