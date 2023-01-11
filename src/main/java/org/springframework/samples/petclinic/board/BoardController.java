@@ -39,7 +39,7 @@ public class BoardController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication != null)
 			if (authentication.isAuthenticated()) {
-				List<Board> board = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
+				List<Board> board = boardService.findAllGamesByStatus(GameStatus.IN_PROGRESS);
 				modelMap.addAttribute("board", board);
 				return VIEWS_LIST_INPROGRESS_GAMES;
 			} else {

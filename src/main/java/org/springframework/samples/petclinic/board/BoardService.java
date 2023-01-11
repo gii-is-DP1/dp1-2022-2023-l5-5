@@ -72,8 +72,8 @@ public class BoardService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<Board> findAllGamesInProgress(GameStatus status){
-		return boardRepository.findAllGamesInProgress(status);
+	public List<Board> findAllGamesByStatus(GameStatus status){
+		return boardRepository.findAllGamesByStatus(status);
 	}
 
 	@Transactional(readOnly = true)
