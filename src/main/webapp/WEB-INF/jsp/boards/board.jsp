@@ -35,6 +35,11 @@
 	<div id=flagsNumber></div>
 	<div id="crono">00 : 00</div>
 	
+	<!-- Cuadro de mensaje cuando tienes un game in progress -->
+	<div id="gameInProgressMessage" style="display:None; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
+	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
+	<br> 
+	
 	<!-- Cuadro de mensaje de victoria o derrota que se muestra cuando se acaba la partida -->
 	<div id="gameOverMessage" style="display:None; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
 	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
@@ -189,8 +194,6 @@
 				let img = new Image();				
 			 	if (array2D[i][j] === 'X') squareColor = 'lightgrey';
 			 	else if (array2D[i][j] === '0') squareColor = 'white';			
-				/* else if (board.data.squares[j+board.data.columnsNumber*i].isFlag) img=document.getElementById("8");
-				else if (board.data.squares[j+board.data.columnsNumber*i].isWrong) img=document.getElementById("9"); */ 				
 				else img=document.getElementById(array2D[i][j]);
 				
 				const square = new Path2D();

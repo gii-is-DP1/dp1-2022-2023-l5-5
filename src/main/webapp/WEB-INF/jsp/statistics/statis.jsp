@@ -134,10 +134,6 @@
 					<th>Total flags placed</th>
 					<td style="font-size:20px;text-align:center"><c:out value="${gamesPlacedFlags}" /></td>
 				</tr>
-				<tr>
-					<th>Total cells clicked</th>
-					<td style="font-size:20px;text-align:center"><c:out value="${numberCellsClicked}" /></td>
-				</tr>
 			  </tbody>
 			</table>
 	</c:if>
