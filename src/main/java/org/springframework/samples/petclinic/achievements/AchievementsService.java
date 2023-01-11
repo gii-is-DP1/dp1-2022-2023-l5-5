@@ -22,8 +22,8 @@ public class AchievementsService {
 	}	
 
 	@Transactional(readOnly = true)
-	public List<Achievement> findAllAchievementsPageable(Integer page, Pageable pageable) {
-		return this.achievementsRepository.findAllAchievementsPageable(pageable);
+	public List<Achievement> findAllAchievements(Integer page, Pageable pageable) {
+		return this.achievementsRepository.findAllAchievements(pageable);
 	}
 	
 	@Transactional(readOnly = true)
