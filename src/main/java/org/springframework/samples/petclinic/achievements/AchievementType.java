@@ -9,5 +9,6 @@ import org.springframework.samples.petclinic.model.NamedEntity;
 @Table(name = "achievementtypes")
 public class AchievementType extends NamedEntity{
 
+	
 
 }
