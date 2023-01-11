@@ -42,7 +42,6 @@ public class AchievementsService {
 
 	@Transactional
 	public void saveAchievement(Achievement achievement) throws DataAccessException {
-		//creating achievement
 		achievementsRepository.save(achievement);
 	}	
 
