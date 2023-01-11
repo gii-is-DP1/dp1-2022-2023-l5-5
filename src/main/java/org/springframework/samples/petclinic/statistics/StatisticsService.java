@@ -215,7 +215,6 @@ public class StatisticsService {
 	}
 	
 	//ranking en general, más partidas ganadas 
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> ranking(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -239,7 +238,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel facil, más partidas ganadas por nivel dificultad facil
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingEasy(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -263,7 +261,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel medio, más partidas ganadas por nivel dificultad medio
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingMedium(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -287,7 +284,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel dificil, más partidas ganadas por nivel dificultad dificil
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingDifficult(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
