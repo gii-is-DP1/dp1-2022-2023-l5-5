@@ -6,7 +6,7 @@
 <%@ taglib prefix="petclinic" tagdir="/WEB-INF/tags" %>
 
 <petclinic:layout pageName="achievements">
-    <h2> Achievements acomplished by ${player}</h2>
+    <h2> Achievements acomplished by @${player}</h2>
     <br>
     
     <c:if test="${selections.size()==0}">
