@@ -35,4 +35,7 @@
         </c:forEach>
         </tbody>
     </table>
+    <c:if test="${selections.size()==0}">
+        <h3> ${player} doesn't have any achievements </h3>
+    </c:if>
 </petclinic:layout>
