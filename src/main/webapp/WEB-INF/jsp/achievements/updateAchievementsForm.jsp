@@ -8,13 +8,13 @@
 
 <petclinic:layout pageName="achievements">
     <h2 class="text-center">
-        New Achievement
+        Update achievement
     </h2>
     <br>
     <br>
-    <form:form modelAttribute="achievement" class="form-horizontal" id="add-achievement-form">
-        <div class="form-group has-feedback" style="width: 700px; margin-left: 200px;">
-            <petclinic:inputField label="Title" name="title" />
+    <form:form modelAttribute="achievement" class="form-horizontal" id="update-achievement-form">
+        <div class="form-group has-feedback"  style="width: 700px; margin-left: 200px;">
+            <petclinic:inputField label="Title" name="title"/>
             <br>
             <div class = "text-center">
             <h3 style="margin-right: 200px;">Choose the achievement type..</h3>
@@ -28,13 +28,12 @@
             <br>
             <petclinic:inputField label="Number" name="number"/>
         </div>
-        <br>
         <div class="form-group">
-            <div class="text-center">     
-            	<button class="btn btn-default" type="submit">Add Achievement</button>                  
+            <div class="text-center"> 
+            	<button class="btn btn-default" type="submit">Update Achievement</button>
             </div>
         </div>
-      	<br>
+        <br>
       	<br>
       	<br>
     </form:form>

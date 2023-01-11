@@ -23,8 +23,6 @@ public class BoardServiceTest {
 	@Autowired
 	private BoardService boardService;
 	
-	@Autowired
-	private PlayerService playerService;
 	
 	@Test
 	public void testClickBoardwithoutMines() {
@@ -208,7 +206,7 @@ public class BoardServiceTest {
 	@Test
 	public void testFindAllGamesInProgress() {
 		List<Board> boards = boardService.findAllGamesInProgress(GameStatus.IN_PROGRESS);
-		assertEquals(boards.size(), 0);
+		assertEquals(boards.size(), 2);
 	}
 	
 	@Test

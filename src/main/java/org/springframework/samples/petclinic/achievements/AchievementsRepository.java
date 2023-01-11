@@ -17,18 +17,18 @@ public interface AchievementsRepository extends CrudRepository<Achievement, Inte
 
 	@Query("SELECT achievement FROM Achievement achievement")
 	Achievement findAchievements();
+	
+	@Query("SELECT achievement FROM Achievement achievement ORDER BY achievement.id")
+	List<Achievement> findAllAchievements();
 
 	@Query("SELECT achievement FROM Achievement achievement ORDER BY achievement.id")
-	List<Achievement> findAllAchievements(Pageable pageable);
+	List<Achievement> findAllAchievementsPageable(Pageable pageable);
 
 	@Query("SELECT achievement FROM Achievement achievement WHERE achievement.id =:id")
 	public Optional<Achievement> findById(@Param("id") int id);
 
 	@Query("SELECT COUNT(ID) FROM Achievement achievement")
 	Integer countAllAchievements();
-
-	//@Query("SELECT achievement FROM Achievement achievement WHERE achievement.user.username=:username")
-	//public List<Achievement> findAchievementsByUsername(@Param("username") String username,Pageable pageable);
 	
 	@Query("SELECT atype FROM AchievementType atype ORDER BY atype.name")
     List<AchievementType> findAllAchievementTypes() throws DataAccessException;

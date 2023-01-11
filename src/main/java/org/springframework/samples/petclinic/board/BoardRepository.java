@@ -1,17 +1,21 @@
 package org.springframework.samples.petclinic.board;
 
 import java.util.List;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
 
-
+@Repository
 public interface BoardRepository extends CrudRepository<Board, Integer>{
 
 
 	@Query("SELECT board FROM Board board")
 	public List<Board> findAll();
+	
+	@Query("SELECT board FROM Board board")
+	List<Board> findAll(Pageable pageable);
 
     @Query("SELECT board FROM Board board WHERE board.gameStatus LIKE :gameStatus")
 	public List<Board> findAllGamesInProgress(GameStatus gameStatus);

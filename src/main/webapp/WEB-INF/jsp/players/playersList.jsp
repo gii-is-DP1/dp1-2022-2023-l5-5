@@ -16,7 +16,7 @@
             <th style="width: 150px;">Lastname</th>
             <th style="width: 120px">Mail</th>
             <th style="width: 200px;">Password</th>
-            <th style="width: 200px;"></th>
+            <th style="width: 50px;"></th>
         </tr>
         </thead>
         <tbody>
@@ -54,8 +54,7 @@
                     </spring:url>
                     <a style="color:black" href="${fn:escapeXml(deleteUrl)}">&#x1F5D1 Delete</a>
                 </td>
-
-                
+  
             </tr>
         </c:forEach>
         </tbody>
@@ -66,19 +65,19 @@
             <c:if test="${hasPrevious}">
                 <td><a
                     style="margin-right:5px"  
-                    href="/players/list?firstName=${firstName}&page=${pageNumber - 1}"
+                    href="/players/list?firstName=${player.firstName}&page=${pageNumber - 1}"
                     class="btn btn-default">Previous</a>
             	</td>
             </c:if>
 
             <c:forEach begin="1" end="${totalPages+1}" var="i">
-                <td><a style="margin-left:5px; margin-right:5px;" href="/players/list?firstName=${firstName}&page=${i-1}">${i}</a></td>
+                <td><a style="margin-left:5px; margin-right:5px;" href="/players/list?firstName=${player.firstName}&page=${i-1}">${i}</a></td>
             </c:forEach>
 
             <c:if test="${pageNumber != totalPages}">
                 <td><a
                 	style="margin-left:5px;" 
-                    href="/players/list?firstName=${firstName}&page=${pageNumber + 1}"
+                    href="/players/list?firstName=${player.firstName}&page=${pageNumber + 1}"
                     class="btn btn-default">Next</a></td>
             </c:if>
 

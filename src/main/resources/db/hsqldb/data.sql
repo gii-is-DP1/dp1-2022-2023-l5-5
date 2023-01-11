@@ -20,27 +20,26 @@ INSERT INTO authorities(id,username,authority) VALUES (6,'sanzultor','player');
 INSERT INTO users(username,password,enabled) VALUES ('andgarriv','4ndg4rr1v',TRUE);
 INSERT INTO authorities(id,username,authority) VALUES (7,'andgarriv','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('pedrito','pedrito',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (8,'pedrito','player');
+INSERT INTO users(username,password,enabled) VALUES ('jaime2001','j41me',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (8,'jaime2001','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('iked','iked',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (9,'iked','player');
+INSERT INTO users(username,password,enabled) VALUES ('luis2002','lu1s',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (9,'luis2002','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('kfc','kfc',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (10,'kfc','player');
+INSERT INTO users(username,password,enabled) VALUES ('enrique24','enr1que',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (10,'enrique24','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('uuuu','uuuu',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (11,'uuuu','player');
+INSERT INTO users(username,password,enabled) VALUES ('jimena44','j1men4',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (11,'jimena44','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('padre','4ndg4rr1v',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (12,'padre','player');
+INSERT INTO users(username,password,enabled) VALUES ('amparo2001','4mp4ro',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (12,'amparo2001','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('si','si',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (13,'si','player');
+INSERT INTO users(username,password,enabled) VALUES ('maria89','m4r14',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (13,'maria89','player');
 
-INSERT INTO users(username,password,enabled) VALUES ('no','no',TRUE);
-INSERT INTO authorities(id,username,authority) VALUES (14,'no','player');
-
+INSERT INTO users(username,password,enabled) VALUES ('victoria54','v1ctor14',TRUE);
+INSERT INTO authorities(id,username,authority) VALUES (14,'victoria54','player');
 
 
 INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','pabquide','2022-12-5 00:00:00','pabquide', 1,'Pablo','Quindos','pabquide','pabquide@alum.us.es');
@@ -49,13 +48,13 @@ INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_na
 INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','paomarsan','2022-12-5 00:00:00','paomarsan',4,'Paola','Martín','paomarsan','paomarsan@alum.us.es');
 INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','sanzultor','2022-12-5 00:00:00','sanzultor',5,'Santiago','Zuleta','sanzultor','sanzultor@alum.us.es');
 INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','andgarriv','2022-12-5 00:00:00','andgarriv',6,'Andrés','García','andgarriv','andgarriv@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','pedrito','2022-12-5 00:00:00','pedrito',7,'Pedro','Benito','pedrito','pedrito@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','iked','2022-12-5 00:00:00','iked',8,'Iker','Iked','iked','iked@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','kfc','2022-12-5 00:00:00','kfc',9,'Pollo','Frito','kfc','kfc@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','uuuu','2022-12-5 00:00:00','uuuu',10,'Taco','Bell','uuuu','si@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','padre','2022-12-5 00:00:00','padre',11,'Luis','Enrique','padre','padre@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','si','2022-12-5 00:00:00','si',12,'Si','Si','si','si@alum.us.es');
-INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','no','2022-12-5 00:00:00','no',13,'No','No','no','no@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','jaime2001','2022-12-5 00:00:00','jaime2001',7,'Jaime','Blanco','jaime2001','jaime2001@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','luis2002','2022-12-5 00:00:00','luis2002',8,'Luis','Rodríguez','luis2002','luis2002@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','enrique24','2022-12-5 00:00:00','enrique24',9,'Enrique','Jiménez','enrique24','enrique24@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','jimena44','2022-12-5 00:00:00','jimena44',10,'Jimena','Sánchez','jimena44','jimena44@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','amparo2001','2022-12-5 00:00:00','amparo2001',11,'Amparo','Candau','amparo2001','amparo2001@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','maria89','2022-12-5 00:00:00','maria89',12,'María','Méndez','maria89','maria89@alum.us.es');
+INSERT INTO players(created_date,creator,last_modified_date,modifier,id,first_name,last_name,username,mail) VALUES ('2022-12-5 00:00:00','victoria54','2022-12-5 00:00:00','victoria54',13,'Victoria','Beckham','victoria54','victoria54@alum.us.es');
 
 
 INSERT INTO boards(id,created_date,creator,last_modified_date,modifier,duration,game_status,flags_num,columns_num,rows_num,mines_num,finish_time,start_time,username) VALUES
@@ -77,49 +76,47 @@ INSERT INTO boards(id,created_date,creator,last_modified_date,modifier,duration,
 (16,'2022-01-21 15:48:28.165033','meriglmar','2022-01-21 15:49:22.301088','meriglmar','53147211700',1,0,8,8,9,'2022-01-21 15:49:22.300091','2022-01-21 15:48:29.152879',4),
 (17,'2022-01-21 15:49:32.813686','meriglmar','2022-01-21 15:51:07.841812','meriglmar','93260537800',1,18,14,14,29,'2022-01-21 15:51:07.839818','2022-01-21 15:49:34.57928',5),
 (18,'2022-01-21 15:51:48.82924','meriglmar','2022-01-21 15:51:48.82924','meriglmar','93260537',0,29,14,14,29,'2022-01-21 15:46:19.145643','2022-01-21 15:46:15.428606',6),
-(19,'2022-01-21 15:51:49.759773','meriglmar','2022-01-21 15:51:52.841085','meriglmar','2187806000',1,9,8,8,9,'2022-01-21 15:51:52.83809','2022-01-21 15:51:50.650284',1),
-(20,'2022-01-21 15:51:49.759773','meriglmar','2022-01-21 15:51:52.841085','meriglmar','218780600',1,9,24,24,9,'2022-01-21 15:51:52.83809','2022-01-21 15:51:50.650284',1);
+(19,'2022-01-21 15:51:49.759773','meriglmar','2022-01-21 15:51:52.841085','meriglmar','2187806000',2,9,8,8,9,'2022-01-21 15:51:52.83809','2022-01-21 15:51:50.650284',13),
+(20,'2022-01-21 15:51:49.759773','meriglmar','2022-01-21 15:51:52.841085','meriglmar','218780600',2,9,24,24,9,'2022-01-21 15:51:52.83809','2022-01-21 15:51:50.650284',13);
 
 
-INSERT INTO achievementtypes VALUES (1,'won games');
-INSERT INTO achievementtypes VALUES (2,'played games');
-INSERT INTO achievementtypes VALUES (3,'lost games');
-INSERT INTO achievementtypes VALUES (4,'easy games won');
-INSERT INTO achievementtypes VALUES (5,'difficult games won');
-INSERT INTO achievementtypes VALUES (6,'medium games won');
-INSERT INTO achievementtypes VALUES (7,'average game duration');
-INSERT INTO achievementtypes VALUES (8,'total placed flags');
-INSERT INTO achievementtypes VALUES (9,'maximun game duration');
-INSERT INTO achievementtypes VALUES (10,'minimum game duration');
-INSERT INTO achievementtypes VALUES (11,'total game duration');
+INSERT INTO achievementtypes VALUES (1,'Won games');
+INSERT INTO achievementtypes VALUES (2,'Played games');
+INSERT INTO achievementtypes VALUES (3,'Lost games');
+INSERT INTO achievementtypes VALUES (4,'Easy games won');
+INSERT INTO achievementtypes VALUES (5,'Difficult games won');
+INSERT INTO achievementtypes VALUES (6,'Medium games won');
+INSERT INTO achievementtypes VALUES (7,'Average game duration');
+INSERT INTO achievementtypes VALUES (8,'Total placed flags');
+INSERT INTO achievementtypes VALUES (9,'Maximun game duration');
+INSERT INTO achievementtypes VALUES (10,'Minimum game duration');
+INSERT INTO achievementtypes VALUES (11,'Total game duration');
 
 
-
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (1,'Has played 1 games or more?',2,1);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (2,'Has played 40 games or more?',2,40);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (3,'Has lost 2 games or more?',3,2);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (4,'Has won 3 games or more?',1,3);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (5,'Has won 4 games or more?',1,4);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (6,'Has lost 5 games or more?',3,5);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (7,'Has won 1 easy games or more?',4,1);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (8,'Has played 4 games or more?',2,4);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (9,'Has played 5 games or more?',2,5);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (10,'Has played 6 games or more?',2,6);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (11,'Has played 7 games or more?',2,7);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (12,'Has won 2 difficult games or more?',5,2);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (13,'Has won 4 medium games or more?',6,4);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (14,'Has averaged more time than 8?',7,8);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (15,'Has placed more than 20 flags?',8,20);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (16,'Has any game lasted longer than 2?',9,2);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (17,'Has any game lasted less than 1?',10,1);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (18,'Has more total game duration than 1?',11,1);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (19,'Has won 5 difficult games or more?',5,5);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (20,'Has won 8 medium games or more?',6,8);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (21,'Has averaged more time than 3?',7,3);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (22,'Has placed more than 2 flags?',8,2);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (23,'Has any game lasted longer than 5?',9,5);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (24,'Has any game lasted less than 6?',10,6);
-INSERT INTO achievements(id,title,achievementtypes_id,number) VALUES (25,'Has more total game duration than 7?',11,7);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (1,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 5 games or more?',1,5);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (2,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 20 games or more?',1,20);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (3,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 50 games or more?',1,50);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (4,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 100 games or more?',1,100);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (5,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played 5 games or more?',2,5);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (6,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played 20 games or more?',2,20);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (7,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played 50 games or more?',2,50);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (8,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played 100 games or more?',2,100);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (9,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 5 easy games or more?',4,5);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (10,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 10 easy games or more?',4,10);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (11,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 20 easy games or more?',4,20);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (18,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 50 easy games or more?',4,50);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (12,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 5 difficult games or more?',5,5);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (13,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 10 difficult games or more?',5,10);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (14,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 20 difficult games or more?',5,20);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (19,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 50 difficult games or more?',5,50);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (15,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 5 medium games or more?',6,5);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (16,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 10 medium games or more?',6,10);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (17,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 20 medium games or more?',6,20);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (20,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has won 50 medium games or more?',6,50);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (21,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played more than 5 minutes?',11,300);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (23,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played more than 10 minutes?',11,600);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (24,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played more than 30 minutes?',11,1800);
+INSERT INTO achievements(id,created_date,creator,last_modified_date,modifier,title,achievementtypes_id,number) VALUES (25,'2022-01-20 17:39:40.416566','admin1','2022-01-20 17:39:40.416566','admin1','Has played more than 120 minutes?',11,7200);
 
 
 INSERT INTO CASILLAS(ID,COLUMNA,FILA,IS_COVERED,IS_FLAG,IS_MINE,IS_WRONG,VALOR,TABLERO_ID) VALUES (1,0,0,TRUE,FALSE,FALSE,FALSE,0,1);

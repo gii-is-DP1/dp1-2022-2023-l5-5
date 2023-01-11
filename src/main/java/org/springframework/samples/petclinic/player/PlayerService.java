@@ -85,9 +85,6 @@ public class PlayerService {
 	@Transactional
 	public void deletePlayer(Integer id) {
 		playerRepository.deleteById(id); 
-
 	}
-
-
 
 }

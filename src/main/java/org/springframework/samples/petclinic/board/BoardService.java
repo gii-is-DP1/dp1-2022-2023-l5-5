@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Pageable;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,11 +40,6 @@ public class BoardService {
         return (int) boardRepository.count();
     }
 	
-//	@Transactional
-//	public List<Board> findAllBoardsWithoutState(GameStatus gameStatus, Pageable pageable){
-//		return boardRepository.findAllBoardsWithoutState(gameStatus, pageable);
-//	}
-	
 	@Transactional
     public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findBoardByUsername(username, gameStatus);
@@ -59,6 +55,20 @@ public class BoardService {
 	@Transactional
 	public List<Board> findAllGamesNotInProgress(GameStatus status){
 		return boardRepository.findAllGamesNotInProgress(status);
+	}
+	
+	@Transactional
+	public List<Board> findAllWonAndLostGames(Integer page, Pageable pageable){
+		List<Board> list = boardRepository.findAll(pageable);
+		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return list_filtrada;
+	}
+	
+	@Transactional
+	public List<Board> findAllWonAndLostGames(){
+		List<Board> list = boardRepository.findAll();
+		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return list_filtrada;
 	}
 
 	@Transactional
@@ -123,13 +133,13 @@ public class BoardService {
 	    	}
 	    	return board;
 
-	    }
+	 }
 	 
 	 public Board rightClick(int row, int column, Board board) {
 		 if(board.getGameStatus()==GameStatus.NONE) {
 		 		board.setGameStatus(GameStatus.IN_PROGRESS);
 		 		board.setStartTime(LocalDateTime.now());
-		 	}
+		 }
 		 Square c = board.squares.get(column+row*board.columnsNumber);
 		 if (c.isCovered && board.flagsNumber>0) {
 			 c.setFlag(true);
@@ -140,10 +150,8 @@ public class BoardService {
 			 c.setFlag(false);
 			 board.setFlagsNumber(board.flagsNumber+1);
 		 }
-		 
 		 return board;
 	 }
-	 
 	 
 	 public static Board hasWon(Board board) {
 		 List<Square> lista = board.getSquares();
@@ -168,9 +176,8 @@ public class BoardService {
 			 t.setFinishTime(LocalDateTime.now());
 			 t.setDuration(Duration.between(t.startTime, t.finishTime));
 			 }
-		 
 		 }
 		 return t;
 	 }
-	
+	 
 }
