@@ -41,21 +41,16 @@ public class BoardService {
     }
 	
 	@Transactional(readOnly = true)
-    public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
-    	return boardRepository.findBoardByUsername(username, gameStatus);
+    public List<Board> findAllGamesByPlayerAndStatus(String username, GameStatus gameStatus) throws DataAccessException{
+    	return boardRepository.findAllGamesByPlayerAndStatus(username, gameStatus);
     }
 	
 	@Transactional(readOnly = true)
-    public List<Board> findGamesInProgressPlayer(String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+    public List<Board> findGamesInProgressByPlayer(String username){
+		List<Board> list = boardRepository.findAllGamesByPlayer(username);
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.IN_PROGRESS).collect(Collectors.toList());
 		return res;
     }
-	
-	@Transactional(readOnly = true)
-	public List<Board> findAllGamesNotInProgress(GameStatus status){
-		return boardRepository.findAllGamesNotInProgress(status);
-	}
 	
 	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndLostGames(Integer page, Pageable pageable){
@@ -77,8 +72,8 @@ public class BoardService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<Board> findAllGamesPlayer(String username){
-		return this.boardRepository.findAllGamesPlayer(username);
+	public List<Board> findAllGamesByPlayer(String username){
+		return this.boardRepository.findAllGamesByPlayer(username);
 		
 	}
 	

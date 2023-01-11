@@ -31,7 +31,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndlostGamesPlayer(String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = boardRepository.findAllGamesByPlayer(username);
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return res;
 	}

@@ -84,8 +84,8 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindBoardByUsername() {
-		List<Board> boards = boardService.findBoardByUsername("angbermar1", GameStatus.NONE);
+	public void testFindAllGamesByPlayerAndStatus() {
+		List<Board> boards = boardService.findAllGamesByPlayerAndStatus("angbermar1", GameStatus.NONE);
 		assertEquals(boards.size(), 4);
 	}
 	
@@ -198,12 +198,6 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindAllGamesNotInProgress() {
-		List<Board> boards = boardService.findAllGamesNotInProgress(GameStatus.NONE);
-		assertEquals(boards.size(), 20);
-	}
-	
-	@Test
 	public void testFindAllGamesByStatus() {
 		List<Board> boards = boardService.findAllGamesByStatus(GameStatus.IN_PROGRESS);
 		assertEquals(boards.size(), 2);
@@ -211,7 +205,7 @@ public class BoardServiceTest {
 	
 	@Test
 	public void testFindAllGamesPlayer() {
-		List<Board> boards = boardService.findAllGamesPlayer("meriglmar");
+		List<Board> boards = boardService.findAllGamesByPlayer("meriglmar");
 		assertEquals(boards.size(), 4);
 	}
 	
