@@ -16,7 +16,7 @@
     <table id="achievementsTable" class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 150px;"> </th>
+            <th style="width: 100px;"> </th>
             <th style="width: 150px;">Title</th>
             <th style="width: 150px;">Achievement Type</th>
         </tr>  

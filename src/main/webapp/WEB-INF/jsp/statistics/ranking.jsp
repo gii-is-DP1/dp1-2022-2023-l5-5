@@ -27,17 +27,17 @@
 			  <tbody>
 			    <tr style="background-color:#FFD700">
 			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${player1}" /></th>
+			      <th style="text-align:center"><c:out value="@${player1}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playergameswon1}" /></td>
 			    </tr>
 			    <tr style="background-color:#BEBEBE">
 			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${player2}" /></th>
+			      <th style="text-align:center"><c:out value="@${player2}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playergameswon2}" /></td>
 			    </tr>
 			    <tr style="background-color:#bf8970">
 			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${player3}" /></th>
+			      <th style="text-align:center"><c:out value="@${player3}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playergameswon3}" /></td>
 			    </tr>
 			  </tbody>
@@ -57,17 +57,17 @@
 			  <tbody>
 			    <tr style="background-color:#FFD700">
 			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${playerEasy1}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerEasy1}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerEasygameswon1}" /></td>
 			    </tr>
 			    <tr style="background-color:#BEBEBE">
 			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${playerEasy2}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerEasy2}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerEasygameswon2}" /></td>
 			    </tr>
 			    <tr style="background-color:#bf8970">
 			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${playerEasy3}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerEasy3}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerEasygameswon3}" /></td>
 			    </tr>
 			  </tbody>
@@ -87,17 +87,17 @@
 			  <tbody>
 			    <tr style="background-color:#FFD700">
 			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${playerMed1}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerMed1}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerMedgameswon1}" /></td>
 			    </tr>
 			    <tr style="background-color:#BEBEBE">
 			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${playerMed2}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerMed2}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerMedgameswon2}" /></td>
 			    </tr>
 			    <tr style="background-color:#bf8970">
 			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${playerMed3}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerMed3}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerMedgameswon3}" /></td>
 			    </tr>
 			  </tbody>
@@ -117,17 +117,17 @@
 			  <tbody>
 			    <tr style="background-color:#FFD700">
 			      <th style="text-align:center" scope="row">TOP 1</th>
-			      <th style="text-align:center"><c:out value="${playerDiff1}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerDiff1}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerDiffgameswon1}" /></td>
 			    </tr>
 			    <tr style="background-color:#BEBEBE">
 			      <th style="text-align:center" scope="row">TOP 2</th>
-			      <th style="text-align:center"><c:out value="${playerDiff2}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerDiff2}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerDiffgameswon2}" /></td>
 			    </tr>
 			    <tr style="background-color:#bf8970">
 			      <th style="text-align:center" scope="row">TOP 3</th>
-			      <th style="text-align:center"><c:out value="${playerDiff3}" /></th>
+			      <th style="text-align:center"><c:out value="@${playerDiff3}" /></th>
 			      <td style="font-size:20px;text-align:center"><c:out value="${playerDiffgameswon3}" /></td>
 			    </tr>
 			  </tbody>
