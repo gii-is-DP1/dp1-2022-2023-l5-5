@@ -73,7 +73,7 @@ public class StatisticsService {
 			if(columns_num == 8) {
 				banderasTotal+= 9- board.getFlagsNumber();
 			}else if(columns_num == 14) {
-				banderasTotal+= 29- board.getFlagsNumber();
+				banderasTotal+= 30- board.getFlagsNumber();
 			}else { //24
 				banderasTotal+= 86- board.getFlagsNumber();
 			}	
