@@ -3,10 +3,6 @@ package org.springframework.samples.petclinic.board;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.SortDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -51,24 +47,13 @@ public class BoardController {
     
 	//El admin ve el listado de partidas
 	@GetMapping(path="/list")
-	public String processFindForm(Map<String, Object> model
-		 
-//		,@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
-//		@SortDefault(sort = "id", direction = Sort.Direction.ASC), 
-//		@SortDefault(sort = "rowsNumber", direction = Sort.Direction.DESC),}) Pageable pageable
-		) {
-//		Integer page = 0;
-		List<Board> results = boardService.findAllWonAndLostGames(); //page, pageable
-//		Integer numResults = results.size();
-//		//modelMap.addAttribute("board", board);
-//		model.put("pageNumber", pageable.getPageNumber());
-//		model.put("hasPrevious", pageable.hasPrevious());
-//		Double totalPages = Math.ceil(numResults / (pageable.getPageSize()));
-//		model.put("totalPages", totalPages);
+	public String processFindForm(Map<String, Object> model) {
+		List<Board> results = boardService.findAllWonAndLostGames();
 		model.put("selections", results);
 		return VIEWS_LIST_GAMES;
 	}
 	
+	//Un player ve sus partidas jugadas
 	@GetMapping(value= "/listplayer")
 	public String processFindFormPlayer(Board board, BindingResult result, Map<String, Object> model) {
 

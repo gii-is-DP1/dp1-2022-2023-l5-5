@@ -102,7 +102,6 @@ public class BoardService {
 		    		    	board.squares.set(j+i*board.columnsNumber, c1);
 		    			}else if(c1.isFlag && !c1.isMine()) {
 		    				c1.setWrong(true);
-
 		    			}
 		    		}
 		    	}
