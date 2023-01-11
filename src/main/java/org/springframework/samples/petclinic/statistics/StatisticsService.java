@@ -64,17 +64,22 @@ public class StatisticsService {
 		return res;
 	}
 	
-//	@Transactional(readOnly = true)
-//	public Integer findnTotalPlacedFlags(String username){
-//		List<Board> list = boardRepository.findAllGamesPlayer(username);
-//		return list.stream().mapToInt(x -> x.getFlagsNumber()).sum();
-//	}
 	@Transactional(readOnly = true)
-	public long findnTotalPlacedFlags(String username){
+	public long findnTotalPlacedFlags(String username) {
 		List<Board> list = findAllWonAndlostGamesPlayer(username);
-		return list.stream().mapToLong(x -> x.getFlagsNumber()).count();
+		Long banderasTotal = (long) 0;
+		for(Board board : list) {
+			Integer columns_num=board.columnsNumber;
+			if(columns_num == 8) {
+				banderasTotal+= 9- board.getFlagsNumber();
+			}else if(columns_num == 14) {
+				banderasTotal+= 29- board.getFlagsNumber();
+			}else { //24
+				banderasTotal+= 86- board.getFlagsNumber();
+			}	
+		}
+		return banderasTotal;
 	}
-	
 	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayed(){
 		List<Board> list = findAllWonAndLostGamesGlobal();

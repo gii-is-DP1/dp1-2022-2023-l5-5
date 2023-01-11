@@ -103,14 +103,6 @@ public class AchievementsController {
 					list.add(results.get(i));
 					list2.remove(results.get(i));
 				}
-			}else if(results.get(i).getAchievementType().getId()==3){
-				Integer query = (int) this.statisticsService.numGamesLostPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-					list2.remove(results.get(i));
-				}
 			}else if(results.get(i).getAchievementType().getId()==4){
 				Integer query = (int) this.statisticsService.numGamesWinEasyPlayer(currentUser.getUsername());
 				Integer number=results.get(i).getNumber();
@@ -129,38 +121,6 @@ public class AchievementsController {
 				}
 			}else if(results.get(i).getAchievementType().getId()==6){
 				Integer query = (int) this.statisticsService.numGamesWinMediumPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-					list2.remove(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==7){
-				Integer query = (int) this.statisticsService.averageDurationGamesPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-					list2.remove(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==8){
-				Integer query = (int) this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-					list2.remove(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==9){
-				Integer query = (int) this.statisticsService.maxDurationGamesPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-					list2.remove(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==10){
-				Integer query = (int) this.statisticsService.minDurationGamesPlayer(currentUser.getUsername());
 				Integer number=results.get(i).getNumber();
 				res= query>=number;
 				if(res==true){
