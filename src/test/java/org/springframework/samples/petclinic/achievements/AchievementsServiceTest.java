@@ -24,7 +24,7 @@ public class AchievementsServiceTest {
 //		
 //		Pageable pageable = PageRequest.of(0, 10);
 //
-//		List<Player> list = this.playerService.findAllPlayers(0, pageable);
+//		List<Player> list = this..findAllPlayers(0, pageable);
 //		int size1 = list.size();
 //
 //		Player player = new Player();
