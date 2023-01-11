@@ -121,6 +121,7 @@ public class PlayerServiceTest {
 
 	
 	@Test
+	@Transactional
 	void testValidator() {
 		Player player = new Player();
 		player.setFirstName("John");
