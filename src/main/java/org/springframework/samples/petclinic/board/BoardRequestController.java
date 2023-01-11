@@ -53,12 +53,12 @@ public class BoardRequestController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		User currentUser = (User) authentication.getPrincipal();
 		Board board = new Board();
-		if (boardService.findGamesInProgressPlayer(currentUser.getUsername()).isEmpty()) {
+		if (boardService.findGamesInProgressByPlayer(currentUser.getUsername()).isEmpty()) {
 			board = new Board(row, column, mine, mine, playerService.getPlayerByUsername(currentUser.getUsername()));
 			boardService.saveBoard(board);
 			
 		} else {
-			board = boardService.findGamesInProgressPlayer(currentUser.getUsername()).get(0);
+			board = boardService.findGamesInProgressByPlayer(currentUser.getUsername()).get(0);
 			model.addAttribute("message", "You must end your last game!");
 		}
 		return board;
