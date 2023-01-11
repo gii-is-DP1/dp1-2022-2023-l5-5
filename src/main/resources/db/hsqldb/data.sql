@@ -82,14 +82,9 @@ INSERT INTO boards(id,created_date,creator,last_modified_date,modifier,duration,
 
 INSERT INTO achievementtypes VALUES (1,'Won games');
 INSERT INTO achievementtypes VALUES (2,'Played games');
-INSERT INTO achievementtypes VALUES (3,'Lost games');
 INSERT INTO achievementtypes VALUES (4,'Easy games won');
 INSERT INTO achievementtypes VALUES (5,'Difficult games won');
 INSERT INTO achievementtypes VALUES (6,'Medium games won');
-INSERT INTO achievementtypes VALUES (7,'Average game duration');
-INSERT INTO achievementtypes VALUES (8,'Total placed flags');
-INSERT INTO achievementtypes VALUES (9,'Maximun game duration');
-INSERT INTO achievementtypes VALUES (10,'Minimum game duration');
 INSERT INTO achievementtypes VALUES (11,'Total game duration');
 
 
