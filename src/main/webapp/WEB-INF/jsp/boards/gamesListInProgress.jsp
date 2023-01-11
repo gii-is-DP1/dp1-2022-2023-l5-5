@@ -23,7 +23,10 @@
         <c:forEach items="${board}" var="board"> 
             <tr>
                 <td>
-                    <c:out value="${board.player.user.username}"/>
+                	<spring:url value="/players/list/{username}" var="profileUrl">
+                        <spring:param name="username" value="${board.player.user.username}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(profileUrl)}"><c:out value="@${board.player.user.username}"/></a>
                 </td>
 
                	<td>
