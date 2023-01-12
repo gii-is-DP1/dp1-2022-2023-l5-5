@@ -59,7 +59,6 @@ public class AchievementsController {
 		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
 		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
 
-
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
 		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
