@@ -3,10 +3,11 @@
 Enlace del vídeo explicativo del juego: 
 (https://youtu.be/3cf_5OPJA_o)
 
+Enlace del vídeo final de nuestro proyecto:
+()
 
 Este es un proyecto del grupo L5-5:
 - Ángela Bernal Martín
-- Andrés Francisco García Rivero
 - Mercedes Iglesias Martín
 - Paola Martín Sánchez
 - Pablo Quindós de la Riva
