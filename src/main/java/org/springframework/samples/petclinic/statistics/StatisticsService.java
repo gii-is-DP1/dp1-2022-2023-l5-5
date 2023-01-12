@@ -31,7 +31,7 @@ public class StatisticsService {
 	
 	@Transactional(readOnly = true)
 	public List<Board> findAllWonAndlostGamesPlayer(String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+		List<Board> list = boardRepository.findAllGamesByPlayer(username);
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return res;
 	}
@@ -64,17 +64,22 @@ public class StatisticsService {
 		return res;
 	}
 	
-//	@Transactional(readOnly = true)
-//	public Integer findnTotalPlacedFlags(String username){
-//		List<Board> list = boardRepository.findAllGamesPlayer(username);
-//		return list.stream().mapToInt(x -> x.getFlagsNumber()).sum();
-//	}
 	@Transactional(readOnly = true)
-	public long findnTotalPlacedFlags(String username){
+	public long findnTotalPlacedFlags(String username) {
 		List<Board> list = findAllWonAndlostGamesPlayer(username);
-		return list.stream().mapToLong(x -> x.getFlagsNumber()).count();
+		Long banderasTotal = (long) 0;
+		for(Board board : list) {
+			Integer columns_num=board.columnsNumber;
+			if(columns_num == 8) {
+				banderasTotal+= 9- board.getFlagsNumber();
+			}else if(columns_num == 14) {
+				banderasTotal+= 30- board.getFlagsNumber();
+			}else { //24
+				banderasTotal+= 86- board.getFlagsNumber();
+			}	
+		}
+		return banderasTotal;
 	}
-	
 	@Transactional(readOnly = true)
 	public long totalDurationGamesPlayed(){
 		List<Board> list = findAllWonAndLostGamesGlobal();
@@ -172,13 +177,6 @@ public class StatisticsService {
 		return res1;
 	}
 	
-//	@Transactional(readOnly = true)
-//	public long numGamesWonPlayer (String username){
-//		List<Board> list = boardRepository.findAllGamesPlayer(username);
-//		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
-//		return res;
-//	}
-	
 	@Transactional(readOnly = true)
 	public List<Board> gamesWonPlayer (){
 		List<Board> list = findAllWonAndLostGamesGlobal();
@@ -215,7 +213,6 @@ public class StatisticsService {
 	}
 	
 	//ranking en general, más partidas ganadas 
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> ranking(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -239,7 +236,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel facil, más partidas ganadas por nivel dificultad facil
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingEasy(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -263,7 +259,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel medio, más partidas ganadas por nivel dificultad medio
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingMedium(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();
@@ -287,7 +282,6 @@ public class StatisticsService {
 	}
 
 	// ranking nivel dificil, más partidas ganadas por nivel dificultad dificil
-	@Transactional(readOnly = true)
 	public List<Map.Entry<String, Integer>> rankingDifficult(List<Player> players, List<Board> games) {
 
 		Map<String, Integer> sortedMap = new TreeMap<>();

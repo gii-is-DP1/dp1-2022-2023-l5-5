@@ -13,8 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class AchievementsService {
     
-	@Autowired
-    private AchievementsRepository achievementsRepository;	
+	private AchievementsRepository achievementsRepository;	
 
 	@Autowired
 	public AchievementsService(AchievementsRepository achievementsRepository) {
@@ -22,8 +21,8 @@ public class AchievementsService {
 	}	
 
 	@Transactional(readOnly = true)
-	public List<Achievement> findAllAchievementsPageable(Integer page, Pageable pageable) {
-		return this.achievementsRepository.findAllAchievementsPageable(pageable);
+	public List<Achievement> findAllAchievements(Integer page, Pageable pageable) {
+		return this.achievementsRepository.findAllAchievements(pageable);
 	}
 	
 	@Transactional(readOnly = true)
@@ -43,7 +42,6 @@ public class AchievementsService {
 
 	@Transactional
 	public void saveAchievement(Achievement achievement) throws DataAccessException {
-		//creating achievement
 		achievementsRepository.save(achievement);
 	}	
 

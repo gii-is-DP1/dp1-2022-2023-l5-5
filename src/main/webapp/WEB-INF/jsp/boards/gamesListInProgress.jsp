@@ -22,23 +22,19 @@
         <tbody>
         <c:forEach items="${board}" var="board"> 
             <tr>
-<%--                 <td>
-                    <spring:url value="/games/{gameId}" var="gameUrl">
-                        <spring:param name="gameId" value="${game.id}"/>
-                    </spring:url>
-                    <a href="${fn:escapeXml(gameUrl)}"><c:out value="${game.id}"/></a>
-                </td> --%>
                 <td>
-                    <c:out value="${board.player.user.username}"/>
+                	<spring:url value="/players/list/{username}" var="profileUrl">
+                        <spring:param name="username" value="${board.player.user.username}"/>
+                    </spring:url>
+                    <a href="${fn:escapeXml(profileUrl)}"><c:out value="@${board.player.user.username}"/></a>
                 </td>
 
                	<td>
-                
-                <c:if test="${board.gameStatus == 'IN_PROGRESS'}"><c:out value="In progress.."/></c:if>
+                	<c:out value="In progress.."/>
                 </td>
                 
                 <td>
-                    <c:out value="${board.durationString()}"/>
+                    <c:out value="In progress.."/>
                 </td>
                 <td>
                     <c:out value="${board.startTimeString()}"/>

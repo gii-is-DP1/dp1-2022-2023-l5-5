@@ -62,7 +62,7 @@ public class AchievementsController {
 
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;
-		List<Achievement> results = this.achievementsService.findAllAchievementsPageable(page, pageable);
+		List<Achievement> results = this.achievementsService.findAllAchievements(page, pageable);
 		// multiple players found
 		model.put("pageNumber", pageable.getPageNumber());
 		model.put("hasPrevious", pageable.hasPrevious());
@@ -81,6 +81,7 @@ public class AchievementsController {
 
 		List<Achievement> results = this.achievementsService.findAllAchievements();
 		List<Achievement> list = new ArrayList<Achievement>();
+		List<Achievement> list2 = this.achievementsService.findAllAchievements();
 
 		Integer i=0;
 		while(i!=results.size()-1){
@@ -92,6 +93,7 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}else if(results.get(i).getAchievementType().getId()==2){
 				Integer query = (int) this.statisticsService.findnTotalGamesPlayer(currentUser.getUsername());
@@ -99,13 +101,7 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==3){
-				Integer query = (int) this.statisticsService.numGamesLostPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}else if(results.get(i).getAchievementType().getId()==4){
 				Integer query = (int) this.statisticsService.numGamesWinEasyPlayer(currentUser.getUsername());
@@ -113,6 +109,7 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}else if(results.get(i).getAchievementType().getId()==5){
 				Integer query = (int) this.statisticsService.numGamesWinDifficultPlayer(currentUser.getUsername());
@@ -120,6 +117,7 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}else if(results.get(i).getAchievementType().getId()==6){
 				Integer query = (int) this.statisticsService.numGamesWinMediumPlayer(currentUser.getUsername());
@@ -127,34 +125,7 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==7){
-				Integer query = (int) this.statisticsService.averageDurationGamesPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==8){
-				Integer query = (int) this.statisticsService.findnTotalPlacedFlags(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==9){
-				Integer query = (int) this.statisticsService.maxDurationGamesPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
-				}
-			}else if(results.get(i).getAchievementType().getId()==10){
-				Integer query = (int) this.statisticsService.minDurationGamesPlayer(currentUser.getUsername());
-				Integer number=results.get(i).getNumber();
-				res= query>=number;
-				if(res==true){
-					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}else if(results.get(i).getAchievementType().getId()==11){
 				Integer query = (int) this.statisticsService.totalDurationGamesPlayer(currentUser.getUsername());
@@ -162,12 +133,14 @@ public class AchievementsController {
 				res= query>=number;
 				if(res==true){
 					list.add(results.get(i));
+					list2.remove(results.get(i));
 				}
 			}
 			i++;
 		}
 		// multiple players found
 			model.put("selections", list);
+			model.put("selections2", list2);
 			model.put("player", currentUser.getUsername());
 		return VIEWS_ACHIEVEMENT_LIST_PLAYER;
 	}
@@ -227,7 +200,7 @@ public class AchievementsController {
 		
 	//Confirmación de eliminar para un admin
 	@GetMapping(value = "/{id}/deleteConfirm")
-	public String deletePlayerAdmin(@PathVariable("id") Integer id) {
+	public String deleteAchievementAdmin(@PathVariable("id") Integer id) {
 		this.achievementsService.deleteAchievement(id);	
 		return "redirect:/achievements/list";
 	}

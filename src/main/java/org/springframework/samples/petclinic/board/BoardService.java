@@ -25,7 +25,7 @@ public class BoardService {
 		return boardRepository.findById(id);
 	}  
     
-	@Transactional
+	@Transactional(readOnly = true)
 	public List<Board> findAllBoards(){
 		return boardRepository.findAll();
 	}
@@ -35,43 +35,45 @@ public class BoardService {
 		boardRepository.save(board);
 	}
 	
-	@Transactional
+	@Transactional(readOnly = true)
     public int boardCount() {
         return (int) boardRepository.count();
     }
 	
-	@Transactional
-    public List<Board> findBoardByUsername(String username, GameStatus gameStatus) throws DataAccessException{
-    	return boardRepository.findBoardByUsername(username, gameStatus);
+	@Transactional(readOnly = true)
+    public List<Board> findAllGamesByPlayerAndStatus(String username, GameStatus gameStatus) throws DataAccessException{
+    	return boardRepository.findAllGamesByPlayerAndStatus(username, gameStatus);
     }
 	
-	@Transactional
-    public List<Board> findGamesInProgressPlayer(String username){
-		List<Board> list = boardRepository.findAllGamesPlayer(username);
+	@Transactional(readOnly = true)
+    public List<Board> findGamesInProgressByPlayer(String username){
+		List<Board> list = boardRepository.findAllGamesByPlayer(username);
 		List<Board> res = list.stream().filter(x -> x.gameStatus == GameStatus.IN_PROGRESS).collect(Collectors.toList());
 		return res;
     }
 	
-	@Transactional
-	public List<Board> findAllGamesNotInProgress(GameStatus status){
-		return boardRepository.findAllGamesNotInProgress(status);
+	@Transactional(readOnly = true)
+	public List<Board> findAllWonAndLostGames(Integer page, Pageable pageable){
+		List<Board> list = boardRepository.findAll(pageable);
+		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
+		return list_filtrada;
 	}
 	
-	@Transactional
-	public List<Board> findAllWonAndLostGamesPageable(Integer page, Pageable pageable){
-		List<Board> list = boardRepository.findAllPageable(pageable);
+	@Transactional(readOnly = true)
+	public List<Board> findAllWonAndLostGames(){
+		List<Board> list = boardRepository.findAll();
 		List<Board> list_filtrada = list.stream().filter(x -> x.gameStatus == GameStatus.WON || x.gameStatus == GameStatus.LOST).collect(Collectors.toList());
 		return list_filtrada;
 	}
 
-	@Transactional
-	public List<Board> findAllGamesInProgress(GameStatus status){
-		return boardRepository.findAllGamesInProgress(status);
+	@Transactional(readOnly = true)
+	public List<Board> findAllGamesByStatus(GameStatus status){
+		return boardRepository.findAllGamesByStatus(status);
 	}
 
 	@Transactional(readOnly = true)
-	public List<Board> findAllGamesPlayer(String username){
-		return this.boardRepository.findAllGamesPlayer(username);
+	public List<Board> findAllGamesByPlayer(String username){
+		return this.boardRepository.findAllGamesByPlayer(username);
 		
 	}
 	
@@ -81,8 +83,7 @@ public class BoardService {
 		
 	}
 	
-	@Transactional
-	 public Board click(int row, int column, Board board) {
+	public Board click(int row, int column, Board board) {
 		 	if(board.getGameStatus()==GameStatus.NONE) {
 		 		board.setGameStatus(GameStatus.IN_PROGRESS);
 		 		board.setStartTime(LocalDateTime.now());;
@@ -101,7 +102,6 @@ public class BoardService {
 		    		    	board.squares.set(j+i*board.columnsNumber, c1);
 		    			}else if(c1.isFlag && !c1.isMine()) {
 		    				c1.setWrong(true);
-
 		    			}
 		    		}
 		    	}

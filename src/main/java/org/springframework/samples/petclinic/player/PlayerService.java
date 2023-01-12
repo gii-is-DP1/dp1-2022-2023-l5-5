@@ -15,13 +15,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PlayerService {
     
-    private PlayerRepository playerRepository;	
-
-	@Autowired
+    @Autowired
 	private UserService userService;
 
 	@Autowired
 	private AuthoritiesService authoritiesService;
+	
+	private PlayerRepository playerRepository;
 
 	@Autowired
 	public PlayerService(PlayerRepository playerRepository) {
