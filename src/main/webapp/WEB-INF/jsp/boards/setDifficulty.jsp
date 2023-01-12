@@ -4,8 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="game" tagdir="/WEB-INF/tags" %>
 
-<!-- %@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %-->
-<game:layout pageName="tableroPrueba">
+<game:layout pageName="new_games">
 
 	<div class= "col-2 text-center">
     <h1>Set difficulty</h1>

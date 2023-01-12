@@ -21,6 +21,7 @@ public class BoardController {
 	private static final String VIEWS_LIST_GAMES = "boards/gamesList";
 	private static final String VIEWS_LIST_INPROGRESS_GAMES = "boards/gamesListInProgress";
 	private static final String VIEWS_LIST_PLAYER_GAMES = "boards/gamesListPlayer";
+	private static final String VIEWS_BOARD_IN_PROGRESS = "boards/gameInProgress";
 	
 	@Autowired
 	private BoardService boardService;
@@ -68,7 +69,14 @@ public class BoardController {
 	
 	@GetMapping(value = "setDifficulty")
 	public String setDifficulty() {
-		return VIEWS_NEW_BOARD;
+		
+		Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+		User currentUser=(User) authentication.getPrincipal();
+		if (boardService.findAllGamesByPlayerAndStatus(currentUser.getUsername(), GameStatus.IN_PROGRESS).isEmpty()) {
+			return VIEWS_NEW_BOARD;
+		} else {
+			return VIEWS_BOARD_IN_PROGRESS;
+		}
 	}
 
 }

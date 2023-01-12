@@ -177,13 +177,6 @@ public class StatisticsService {
 		return res1;
 	}
 	
-//	@Transactional(readOnly = true)
-//	public long numGamesWonPlayer (String username){
-//		List<Board> list = boardRepository.findAllGamesPlayer(username);
-//		long res = list.stream().filter(x -> x.gameStatus == GameStatus.WON).count();
-//		return res;
-//	}
-	
 	@Transactional(readOnly = true)
 	public List<Board> gamesWonPlayer (){
 		List<Board> list = findAllWonAndLostGamesGlobal();
