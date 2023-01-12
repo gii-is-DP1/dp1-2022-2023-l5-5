@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.samples.petclinic.model.AuditableEntity;
 
 
