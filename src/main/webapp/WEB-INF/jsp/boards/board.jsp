@@ -228,7 +228,7 @@
 					if(confirm("You have lost the game! Do you want to play another game?")){
 						window.location.href = "http://localhost:8080/board/game?dificulty=1";
 					}else{
-						window.location.href = "http://localhost:8080/players/myprofile";
+						window.location.href = "http://localhost:8080/board/listplayer";
 					};
 				});
 			}
@@ -241,7 +241,7 @@
 						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
 							window.location.href = "http://localhost:8080/board/game?dificulty=1";
 						}else{
-							window.location.href = "http://localhost:8080/players/myprofile";
+							window.location.href = "http://localhost:8080/board/listplayer";
 						};
 				});
 			}
