@@ -41,10 +41,17 @@ public class BoardService {
     }
 	
 	@Transactional(readOnly = true)
-    public List<Board> findAllGamesByPlayerAndStatus(String username, GameStatus gameStatus) throws DataAccessException{
+    public List<Board> findAllGamesByPlayerAndStatusOrder(String username, GameStatus gameStatus) throws DataAccessException{
+    	return boardRepository.findAllGamesByPlayerAndStatusOrder(username, gameStatus);
+    }
+	
+	@Transactional(readOnly = true)
+	public List<Board> findAllGamesByPlayerAndStatus(String username, GameStatus gameStatus) throws DataAccessException{
     	return boardRepository.findAllGamesByPlayerAndStatus(username, gameStatus);
     }
 	
+	
+	//ESTE METODO SE PUEDE QUITAR PORQUE ES EL MISMO QUE JUSTO ARRIBA
 	@Transactional(readOnly = true)
     public List<Board> findGamesInProgressByPlayer(String username){
 		List<Board> list = boardRepository.findAllGamesByPlayer(username);

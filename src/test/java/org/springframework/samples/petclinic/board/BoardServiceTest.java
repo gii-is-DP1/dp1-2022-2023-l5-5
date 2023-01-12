@@ -84,8 +84,8 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindAllGamesByPlayerAndStatus() {
-		List<Board> boards = boardService.findAllGamesByPlayerAndStatus("angbermar1", GameStatus.NONE);
+	public void testFindAllGamesByPlayerAndStatusOrder() {
+		List<Board> boards = boardService.findAllGamesByPlayerAndStatusOrder("angbermar1", GameStatus.NONE);
 		assertEquals(boards.size(), 4);
 	}
 	
