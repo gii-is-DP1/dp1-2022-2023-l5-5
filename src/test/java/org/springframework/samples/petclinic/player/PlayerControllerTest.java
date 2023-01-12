@@ -175,7 +175,7 @@ public class PlayerControllerTest {
 	
 	@WithMockUser(value = "spring", authorities={"player"})
 	@Test
-	public void testShowPlayerProfilePlayer() throws Exception {
+	public void testShowPlayerProfile() throws Exception {
 		mockMvc.perform(get("/players/myprofile"))
 				.andExpect(status().isOk())
 				.andExpect(view().name("players/playersProfile"));
