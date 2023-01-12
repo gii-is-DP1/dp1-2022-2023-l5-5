@@ -40,7 +40,7 @@ emplee el jugador en ganar o perder, es decir, no hay un tiempo límite.
 
 Después de cada partida, todos los datos relevantes de ella como pueden ser la duración,
 si se ha ganado o perdido y datos específicos de la partida en concreto, se almacenan para hacer 
-calculos estadísticos y construir distintos rankings de jugadores.
+cálculos estadísticos y construir distintos rankings de jugadores.
 
 
 ## Ejecutar Buscaminas localmente
