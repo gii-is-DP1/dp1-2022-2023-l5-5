@@ -132,6 +132,7 @@
 			.catch(function(error){console.log(error)});
 			});
 			document.getElementById("canvas").addEventListener("contextmenu", function(event){
+				
 			//Elimina la funcionalidad en el canvas del boton derecho de desplegar el menu para poner una bandera
 			event.preventDefault();
 			let column = Math.floor((event.pageX-canvas.offsetLeft)/squareSide);
@@ -202,9 +203,7 @@
 			    square.rect(x, y, squareSide, squareSide); 
 			    ctx.strokeStyle = 'black';
 			    ctx.stroke(square);
-			    //img.onload = function(){
-					ctx.drawImage(img, x, y, squareSide, squareSide);
-				///}
+				ctx.drawImage(img, x, y, squareSide, squareSide);
 				if(array2D[i][j] === 'X' || array2D[i][j] === '0'){
 			    	ctx.fill(square);
 					ctx.fillStyle = squareColor;
@@ -213,8 +212,6 @@
 			    elementsList.push(square);  
 			}
 		}
-	
-
 	
 		//Comprueba por cada click si se ha perdido o ganado la partida, si se ha ganado o perdido, para el crono y pone el mensaje, si no, no hace nada
 		function gameOver(){

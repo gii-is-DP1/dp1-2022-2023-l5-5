@@ -62,6 +62,7 @@
 
     <table class="center" border="0">
         <tr>
+        	<td>
             <c:if test="${hasPrevious}">
                 <td><a
                     style="margin-right:5px"  
@@ -80,7 +81,10 @@
                     href="/players/list?firstName=${player.firstName}&page=${pageNumber + 1}"
                     class="btn btn-default">Next</a></td>
             </c:if>
+            <td>
+            <a style="margin-left:900px;" href="/players/new" class="btn btn-default">Create new player</a>
 
         </tr>
      </table>
+     
 </petclinic:layout>
