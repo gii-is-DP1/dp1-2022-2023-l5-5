@@ -3,10 +3,11 @@
 Enlace del vídeo explicativo del juego: 
 (https://youtu.be/3cf_5OPJA_o)
 
+Enlace del vídeo final de nuestro proyecto:
+()
 
 Este es un proyecto del grupo L5-5:
 - Ángela Bernal Martín
-- Andrés Francisco García Rivero
 - Mercedes Iglesias Martín
 - Paola Martín Sánchez
 - Pablo Quindós de la Riva
@@ -57,7 +58,7 @@ java -jar target/*.jar
 
 Puedes acceder al buscaminas aquí: http://localhost:8080/
 
-<img width="900" alt="captura-buscaminas" src="src/main/resources/static/resources/images/capturaJuegoBuscaminas.jpg">
+<img width="600" alt="captura-buscaminas" src="src/main/resources/static/resources/images/boardExample.png">
 
 O puede ejecutarlo directamente desde Maven usando el complemento Spring Boot Maven. Si hace esto, recogerá los cambios que realice en el proyecto de inmediato (los cambios en los archivos fuente de Java también requieren una compilación; la mayoría de las personas usan un IDE para esto):
 
