@@ -35,9 +35,10 @@
 	<div id=flagsNumber></div>
 	<div id="crono">00 : 00</div>
 	
-	<!-- Cuadro de mensaje cuando tienes un game in progress -->
-	<div id="gameInProgressMessage" style="display:None; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
-	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
+	<!-- Cuadro de mensaje con instrucciones de juego -->
+	<div id="instructionsMessage" style="display:block; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
+	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;">To start the game you must left click on the board</div>
+
 	<br> 
 	
 	<!-- Cuadro de mensaje de victoria o derrota que se muestra cuando se acaba la partida -->
@@ -57,6 +58,7 @@
 		timeInicial = new Date();
 		control = setInterval(chronometer,10);
 		inProgress = true;
+		document.getElementById("instructionsMessage").style.display = "none";
 		}
 	}
 
@@ -218,7 +220,7 @@
 		function gameOver(){
 			if(board.data.gameStatus == "LOST"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
 				+"\n Click on the board to play again";
 				//Paramos el cronometro de la vista cuando perdemos
 				stop();
@@ -232,7 +234,7 @@
 			}
 			else if(board.data.gameStatus == "WON"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
 				+"\n Click on the board to play again";
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
