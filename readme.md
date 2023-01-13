@@ -6,6 +6,7 @@ Enlace del vídeo explicativo del juego:
 Enlace del vídeo final de nuestro proyecto:
 (https://youtu.be/o2NRXmmxBbk)
 
+
 Este es un proyecto del grupo L5-5:
 - Ángela Bernal Martín
 - Mercedes Iglesias Martín
@@ -38,9 +39,9 @@ jugador ha perdido la partida, o bien, cuando éste despeja todas las casillas q
 minas, ganando así la partida. Por tanto, la duración del juego depende de cuánto tiempo
 emplee el jugador en ganar o perder, es decir, no hay un tiempo límite.
 
-Por último, indicar que el tiempo (expresado en segundos) es un parámetro muy
-importante, ya que si un jugador ha ganado dos partidas con el mismo nivel de dificultad,
-será mejor resultado aquella partida ganada en menos tiempo.
+Después de cada partida, todos los datos relevantes de ella como pueden ser la duración,
+si se ha ganado o perdido y datos específicos de la partida en concreto, se almacenan para hacer 
+cálculos estadísticos y construir distintos rankings de jugadores.
 
 
 ## Ejecutar Buscaminas localmente
