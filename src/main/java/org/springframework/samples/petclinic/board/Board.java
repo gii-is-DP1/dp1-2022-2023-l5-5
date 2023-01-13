@@ -67,10 +67,7 @@ public class Board extends AuditableEntity {
 	@JsonIgnore
 	public long getDurationGame() {
 		Duration durationGame = Duration.between(startTime, finishTime);
-//		long difHours = durationGame.toHours();
-//		long difMinuts = durationGame.toMinutes();
 		long difSeconds = durationGame.toSeconds();
-		//return ChronoUnit.SECONDS.between(startTime, finishTime);
 		return difSeconds;
 	}
 	

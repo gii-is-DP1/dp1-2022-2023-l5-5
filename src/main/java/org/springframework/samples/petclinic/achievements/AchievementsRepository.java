@@ -1,7 +1,5 @@
 package org.springframework.samples.petclinic.achievements;
 
-
-
 import java.util.List;
 import java.util.Optional;
 
