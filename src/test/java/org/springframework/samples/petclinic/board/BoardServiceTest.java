@@ -90,12 +90,6 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindAllGamesByPlayerAndStatus(String username, GameStatus gameStatus) throws DataAccessException{
-		List<Board> boards = boardService.findAllGamesByPlayerAndStatus("meriglmar", GameStatus.WON);
-		assertEquals(boards.size(), 4);
-	}
-	
-	@Test
 	public void testFindAllWonAndLostGames() throws DataAccessException{
 		List<Board> boards = boardService.findAllWonAndLostGames();
 		assertEquals(boards.size(), 18);

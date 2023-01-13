@@ -104,13 +104,11 @@ public class StatisticsServiceTest {
 		assertThat(result).isEqualTo(1);
 	}
 	
-//	@Test
-//	void shouldFindnTotalPlacedFlags() {
-//		
-//		long result = statisticsService.findnTotalPlacedFlags("meriglmar");
-//	}
-	
-	//Falta el método de los clicks también, cuando se haga en el servicio se hace el test
+	@Test
+	void shouldFindnTotalPlacedFlags() {
+		long result = statisticsService.findnTotalPlacedFlags("paomarsan");
+		assertThat(result).isEqualTo(9);
+	}
 	
 	@Test
 	void testTotalDurationGamesPlayed() {
