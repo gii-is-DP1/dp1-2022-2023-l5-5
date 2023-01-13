@@ -48,7 +48,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/players/myprofile/**/deleteAdmin").hasAnyAuthority("admin")
 				.antMatchers("/players/myprofile/**/deleteConfirmAdmin").hasAnyAuthority("admin")
 				.antMatchers("/players/myprofile/**").permitAll()
-				.antMatchers("/players/edit/**").hasAnyAuthority("admin")
 				.antMatchers("/players/list/**").hasAnyAuthority("admin")
 				
 				
