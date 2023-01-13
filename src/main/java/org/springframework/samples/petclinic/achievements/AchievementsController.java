@@ -10,8 +10,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.player.Player;
 import org.springframework.samples.petclinic.statistics.StatisticsService;
-import org.springframework.samples.petclinic.user.AuthoritiesService;
-import org.springframework.samples.petclinic.user.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -36,6 +34,14 @@ public class AchievementsController {
     
     
 	private final AchievementsService achievementsService;
+	
+	@Autowired
+	private StatisticsService statisticsService;
+
+    @Autowired
+	public AchievementsController(AchievementsService achievementsService) {
+		this.achievementsService = achievementsService;
+	}
 
 	private static final String VIEWS_ACHIEVEMENT_CREATE_FORM = "achievements/createAchievementsForm";
     private static final String VIEWS_ACHIEVEMENT_UPDATE_FORM = "achievements/updateAchievementsForm";
@@ -43,22 +49,12 @@ public class AchievementsController {
     private static final String VIEWS_ACHIEVEMENT_LIST_PLAYER = "achievements/playerAchievements";
     private static final String VIEWS_ACHIEVEMENTS_DELETE_ADMIN = "achievements/achievementsDelete";
 
-	@Autowired
-	private StatisticsService statisticsService;
-
-    @Autowired
-	public AchievementsController(AchievementsService achievementsService, UserService userService, AuthoritiesService authoritiesService) {
-		this.achievementsService = achievementsService;
-	}
-	
-
 	//El admin ve el listado de logros
 	@GetMapping(value = "/list")
 	public String processFindForm(Achievement achievement, BindingResult result, Map<String, Object> model, 
 		@PageableDefault(page = 0, size = 6) @SortDefault.SortDefaults({
 		@SortDefault(sort = "title", direction = Sort.Direction.ASC),
 		@SortDefault(sort = "id", direction = Sort.Direction.ASC), }) Pageable pageable) {
-
 
 		Integer numResults = this.achievementsService.countAllAchievements();
 		Integer page = 0;

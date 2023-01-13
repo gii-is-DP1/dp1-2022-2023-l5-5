@@ -35,9 +35,10 @@
 	<div id=flagsNumber></div>
 	<div id="crono">00 : 00</div>
 	
-	<!-- Cuadro de mensaje cuando tienes un game in progress -->
-	<div id="gameInProgressMessage" style="display:None; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
-	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;"></div>
+	<!-- Cuadro de mensaje con instrucciones de juego -->
+	<div id="instructionsMessage" style="display:block; color:black; font-family: 'Courier New', Courier, monospace; font-size: 20px; border-style: ridge; 
+	border-width: 10px; background-color: #9da5a8; border-color: #b8c9d0; width: 600px; margin-left: 23%;">To start the game you must left click on the board</div>
+
 	<br> 
 	
 	<!-- Cuadro de mensaje de victoria o derrota que se muestra cuando se acaba la partida -->
@@ -57,6 +58,7 @@
 		timeInicial = new Date();
 		control = setInterval(chronometer,10);
 		inProgress = true;
+		document.getElementById("instructionsMessage").style.display = "none";
 		}
 	}
 
@@ -130,6 +132,7 @@
 			.catch(function(error){console.log(error)});
 			});
 			document.getElementById("canvas").addEventListener("contextmenu", function(event){
+				
 			//Elimina la funcionalidad en el canvas del boton derecho de desplegar el menu para poner una bandera
 			event.preventDefault();
 			let column = Math.floor((event.pageX-canvas.offsetLeft)/squareSide);
@@ -200,9 +203,7 @@
 			    square.rect(x, y, squareSide, squareSide); 
 			    ctx.strokeStyle = 'black';
 			    ctx.stroke(square);
-			    //img.onload = function(){
-					ctx.drawImage(img, x, y, squareSide, squareSide);
-				///}
+				ctx.drawImage(img, x, y, squareSide, squareSide);
 				if(array2D[i][j] === 'X' || array2D[i][j] === '0'){
 			    	ctx.fill(square);
 					ctx.fillStyle = squareColor;
@@ -212,34 +213,32 @@
 			}
 		}
 	
-
-	
 		//Comprueba por cada click si se ha perdido o ganado la partida, si se ha ganado o perdido, para el crono y pone el mensaje, si no, no hace nada
 		function gameOver(){
 			if(board.data.gameStatus == "LOST"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 You have lost the game <br> The duration of the game has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
 				+"\n Click on the board to play again";
 				//Paramos el cronometro de la vista cuando perdemos
 				stop();
 				document.getElementById("canvas").addEventListener("click", function(){
 					if(confirm("You have lost the game! Do you want to play another game?")){
-						window.location.href = "http://localhost:8080/board/game?dificulty=1";
+						window.location.href = "http://localhost:8080/board/setDifficulty";
 					}else{
-						window.location.href = "http://localhost:8080/players/myprofile";
+						window.location.href = "http://localhost:8080/board/listplayer";
 					};
 				});
 			}
 			else if(board.data.gameStatus == "WON"){
 				document.getElementById("gameOverMessage").style.display = "block";
-				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game played has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
+				document.getElementById("gameOverMessage").innerHTML = "&#x1f6a9 CONGRATULATIONS! You have completed the board <br> The duration of the game has been: "+document.getElementById("crono").innerHTML+"&#x1f4a3"
 				+"\n Click on the board to play again";
 				stop();	
 				document.getElementById("canvas").addEventListener("click", function(){
 						if(confirm("CONGRATULATIONS YOU HAVE WON THE GAME! Do you want to play another game?")){
-							window.location.href = "http://localhost:8080/board/game?dificulty=1";
+							window.location.href = "http://localhost:8080/board/setDifficulty";
 						}else{
-							window.location.href = "http://localhost:8080/players/myprofile";
+							window.location.href = "http://localhost:8080/board/listplayer";
 						};
 				});
 			}

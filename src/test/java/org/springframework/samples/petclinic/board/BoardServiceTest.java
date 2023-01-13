@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.DataAccessException;
 import org.springframework.samples.petclinic.player.Player;
-import org.springframework.samples.petclinic.player.PlayerService;
 import org.springframework.samples.petclinic.square.Square;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -84,9 +84,15 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void testFindAllGamesByPlayerAndStatus() {
-		List<Board> boards = boardService.findAllGamesByPlayerAndStatus("angbermar1", GameStatus.NONE);
+	public void testFindAllGamesByPlayerAndNotByStatusOrder() {
+		List<Board> boards = boardService.findAllGamesByPlayerAndNotByStatusOrder("angbermar1", GameStatus.NONE);
 		assertEquals(boards.size(), 4);
+	}
+	
+	@Test
+	public void testFindAllWonAndLostGames() throws DataAccessException{
+		List<Board> boards = boardService.findAllWonAndLostGames();
+		assertEquals(boards.size(), 18);
 	}
 	
 	@Test
@@ -208,6 +214,13 @@ public class BoardServiceTest {
 		List<Board> boards = boardService.findAllGamesByPlayer("meriglmar");
 		assertEquals(boards.size(), 4);
 	}
+	
+	@Test
+	public void testFindAllGamesByPlayerNotByStatus() {
+		List<Board> boards = boardService.findAllGamesByPlayerNotByStatus("paomarsan", GameStatus.IN_PROGRESS);
+		assertEquals(boards.size(), 2);
+	}
+	
 	
 	@Test
 	public void testBeforeStartGame(){
